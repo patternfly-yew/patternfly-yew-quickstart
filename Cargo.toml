@@ -11,9 +11,9 @@ description = "A quickstart project for using Patternfly with Yew Stack"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-yew = "0.17"
-patternfly-yew = "0.1"
 wasm-bindgen = "0.2"
+yew = "0.17"
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", branch = "main" }
 
-[patch.crates-io]
-patternfly-yew = { path = "../patternfly-yew" }
+[patch.'https://github.com/ctron/patternfly-yew'.patternfly-yew]
+#path = "../patternfly-yew"
