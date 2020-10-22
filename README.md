@@ -1,6 +1,6 @@
 # Patternfly quick start for Yew
 
-This isn't more than a PoC right now.
+This is little more than a PoC right now.
 
 ## Pre-requisites
 
@@ -27,3 +27,11 @@ Start a local development server, which re-builds every time you make changes to
     npm run start:dev
 
 Direct your web browser to: http://localhost:8000
+
+## Perform a release build
+
+To build the Rust components and package up the NPM dependencies, run:
+
+    npm run build
+
+The release is in the `dist/` folder.
