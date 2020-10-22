@@ -41,3 +41,28 @@ jobs:
           node-version: '12'
       - run: npm install
       - run: npm run build
+
+      - name: Checkout current pages
+          uses: actions/checkout@v2
+          with:
+            ref: gh-pages
+            path: pages
+
+      - run: |
+          cd "$GITHUB_WORKSPACE/pages"
+          git config user.name "GitHub Actions" && git config user.email "actions@users.noreply.github.com"
+
+      - name: Update content
+        run: |
+          cd "$GITHUB_WORKSPACE/pages"
+          rm * -Rf
+          cp -a "$GITHUB_WORKSPACE"/main/* .
+          git add -A
+          if ! git diff --cached --exit-code; then
+            echo "Changes have been detected, publishing to repo."
+            git commit -m "Build ${GITHUB_WORKFLOW} for ${GITHUB_SHA}"
+            git log --graph --abbrev-commit --date=relative -n 5
+            git push origin
+          else
+            echo "No changes have been detected since last build, nothing to publish"
+          fi
