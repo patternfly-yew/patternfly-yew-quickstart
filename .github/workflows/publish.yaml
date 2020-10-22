@@ -43,10 +43,10 @@ jobs:
       - run: npm run build
 
       - name: Checkout current pages
-          uses: actions/checkout@v2
-          with:
-            ref: gh-pages
-            path: pages
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: pages
 
       - run: |
           cd "$GITHUB_WORKSPACE/pages"
