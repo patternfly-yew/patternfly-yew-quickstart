@@ -1,81 +1,73 @@
 #![recursion_limit = "256"]
 
+mod index;
+mod counter;
+
+use counter::*;
+use index::*;
+
 use patternfly_yew::*;
 
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 struct Model {
     link: ComponentLink<Self>,
-    value: i64,
 }
 
-enum Msg {
-    AddOne,
+#[derive(Switch, Debug, Clone, PartialEq)]
+pub enum AppRoute {
+    #[to = "/counter"]
+    Counter,
+    #[to = "/"]
+    Index,
 }
 
 impl Component for Model {
-    type Message = Msg;
+    type Message = ();
     type Properties = ();
     fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link, value: 0 }
+        Self { link }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            Msg::AddOne => self.value += 1,
-        }
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
         true
     }
 
     fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        // Should only return "true" if new properties are different to
-        // previously received properties.
-        // This component has no properties so we will always return "false".
         false
     }
 
     fn view(&self) -> Html {
-        let _sidebar = html_nested! {
+        let sidebar = html_nested! {
             <PageSidebar>
+                <Nav>
+                    <NavList>
+                        <NavRouterItem<AppRoute> to=AppRoute::Index>{"Index"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Counter>{"Counter"}</NavRouterItem<AppRoute>>
+                    </NavList>
+                </Nav>
             </PageSidebar>
         };
         let _header_tools = html! { {"Foo"} };
-
-        let _logo = html_nested! {
-            <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
-        };
 
         html! {
             <Page
                 logo={html_nested!{
                     <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
-                }}>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Counting clicks"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Gallery gutter=true>
-                        <Card
-                            selectable=true
-                            selected=true
-                            title={html_nested!{<>
-                                {"Clicks"}
-                            </>}}
-                            >
-
-                            <p>{ self.value }</p>
-
-                        </Card>
-                    </Gallery>
-                </PageSection>
-                <PageSection>
-                    <Form>
-                        <Button label="Add One" icon=Some(Icon::PlusCircleIcon) variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
-                    </Form>
-                </PageSection>
+                }}
+                sidebar=sidebar
+                >
+                <Router<AppRoute, ()>
+                    redirect = Router::redirect(|_|AppRoute::Index)
+                    render = Router::render(|switch: AppRoute| {
+                        match switch {
+                            AppRoute::Counter => html!{<Counter/>},
+                            AppRoute::Index => html!{<Index/>},
+                        }
+                    })
+                />
             </Page>
         }
     }
