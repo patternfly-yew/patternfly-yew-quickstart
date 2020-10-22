@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout source
+        uses: actions/checkout@v2
+        with:
+          path: main
 
       - uses: actions/cache@v2
         with:
@@ -39,8 +42,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: npm install
-      - run: npm run build
+      - run: cd main && npm install
+      - run: cd main && npm run build
 
       - name: Checkout current pages
         uses: actions/checkout@v2
@@ -56,7 +59,7 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE/pages"
           rm * -Rf
-          cp -a "$GITHUB_WORKSPACE"/master/* .
+          cp -a "$GITHUB_WORKSPACE"/main/* .
           git add -A
           if ! git diff --cached --exit-code; then
             echo "Changes have been detected, publishing to repo."
