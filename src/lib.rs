@@ -1,7 +1,8 @@
 #![recursion_limit = "256"]
 
-mod index;
+mod components;
 mod counter;
+mod index;
 
 use counter::*;
 use index::*;
@@ -18,6 +19,8 @@ struct Model {
 
 #[derive(Switch, Debug, Clone, PartialEq)]
 pub enum AppRoute {
+    #[to = "/components/badge"]
+    Badge,
     #[to = "/counter"]
     Counter,
     #[to = "/"]
@@ -43,10 +46,13 @@ impl Component for Model {
         let sidebar = html_nested! {
             <PageSidebar>
                 <Nav>
-                    <NavList>
+                    <NavGroup title="Basics">
                         <NavRouterItem<AppRoute> to=AppRoute::Index>{"Index"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Counter>{"Counter"}</NavRouterItem<AppRoute>>
-                    </NavList>
+                    </NavGroup>
+                    <NavGroup title="Components">
+                        <NavRouterItem<AppRoute> to=AppRoute::Badge>{"Badge"}</NavRouterItem<AppRoute>>
+                    </NavGroup>
                 </Nav>
             </PageSidebar>
         };
@@ -65,6 +71,7 @@ impl Component for Model {
                         match switch {
                             AppRoute::Counter => html!{<Counter/>},
                             AppRoute::Index => html!{<Index/>},
+                            AppRoute::Badge => html!{<components::BadgeExample/>},
                         }
                     })
                 />

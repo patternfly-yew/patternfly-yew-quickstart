@@ -9,6 +9,7 @@ module.exports = (env, argv) => {
         devServer: {
             contentBase: distPath,
             compress: argv.mode === 'production',
+            historyApiFallback: true,
             port: 8000
         },
         entry: './main.js',
