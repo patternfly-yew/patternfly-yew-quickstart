@@ -13,14 +13,14 @@ use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-struct Model {
-    link: ComponentLink<Self>,
-}
+struct Model {}
 
 #[derive(Switch, Debug, Clone, PartialEq)]
 pub enum AppRoute {
     #[to = "/components/badge"]
     Badge,
+    #[to = "/components/form"]
+    Form,
     #[to = "/counter"]
     Counter,
     #[to = "/"]
@@ -30,8 +30,8 @@ pub enum AppRoute {
 impl Component for Model {
     type Message = ();
     type Properties = ();
-    fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link }
+    fn create(_: Self::Properties, _link: ComponentLink<Self>) -> Self {
+        Self {}
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -52,6 +52,7 @@ impl Component for Model {
                     </NavGroup>
                     <NavGroup title="Components">
                         <NavRouterItem<AppRoute> to=AppRoute::Badge>{"Badge"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Form>{"Form"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                 </Nav>
             </PageSidebar>
@@ -72,6 +73,7 @@ impl Component for Model {
                             AppRoute::Counter => html!{<Counter/>},
                             AppRoute::Index => html!{<Index/>},
                             AppRoute::Badge => html!{<components::BadgeExample/>},
+                            AppRoute::Form => html!{<components::FormExample/>},
                         }
                     })
                 />
