@@ -33,7 +33,7 @@ impl Component for FormExample {
                             <FormGroup label="Test">
                                 <Button label="Click me"/>
                             </FormGroup>
-                            <FormGroup label="Test" required=true>
+                            <FormGroup label="Test" required=true helper_text="Some help for you.">
                                 <Button label="Click me too"/>
                             </FormGroup>
                         </Form>
