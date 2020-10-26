@@ -20,8 +20,12 @@ struct Model {}
 pub enum AppRoute {
     #[to = "/components/badge"]
     Badge,
+    #[to = "/components/clipboard"]
+    Clipboard,
     #[to = "/components/form"]
     Form,
+    #[to = "/components/tooltip"]
+    Tooltip,
     #[to = "/counter"]
     Counter,
     #[to = "/"]
@@ -53,7 +57,9 @@ impl Component for Model {
                     </NavGroup>
                     <NavGroup title="Components">
                         <NavRouterItem<AppRoute> to=AppRoute::Badge>{"Badge"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Clipboard>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Form>{"Form"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Tooltip>{"Tooltip"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                 </Nav>
             </PageSidebar>
@@ -74,7 +80,9 @@ impl Component for Model {
                             AppRoute::Counter => html!{<Counter/>},
                             AppRoute::Index => html!{<Index/>},
                             AppRoute::Badge => html!{<components::BadgeExample/>},
+                            AppRoute::Clipboard => html!{<components::ClipboardExample/>},
                             AppRoute::Form => html!{<components::FormExample/>},
+                            AppRoute::Tooltip => html!{<components::TooltipExample/>},
                         }
                     })
                 />
@@ -85,5 +93,6 @@ impl Component for Model {
 
 #[wasm_bindgen(start)]
 pub fn run_app() {
+    wasm_logger::init(Default::default());
     App::<Model>::new().mount_to_body();
 }
