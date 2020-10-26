@@ -1,7 +1,8 @@
-#![recursion_limit = "256"]
+#![recursion_limit = "512"]
 
 mod components;
 mod counter;
+mod example;
 mod index;
 
 use counter::*;

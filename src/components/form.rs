@@ -1,3 +1,4 @@
+use crate::example;
 use patternfly_yew::*;
 use yew::prelude::*;
 
@@ -20,6 +21,14 @@ impl Component for FormExample {
     }
 
     fn view(&self) -> Html {
+        let example = example! {"Text Input" |
+            <Form>
+                <FormGroup label="Normal">
+                    <TextInput/>
+                </FormGroup>
+            </Form>
+        };
+
         html! {
             <>
                 <PageSection variant=PageSectionVariant::Light limit_width=true>
@@ -35,6 +44,42 @@ impl Component for FormExample {
                             </FormGroup>
                             <FormGroup label="Test" required=true helper_text="Some help for you.">
                                 <Button label="Click me too"/>
+                            </FormGroup>
+                        </Form>
+
+                        {
+                            example
+                        }
+
+                        <h2>{"More"}</h2>
+
+                        <Form>
+                            <FormGroup label="Normal">
+                                <TextInput/>
+                            </FormGroup>
+                            <FormGroup label="Success">
+                                <TextInput state=InputState::Success/>
+                            </FormGroup>
+                            <FormGroup label="Warning">
+                                <TextInput state=InputState::Warning/>
+                            </FormGroup>
+                            <FormGroup label="Error">
+                                <TextInput state=InputState::Error/>
+                            </FormGroup>
+                            <FormGroup label="Read Only">
+                                <TextInput readonly=true/>
+                            </FormGroup>
+                            <FormGroup label="Disabled">
+                                <TextInput disabled=true/>
+                            </FormGroup>
+                            <FormGroup label="Search">
+                                <TextInput icon=TextInputIcon::Search/>
+                            </FormGroup>
+                            <FormGroup label="Calendar">
+                                <TextInput icon=TextInputIcon::Calendar/>
+                            </FormGroup>
+                            <FormGroup label="Clock">
+                                <TextInput icon=TextInputIcon::Clock/>
                             </FormGroup>
                         </Form>
                     </Content>
