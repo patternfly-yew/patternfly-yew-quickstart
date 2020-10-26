@@ -9,7 +9,16 @@ module.exports = (env, argv) => {
         devServer: {
             contentBase: distPath,
             compress: argv.mode === 'production',
-            historyApiFallback: true,
+            historyApiFallback: {
+                rewrites: [
+                    // translate everything that is in a sub-directory (e.g. components/form) and contains a dot
+                    // (e.g. components/form/main.js) to the root (e.g. main.js).
+                    { from: /\/.*?\/(.*\..*)$/, to: function(context) {
+                        return '/' + context.match[1];
+                    }}
+                ],
+                verbose: true,
+            },
             port: 8000
         },
         entry: './main.js',
