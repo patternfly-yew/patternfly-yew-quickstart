@@ -4,6 +4,7 @@ mod components;
 mod counter;
 mod example;
 mod index;
+mod layouts;
 
 use counter::*;
 use index::*;
@@ -17,24 +18,40 @@ use yew_router::prelude::*;
 struct Model {}
 
 #[derive(Switch, Debug, Clone, PartialEq)]
-pub enum AppRoute {
-    #[to = "/components/badge"]
+pub enum Component {
+    #[to = "/badge"]
     Badge,
-    #[to = "/components/clipboard"]
+    #[to = "/clipboard"]
     Clipboard,
-    #[to = "/components/form"]
+    #[to = "/form"]
     Form,
-    #[to = "/components/table"]
+    #[to = "/table"]
     Table,
-    #[to = "/components/tooltip"]
+    #[to = "/tooltip"]
     Tooltip,
+}
+
+#[derive(Switch, Debug, Clone, PartialEq)]
+pub enum Layout {
+    #[to = "/flex"]
+    Flex,
+    #[to = "/gallery"]
+    Gallery,
+}
+
+#[derive(Switch, Debug, Clone, PartialEq)]
+pub enum AppRoute {
+    #[to = "/components/{*:rest}"]
+    Component(Component),
+    #[to = "/layout/{*:rest}"]
+    Layout(Layout),
     #[to = "/counter"]
     Counter,
     #[to = "/"]
     Index,
 }
 
-impl Component for Model {
+impl yew::Component for Model {
     type Message = ();
     type Properties = ();
     fn create(_: Self::Properties, _link: ComponentLink<Self>) -> Self {
@@ -58,11 +75,15 @@ impl Component for Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Counter>{"Counter"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                     <NavGroup title="Components">
-                        <NavRouterItem<AppRoute> to=AppRoute::Badge>{"Badge"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to=AppRoute::Clipboard>{"Clipboard"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to=AppRoute::Form>{"Form"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to=AppRoute::Table>{"Table"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to=AppRoute::Tooltip>{"Tooltip"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Table)>{"Table"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Tooltip)>{"Tooltip"}</NavRouterItem<AppRoute>>
+                    </NavGroup>
+                    <NavGroup title="Layouts">
+                        <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Flex)>{"Flex"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Gallery)>{"Gallery"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                 </Nav>
             </PageSidebar>
@@ -82,11 +103,15 @@ impl Component for Model {
                         match switch {
                             AppRoute::Counter => html!{<Counter/>},
                             AppRoute::Index => html!{<Index/>},
-                            AppRoute::Badge => html!{<components::BadgeExample/>},
-                            AppRoute::Clipboard => html!{<components::ClipboardExample/>},
-                            AppRoute::Form => html!{<components::FormExample/>},
-                            AppRoute::Table => html!{<components::TableExample/>},
-                            AppRoute::Tooltip => html!{<components::TooltipExample/>},
+
+                            AppRoute::Layout(Layout::Flex) => html!{<layouts::FlexExample/>},
+                            AppRoute::Layout(Layout::Gallery) => html!{<layouts::GalleryExample/>},
+
+                            AppRoute::Component(Component::Badge) => html!{<components::BadgeExample/>},
+                            AppRoute::Component(Component::Clipboard) => html!{<components::ClipboardExample/>},
+                            AppRoute::Component(Component::Form) => html!{<components::FormExample/>},
+                            AppRoute::Component(Component::Table) => html!{<components::TableExample/>},
+                            AppRoute::Component(Component::Tooltip) => html!{<components::TooltipExample/>},
                         }
                     })
                 />

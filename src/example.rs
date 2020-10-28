@@ -1,6 +1,8 @@
 #[macro_export]
 macro_rules! example {
     ($title:literal | $($t:tt)*) => {
+        {
+        let code = {stringify!($($t)*)};
         html! {
             <>
                 <h2>{$title}</h2>
@@ -16,13 +18,14 @@ macro_rules! example {
                         <div class="pf-c-code-editor__code">
                             <pre class="pf-c-code-editor__code-pre">
                                 {"html! {\n"}
-                                    {stringify!($($t)*)}
+                                    {&code}
                                 {"\n}"}
                             </pre>
                         </div>
                     </div>
                 </div>
             </>
+        }
         }
     };
 }

@@ -336,8 +336,8 @@ checksum = "260e51e7efe62b592207e9e13a68e43692a7a279171d6ba57abd208bf23645ad"
 
 [[package]]
 name = "patternfly-yew"
-version = "0.0.3"
-source = "git+https://github.com/ctron/patternfly-yew?branch=main#549c80cf0e93cb503d563535e6193433a5b6d958"
+version = "0.0.5"
+source = "git+https://github.com/ctron/patternfly-yew?branch=main#e0f35aaf452ed54bc617e2e7e8de4d24f1a4df54"
 dependencies = [
  "js-sys",
  "log",
@@ -388,9 +388,9 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
 name = "proc-macro-hack"
-version = "0.5.18"
+version = "0.5.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99c605b9a0adc77b7211c6b1f722dcb613d68d66859a44f3d485a6da332b0598"
+checksum = "dbf0c48bc1d91375ae5c3cd81e3722dff1abcf81a30960240640d223f59fe0e5"
 
 [[package]]
 name = "proc-macro-nested"
