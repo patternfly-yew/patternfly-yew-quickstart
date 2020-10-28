@@ -2,16 +2,14 @@ use yew::prelude::*;
 
 use patternfly_yew::*;
 
-pub struct Index {
-}
-
+pub struct Index {}
 
 impl Component for Index {
     type Message = ();
     type Properties = ();
 
-    fn create(_props: Self::Properties,_link: ComponentLink<Self>) -> Self {
-        Self {  }
+    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+        Self {}
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -19,7 +17,7 @@ impl Component for Index {
     }
 
     fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-false
+        false
     }
 
     fn view(&self) -> Html {

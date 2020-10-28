@@ -24,6 +24,8 @@ pub enum AppRoute {
     Clipboard,
     #[to = "/components/form"]
     Form,
+    #[to = "/components/table"]
+    Table,
     #[to = "/components/tooltip"]
     Tooltip,
     #[to = "/counter"]
@@ -59,6 +61,7 @@ impl Component for Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Badge>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Clipboard>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Form>{"Form"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Table>{"Table"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Tooltip>{"Tooltip"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                 </Nav>
@@ -82,6 +85,7 @@ impl Component for Model {
                             AppRoute::Badge => html!{<components::BadgeExample/>},
                             AppRoute::Clipboard => html!{<components::ClipboardExample/>},
                             AppRoute::Form => html!{<components::FormExample/>},
+                            AppRoute::Table => html!{<components::TableExample/>},
                             AppRoute::Tooltip => html!{<components::TooltipExample/>},
                         }
                     })
