@@ -25,6 +25,8 @@ pub enum Component {
     Clipboard,
     #[to = "/form"]
     Form,
+    #[to = "/popover"]
+    Popover,
     #[to = "/table"]
     Table,
     #[to = "/tooltip"]
@@ -78,6 +80,7 @@ impl yew::Component for Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Popover)>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Table)>{"Table"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Tooltip)>{"Tooltip"}</NavRouterItem<AppRoute>>
                     </NavGroup>
@@ -110,6 +113,7 @@ impl yew::Component for Model {
                             AppRoute::Component(Component::Badge) => html!{<components::BadgeExample/>},
                             AppRoute::Component(Component::Clipboard) => html!{<components::ClipboardExample/>},
                             AppRoute::Component(Component::Form) => html!{<components::FormExample/>},
+                            AppRoute::Component(Component::Popover) => html!{<components::PopoverExample/>},
                             AppRoute::Component(Component::Table) => html!{<components::TableExample/>},
                             AppRoute::Component(Component::Tooltip) => html!{<components::TooltipExample/>},
                         }

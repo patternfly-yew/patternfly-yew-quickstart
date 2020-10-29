@@ -17,7 +17,10 @@ wasm-logger = "0.2"
 yew = "0.17"
 yew-router = "0.14"
 
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", branch = "main" }
+patternfly-yew = "0.0.6"
 
-[patch.'https://github.com/ctron/patternfly-yew']
+[patch.crates-io]
+#patternfly-yew = { path = "../patternfly-yew" }
+
+#[patch.'https://github.com/ctron/patternfly-yew']
 #patternfly-yew = { path = "../patternfly-yew" }
