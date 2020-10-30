@@ -17,6 +17,8 @@ wasm-logger = "0.2"
 yew = "0.17"
 yew-router = "0.14"
 
+chrono = { version = "0.4", features = ["wasmbind"] }
+
 patternfly-yew = "0.0.6"
 
 [patch.crates-io]
