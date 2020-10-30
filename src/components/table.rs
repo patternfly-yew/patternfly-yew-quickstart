@@ -3,7 +3,12 @@ use crate::example;
 use patternfly_yew::*;
 use yew::prelude::*;
 
-pub struct TableExample {}
+use chrono::Utc;
+
+pub struct TableExample {
+    link: ComponentLink<Self>,
+    model4: SharedTableModel<ExampleEntry>,
+}
 
 #[derive(Clone, PartialEq, Eq, Debug)]
 pub struct ExampleEntry {
@@ -28,15 +33,47 @@ impl TableRenderer for ExampleEntry {
     }
 }
 
+pub enum Msg {
+    AppendToExample4,
+    PrependToExample4,
+    PopFromExample4,
+}
+
 impl Component for TableExample {
-    type Message = ();
+    type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Self {}
+    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+        let model4 = vec![
+            ExampleEntry {
+                foo: "Simple foo".into(),
+            },
+            ExampleEntry {
+                foo: "More foo".into(),
+            },
+        ];
+
+        Self {
+            link,
+            model4: model4.into(),
+        }
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            Msg::AppendToExample4 => self.model4.push(ExampleEntry {
+                foo: format!("Extra entry: {}", Utc::now()),
+            }),
+            Msg::PrependToExample4 => self.model4.insert(
+                0,
+                ExampleEntry {
+                    foo: format!("Extra entry: {}", Utc::now()),
+                },
+            ),
+            Msg::PopFromExample4 => {
+                self.model4.pop();
+            }
+        }
         true
     }
 
@@ -52,8 +89,10 @@ impl Component for TableExample {
             },
         ];
 
+        let model: SimpleTableModel<_> = entries.into();
+
         let example1 = example! {"Table" |
-            <Table<ExampleEntry>
+            <Table<SimpleTableModel<ExampleEntry>>
                 caption="Table caption"
                 header={html_nested!{
                     <TableHeader>
@@ -62,13 +101,13 @@ impl Component for TableExample {
                         <TableColumn label="baz"/>
                     </TableHeader>
                 }}
-                entries=entries.clone()
+                entries=model.clone()
                 >
-            </Table<ExampleEntry>>
+            </Table<SimpleTableModel<ExampleEntry>>>
         };
 
         let example2 = example! {"Compact Table" |
-            <Table<ExampleEntry>
+            <Table<SimpleTableModel<ExampleEntry>>
                 mode=TableMode::Compact
                 header={html_nested!{
                     <TableHeader>
@@ -77,13 +116,13 @@ impl Component for TableExample {
                         <TableColumn label="baz"/>
                     </TableHeader>
                 }}
-                entries=entries.clone()
+                entries=model.clone()
                 >
-            </Table<ExampleEntry>>
+            </Table<SimpleTableModel<ExampleEntry>>>
         };
 
         let example3 = example! {"Compact, No Border Table" |
-            <Table<ExampleEntry>
+            <Table<SimpleTableModel<ExampleEntry>>
                 mode=TableMode::CompactNoBorders
                 header={html_nested!{
                     <TableHeader>
@@ -92,13 +131,14 @@ impl Component for TableExample {
                         <TableColumn label="baz"/>
                     </TableHeader>
                 }}
-                entries=entries.clone()
+                entries=model.clone()
                 >
-            </Table<ExampleEntry>>
+            </Table<SimpleTableModel<ExampleEntry>>>
         };
 
-        let example4 = example! {"Compact, Expandable Table" |
-            <Table<ExampleEntry>
+        let example4 = example! {"Compact, Expandable Table, Shared Model" |
+            <>
+            <Table<SharedTableModel<ExampleEntry>>
                 mode=TableMode::CompactExpandable
                 header={html_nested!{
                     <TableHeader>
@@ -107,9 +147,15 @@ impl Component for TableExample {
                         <TableColumn label="baz"/>
                     </TableHeader>
                 }}
-                entries=entries.clone()
+                entries=self.model4.clone()
                 >
-            </Table<ExampleEntry>>
+            </Table<SharedTableModel<ExampleEntry>>>
+
+            <Button label="Prepend entry" icon=Icon::PlusCircleIcon align=Align::Start variant=Variant::Link onclick=self.link.callback(|_| Msg::PrependToExample4)/>
+            <Button label="Append entry" icon=Icon::PlusCircleIcon align=Align::Start variant=Variant::Link onclick=self.link.callback(|_| Msg::AppendToExample4)/>
+            <Button label="Pop entry" icon=Icon::PlusCircleIcon align=Align::Start variant=Variant::Link onclick=self.link.callback(|_| Msg::PopFromExample4)/>
+
+            </>
         };
 
         html! {

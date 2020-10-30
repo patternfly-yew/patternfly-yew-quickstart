@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use patternfly_yew::*;
+use yew::prelude::*;
 
 pub struct Counter {
     link: ComponentLink<Self>,
@@ -54,7 +54,7 @@ impl Component for Counter {
                 </PageSection>
                 <PageSection>
                     <Form>
-                        <Button label="Add One" icon=Some(Icon::PlusCircleIcon) variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
+                        <Button label="Add One" icon=Icon::PlusCircleIcon variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
                     </Form>
                 </PageSection>
             </>
