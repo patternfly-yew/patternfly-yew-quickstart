@@ -19,7 +19,11 @@ yew-router = "0.14"
 
 chrono = { version = "0.4", features = ["wasmbind"] }
 
-patternfly-yew = "0.0.7"
+patternfly-yew = "0.0.8"
+
+strum = "0.19"
+
+log = "0.4"
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
