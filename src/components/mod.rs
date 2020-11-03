@@ -1,5 +1,6 @@
 mod badge;
 mod clipboard;
+mod empty;
 mod form;
 mod label;
 mod popover;
@@ -8,6 +9,7 @@ mod tooltip;
 
 pub use badge::*;
 pub use clipboard::*;
+pub use empty::*;
 pub use form::*;
 pub use label::*;
 pub use popover::*;

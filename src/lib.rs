@@ -23,6 +23,8 @@ pub enum Component {
     Badge,
     #[to = "/clipboard"]
     Clipboard,
+    #[to = "/empty"]
+    EmptyState,
     #[to = "/form"]
     Form,
     #[to = "/label"]
@@ -37,6 +39,8 @@ pub enum Component {
 
 #[derive(Switch, Debug, Clone, PartialEq)]
 pub enum Layout {
+    #[to = "/bullseye"]
+    Bullseye,
     #[to = "/flex"]
     Flex,
     #[to = "/gallery"]
@@ -81,6 +85,7 @@ impl yew::Component for Model {
                     <NavGroup title="Components">
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::EmptyState)>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Label)>{"Label"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Popover)>{"Popover"}</NavRouterItem<AppRoute>>
@@ -88,6 +93,7 @@ impl yew::Component for Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Tooltip)>{"Tooltip"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                     <NavGroup title="Layouts">
+                        <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Bullseye)>{"Bullseye"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Flex)>{"Flex"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Gallery)>{"Gallery"}</NavRouterItem<AppRoute>>
                     </NavGroup>
@@ -110,11 +116,13 @@ impl yew::Component for Model {
                             AppRoute::Counter => html!{<Counter/>},
                             AppRoute::Index => html!{<Index/>},
 
+                            AppRoute::Layout(Layout::Bullseye) => html!{<layouts::BullseyeExample/>},
                             AppRoute::Layout(Layout::Flex) => html!{<layouts::FlexExample/>},
                             AppRoute::Layout(Layout::Gallery) => html!{<layouts::GalleryExample/>},
 
                             AppRoute::Component(Component::Badge) => html!{<components::BadgeExample/>},
                             AppRoute::Component(Component::Clipboard) => html!{<components::ClipboardExample/>},
+                            AppRoute::Component(Component::EmptyState) => html!{<components::EmptyStateExample/>},
                             AppRoute::Component(Component::Form) => html!{<components::FormExample/>},
                             AppRoute::Component(Component::Label) => html!{<components::LabelExample/>},
                             AppRoute::Component(Component::Popover) => html!{<components::PopoverExample/>},
