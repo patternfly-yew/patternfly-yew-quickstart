@@ -1,4 +1,4 @@
-use crate::example;
+use crate::{example, example::Example};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -91,7 +91,7 @@ impl Component for TableExample {
 
         let model: SimpleTableModel<_> = entries.into();
 
-        let example1 = example! {"Table" |
+        let example1 = example! {"Table" =>
             <Table<SimpleTableModel<ExampleEntry>>
                 caption="Table caption"
                 header={html_nested!{
@@ -106,7 +106,7 @@ impl Component for TableExample {
             </Table<SimpleTableModel<ExampleEntry>>>
         };
 
-        let example2 = example! {"Compact Table" |
+        let example2 = example! {"Compact Table" =>
             <Table<SimpleTableModel<ExampleEntry>>
                 mode=TableMode::Compact
                 header={html_nested!{
@@ -121,7 +121,7 @@ impl Component for TableExample {
             </Table<SimpleTableModel<ExampleEntry>>>
         };
 
-        let example3 = example! {"Compact, No Border Table" |
+        let example3 = example! {"Compact, No Border Table" =>
             <Table<SimpleTableModel<ExampleEntry>>
                 mode=TableMode::CompactNoBorders
                 header={html_nested!{
@@ -136,7 +136,7 @@ impl Component for TableExample {
             </Table<SimpleTableModel<ExampleEntry>>>
         };
 
-        let example4 = example! {"Compact, Expandable Table, Shared Model" |
+        let example4 = example! {"Compact, Expandable Table, Shared Model" =>
             <>
             <Table<SharedTableModel<ExampleEntry>>
                 mode=TableMode::CompactExpandable
@@ -160,19 +160,12 @@ impl Component for TableExample {
 
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Table"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Content>
-                        {example1}
-                        {example2}
-                        {example3}
-                        {example4}
-                    </Content>
-                </PageSection>
+                <Example title="Table">
+                    {example1}
+                    {example2}
+                    {example3}
+                    {example4}
+                </Example>
             </>
         }
     }

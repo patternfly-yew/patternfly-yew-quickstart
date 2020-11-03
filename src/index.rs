@@ -1,6 +1,6 @@
-use yew::prelude::*;
+use crate::example::Example;
 
-use patternfly_yew::*;
+use yew::prelude::*;
 
 pub struct Index {}
 
@@ -23,16 +23,9 @@ impl Component for Index {
     fn view(&self) -> Html {
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Patternfly Yew Quickstart"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Content>
-                        {"Pick an example on the left"}
-                    </Content>
-                </PageSection>
+                <Example title="Patternfly Yew Quickstart">
+                    {"Pick an example on the left"}
+                </Example>
             </>
         }
     }

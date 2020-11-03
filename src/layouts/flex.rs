@@ -1,4 +1,4 @@
-use crate::example;
+use crate::{example, example::Example};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -24,7 +24,7 @@ impl Component for FlexExample {
     fn view(&self) -> Html {
         let style = "border: 1px solid;";
 
-        let example1 = example! {"Flex" |
+        let example1 = example! {"Flex" =>
             <Flex>
                 <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
                 <FlexItem><div style=style>{"Flex item #2"}</div></FlexItem>
@@ -32,7 +32,7 @@ impl Component for FlexExample {
             </Flex>
         };
 
-        let example2 = example! {"Flex (nested and grow)" |
+        let example2 = example! {"Flex (nested and grow)" =>
             <Flex>
                 <Flex modifiers=vec![FlexModifier::Grow.all()]>
                     <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
@@ -47,7 +47,7 @@ impl Component for FlexExample {
             </Flex>
         };
 
-        let example3 = example! {"Flex (column on lg)" |
+        let example3 = example! {"Flex (column on lg)" =>
             <Flex>
                 <Flex modifiers=vec![FlexModifier::Column.lg()]>
                     <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
@@ -59,18 +59,11 @@ impl Component for FlexExample {
 
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Flex Layout"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Content>
-                        {example1}
-                        {example2}
-                        {example3}
-                    </Content>
-                </PageSection>
+                <Example title="Flex Layout">
+                    {example1}
+                    {example2}
+                    {example3}
+                </Example>
             </>
         }
     }

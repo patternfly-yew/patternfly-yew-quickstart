@@ -1,4 +1,4 @@
-use crate::example;
+use crate::{example, example::Example};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -22,22 +22,15 @@ impl Component for ClipboardExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example! {"Clipboard" |
+        let example1 = example! {"Clipboard" =>
             <Clipboard value="Foo bar"/>
         };
 
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Clipboard"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Content>
-                        {example1}
-                    </Content>
-                </PageSection>
+                <Example title="Clipboard">
+                    {example1}
+                </Example>
             </>
         }
     }

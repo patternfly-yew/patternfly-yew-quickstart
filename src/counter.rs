@@ -1,3 +1,5 @@
+use crate::example::Example;
+
 use patternfly_yew::*;
 use yew::prelude::*;
 
@@ -6,6 +8,7 @@ pub struct Counter {
     value: i64,
 }
 
+#[derive(Clone, Debug)]
 pub enum Msg {
     AddOne,
 }
@@ -22,22 +25,18 @@ impl Component for Counter {
         match msg {
             Msg::AddOne => self.value += 1,
         }
+        log::info!("Clicks: {}", self.value);
         true
     }
 
     fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
+        true
     }
 
     fn view(&self) -> Html {
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Counting clicks"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
+                <Example title="Counting clicks">
                     <Gallery gutter=true>
                         <Card
                             selectable=true
@@ -51,12 +50,10 @@ impl Component for Counter {
 
                         </Card>
                     </Gallery>
-                </PageSection>
-                <PageSection>
                     <Form>
-                        <Button label="Add One" icon=Icon::PlusCircleIcon variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
+                        <Button label="Add One" align=Align::Start icon=Icon::PlusCircleIcon variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
                     </Form>
-                </PageSection>
+                </Example>
             </>
         }
     }

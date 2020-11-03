@@ -1,4 +1,4 @@
-use crate::example;
+use crate::{example, example::Example};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -22,27 +22,20 @@ impl Component for BadgeExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example! {"Badge" |
+        let example1 = example! {"Badge" =>
             <Badge>{"123"}</Badge>
         };
 
-        let example2 = example! {"Badge (Read-only)" |
+        let example2 = example! {"Badge (Read-only)" =>
             <Badge read=true>{"123"}</Badge>
         };
 
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Badge"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Content>
-                        {example1}
-                        {example2}
-                    </Content>
-                </PageSection>
+                <Example title="Badge">
+                    {example1}
+                    {example2}
+                </Example>
             </>
         }
     }

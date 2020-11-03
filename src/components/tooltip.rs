@@ -1,4 +1,4 @@
-use crate::example;
+use crate::{example, example::Example};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -22,11 +22,11 @@ impl Component for TooltipExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example! {"Tooltip Popup" |
+        let example1 = example! {"Tooltip Popup" =>
             <TooltipPopup orientation=Orientation::Left text="This is just an example tooltip."/>
         };
 
-        let example2 = example! {"Tooltip" |
+        let example2 = example! {"Tooltip" =>
             <Tooltip text="This is just an example tooltip.">
                 <span style="border: 1px solid black;">{"I have a tooltip."}</span>
             </Tooltip>
@@ -34,17 +34,10 @@ impl Component for TooltipExample {
 
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Content>
-                        <h1>{"Tooltip"}</h1>
-                    </Content>
-                </PageSection>
-                <PageSection>
-                    <Content>
-                        {example1}
-                        {example2}
-                    </Content>
-                </PageSection>
+                <Example title="Tooltip">
+                    {example1}
+                    {example2}
+                </Example>
             </>
         }
     }
