@@ -20,6 +20,9 @@ impl TableRenderer for ExampleEntry {
         match column.index {
             0 => html! {{&self.foo}},
             1 => html! {{&self.foo.len()}},
+            3 => html! {
+                <a href="#">{"Link"}</a>
+            },
             _ => html! {},
         }
     }
@@ -158,6 +161,25 @@ impl Component for TableExample {
             </>
         };
 
+        let example5 = example! {"Compact, Expandable Table, Shared Model" =>
+            <>
+            <Table<SharedTableModel<ExampleEntry>>
+                mode=TableMode::CompactExpandable
+                header={html_nested!{
+                    <TableHeader>
+                        <TableColumn label="foo"/>
+                        <TableColumn label="bar"/>
+                        <TableColumn label="baz"/>
+                        <TableColumn/>
+                    </TableHeader>
+                }}
+                entries=self.model4.clone()
+                >
+            </Table<SharedTableModel<ExampleEntry>>>
+
+            </>
+        };
+
         html! {
             <>
                 <Example title="Table">
@@ -165,6 +187,7 @@ impl Component for TableExample {
                     {example2}
                     {example3}
                     {example4}
+                    {example5}
                 </Example>
             </>
         }
