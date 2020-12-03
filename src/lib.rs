@@ -19,6 +19,8 @@ struct Model {}
 
 #[derive(Switch, Debug, Clone, PartialEq)]
 pub enum Component {
+    #[to = "/alert"]
+    Alert,
     #[to = "/badge"]
     Badge,
     #[to = "/clipboard"]
@@ -83,6 +85,7 @@ impl yew::Component for Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Counter>{"Counter"}</NavRouterItem<AppRoute>>
                     </NavGroup>
                     <NavGroup title="Components">
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Alert)>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::EmptyState)>{"Empty state"}</NavRouterItem<AppRoute>>
@@ -103,6 +106,8 @@ impl yew::Component for Model {
         let _header_tools = html! { {"Foo"} };
 
         html! {
+            <>
+            <ToastViewer/>
             <Page
                 logo={html_nested!{
                     <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
@@ -120,6 +125,7 @@ impl yew::Component for Model {
                             AppRoute::Layout(Layout::Flex) => html!{<layouts::FlexExample/>},
                             AppRoute::Layout(Layout::Gallery) => html!{<layouts::GalleryExample/>},
 
+                            AppRoute::Component(Component::Alert) => html!{<components::AlertExample/>},
                             AppRoute::Component(Component::Badge) => html!{<components::BadgeExample/>},
                             AppRoute::Component(Component::Clipboard) => html!{<components::ClipboardExample/>},
                             AppRoute::Component(Component::EmptyState) => html!{<components::EmptyStateExample/>},
@@ -132,12 +138,14 @@ impl yew::Component for Model {
                     })
                 />
             </Page>
+            </>
         }
     }
 }
 
-#[wasm_bindgen(start)]
-pub fn run_app() {
-    wasm_logger::init(Default::default());
-    App::<Model>::new().mount_to_body();
+#[wasm_bindgen]
+pub fn run_app() -> Result<(), JsValue> {
+    wasm_logger::init(wasm_logger::Config::default());
+    yew::start_app::<Model>();
+    Ok(())
 }
