@@ -1,6 +1,8 @@
 # Patternfly quick start for Yew
 
-This is little more than a PoC right now.
+This is a quickstart template to get you started with Patternfly and Yew.
+
+Here you can see this page in action: https://ctron.github.io/patternfly-yew-quickstart
 
 ## Pre-requisites
 
