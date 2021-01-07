@@ -49,9 +49,9 @@ impl Component for FullPageExample {
     fn view(&self) -> Html {
         html! {
             <>
-                <Example title="Login Page">
+                <ExamplePage title="Login Page">
                     <Button variant=Variant::Primary icon=Icon::ExternalLinkAltIcon align=Align::Start label="Open" onclick=self.link.callback(|_| Msg::Open) />
-                </Example>
+                </ExamplePage>
             </>
         }
     }

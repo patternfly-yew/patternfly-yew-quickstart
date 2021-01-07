@@ -1,4 +1,4 @@
-use crate::example::Example;
+use crate::example::ExamplePage;
 
 use yew::prelude::*;
 
@@ -23,9 +23,9 @@ impl Component for Index {
     fn view(&self) -> Html {
         html! {
             <>
-                <Example title="Patternfly Yew Quickstart">
+                <ExamplePage title="Patternfly Yew Quickstart">
                     {"Pick an example on the left"}
-                </Example>
+                </ExamplePage>
             </>
         }
     }

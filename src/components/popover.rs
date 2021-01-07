@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example::Example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -22,37 +22,12 @@ impl Component for PopoverExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example! {"Popover Popup" =>
-            <PopoverPopup orientation=Orientation::Left
-                header=html!{<Title size=Size::Medium>{"Popover Title"}</Title>}
-                footer=html!{"Some footer content."}
-                >
-                {"This is just an example popover."}
-            </PopoverPopup>
-        };
-
-        let example2 = example! {"Popover" =>
-            <Popover
-                toggle_by_onclick=true
-                header=html!{<Title size=Size::Medium>{"Popover Title"}</Title>}
-                footer=html!{"Some footer content."}
-                target=html!{
-                    <span
-                        style="border: 1px solid black;">
-                        {"I have a popover. Click me."}
-                    </span>
-                }
-                >
-                {"This is just an example popover."}
-            </Popover>
-        };
-
         html! {
             <>
-                <Example title="Tooltip">
-                    {example1}
-                    {example2}
-                </Example>
+                <ExamplePage title="Popover">
+                    <Example title="Popover Popup" code=include_str!("popover.1.example")>{include!("popover.1.example")}</Example>
+                    <Example title="Popover" code=include_str!("popover.2.example")>{include!("popover.2.example")}</Example>
+                </ExamplePage>
             </>
         }
     }

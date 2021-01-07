@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example, example::Example, example::ExamplePage};
 
 use patternfly_yew::*;
 use std::time::Duration;
@@ -84,13 +84,13 @@ impl Component for AlertExample {
 
         html! {
             <>
-                <Example title="Alerts">
+                <ExamplePage title="Alerts">
                     {example1("Alert", false)}
                     {example1("Alert (inline)", true)}
-                </Example>
-                <Example title="Toast">
+                </ExamplePage>
+                <ExamplePage title="Toast">
                     {example2}
-                </Example>
+                </ExamplePage>
             </>
         }
     }

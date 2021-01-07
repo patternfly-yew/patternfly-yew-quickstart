@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example::Example, example::ExamplePage, example2};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -22,15 +22,13 @@ impl Component for ClipboardExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example! {"Clipboard" =>
-            <Clipboard value="Foo bar"/>
-        };
+        let example1 = example2! ("Clipboard" => "clipboard.1.example");
 
         html! {
             <>
-                <Example title="Clipboard">
+                <ExamplePage title="Clipboard">
                     {example1}
-                </Example>
+                </ExamplePage>
             </>
         }
     }

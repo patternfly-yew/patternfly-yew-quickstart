@@ -1,0 +1,15 @@
+html!{
+    <EmptyState
+        title="Empty state"
+        icon=Icon::Cubes
+        size=Size::XLarge
+        primary=Action::new("Push me", self.link.callback(|_|{}))
+        secondaries=vec![
+            Action::new("Try me", self.link.callback(|_|{})),
+            Action::new("Me too", self.link.callback(|_|{})),
+            Action::new("Here, here", self.link.callback(|_|{})),
+        ]
+        >
+        {"This section should explain why the state is empty, and what you can do next."}
+    </EmptyState>
+}

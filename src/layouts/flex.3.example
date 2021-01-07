@@ -1,0 +1,9 @@
+html!{
+    <Flex>
+        <Flex modifiers=vec![FlexModifier::Column.lg()]>
+            <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
+            <FlexItem><div style=style>{"Flex item #2"}</div></FlexItem>
+            <FlexItem><div style=style>{"Flex item #3"}</div></FlexItem>
+        </Flex>
+    </Flex>
+}

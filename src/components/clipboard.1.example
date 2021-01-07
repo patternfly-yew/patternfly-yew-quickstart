@@ -1,0 +1,3 @@
+html!{
+    <Clipboard value="Foo bar"/>
+}

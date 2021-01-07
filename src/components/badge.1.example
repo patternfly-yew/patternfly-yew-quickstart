@@ -1,0 +1,3 @@
+html!{
+    <Badge>{"123"}</Badge>
+}

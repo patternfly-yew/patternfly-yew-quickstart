@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example, example::Example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -182,13 +182,13 @@ impl Component for TableExample {
 
         html! {
             <>
-                <Example title="Table">
+                <ExamplePage title="Table">
                     {example1}
                     {example2}
                     {example3}
                     {example4}
                     {example5}
-                </Example>
+                </ExamplePage>
             </>
         }
     }

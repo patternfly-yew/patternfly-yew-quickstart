@@ -1,11 +1,8 @@
-use crate::example::*;
 use patternfly_yew::*;
 use yew::html::ChildrenRenderer;
 use yew::prelude::*;
 
-pub struct LoginPageExample {
-    link: ComponentLink<Self>,
-}
+pub struct LoginPageExample {}
 
 pub enum Msg {}
 
@@ -13,12 +10,11 @@ impl Component for LoginPageExample {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link }
+    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+        Self {}
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {}
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
         true
     }
 

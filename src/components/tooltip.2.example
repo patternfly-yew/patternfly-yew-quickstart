@@ -1,0 +1,5 @@
+html!{
+    <Tooltip text="This is just an example tooltip.">
+        <span style="border: 1px solid black;">{"I have a tooltip."}</span>
+    </Tooltip>
+}

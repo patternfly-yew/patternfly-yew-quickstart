@@ -1,0 +1,8 @@
+html!{
+    <PopoverPopup orientation=Orientation::Left
+        header=html!{<Title size=Size::Medium>{"Popover Title"}</Title>}
+        footer=html!{"Some footer content."}
+        >
+        {"This is just an example popover."}
+    </PopoverPopup>
+}

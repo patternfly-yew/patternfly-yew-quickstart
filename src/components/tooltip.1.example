@@ -1,0 +1,3 @@
+html!{
+    <TooltipPopup orientation=Orientation::Left text="This is just an example tooltip."/>
+}

@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example, example::Example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -32,13 +32,13 @@ impl Component for FormExample {
 
         html! {
             <>
-                <Example title="Form">
+                <ExamplePage title="Form">
                     <Form>
                         <FormGroup label="Test">
-                            <Button label="Click me"/>
+                            <Button label="Click me" variant=Variant::Primary/>
                         </FormGroup>
                         <FormGroup label="Test" required=true helper_text="Some help for you.">
-                            <Button label="Click me too"/>
+                            <Button label="Click me too" variant=Variant::Secondary/>
                         </FormGroup>
                     </Form>
 
@@ -77,7 +77,7 @@ impl Component for FormExample {
                             <TextInput icon=TextInputIcon::Clock/>
                         </FormGroup>
                     </Form>
-                </Example>
+                </ExamplePage>
             </>
         }
     }

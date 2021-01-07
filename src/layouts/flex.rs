@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example::Example, example::ExamplePage, example2};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -24,46 +24,17 @@ impl Component for FlexExample {
     fn view(&self) -> Html {
         let style = "border: 1px solid;";
 
-        let example1 = example! {"Flex" =>
-            <Flex>
-                <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
-                <FlexItem><div style=style>{"Flex item #2"}</div></FlexItem>
-                <FlexItem><div style=style>{"Flex item #3"}</div></FlexItem>
-            </Flex>
-        };
-
-        let example2 = example! {"Flex (nested and grow)" =>
-            <Flex>
-                <Flex modifiers=vec![FlexModifier::Grow.all()]>
-                    <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
-                    <FlexItem><div style=style>{"Flex item #2"}</div></FlexItem>
-                    <FlexItem><div style=style>{"Flex item #3"}</div></FlexItem>
-                </Flex>
-                <Flex>
-                    <FlexItem><div style=style>{"Flex item #4"}</div></FlexItem>
-                    <FlexItem><div style=style>{"Flex item #5"}</div></FlexItem>
-                    <FlexItem><div style=style>{"Flex item #6"}</div></FlexItem>
-                </Flex>
-            </Flex>
-        };
-
-        let example3 = example! {"Flex (column on lg)" =>
-            <Flex>
-                <Flex modifiers=vec![FlexModifier::Column.lg()]>
-                    <FlexItem><div style=style>{"Flex item #1"}</div></FlexItem>
-                    <FlexItem><div style=style>{"Flex item #2"}</div></FlexItem>
-                    <FlexItem><div style=style>{"Flex item #3"}</div></FlexItem>
-                </Flex>
-            </Flex>
-        };
+        let example1 = example2! ("Flex" => "flex.1.example");
+        let example2 = example2! ("Flex (nested and grow)" => "flex.2.example");
+        let example3 = example2! ("Flex (column on lg)" => "flex.3.example");
 
         html! {
             <>
-                <Example title="Flex Layout">
+                <ExamplePage title="Flex Layout">
                     {example1}
                     {example2}
                     {example3}
-                </Example>
+                </ExamplePage>
             </>
         }
     }

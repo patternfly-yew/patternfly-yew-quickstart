@@ -1,4 +1,4 @@
-use crate::example::Example;
+use crate::example::ExamplePage;
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -36,7 +36,7 @@ impl Component for Counter {
     fn view(&self) -> Html {
         html! {
             <>
-                <Example title="Counting clicks">
+                <ExamplePage title="Counting clicks">
                     <Gallery gutter=true>
                         <Card
                             selectable=true
@@ -53,7 +53,7 @@ impl Component for Counter {
                     <Form>
                         <Button label="Add One" align=Align::Start icon=Icon::PlusCircleIcon variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
                     </Form>
-                </Example>
+                </ExamplePage>
             </>
         }
     }

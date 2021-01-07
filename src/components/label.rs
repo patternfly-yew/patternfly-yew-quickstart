@@ -1,4 +1,4 @@
-use crate::{example, example::Example};
+use crate::{example, example::Example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -45,10 +45,10 @@ impl Component for LabelExample {
 
         html! {
             <>
-                <Example title="Label">
+                <ExamplePage title="Label">
                     {example1("Label", false)}
                     {example1("Label (outline)",true)}
-                </Example>
+                </ExamplePage>
             </>
         }
     }
