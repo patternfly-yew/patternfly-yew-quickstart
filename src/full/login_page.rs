@@ -38,10 +38,21 @@ impl Component for LoginPageExample {
                     >
                     <LoginMain>
                         <LoginMainHeader
-                            title=html_nested!{<Title>{"Login to your account"}</Title>}
+                            title=html_nested!{<Title size=Size::XXLarge>{"Login to your account"}</Title>}
                             description="Enter the credentials to your account right here."
                             />
                         <LoginMainBody>
+                            <Form>
+                                <FormGroup label="Username">
+                                    <TextInput required=true name="username"/>
+                                </FormGroup>
+                                <FormGroup label="Password">
+                                    <TextInput required=true name="password" r#type="password"/>
+                                </FormGroup>
+                                <ActionGroup>
+                                    <Button label="Log In" r#type="submit" variant=Variant::Primary/>
+                                </ActionGroup>
+                            </Form>
                         </LoginMainBody>
                     </LoginMain>
                 </Login>
