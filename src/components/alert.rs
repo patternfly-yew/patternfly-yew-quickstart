@@ -1,4 +1,4 @@
-use crate::{example, example::Example, example::ExamplePage};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use std::time::Duration;
