@@ -1,0 +1,3 @@
+html!{
+    <Clipboard readonly=true value="Foo bar"/>
+}

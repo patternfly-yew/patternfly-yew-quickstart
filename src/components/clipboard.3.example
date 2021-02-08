@@ -1,0 +1,3 @@
+html!{
+    <Clipboard variant=ClipboardVariant::Expandable code=true value="Foo bar"/>
+}
