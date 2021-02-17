@@ -25,6 +25,17 @@ impl Component for LoginPageExample {
     fn view(&self) -> Html {
         let header = ChildrenRenderer::new(vec![html! {<> {"Header" }</>}]);
         let footer = ChildrenRenderer::new(vec![html! {<p>{"Some footer text"}</p>}]);
+
+        let links = ChildrenRenderer::new(vec![
+            html_nested! {<LoginMainFooterLink href="https://patternfly.org" target="_blank">{"Footer Link #1"}</LoginMainFooterLink>},
+            html_nested! {<LoginMainFooterLink href="https://patternfly.org" target="_blank">{"Footer Link #2"}</LoginMainFooterLink>},
+        ]);
+
+        let band = ChildrenRenderer::new(vec![
+            html! {<a href="#">{"Some link"}</a>},
+            html! {<>{"Some other"}<a href="#">{" link"}</a></>},
+        ]);
+
         html! {
             <>
                 <Background/>
@@ -50,6 +61,11 @@ impl Component for LoginPageExample {
                                 </ActionGroup>
                             </Form>
                         </LoginMainBody>
+                        <LoginMainFooter
+                            links=links
+                            band=band
+                            >
+                        </LoginMainFooter>
                     </LoginMain>
                 </Login>
             </>
