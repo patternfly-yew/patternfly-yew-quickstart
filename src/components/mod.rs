@@ -5,6 +5,7 @@ mod empty;
 mod form;
 mod label;
 mod popover;
+mod switch;
 mod table;
 mod tooltip;
 
@@ -15,5 +16,6 @@ pub use empty::*;
 pub use form::*;
 pub use label::*;
 pub use popover::*;
+pub use switch::*;
 pub use table::*;
 pub use tooltip::*;

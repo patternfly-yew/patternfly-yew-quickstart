@@ -1,0 +1,6 @@
+html!{
+    <>
+    <p><Switch disabled=true label="Toggle me"/></p>
+    <p><Switch disabled=true checked=true label="Toggle me"/></p>
+    </>
+}

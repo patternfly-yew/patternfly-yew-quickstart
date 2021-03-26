@@ -1,7 +1,7 @@
 html!{
     <Gallery gutter=true>
-        <div>{"Item #1"}</div>
-        <div>{"Item #2"}</div>
-        <div>{"Item #3"}</div>
+        <LayoutItem>{"Item #1"}</LayoutItem>
+        <LayoutItem>{"Item #2"}</LayoutItem>
+        <LayoutItem>{"Item #3"}</LayoutItem>
     </Gallery>
 }

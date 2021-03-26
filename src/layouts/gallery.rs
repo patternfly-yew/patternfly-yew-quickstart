@@ -1,5 +1,8 @@
-use crate::{example::Example, example::ExamplePage, example2};
-
+use crate::{
+    example::{Example, ExamplePage},
+    example2,
+    layouts::LayoutItem,
+};
 use patternfly_yew::*;
 use yew::prelude::*;
 

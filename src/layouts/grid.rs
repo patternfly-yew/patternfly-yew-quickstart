@@ -6,9 +6,9 @@ use crate::{
 use patternfly_yew::*;
 use yew::prelude::*;
 
-pub struct FlexExample {}
+pub struct GridExample {}
 
-impl Component for FlexExample {
+impl Component for GridExample {
     type Message = ();
     type Properties = ();
 
@@ -25,16 +25,13 @@ impl Component for FlexExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example2! ("Flex" => "flex.1.example");
-        let example2 = example2! ("Flex (nested and grow)" => "flex.2.example");
-        let example3 = example2! ("Flex (column on lg)" => "flex.3.example");
-
+        let example1 = example2!("Grid" => "grid.1.example");
+        let example2 = example2!("Grid (gutter)" => "grid.2.example");
         html! {
             <>
-                <ExamplePage title="Flex Layout">
-                    {example1}
-                    {example2}
-                    {example3}
+                <ExamplePage title="Grid Layout">
+                    { example1 }
+                    { example2 }
                 </ExamplePage>
             </>
         }

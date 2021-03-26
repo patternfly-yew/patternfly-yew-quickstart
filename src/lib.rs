@@ -34,6 +34,8 @@ pub enum Component {
     Label,
     #[to = "/popover"]
     Popover,
+    #[to = "/switch"]
+    Switch,
     #[to = "/table"]
     Table,
     #[to = "/tooltip"]
@@ -48,6 +50,12 @@ pub enum Layout {
     Flex,
     #[to = "/gallery"]
     Gallery,
+    #[to = "/grid"]
+    Grid,
+    #[to = "/split"]
+    Split,
+    #[to = "/stack"]
+    Stack,
 }
 
 #[derive(Switch, Debug, Clone, PartialEq)]
@@ -104,6 +112,9 @@ impl yew::Component for Model {
                         AppRoute::Layout(Layout::Bullseye) => Self::page(html!{<layouts::BullseyeExample/>}),
                         AppRoute::Layout(Layout::Flex) => Self::page(html!{<layouts::FlexExample/>}),
                         AppRoute::Layout(Layout::Gallery) => Self::page(html!{<layouts::GalleryExample/>}),
+                        AppRoute::Layout(Layout::Grid) => Self::page(html!{<layouts::GridExample/>}),
+                        AppRoute::Layout(Layout::Split) => Self::page(html!{<layouts::SplitExample/>}),
+                        AppRoute::Layout(Layout::Stack) => Self::page(html!{<layouts::StackExample/>}),
 
                         AppRoute::Component(Component::Alert) => Self::page(html!{<components::AlertExample/>}),
                         AppRoute::Component(Component::Badge) => Self::page(html!{<components::BadgeExample/>}),
@@ -112,6 +123,7 @@ impl yew::Component for Model {
                         AppRoute::Component(Component::Form) => Self::page(html!{<components::FormExample/>}),
                         AppRoute::Component(Component::Label) => Self::page(html!{<components::LabelExample/>}),
                         AppRoute::Component(Component::Popover) => Self::page(html!{<components::PopoverExample/>}),
+                        AppRoute::Component(Component::Switch) => Self::page(html!{<components::SwitchExample/>}),
                         AppRoute::Component(Component::Table) => Self::page(html!{<components::TableExample/>}),
                         AppRoute::Component(Component::Tooltip) => Self::page(html!{<components::TooltipExample/>}),
                     }
@@ -127,11 +139,11 @@ impl Model {
         let sidebar = html_nested! {
             <PageSidebar>
                 <Nav>
-                    <NavGroup title="Basics">
+                    <NavRouterExpandable<AppRoute> title="Basics">
                         <NavRouterItem<AppRoute> to=AppRoute::Index>{"Index"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Counter>{"Counter"}</NavRouterItem<AppRoute>>
-                    </NavGroup>
-                    <NavGroup title="Components">
+                    </NavRouterExpandable<AppRoute>>
+                    <NavRouterExpandable<AppRoute> title="Components">
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Alert)>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
@@ -139,17 +151,21 @@ impl Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Label)>{"Label"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Popover)>{"Popover"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Switch)>{"Switch"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Table)>{"Table"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Tooltip)>{"Tooltip"}</NavRouterItem<AppRoute>>
-                    </NavGroup>
-                    <NavGroup title="Layouts">
+                    </NavRouterExpandable<AppRoute>>
+                    <NavRouterExpandable<AppRoute> title="Layouts">
                         <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Bullseye)>{"Bullseye"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Flex)>{"Flex"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Gallery)>{"Gallery"}</NavRouterItem<AppRoute>>
-                    </NavGroup>
-                    <NavGroup title="Full Page">
+                        <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Grid)>{"Grid"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Split)>{"Split"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Layout(Layout::Stack)>{"Stack"}</NavRouterItem<AppRoute>>
+                    </NavRouterExpandable<AppRoute>>
+                    <NavRouterExpandable<AppRoute> title="Full Page">
                         <NavRouterItem<AppRoute> to=AppRoute::FullPageExample(FullPage::Login)>{"Login Page"}</NavRouterItem<AppRoute>>
-                    </NavGroup>
+                    </NavRouterExpandable<AppRoute>>
                 </Nav>
             </PageSidebar>
         };

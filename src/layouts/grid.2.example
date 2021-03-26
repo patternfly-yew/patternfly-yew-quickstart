@@ -1,0 +1,20 @@
+html!{
+    <Grid gutter=true>
+        <GridItem cols=[8]><LayoutItem>{"cols = 8"}</LayoutItem></GridItem>
+        <GridItem cols=[4] rows=[2]>
+            <LayoutItem>{"span = 8"}</LayoutItem>
+        </GridItem>
+        <GridItem cols=[2] rows=[3]>
+          <LayoutItem>{"cols = 2, rows = 3"}</LayoutItem>
+        </GridItem>
+        <GridItem cols=[2]><LayoutItem>{"cols = 2"}</LayoutItem></GridItem>
+        <GridItem cols=[4]><LayoutItem>{"cols = 4"}</LayoutItem></GridItem>
+        <GridItem cols=[2]><LayoutItem>{"cols = 2"}</LayoutItem></GridItem>
+        <GridItem cols=[2]><LayoutItem>{"cols = 2"}</LayoutItem></GridItem>
+        <GridItem cols=[2]><LayoutItem>{"cols = 2"}</LayoutItem></GridItem>
+        <GridItem cols=[4]><LayoutItem>{"cols = 4"}</LayoutItem></GridItem>
+        <GridItem cols=[2]><LayoutItem>{"cols = 2"}</LayoutItem></GridItem>
+        <GridItem cols=[4]><LayoutItem>{"cols = 4"}</LayoutItem></GridItem>
+        <GridItem cols=[4]><LayoutItem>{"cols = 4"}</LayoutItem></GridItem>
+    </Grid>
+}

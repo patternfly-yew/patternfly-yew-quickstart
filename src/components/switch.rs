@@ -1,14 +1,11 @@
-use crate::{
-    example::{Example, ExamplePage},
-    example2,
-    layouts::LayoutItem,
-};
+use crate::{example::Example, example::ExamplePage, example2};
+
 use patternfly_yew::*;
 use yew::prelude::*;
 
-pub struct FlexExample {}
+pub struct SwitchExample {}
 
-impl Component for FlexExample {
+impl Component for SwitchExample {
     type Message = ();
     type Properties = ();
 
@@ -25,13 +22,13 @@ impl Component for FlexExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example2! ("Flex" => "flex.1.example");
-        let example2 = example2! ("Flex (nested and grow)" => "flex.2.example");
-        let example3 = example2! ("Flex (column on lg)" => "flex.3.example");
+        let example1 = example2! ("Switch" => "switch.1.example");
+        let example2 = example2! ("Switch (label)" => "switch.2.example");
+        let example3 = example2! ("Switch (disabled)" => "switch.3.example");
 
         html! {
             <>
-                <ExamplePage title="Flex Layout">
+                <ExamplePage title="Badge">
                     {example1}
                     {example2}
                     {example3}

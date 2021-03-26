@@ -1,0 +1,7 @@
+html!{
+    <Split>
+        <SplitItem><LayoutItem>{"Item #1"}</LayoutItem></SplitItem>
+        <SplitItem fill=true><LayoutItem>{"Item #2"}</LayoutItem></SplitItem>
+        <SplitItem><LayoutItem>{"Item #3"}</LayoutItem></SplitItem>
+    </Split>
+}

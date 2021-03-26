@@ -1,0 +1,9 @@
+html!{
+    <>
+    <p><Switch label="Toggle me"/></p>
+    <p><Switch label="Toggle me" checked=true/></p>
+
+    <p><Switch label="I am on" label_off="I am off"/></p>
+    <p><Switch label="I am on" label_off="I am off" checked=true/></p>
+    </>
+}

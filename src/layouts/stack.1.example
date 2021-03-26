@@ -1,0 +1,7 @@
+html!{
+    <Stack>
+        <StackItem><LayoutItem>{"Item #1"}</LayoutItem></StackItem>
+        <StackItem fill=true><LayoutItem>{"Item #2"}</LayoutItem></StackItem>
+        <StackItem><LayoutItem>{"Item #3"}</LayoutItem></StackItem>
+    </Stack>
+}
