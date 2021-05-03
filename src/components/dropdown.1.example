@@ -1,0 +1,11 @@
+html!{
+    <Dropdown
+        toggle={
+            html!{<DropdownToggle text="Foo"></DropdownToggle>}
+        }
+    >
+        <DropdownItem>{"Foo"}</DropdownItem>
+        <Divider/>
+        <DropdownItem>{"Bar"}</DropdownItem>
+    </Dropdown>
+}

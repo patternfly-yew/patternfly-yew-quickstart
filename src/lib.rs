@@ -26,6 +26,8 @@ pub enum Component {
     Badge,
     #[to = "/clipboard"]
     Clipboard,
+    #[to = "/dropdown"]
+    Dropdown,
     #[to = "/empty"]
     EmptyState,
     #[to = "/form"]
@@ -119,6 +121,7 @@ impl yew::Component for Model {
                         AppRoute::Component(Component::Alert) => Self::page(html!{<components::AlertExample/>}),
                         AppRoute::Component(Component::Badge) => Self::page(html!{<components::BadgeExample/>}),
                         AppRoute::Component(Component::Clipboard) => Self::page(html!{<components::ClipboardExample/>}),
+                        AppRoute::Component(Component::Dropdown) => Self::page(html!{<components::DropdownExample/>}),
                         AppRoute::Component(Component::EmptyState) => Self::page(html!{<components::EmptyStateExample/>}),
                         AppRoute::Component(Component::Form) => Self::page(html!{<components::FormExample/>}),
                         AppRoute::Component(Component::Label) => Self::page(html!{<components::LabelExample/>}),
@@ -147,6 +150,7 @@ impl Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Alert)>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Dropdown)>{"Dropdown"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::EmptyState)>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Label)>{"Label"}</NavRouterItem<AppRoute>>

@@ -23,6 +23,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@patternfly/patternfly": "^4.50.4"
+    "@patternfly/patternfly": "^4.102.2"
   }
 }

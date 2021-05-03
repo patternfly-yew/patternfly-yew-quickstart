@@ -1,0 +1,24 @@
+html!{
+    <Dropdown
+        plain=true
+        toggle_style="display: flex;"
+        toggle={
+            html!{<UserToggle src="https://www.gravatar.com/avatar/00000000000000000000000000000000" name="Foo Bar"/>}
+        }
+    >
+        <DropdownItemGroup>
+            <DropdownItemText>
+                <dl>
+                    <dt class="pf-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
+                    <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
+                </dl>
+            </DropdownItemText>
+            <DropdownItemText>{"Foo"}</DropdownItemText>
+        </DropdownItemGroup>
+        <Divider/>
+        <DropdownItemGroup>
+            <DropdownItem>{"Bar"}</DropdownItem>
+            <DropdownItem>{"Foo"}</DropdownItem>
+        </DropdownItemGroup>
+    </Dropdown>
+}

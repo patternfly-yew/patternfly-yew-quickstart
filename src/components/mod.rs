@@ -1,6 +1,7 @@
 mod alert;
 mod badge;
 mod clipboard;
+mod dropdown;
 mod empty;
 mod form;
 mod label;
@@ -12,6 +13,7 @@ mod tooltip;
 pub use alert::*;
 pub use badge::*;
 pub use clipboard::*;
+pub use dropdown::*;
 pub use empty::*;
 pub use form::*;
 pub use label::*;

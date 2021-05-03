@@ -1,0 +1,12 @@
+html!{
+    <Dropdown
+        plain=true
+        toggle={
+            html!{<KebabToggle/>}
+        }
+    >
+        <DropdownItem>{"Foo"}</DropdownItem>
+        <Divider/>
+        <DropdownItem>{"Bar"}</DropdownItem>
+    </Dropdown>
+}
