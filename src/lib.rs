@@ -22,6 +22,8 @@ struct Model {}
 pub enum Component {
     #[to = "/alert"]
     Alert,
+    #[to = "/applauncher"]
+    AppLauncher,
     #[to = "/badge"]
     Badge,
     #[to = "/clipboard"]
@@ -119,6 +121,7 @@ impl yew::Component for Model {
                         AppRoute::Layout(Layout::Stack) => Self::page(html!{<layouts::StackExample/>}),
 
                         AppRoute::Component(Component::Alert) => Self::page(html!{<components::AlertExample/>}),
+                        AppRoute::Component(Component::AppLauncher) => Self::page(html!{<components::AppLauncherExample/>}),
                         AppRoute::Component(Component::Badge) => Self::page(html!{<components::BadgeExample/>}),
                         AppRoute::Component(Component::Clipboard) => Self::page(html!{<components::ClipboardExample/>}),
                         AppRoute::Component(Component::Dropdown) => Self::page(html!{<components::DropdownExample/>}),
@@ -148,6 +151,7 @@ impl Model {
                     </NavRouterExpandable<AppRoute>>
                     <NavRouterExpandable<AppRoute> title="Components">
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Alert)>{"Alert"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::AppLauncher)>{"AppLauncher"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Dropdown)>{"Dropdown"}</NavRouterItem<AppRoute>>

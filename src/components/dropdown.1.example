@@ -7,5 +7,7 @@ html!{
         <DropdownItem>{"Foo"}</DropdownItem>
         <Divider/>
         <DropdownItem>{"Bar"}</DropdownItem>
+        <Divider/>
+        <DropdownItem href="https://patternfly.org" target="_blank">{"PatternFly"}</DropdownItem>
     </Dropdown>
 }

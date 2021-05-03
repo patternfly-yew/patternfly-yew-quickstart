@@ -1,0 +1,7 @@
+html!{
+    <AppLauncher>
+        <AppLauncherItem>{"Foo"}</AppLauncherItem>
+        <Divider/>
+        <AppLauncherItem href="https://patternfly.org" external=true>{"PatternFly"}</AppLauncherItem>
+    </AppLauncher>
+}

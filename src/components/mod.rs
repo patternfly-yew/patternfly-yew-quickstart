@@ -1,4 +1,5 @@
 mod alert;
+mod applauncher;
 mod badge;
 mod clipboard;
 mod dropdown;
@@ -11,6 +12,7 @@ mod table;
 mod tooltip;
 
 pub use alert::*;
+pub use applauncher::*;
 pub use badge::*;
 pub use clipboard::*;
 pub use dropdown::*;

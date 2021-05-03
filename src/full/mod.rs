@@ -50,7 +50,7 @@ impl Component for FullPageExample {
         html! {
             <>
                 <ExamplePage title="Login Page">
-                    <Button variant=Variant::Primary icon=Icon::ExternalLinkAltIcon align=Align::Start label="Open" onclick=self.link.callback(|_| Msg::Open) />
+                    <Button variant=Variant::Primary icon=Icon::ExternalLinkAlt align=Align::Start label="Open" onclick=self.link.callback(|_| Msg::Open) />
                 </ExamplePage>
             </>
         }
