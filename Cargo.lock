@@ -396,6 +396,8 @@ dependencies = [
 [[package]]
 name = "patternfly-yew"
 version = "0.0.20"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "08d7cdb0ddad03dcfc869a4df9b060072f06ab7a493784ab6d8ecb871b6ddba0"
 dependencies = [
  "chrono",
  "js-sys",
