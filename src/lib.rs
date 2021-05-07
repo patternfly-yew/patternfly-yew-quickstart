@@ -148,6 +148,7 @@ impl Model {
                     <NavRouterExpandable<AppRoute> title="Basics">
                         <NavRouterItem<AppRoute> to=AppRoute::Index>{"Index"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Counter>{"Counter"}</NavRouterItem<AppRoute>>
+                        <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
                     </NavRouterExpandable<AppRoute>>
                     <NavRouterExpandable<AppRoute> title="Components">
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Alert)>{"Alert"}</NavRouterItem<AppRoute>>
