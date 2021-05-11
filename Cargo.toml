@@ -26,4 +26,4 @@ strum = "0.19"
 log = "0.4"
 
 [patch.crates-io]
-patternfly-yew = { path = "../patternfly-yew" }
+#patternfly-yew = { path = "../patternfly-yew" }
