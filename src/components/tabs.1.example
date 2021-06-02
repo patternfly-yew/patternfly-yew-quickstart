@@ -1,0 +1,26 @@
+html!{
+    <>
+    <MyTabsRouter
+        transformer = SwitchTransformer::new(
+            |global|match global {
+                        crate::AppRoute::Component(crate::Component::Tabs(local)) => Some(local),
+                        _ => None
+                    },
+           |local|crate::AppRoute::Component(crate::Component::Tabs(local))
+        )
+    >
+        <TabRouterItem<TabRoutes> to=TabRoutes::Foo label="Foo"/>
+        <TabRouterItem<TabRoutes> to=TabRoutes::Bar label="Bar"/>
+        <TabRouterItem<TabRoutes> to=TabRoutes::Baz label="Baz"/>
+    </MyTabsRouter>
+    <div>
+        {
+            match self.props.current {
+                TabRoutes::Foo => html!{{"Foo"}},
+                TabRoutes::Bar => html!{{"Bar"}},
+                TabRoutes::Baz => html!{{"Baz"}},
+            }
+        }
+    </div>
+    </>
+}

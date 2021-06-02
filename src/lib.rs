@@ -28,6 +28,8 @@ pub enum Component {
     Badge,
     #[to = "/clipboard"]
     Clipboard,
+    #[to = "/context_selector"]
+    ContextSelector,
     #[to = "/dropdown"]
     Dropdown,
     #[to = "/empty"]
@@ -40,6 +42,8 @@ pub enum Component {
     Popover,
     #[to = "/switch"]
     Switch,
+    #[to = "/tabs{*}"]
+    Tabs(components::TabRoutes),
     #[to = "/table"]
     Table,
     #[to = "/tooltip"]
@@ -102,7 +106,9 @@ impl yew::Component for Model {
     fn view(&self) -> Html {
         html! {
             <>
+            <BackdropViewer/>
             <ToastViewer/>
+
             <Router<AppRoute, ()>
                 redirect = Router::redirect(|_|AppRoute::Index)
                 render = Router::render(|switch: AppRoute| {
@@ -124,6 +130,7 @@ impl yew::Component for Model {
                         AppRoute::Component(Component::AppLauncher) => Self::page(html!{<components::AppLauncherExample/>}),
                         AppRoute::Component(Component::Badge) => Self::page(html!{<components::BadgeExample/>}),
                         AppRoute::Component(Component::Clipboard) => Self::page(html!{<components::ClipboardExample/>}),
+                        AppRoute::Component(Component::ContextSelector) => Self::page(html!{<components::ContextSelectorExample/>}),
                         AppRoute::Component(Component::Dropdown) => Self::page(html!{<components::DropdownExample/>}),
                         AppRoute::Component(Component::EmptyState) => Self::page(html!{<components::EmptyStateExample/>}),
                         AppRoute::Component(Component::Form) => Self::page(html!{<components::FormExample/>}),
@@ -131,6 +138,7 @@ impl yew::Component for Model {
                         AppRoute::Component(Component::Popover) => Self::page(html!{<components::PopoverExample/>}),
                         AppRoute::Component(Component::Switch) => Self::page(html!{<components::SwitchExample/>}),
                         AppRoute::Component(Component::Table) => Self::page(html!{<components::TableExample/>}),
+                        AppRoute::Component(Component::Tabs(current)) => Self::page(html!{<components::TabsExample current=current/>}),
                         AppRoute::Component(Component::Tooltip) => Self::page(html!{<components::TooltipExample/>}),
                     }
                 })
@@ -155,6 +163,7 @@ impl Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::AppLauncher)>{"AppLauncher"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Badge)>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Clipboard)>{"Clipboard"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::ContextSelector)>{"ContextSelector"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Dropdown)>{"Dropdown"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::EmptyState)>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
@@ -162,6 +171,7 @@ impl Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Popover)>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Switch)>{"Switch"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Table)>{"Table"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))>{"Tabs"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Tooltip)>{"Tooltip"}</NavRouterItem<AppRoute>>
                     </NavRouterExpandable<AppRoute>>
                     <NavRouterExpandable<AppRoute> title="Layouts">

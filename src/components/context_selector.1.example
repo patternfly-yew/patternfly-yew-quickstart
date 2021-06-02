@@ -1,0 +1,9 @@
+html!{
+    <ContextSelector
+        selected="Foo"
+    >
+        <ContextSelectorItem label="Foo" />
+        <ContextSelectorItem label="Bar" />
+        <ContextSelectorItem label="Baz" disabled=true />
+    </ContextSelector>
+}
