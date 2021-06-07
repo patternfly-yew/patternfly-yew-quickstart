@@ -3,18 +3,29 @@ use crate::{example::Example, example::ExamplePage, example2};
 use patternfly_yew::*;
 use yew::prelude::*;
 
-pub struct DropdownExample {}
+pub enum Msg {
+    ShowToast(Toast),
+}
+
+pub struct DropdownExample {
+    link: ComponentLink<Self>,
+}
 
 impl Component for DropdownExample {
-    type Message = ();
+    type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Self {}
+    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+        Self { link }
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            Self::Message::ShowToast(toast) => {
+                ToastDispatcher::new().toast(toast);
+                false
+            }
+        }
     }
 
     fn change(&mut self, _props: Self::Properties) -> ShouldRender {
