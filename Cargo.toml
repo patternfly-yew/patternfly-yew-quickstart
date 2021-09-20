@@ -19,7 +19,7 @@ yew-router = "0.14"
 
 chrono = { version = "0.4", features = ["wasmbind"] }
 
-patternfly-yew = "0.0.25"
+patternfly-yew = "0.0.26"
 
 strum = "0.19"
 
