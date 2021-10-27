@@ -1,0 +1,15 @@
+html!{
+    <>
+    <p>
+        <Select<String>>
+            <SelectOption<String> value="One" description="First entry"/>
+            <Divider/>
+            <SelectOption<String> value="Two"/>
+            <SelectOption<String> value="Three"/>
+            <SelectOption<String> value="Four"/>
+            <Divider/>
+            <SelectOption<String> value="Five"/>
+        </Select<String>>
+    </p>
+    </>
+}

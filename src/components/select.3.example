@@ -1,0 +1,18 @@
+html!{
+    <>
+    <p>
+        <Select<String>>
+            <SelectGroup<String> label="Group #1">
+                <SelectOption<String> value="A"/>
+                <SelectOption<String> value="B"/>
+                <SelectOption<String> value="C"/>
+            </SelectGroup<String>>
+            <SelectGroup<String> label="Group #2">
+                <SelectOption<String> value="D"/>
+                <SelectOption<String> value="E"/>
+                <SelectOption<String> value="F"/>
+            </SelectGroup<String>>
+        </Select<String>>
+    </p>
+    </>
+}

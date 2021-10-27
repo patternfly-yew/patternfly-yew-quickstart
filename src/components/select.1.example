@@ -1,0 +1,11 @@
+html!{
+    <>
+    <p>
+        <Select<String> placeholder="Placeholder text">
+            <SelectOption<String> value="One" description="First entry"/>
+            <SelectOption<String> value="Two"/>
+            <SelectOption<String> value="Three" selected=true/>
+        </Select<String>>
+    </p>
+    </>
+}
