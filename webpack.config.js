@@ -121,9 +121,16 @@ module.exports = (env, argv) => {
             ],
         },
         plugins: [
-            new CopyWebpackPlugin([
-                { from: './static', to: distPath }
-            ]),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {from: './static', to: distPath},
+                    // copy over images
+                    {
+                        from: path.resolve(__dirname, 'node_modules/@patternfly/patternfly/assets/images'),
+                        to: path.resolve(distPath, "images")
+                    },
+                ]
+            }),
             new WasmPackPlugin({
                 crateDirectory: ".",
                 extraArgs: "--no-typescript",
