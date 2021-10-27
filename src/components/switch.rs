@@ -28,7 +28,7 @@ impl Component for SwitchExample {
 
         html! {
             <>
-                <ExamplePage title="Badge">
+                <ExamplePage title="Switch">
                     {example1}
                     {example2}
                     {example3}
