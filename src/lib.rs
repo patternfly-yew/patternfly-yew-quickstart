@@ -38,6 +38,8 @@ pub enum Component {
     Form,
     #[to = "/label"]
     Label,
+    #[to = "/modal"]
+    Modal,
     #[to = "/popover"]
     Popover,
     #[to = "/switch"]
@@ -135,6 +137,7 @@ impl yew::Component for Model {
                         AppRoute::Component(Component::EmptyState) => Self::page(html!{<components::EmptyStateExample/>}),
                         AppRoute::Component(Component::Form) => Self::page(html!{<components::FormExample/>}),
                         AppRoute::Component(Component::Label) => Self::page(html!{<components::LabelExample/>}),
+                        AppRoute::Component(Component::Modal) => Self::page(html!{<components::ModalExample/>}),
                         AppRoute::Component(Component::Popover) => Self::page(html!{<components::PopoverExample/>}),
                         AppRoute::Component(Component::Switch) => Self::page(html!{<components::SwitchExample/>}),
                         AppRoute::Component(Component::Table) => Self::page(html!{<components::TableExample/>}),
@@ -168,6 +171,7 @@ impl Model {
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::EmptyState)>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Form)>{"Form"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Label)>{"Label"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Modal)>{"Modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Popover)>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Switch)>{"Switch"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to=AppRoute::Component(Component::Table)>{"Table"}</NavRouterItem<AppRoute>>
