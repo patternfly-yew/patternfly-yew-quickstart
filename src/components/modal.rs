@@ -22,7 +22,7 @@ impl Component for ModalExample {
     }
 
     fn view(&self) -> Html {
-        let example1 = example2!("Basic Modal" => "modal.1.example");
+        let example1 = example2!("Basic Medium Modal" => "modal.1.example");
         let example2 = example2!("Modal with a form" => "modal.2.example");
 
         html! {
