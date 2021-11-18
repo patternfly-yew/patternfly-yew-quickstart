@@ -19,7 +19,7 @@ yew-router = "0.14"
 
 chrono = { version = "0.4", features = ["wasmbind"] }
 
-patternfly-yew = "0.0.26"
+patternfly-yew = "0.0.27"
 
 strum = "0.19"
 
@@ -27,3 +27,5 @@ log = "0.4"
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "2b4ba78df1b1577dcaf86c36e604adcb743a85cd" } # FIXME: awaiting release
+
