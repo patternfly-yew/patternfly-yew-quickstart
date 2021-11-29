@@ -26,7 +26,7 @@ Fetch all dependencies:
 
 Start a local development server, which re-builds every time you make changes to the code:
 
-    npm run start:dev
+    npm run start
 
 Direct your web browser to: http://localhost:8000
 
