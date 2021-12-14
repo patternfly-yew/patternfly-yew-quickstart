@@ -9,19 +9,11 @@ impl Component for FormExample {
     type Message = ();
     type Properties = ();
 
-    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+    fn create(_: &Context<Self>) -> Self {
         Self {}
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
-    }
-
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, _: &Context<Self>) -> Html {
         let example = example! {"Text Input" =>
             <Form>
                 <FormGroup label="Normal">
@@ -35,10 +27,10 @@ impl Component for FormExample {
                 <ExamplePage title="Form">
                     <Form>
                         <FormGroup label="Test">
-                            <Button label="Click me" variant=Variant::Primary/>
+                            <Button label="Click me" variant={Variant::Primary}/>
                         </FormGroup>
                         <FormGroup label="Test" required=true helper_text="Some help for you.">
-                            <Button label="Click me too" variant=Variant::Secondary/>
+                            <Button label="Click me too" variant={Variant::Secondary}/>
                         </FormGroup>
                     </Form>
 
@@ -53,13 +45,13 @@ impl Component for FormExample {
                             <TextInput/>
                         </FormGroup>
                         <FormGroup label="Success">
-                            <TextInput state=InputState::Success/>
+                            <TextInput state={InputState::Success}/>
                         </FormGroup>
                         <FormGroup label="Warning">
-                            <TextInput state=InputState::Warning/>
+                            <TextInput state={InputState::Warning}/>
                         </FormGroup>
                         <FormGroup label="Error">
-                            <TextInput state=InputState::Error/>
+                            <TextInput state={InputState::Error}/>
                         </FormGroup>
                         <FormGroup label="Read Only">
                             <TextInput readonly=true/>
@@ -68,13 +60,13 @@ impl Component for FormExample {
                             <TextInput disabled=true/>
                         </FormGroup>
                         <FormGroup label="Search">
-                            <TextInput icon=TextInputIcon::Search/>
+                            <TextInput icon={TextInputIcon::Search}/>
                         </FormGroup>
                         <FormGroup label="Calendar">
-                            <TextInput icon=TextInputIcon::Calendar/>
+                            <TextInput icon={TextInputIcon::Calendar}/>
                         </FormGroup>
                         <FormGroup label="Clock">
-                            <TextInput icon=TextInputIcon::Clock/>
+                            <TextInput icon={TextInputIcon::Clock}/>
                         </FormGroup>
                     </Form>
                 </ExamplePage>

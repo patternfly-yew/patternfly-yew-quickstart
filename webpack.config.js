@@ -7,7 +7,10 @@ const distPath = path.resolve(__dirname, "dist");
 module.exports = (env, argv) => {
     return {
         devServer: {
-            contentBase: distPath,
+            static: [
+                distPath,
+                path.resolve(__dirname, "dev")
+            ],
             compress: argv.mode === 'production',
             historyApiFallback: {
                 rewrites: [
@@ -136,6 +139,8 @@ module.exports = (env, argv) => {
                 extraArgs: "--no-typescript",
             })
         ],
-        watch: argv.mode !== 'production'
+        experiments: {
+            asyncWebAssembly: true
+        }
     };
 };

@@ -1,13 +1,15 @@
+{
+let toggle = html!{<DropdownToggle text="Foo"></DropdownToggle>};
+
 html!{
     <Dropdown
-        toggle={
-            html!{<DropdownToggle text="Foo"></DropdownToggle>}
-        }
+        toggle={toggle}
     >
-        <DropdownItem onclick=self.link.callback(|_|Msg::ShowToast("Clicked Foo".into()))>{"Foo"}</DropdownItem>
+        <DropdownItem onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Foo".into()))}>{"Foo"}</DropdownItem>
         <Divider/>
-        <DropdownItem onclick=self.link.callback(|_|Msg::ShowToast("Clicked Bar".into()))>{"Bar"}</DropdownItem>
+        <DropdownItem onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Bar".into()))}>{"Bar"}</DropdownItem>
         <Divider/>
         <DropdownItem href="https://patternfly.org" target="_blank">{"PatternFly"}</DropdownItem>
     </Dropdown>
+}
 }

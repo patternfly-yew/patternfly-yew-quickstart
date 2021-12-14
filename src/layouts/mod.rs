@@ -18,32 +18,11 @@ pub struct Props {
     pub children: Children,
 }
 
-/// A general purpose layout item for creating examples on layouts.
-pub struct LayoutItem {
-    props: Props,
-}
-
-impl Component for LayoutItem {
-    type Message = ();
-    type Properties = Props;
-
-    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Self { props }
-    }
-
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        false
-    }
-
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
-
-    fn view(&self) -> Html {
-        return html! {
-            <div style="border: .2rem dashed gray; padding: 1rem; height: 100%;">
-                { for self.props.children.iter() }
-            </div>
-        };
+#[function_component(LayoutItem)]
+pub fn layout_item(props: &Props) -> Html {
+    html! {
+        <div style="border: .2rem dashed gray; padding: 1rem; height: 100%;">
+            { for props.children.iter() }
+        </div>
     }
 }

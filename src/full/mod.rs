@@ -6,10 +6,7 @@ use crate::example::*;
 use patternfly_yew::*;
 use yew::prelude::*;
 
-pub struct FullPageExample {
-    link: ComponentLink<Self>,
-    props: Props,
-}
+pub struct FullPageExample {}
 
 pub enum Msg {
     Open,
@@ -24,33 +21,24 @@ impl Component for FullPageExample {
     type Message = Msg;
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link, props }
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {}
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::Open => {
-                self.open();
+                self.open(ctx);
             }
         }
         true
     }
 
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        if self.props != props {
-            self.props = props;
-            true
-        } else {
-            false
-        }
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
             <>
                 <ExamplePage title="Login Page">
-                    <Button variant=Variant::Primary icon=Icon::ExternalLinkAlt align=Align::Start label="Open" onclick=self.link.callback(|_| Msg::Open) />
+                    <Button variant={Variant::Primary} icon={Icon::ExternalLinkAlt} align={Align::Start} label="Open" onclick={ctx.link().callback(|_| Msg::Open)} />
                 </ExamplePage>
             </>
         }
@@ -58,9 +46,9 @@ impl Component for FullPageExample {
 }
 
 impl FullPageExample {
-    fn open(&self) {
-        yew::utils::window()
-            .open_with_url_and_target(&self.props.url, "patternfly-yew-example")
+    fn open(&self, ctx: &Context<Self>) {
+        gloo_utils::window()
+            .open_with_url_and_target(&ctx.props().url, "patternfly-yew-example")
             .ok();
     }
 }

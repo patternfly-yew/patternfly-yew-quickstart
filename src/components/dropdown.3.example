@@ -1,10 +1,11 @@
+{
+let toggle = html!{<UserToggle src="https://www.gravatar.com/avatar/00000000000000000000000000000000" name="Foo Bar"/>};
+
 html!{
     <Dropdown
         plain=true
         toggle_style="display: flex;"
-        toggle={
-            html!{<UserToggle src="https://www.gravatar.com/avatar/00000000000000000000000000000000" name="Foo Bar"/>}
-        }
+        toggle={toggle}
     >
         <DropdownItemGroup>
             <DropdownItemText>
@@ -21,4 +22,5 @@ html!{
             <DropdownItem>{"Foo"}</DropdownItem>
         </DropdownItemGroup>
     </Dropdown>
+}
 }

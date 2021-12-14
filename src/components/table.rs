@@ -6,7 +6,6 @@ use yew::prelude::*;
 use chrono::Utc;
 
 pub struct TableExample {
-    link: ComponentLink<Self>,
     model4: SharedTableModel<ExampleEntry>,
 }
 
@@ -46,7 +45,7 @@ impl Component for TableExample {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(_: &Context<Self>) -> Self {
         let model4 = vec![
             ExampleEntry {
                 foo: "Simple foo".into(),
@@ -57,12 +56,11 @@ impl Component for TableExample {
         ];
 
         Self {
-            link,
             model4: model4.into(),
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::AppendToExample4 => self.model4.push(ExampleEntry {
                 foo: format!("Extra entry: {}", Utc::now()),
@@ -80,11 +78,7 @@ impl Component for TableExample {
         true
     }
 
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         let entries = vec![
             ExampleEntry { foo: "bar".into() },
             ExampleEntry {
@@ -92,71 +86,54 @@ impl Component for TableExample {
             },
         ];
 
-        let model: SimpleTableModel<_> = entries.into();
+        let model: SharedTableModel<_> = entries.into();
 
+        let header = html_nested! {
+            <TableHeader>
+                <TableColumn label="foo"/>
+                <TableColumn label="bar"/>
+                <TableColumn label="baz"/>
+            </TableHeader>
+        };
         let example1 = example! {"Table" =>
-            <Table<SimpleTableModel<ExampleEntry>>
+            <Table<SharedTableModel<ExampleEntry>>
                 caption="Table caption"
-                header={html_nested!{
-                    <TableHeader>
-                        <TableColumn label="foo"/>
-                        <TableColumn label="bar"/>
-                        <TableColumn label="baz"/>
-                    </TableHeader>
-                }}
-                entries=model.clone()
+                header={header.clone()}
+                entries={model.clone()}
                 >
-            </Table<SimpleTableModel<ExampleEntry>>>
+            </Table<SharedTableModel<ExampleEntry>>>
         };
 
         let example2 = example! {"Compact Table" =>
-            <Table<SimpleTableModel<ExampleEntry>>
-                mode=TableMode::Compact
-                header={html_nested!{
-                    <TableHeader>
-                        <TableColumn label="foo"/>
-                        <TableColumn label="bar"/>
-                        <TableColumn label="baz"/>
-                    </TableHeader>
-                }}
-                entries=model.clone()
+            <Table<SharedTableModel<ExampleEntry>>
+                mode={TableMode::Compact}
+                header={header.clone()}
+                entries={model.clone()}
                 >
-            </Table<SimpleTableModel<ExampleEntry>>>
+            </Table<SharedTableModel<ExampleEntry>>>
         };
 
         let example3 = example! {"Compact, No Border Table" =>
-            <Table<SimpleTableModel<ExampleEntry>>
-                mode=TableMode::CompactNoBorders
-                header={html_nested!{
-                    <TableHeader>
-                        <TableColumn label="foo"/>
-                        <TableColumn label="bar"/>
-                        <TableColumn label="baz"/>
-                    </TableHeader>
-                }}
-                entries=model.clone()
+            <Table<SharedTableModel<ExampleEntry>>
+                mode={TableMode::CompactNoBorders}
+                header={header.clone()}
+                entries={model.clone()}
                 >
-            </Table<SimpleTableModel<ExampleEntry>>>
+            </Table<SharedTableModel<ExampleEntry>>>
         };
 
         let example4 = example! {"Compact, Expandable Table, Shared Model" =>
             <>
             <Table<SharedTableModel<ExampleEntry>>
-                mode=TableMode::CompactExpandable
-                header={html_nested!{
-                    <TableHeader>
-                        <TableColumn label="foo"/>
-                        <TableColumn label="bar"/>
-                        <TableColumn label="baz"/>
-                    </TableHeader>
-                }}
-                entries=self.model4.clone()
+                mode={TableMode::CompactExpandable}
+                header={header.clone()}
+                entries={self.model4.clone()}
                 >
             </Table<SharedTableModel<ExampleEntry>>>
 
-            <Button label="Prepend entry" icon=Icon::PlusCircleIcon align=Align::Start variant=Variant::Link onclick=self.link.callback(|_| Msg::PrependToExample4)/>
-            <Button label="Append entry" icon=Icon::PlusCircleIcon align=Align::Start variant=Variant::Link onclick=self.link.callback(|_| Msg::AppendToExample4)/>
-            <Button label="Pop entry" icon=Icon::PlusCircleIcon align=Align::Start variant=Variant::Link onclick=self.link.callback(|_| Msg::PopFromExample4)/>
+            <Button label="Prepend entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PrependToExample4)}/>
+            <Button label="Append entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AppendToExample4)}/>
+            <Button label="Pop entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PopFromExample4)}/>
 
             </>
         };
@@ -164,16 +141,9 @@ impl Component for TableExample {
         let example5 = example! {"Compact, Expandable Table, Shared Model" =>
             <>
             <Table<SharedTableModel<ExampleEntry>>
-                mode=TableMode::CompactExpandable
-                header={html_nested!{
-                    <TableHeader>
-                        <TableColumn label="foo"/>
-                        <TableColumn label="bar"/>
-                        <TableColumn label="baz"/>
-                        <TableColumn/>
-                    </TableHeader>
-                }}
-                entries=self.model4.clone()
+                mode={TableMode::CompactExpandable}
+                header={header.clone()}
+                entries={self.model4.clone()}
                 >
             </Table<SharedTableModel<ExampleEntry>>>
 

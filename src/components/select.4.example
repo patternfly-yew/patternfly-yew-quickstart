@@ -1,7 +1,7 @@
 html!{
     <>
     <p>
-        <Select<String> variant=SelectVariant::Checkbox(Default::default())>
+        <Select<String> variant={SelectVariant::Checkbox(Default::default())}>
             <SelectGroup<String> label="Group #1">
                 <SelectOption<String> value="A"/>
                 <SelectOption<String> value="B"/>

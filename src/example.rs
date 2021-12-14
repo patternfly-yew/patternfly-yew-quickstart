@@ -12,19 +12,19 @@ macro_rules! example {
         let code = {stringify!($($t)*)};
         html! {
             <>
-                <Flex modifiers=vec![FlexModifier::Column.all()]>
+                <Flex modifiers={[FlexModifier::Column.all()]}>
 
-                    <FlexItem><Title level=Level::H2 size=Size::XLarge>{$title}</Title></FlexItem>
+                    <FlexItem><Title level={Level::H2} size={Size::XLarge}>{$title}</Title></FlexItem>
 
-                    <Flex modifiers=vec![FlexModifier::Column.all()]>
+                    <Flex modifiers={[FlexModifier::Column.all()]}>
 
                         <FlexItem>
-                            <Title level=Level::H3 size=Size::Large>{"Example"}</Title>
+                            <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
                             $($t)*
                         </FlexItem>
 
                         <FlexItem>
-                            <Title level=Level::H3 size=Size::Large>{"Code"}</Title>
+                            <Title level={Level::H3} size={Size::Large}>{"Code"}</Title>
 
                             <div class="pf-c-code-editor">
                                 <div class="pf-c-code-editor__main">
@@ -51,7 +51,7 @@ macro_rules! example2 {
     ($title:expr => $file:expr) => {{
         html! {
             <>
-                <Example title=$title code=include_str!($file)>{include!($file)}</Example>
+                <Example title={$title} code={include_str!($file)}>{{include!($file)}}</Example>
             </>
         }
     }};
@@ -63,38 +63,23 @@ pub struct Props {
     pub children: Children,
 }
 
-pub struct ExamplePage {
-    props: Props,
-}
+pub struct ExamplePage {}
 
 impl Component for ExamplePage {
     type Message = ();
     type Properties = Props;
 
-    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Self { props }
+    fn create(_: &Context<Self>) -> Self {
+        Self {}
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
-    }
-
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        if self.props != props {
-            self.props = props;
-            true
-        } else {
-            false
-        }
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
             <>
-                <PageSection variant=PageSectionVariant::Light limit_width=true>
-                    <Title level=Level::H1 size=Size::XXLarge>{ &self.props.title }</Title>
+                <PageSection variant={PageSectionVariant::Light} limit_width=true>
+                    <Title level={Level::H1} size={Size::XXLarge}>{ &ctx.props().title }</Title>
                 </PageSection>
-                { for self.props.children.iter().map(|child|{
+                { for ctx.props().children.iter().map(|child|{
                     html!{<PageSection>{child}</PageSection>}
                 }) }
             </>
@@ -109,53 +94,38 @@ pub struct ExampleProps {
     pub code: String,
 }
 
-pub struct Example {
-    props: ExampleProps,
-}
+pub struct Example {}
 
 impl Component for Example {
     type Message = ();
     type Properties = ExampleProps;
 
-    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Self { props }
+    fn create(_: &Context<Self>) -> Self {
+        Self {}
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
-    }
-
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        if self.props != props {
-            self.props = props;
-            true
-        } else {
-            false
-        }
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
             <>
-                <Flex modifiers=vec![FlexModifier::Column.all()]>
+                <Flex modifiers={[FlexModifier::Column.all()]}>
 
-                    <FlexItem><Title level=Level::H2 size=Size::XLarge> { &self.props.title } </Title></FlexItem>
+                    <FlexItem><Title level={Level::H2} size={Size::XLarge}> { &ctx.props().title } </Title></FlexItem>
 
-                    <Flex modifiers=vec![FlexModifier::Column.all()]>
+                    <Flex modifiers={[FlexModifier::Column.all()]}>
 
                         <FlexItem>
-                            <Title level=Level::H3 size=Size::Large>{"Example"}</Title>
-                            { for self.props.children.iter() }
+                            <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
+                            { for ctx.props().children.iter() }
                         </FlexItem>
 
                         <FlexItem>
-                            <Title level=Level::H3 size=Size::Large>{"Code"}</Title>
+                            <Title level={Level::H3} size={Size::Large}>{"Code"}</Title>
 
                             <div class="pf-c-code-editor">
                                 <div class="pf-c-code-editor__main">
                                     <div class="pf-c-code-editor__code">
                                         <pre class="pf-c-code-editor__code-pre">
-                                            {&self.props.code}
+                                            {&ctx.props().code}
                                         </pre>
                                     </div>
                                 </div>

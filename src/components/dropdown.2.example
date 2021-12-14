@@ -1,12 +1,14 @@
+{
+let toggle = html!{<KebabToggle/>};
+
 html!{
     <Dropdown
         plain=true
-        toggle={
-            html!{<KebabToggle/>}
-        }
+        toggle={toggle}
     >
         <DropdownItem>{"Foo"}</DropdownItem>
         <Divider/>
         <DropdownItem>{"Bar"}</DropdownItem>
     </Dropdown>
+}
 }

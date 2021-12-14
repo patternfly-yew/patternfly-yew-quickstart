@@ -1,6 +1,6 @@
 html!{
     <Flex>
-        <Flex modifiers=vec![FlexModifier::Column.lg()]>
+        <Flex modifiers={[FlexModifier::Column.lg()]}>
             <FlexItem><LayoutItem>{"Flex item #1"}</LayoutItem></FlexItem>
             <FlexItem><LayoutItem>{"Flex item #2"}</LayoutItem></FlexItem>
             <FlexItem><LayoutItem>{"Flex item #3"}</LayoutItem></FlexItem>

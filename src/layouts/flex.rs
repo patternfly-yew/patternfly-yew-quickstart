@@ -12,19 +12,11 @@ impl Component for FlexExample {
     type Message = ();
     type Properties = ();
 
-    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+    fn create(_: &Context<Self>) -> Self {
         Self {}
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
-    }
-
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, _: &Context<Self>) -> Html {
         let example1 = example2! ("Flex" => "flex.1.example");
         let example2 = example2! ("Flex (nested and grow)" => "flex.2.example");
         let example3 = example2! ("Flex (column on lg)" => "flex.3.example");

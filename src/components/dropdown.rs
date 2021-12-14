@@ -7,19 +7,17 @@ pub enum Msg {
     ShowToast(Toast),
 }
 
-pub struct DropdownExample {
-    link: ComponentLink<Self>,
-}
+pub struct DropdownExample {}
 
 impl Component for DropdownExample {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link }
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {}
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Self::Message::ShowToast(toast) => {
                 ToastDispatcher::new().toast(toast);
@@ -28,11 +26,7 @@ impl Component for DropdownExample {
         }
     }
 
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         let example1 = example2! ("Dropdown" => "dropdown.1.example");
         let example2 = example2! ("Dropdown (Kebab)" => "dropdown.2.example");
         let example3 = example2! ("Dropdown (User)" => "dropdown.3.example");

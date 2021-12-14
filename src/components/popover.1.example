@@ -1,8 +1,13 @@
+{
+let header = html!{<Title size={Size::Medium}>{"Popover Title"}</Title>};
+let footer = html!{"Some footer content."};
+
 html!{
-    <PopoverPopup orientation=Orientation::Left
-        header=html!{<Title size=Size::Medium>{"Popover Title"}</Title>}
-        footer=html!{"Some footer content."}
+    <PopoverPopup orientation={Orientation::Left}
+        header={header}
+        footer={footer}
         >
         {"This is just an example popover."}
     </PopoverPopup>
+}
 }

@@ -1,13 +1,16 @@
+{
+let footer = html!{<>
+     <button class="pf-c-button pf-m-primary" type="button">{"Submit"}</button>
+     <button class="pf-c-button pf-m-link" type="button">{"Cancel"}</button>
+</>};
+
 html!{
     <>
     <Bullseye plain=true>
     <Modal
         title = {"Example modal with form"}
         description = {"More context about what this form is about."}
-        footer = {html!{<>
-                        <button class="pf-c-button pf-m-primary" type="button">{"Submit"}</button>
-                        <button class="pf-c-button pf-m-link" type="button">{"Cancel"}</button>
-                 </>}}
+        footer = {footer}
     >
         <Form>
                <FormGroup label="Username">
@@ -20,4 +23,5 @@ html!{
     </Modal>
     </Bullseye>
     </>
+}
 }

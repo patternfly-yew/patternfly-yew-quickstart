@@ -1,21 +1,23 @@
+{
+let transformer = SwitchTransformer::new(|global|match global {
+        crate::AppRoute::Component(crate::Component::Tabs(local)) => Some(local),
+        _ => None
+    },
+    |local|crate::AppRoute::Component(crate::Component::Tabs(local))
+);
+
 html!{
     <>
     <MyTabsRouter
-        transformer = SwitchTransformer::new(
-            |global|match global {
-                        crate::AppRoute::Component(crate::Component::Tabs(local)) => Some(local),
-                        _ => None
-                    },
-           |local|crate::AppRoute::Component(crate::Component::Tabs(local))
-        )
+        transformer={transformer}
     >
-        <TabRouterItem<TabRoutes> to=TabRoutes::Foo label="Foo"/>
-        <TabRouterItem<TabRoutes> to=TabRoutes::Bar label="Bar"/>
-        <TabRouterItem<TabRoutes> to=TabRoutes::Baz label="Baz"/>
+        <TabRouterItem<TabRoutes> to={TabRoutes::Foo} label="Foo"/>
+        <TabRouterItem<TabRoutes> to={TabRoutes::Bar} label="Bar"/>
+        <TabRouterItem<TabRoutes> to={TabRoutes::Baz} label="Baz"/>
     </MyTabsRouter>
     <div>
         {
-            match self.props.current {
+            match ctx.props().current {
                 TabRoutes::Foo => html!{{"Foo"}},
                 TabRoutes::Bar => html!{{"Bar"}},
                 TabRoutes::Baz => html!{{"Baz"}},
@@ -23,4 +25,5 @@ html!{
         }
     </div>
     </>
+}
 }

@@ -1,15 +1,21 @@
+{
+let header = html!{<Title size={Size::Medium}>{"Popover Title"}</Title>};
+let footer = html!{"Some footer content."};
+let target = html!{
+     <span
+         style="border: 1px solid black;">
+         {"I have a popover. Click me."}
+     </span>
+};
+
 html!{
     <Popover
         toggle_by_onclick=true
-        header=html!{<Title size=Size::Medium>{"Popover Title"}</Title>}
-        footer=html!{"Some footer content."}
-        target=html!{
-            <span
-                style="border: 1px solid black;">
-                {"I have a popover. Click me."}
-            </span>
-        }
+        header={header}
+        footer={footer}
+        target={target}
         >
         {"This is just an example popover."}
     </Popover>
+}
 }

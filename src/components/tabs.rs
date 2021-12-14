@@ -18,9 +18,7 @@ pub struct Props {
     pub current: TabRoutes,
 }
 
-pub struct TabsExample {
-    props: Props,
-}
+pub struct TabsExample {}
 
 type MyTabsRouter = TabsRouter<crate::AppRoute, TabRoutes>;
 
@@ -28,32 +26,19 @@ impl Component for TabsExample {
     type Message = ();
     type Properties = Props;
 
-    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        Self { props }
+    fn create(_: &Context<Self>) -> Self {
+        Self {}
     }
 
-    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
-    }
-
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        if self.props != props {
-            self.props = props;
-            true
-        } else {
-            false
-        }
-    }
-
-    fn view(&self) -> Html {
-        log::info!("Route: {:?}", self.props.current);
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        log::info!("Route: {:?}", ctx.props().current);
 
         let examples: Vec<Html> = vec![example2! ("Tabs" => "tabs.1.example")];
 
         html! {
             <>
                 <ExamplePage title="Tabs">
-                    <PageSection variant=PageSectionVariant::Light limit_width=true>
+                    <PageSection variant={PageSectionVariant::Light} limit_width=true>
                         { for examples }
                     </PageSection>
                 </ExamplePage>

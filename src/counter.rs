@@ -4,7 +4,6 @@ use patternfly_yew::*;
 use yew::prelude::*;
 
 pub struct Counter {
-    link: ComponentLink<Self>,
     value: i64,
 }
 
@@ -17,11 +16,11 @@ impl Component for Counter {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { link, value: 0 }
+    fn create(_: &Context<Self>) -> Self {
+        Self { value: 0 }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::AddOne => self.value += 1,
         }
@@ -29,11 +28,10 @@ impl Component for Counter {
         true
     }
 
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        true
-    }
-
-    fn view(&self) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        let title = html! {<>
+            {"Clicks"}
+        </>};
         html! {
             <>
                 <ExamplePage title="Counting clicks">
@@ -41,9 +39,7 @@ impl Component for Counter {
                         <Card
                             selectable=true
                             selected=true
-                            title={html_nested!{<>
-                                {"Clicks"}
-                            </>}}
+                            title={title}
                             >
 
                             <p>{ self.value }</p>
@@ -51,7 +47,7 @@ impl Component for Counter {
                         </Card>
                     </Gallery>
                     <Form>
-                        <Button label="Add One" align=Align::Start icon=Icon::PlusCircleIcon variant=Variant::Link onclick=self.link.callback(|_| Msg::AddOne)/>
+                        <Button label="Add One" align={Align::Start} icon={Icon::PlusCircleIcon} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AddOne)}/>
                     </Form>
                 </ExamplePage>
             </>
