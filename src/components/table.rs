@@ -1,4 +1,4 @@
-use crate::{example, example::ExamplePage};
+use crate::{example::ExamplePage, example2};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -79,76 +79,11 @@ impl Component for TableExample {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let entries = vec![
-            ExampleEntry { foo: "bar".into() },
-            ExampleEntry {
-                foo: "Much, much longer foo".into(),
-            },
-        ];
-
-        let model: SharedTableModel<_> = entries.into();
-
-        let header = html_nested! {
-            <TableHeader>
-                <TableColumn label="foo"/>
-                <TableColumn label="bar"/>
-                <TableColumn label="baz"/>
-            </TableHeader>
-        };
-        let example1 = example! {"Table" =>
-            <Table<SharedTableModel<ExampleEntry>>
-                caption="Table caption"
-                header={header.clone()}
-                entries={model.clone()}
-                >
-            </Table<SharedTableModel<ExampleEntry>>>
-        };
-
-        let example2 = example! {"Compact Table" =>
-            <Table<SharedTableModel<ExampleEntry>>
-                mode={TableMode::Compact}
-                header={header.clone()}
-                entries={model.clone()}
-                >
-            </Table<SharedTableModel<ExampleEntry>>>
-        };
-
-        let example3 = example! {"Compact, No Border Table" =>
-            <Table<SharedTableModel<ExampleEntry>>
-                mode={TableMode::CompactNoBorders}
-                header={header.clone()}
-                entries={model.clone()}
-                >
-            </Table<SharedTableModel<ExampleEntry>>>
-        };
-
-        let example4 = example! {"Compact, Expandable Table, Shared Model" =>
-            <>
-            <Table<SharedTableModel<ExampleEntry>>
-                mode={TableMode::CompactExpandable}
-                header={header.clone()}
-                entries={self.model4.clone()}
-                >
-            </Table<SharedTableModel<ExampleEntry>>>
-
-            <Button label="Prepend entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PrependToExample4)}/>
-            <Button label="Append entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AppendToExample4)}/>
-            <Button label="Pop entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PopFromExample4)}/>
-
-            </>
-        };
-
-        let example5 = example! {"Compact, Expandable Table, Shared Model" =>
-            <>
-            <Table<SharedTableModel<ExampleEntry>>
-                mode={TableMode::CompactExpandable}
-                header={header.clone()}
-                entries={self.model4.clone()}
-                >
-            </Table<SharedTableModel<ExampleEntry>>>
-
-            </>
-        };
+        let example1 = example2!("Table" => "table.1.example");
+        let example2 = example2!("Compact Table" => "table.2.example");
+        let example3 = example2!("Compact, No Border Table" => "table.3.example");
+        let example4 = example2!("Compact, Expandable Table, Shared Model" => "table.4.example");
+        let example5 = example2!("Compact, Expandable Table, Shared Model" => "table.5.example");
 
         html! {
             <>

@@ -1,0 +1,24 @@
+{
+let header = html_nested! {
+    <TableHeader>
+        <TableColumn label="foo"/>
+        <TableColumn label="bar"/>
+        <TableColumn label="baz"/>
+    </TableHeader>
+};
+
+html!{
+    <>
+        <Table<SharedTableModel<ExampleEntry>>
+            mode={TableMode::CompactExpandable}
+            header={header}
+            entries={self.model4.clone()}
+            >
+        </Table<SharedTableModel<ExampleEntry>>>
+
+        <Button label="Prepend entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PrependToExample4)}/>
+        <Button label="Append entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AppendToExample4)}/>
+        <Button label="Pop entry" icon={Icon::MinusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PopFromExample4)}/>
+    </>
+}
+}

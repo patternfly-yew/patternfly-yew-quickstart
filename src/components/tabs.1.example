@@ -1,9 +1,9 @@
 {
 let transformer = SwitchTransformer::new(|global|match global {
-        crate::AppRoute::Component(crate::Component::Tabs(local)) => Some(local),
+        crate::app::AppRoute::Component(crate::app::Component::Tabs(local)) => Some(local),
         _ => None
     },
-    |local|crate::AppRoute::Component(crate::Component::Tabs(local))
+    |local|crate::app::AppRoute::Component(crate::app::Component::Tabs(local))
 );
 
 html!{

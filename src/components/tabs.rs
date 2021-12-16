@@ -1,4 +1,4 @@
-use crate::{example::Example, example::ExamplePage, example2};
+use crate::{example::ExamplePage, example2};
 use patternfly_yew::*;
 use yew::prelude::*;
 use yew_router::prelude::*;
@@ -20,7 +20,7 @@ pub struct Props {
 
 pub struct TabsExample {}
 
-type MyTabsRouter = TabsRouter<crate::AppRoute, TabRoutes>;
+type MyTabsRouter = TabsRouter<crate::app::AppRoute, TabRoutes>;
 
 impl Component for TabsExample {
     type Message = ();

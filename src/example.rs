@@ -1,9 +1,8 @@
-use yew::prelude::*;
-
-use crate::{
+use patternfly_yew::{
     Flex, FlexItem, FlexModifier, Level, PageSection, PageSectionVariant, Size, Title,
     WithBreakpointExt,
 };
+use yew::prelude::*;
 
 #[macro_export]
 macro_rules! example {
@@ -46,12 +45,23 @@ macro_rules! example {
     };
 }
 
+/// Include an example from an external file.
+///
+/// ```rust
+/// # use yew::prelude::*;
+/// fn example() -> Html {
+///     let example1 = example2!{ "Example" => "file.example" };
+///     html!{
+///         <div>{example1}</div>
+///     }
+/// }
+/// ```
 #[macro_export]
 macro_rules! example2 {
     ($title:expr => $file:expr) => {{
         html! {
             <>
-                <Example title={$title} code={include_str!($file)}>{{include!($file)}}</Example>
+                <$crate::example::Example title={$title} code={include_str!($file)}>{{include!($file)}}</$crate::example::Example>
             </>
         }
     }};

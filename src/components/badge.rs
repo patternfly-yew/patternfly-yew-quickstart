@@ -1,4 +1,4 @@
-use crate::{example::Example, example::ExamplePage, example2};
+use crate::{example::ExamplePage, example2};
 
 use patternfly_yew::*;
 use yew::prelude::*;

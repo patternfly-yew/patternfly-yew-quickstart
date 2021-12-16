@@ -1,0 +1,25 @@
+{
+let entries = vec![
+    ExampleEntry { foo: "bar".into() },
+    ExampleEntry {
+        foo: "Much, much longer foo".into(),
+    },
+];
+let model: SharedTableModel<_> = entries.into();
+let header = html_nested! {
+    <TableHeader>
+        <TableColumn label="foo"/>
+        <TableColumn label="bar"/>
+        <TableColumn label="baz"/>
+    </TableHeader>
+};
+
+html!{
+    <Table<SharedTableModel<ExampleEntry>>
+        caption="Table caption"
+        header={header}
+        entries={model}
+        >
+    </Table<SharedTableModel<ExampleEntry>>>
+}
+}

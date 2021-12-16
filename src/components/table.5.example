@@ -1,0 +1,17 @@
+{
+let header = html_nested! {
+    <TableHeader>
+        <TableColumn label="foo"/>
+        <TableColumn label="bar"/>
+        <TableColumn label="baz"/>
+    </TableHeader>
+};
+
+html!{
+    <Table<SharedTableModel<ExampleEntry>>
+        mode={TableMode::CompactExpandable}
+        header={header}
+        entries={self.model4.clone()}
+    />
+}
+}
