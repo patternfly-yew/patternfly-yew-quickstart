@@ -53,7 +53,7 @@ jobs:
         run: cd main && npm install
 
       - name: Build page
-        run: trunk build
+        run: cd main && trunk build
 
       - name: Checkout current pages
         uses: actions/checkout@v2
