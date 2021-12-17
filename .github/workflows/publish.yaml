@@ -38,6 +38,7 @@ jobs:
           toolchain: stable
           components: rustfmt, clippy
           override: true
+          target: wasm32-unknown-unknown
 
       - name: Install trunk
         run: |
@@ -53,7 +54,7 @@ jobs:
         run: cd main && npm install
 
       - name: Build page
-        run: cd main && trunk build
+        run: cd main && trunk build --public-url /patternfly-yew-quickstart
 
       - name: Checkout current pages
         uses: actions/checkout@v2
