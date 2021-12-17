@@ -3,6 +3,18 @@
 version = 3
 
 [[package]]
+name = "anyhow"
+version = "1.0.51"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8b26702f315f53b6071259e15dd9d64528213b44d61de1ec926eca7715d62203"
+
+[[package]]
+name = "anymap"
+version = "0.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "33954243bd79057c2de7338850b85983a44588021f8a5fee574a8888c6de4344"
+
+[[package]]
 name = "anymap2"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -48,6 +60,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f1e260c3a9040a7c19a12468758f4c16f31a81a1fe087482be9570ec864bb6c"
 
 [[package]]
+name = "bytes"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c4872d67bab6358e59559027aa3b9157c53d9358c51423c17554809a8858e0f8"
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -83,6 +101,12 @@ dependencies = [
  "cfg-if",
  "wasm-bindgen",
 ]
+
+[[package]]
+name = "fnv"
+version = "1.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
 name = "getrandom"
@@ -253,6 +277,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "http"
+version = "0.2.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1323096b05d41827dadeaee54c9981958c0f94e670bc94ed80037d1a7b8b186b"
+dependencies = [
+ "bytes",
+ "fnv",
+ "itoa",
+]
+
+[[package]]
 name = "indexmap"
 version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -365,7 +400,7 @@ dependencies = [
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
- "yew",
+ "yew 0.19.3",
  "yew-agent",
  "yew-router",
 ]
@@ -381,8 +416,8 @@ dependencies = [
  "strum",
  "wasm-bindgen",
  "wasm-logger",
- "yew",
- "yew-router",
+ "yew 0.19.3",
+ "yew-router-nested",
 ]
 
 [[package]]
@@ -687,6 +722,34 @@ checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
 
 [[package]]
 name = "yew"
+version = "0.18.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e4d5154faef86dddd2eb333d4755ea5643787d20aca683e58759b0e53351409f"
+dependencies = [
+ "anyhow",
+ "anymap",
+ "bincode",
+ "cfg-if",
+ "cfg-match",
+ "console_error_panic_hook",
+ "gloo 0.2.1",
+ "http",
+ "indexmap",
+ "js-sys",
+ "log",
+ "ryu",
+ "serde",
+ "serde_json",
+ "slab",
+ "thiserror",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+ "yew-macro 0.18.0",
+]
+
+[[package]]
+name = "yew"
 version = "0.19.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2a1ccb53e57d3f7d847338cf5758befa811cabe207df07f543c06f502f9998cd"
@@ -701,7 +764,7 @@ dependencies = [
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
- "yew-macro",
+ "yew-macro 0.19.3",
 ]
 
 [[package]]
@@ -720,7 +783,20 @@ dependencies = [
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
- "yew",
+ "yew 0.19.3",
+]
+
+[[package]]
+name = "yew-macro"
+version = "0.18.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d6e23bfe3dc3933fbe9592d149c9985f3047d08c637a884b9344c21e56e092ef"
+dependencies = [
+ "boolinator",
+ "lazy_static",
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -740,7 +816,8 @@ dependencies = [
 [[package]]
 name = "yew-router"
 version = "0.15.0"
-source = "git+https://github.com/ctron/yew-router?branch=main#e1012d1bb48dfb1e8e78d84eefddd2b96cd13219"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "27666236d9597eac9be560e841e415e20ba67020bc8cd081076be178e159c8bc"
 dependencies = [
  "cfg-if",
  "cfg-match",
@@ -752,8 +829,7 @@ dependencies = [
  "serde_json",
  "wasm-bindgen",
  "web-sys",
- "yew",
- "yew-agent",
+ "yew 0.18.0",
  "yew-router-macro",
  "yew-router-route-parser",
 ]
@@ -761,7 +837,8 @@ dependencies = [
 [[package]]
 name = "yew-router-macro"
 version = "0.15.0"
-source = "git+https://github.com/ctron/yew-router?branch=main#e1012d1bb48dfb1e8e78d84eefddd2b96cd13219"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4c0ace2924b7a175e2d1c0e62ee7022a5ad840040dcd52414ce5f410ab322dba"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -770,9 +847,53 @@ dependencies = [
 ]
 
 [[package]]
+name = "yew-router-nested"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7cc2675c76f9f05c8fc8fc9f49239ff7ad4deee930f0de0fbe4fef4c5b48a0c6"
+dependencies = [
+ "cfg-if",
+ "cfg-match",
+ "gloo 0.2.1",
+ "js-sys",
+ "log",
+ "nom",
+ "serde",
+ "serde_json",
+ "wasm-bindgen",
+ "web-sys",
+ "yew 0.19.3",
+ "yew-agent",
+ "yew-router-nested-macro",
+ "yew-router-nested-route-parser",
+]
+
+[[package]]
+name = "yew-router-nested-macro"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fa9c00f04996809851ed8e79b763dba50e4659c879e28a87ec4108672e662875"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+ "yew-router-nested-route-parser",
+]
+
+[[package]]
+name = "yew-router-nested-route-parser"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "06ff6455529c0a731a8226f95546a5cbc625f346a7b4b06b3582d5ba5465d35d"
+dependencies = [
+ "nom",
+]
+
+[[package]]
 name = "yew-router-route-parser"
 version = "0.15.0"
-source = "git+https://github.com/ctron/yew-router?branch=main#e1012d1bb48dfb1e8e78d84eefddd2b96cd13219"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "de4a67208fb46b900af18a7397938b01f379dfc18da34799cfa8347eec715697"
 dependencies = [
  "nom",
 ]
