@@ -39,11 +39,19 @@ jobs:
           components: rustfmt, clippy
           override: true
 
+      - uses: jetli/trunk-action@v0.1.0
+        with:
+          version: '0.14.0'
+
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: cd main && npm install
-      - run: cd main && npm run build
+
+      - name: Install dependencies
+        run: cd main && npm install
+
+      - name: Build page
+        run: trunk build
 
       - name: Checkout current pages
         uses: actions/checkout@v2

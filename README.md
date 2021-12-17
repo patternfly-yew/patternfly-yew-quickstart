@@ -1,6 +1,6 @@
-# Patternfly quick start for Yew
+# PatternFly quick start for Yew
 
-This is a quickstart template to get you started with Patternfly and Yew.
+This is a quickstart template to get you started with PatternFly and Yew.
 
 Here you can see this page in action: https://ctron.github.io/patternfly-yew-quickstart
 
@@ -10,15 +10,15 @@ Here you can see this page in action: https://ctron.github.io/patternfly-yew-qui
 
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-* Cargo `wasm-pack`
+* Trunk
 
-      cargo install wasm-pack
+      cargo install trunk
 
 * NodeJS `npm`
 
 ## Initialize
 
-Fetch all dependencies:
+Fetch the PatternFly dependencies:
 
     npm install
 
@@ -26,14 +26,14 @@ Fetch all dependencies:
 
 Start a local development server, which re-builds every time you make changes to the code:
 
-    npm run start
+    trunk serve
 
-Direct your web browser to: http://localhost:8000
+Direct your web browser to: http://localhost:8080
 
 ## Perform a release build
 
-To build the Rust components and package up the NPM dependencies, run:
+To build the Rust components and package up the page, run:
 
-    npm run build
+    trunk build
 
 The release is in the `dist/` folder.
