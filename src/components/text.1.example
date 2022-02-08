@@ -1,0 +1,10 @@
+html!{
+    <>
+        <Text component={TextVariant::H1}>{"Hello World"}</Text>
+        <Text component={TextVariant::H2}>{"Second Level"}</Text>
+        <Text component={TextVariant::H3}>{"Third Level"}</Text>
+        <Text component={TextVariant::H4}>{"Fourth Level"}</Text>
+        <Text component={TextVariant::H5}>{"Fifth Level"}</Text>
+        <Text component={TextVariant::H6}>{"Sixth Level"}</Text>
+    </>
+}
