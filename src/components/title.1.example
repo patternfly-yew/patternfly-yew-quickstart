@@ -1,0 +1,10 @@
+html!{
+    <>
+        <Title level={Level::H1} size={Size::XXXXLarge}>{"XXXXLarge Title"}</Title>
+        <Title level={Level::H2} size={Size::XXXLarge}>{"XXXLarge Title"}</Title>
+        <Title level={Level::H3} size={Size::XXLarge}>{"XXLarge Title"}</Title>
+        <Title level={Level::H4} size={Size::XLarge}>{"XLarge Title"}</Title>
+        <Title level={Level::H5} size={Size::Large}>{"Large Title"}</Title>
+        <Title level={Level::H6} size={Size::Medium}>{"Medium Title"}</Title>
+    </>
+}
