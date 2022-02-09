@@ -21,7 +21,7 @@ gloo-utils = "0.1"
 
 chrono = { version = "0.4", features = ["wasmbind"] }
 
-patternfly-yew = "0.1.1"
+patternfly-yew = "0.1.2"
 
 strum = "0.19"
 
