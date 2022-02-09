@@ -1,0 +1,10 @@
+html!{
+    <>
+        <Title level={Level::H1}>{"H1 size defaults to XXLarge"}</Title>
+        <Title level={Level::H2}>{"H2 size defaults to XLarge"}</Title>
+        <Title level={Level::H3}>{"H3 size defaults to Large"}</Title>
+        <Title level={Level::H4}>{"H4 size defaults to Medium"}</Title>
+        <Title level={Level::H5}>{"H5 size defaults to Medium"}</Title>
+        <Title level={Level::H6}>{"H6 size defaults to Medium"}</Title>
+    </>
+}

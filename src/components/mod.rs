@@ -13,6 +13,8 @@ mod select;
 mod switch;
 mod table;
 mod tabs;
+mod text;
+mod title;
 mod tooltip;
 
 pub use alert::*;
@@ -30,4 +32,6 @@ pub use select::*;
 pub use switch::*;
 pub use table::*;
 pub use tabs::*;
+pub use text::*;
+pub use title::*;
 pub use tooltip::*;

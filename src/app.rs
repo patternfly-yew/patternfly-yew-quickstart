@@ -44,6 +44,10 @@ pub enum Component {
     Tabs(components::TabRoutes),
     #[to = "/table"]
     Table,
+    #[to = "/text"]
+    Text,
+    #[to = "/title"]
+    Title,
     #[to = "/tooltip"]
     Tooltip,
 }
@@ -169,6 +173,10 @@ impl Model {
             AppRoute::Component(Component::Tabs(current)) => {
                 Self::page(html! {<components::TabsExample current={current}/>})
             }
+            AppRoute::Component(Component::Text) => Self::page(html! {<components::TextExample/>}),
+            AppRoute::Component(Component::Title) => {
+                Self::page(html! {<components::TitleExample/>})
+            }
             AppRoute::Component(Component::Tooltip) => {
                 Self::page(html! {<components::TooltipExample/>})
             }
@@ -200,6 +208,8 @@ impl Model {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>{"Switch"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>{"Table"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))}>{"Tabs"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Text)}>{"Text"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
                     </NavRouterExpandable<AppRoute>>
                     <NavRouterExpandable<AppRoute> title="Layouts">
