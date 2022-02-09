@@ -13,12 +13,11 @@ macro_rules! example {
             <>
                 <Flex modifiers={[FlexModifier::Column.all()]}>
 
-                    <FlexItem><Title level={Level::H2} size={Size::XLarge}>{$title}</Title></FlexItem>
+                <FlexItem><Title level={Level::H2} size={Size::XLarge}>{$title}</Title></FlexItem>
 
                     <Flex modifiers={[FlexModifier::Column.all()]}>
 
                         <FlexItem>
-                            <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
                             $($t)*
                         </FlexItem>
 
@@ -87,7 +86,7 @@ impl Component for ExamplePage {
         html! {
             <>
                 <PageSection variant={PageSectionVariant::Light} limit_width=true>
-                    <Title level={Level::H1} size={Size::XXLarge}>{ &ctx.props().title }</Title>
+                    <Title level={Level::H1} size={Size::XXXXLarge}>{ &ctx.props().title }</Title>
                 </PageSection>
                 { for ctx.props().children.iter().map(|child|{
                     html!{<PageSection>{child}</PageSection>}
@@ -119,7 +118,11 @@ impl Component for Example {
             <>
                 <Flex modifiers={[FlexModifier::Column.all()]}>
 
-                    <FlexItem><Title level={Level::H2} size={Size::XLarge}> { &ctx.props().title } </Title></FlexItem>
+                    <FlexItem>
+                        <Title level={Level::H2} size={Size::XXLarge}>
+                            { &ctx.props().title }
+                        </Title>
+                    </FlexItem>
 
                     <Flex modifiers={[FlexModifier::Column.all()]}>
 
