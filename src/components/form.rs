@@ -1,4 +1,4 @@
-use crate::{example, example::ExamplePage};
+use crate::{example::ExamplePage, example2};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -14,13 +14,7 @@ impl Component for FormExample {
     }
 
     fn view(&self, _: &Context<Self>) -> Html {
-        let example = example! {"Text Input" =>
-            <Form>
-                <FormGroup label="Normal">
-                    <TextInput/>
-                </FormGroup>
-            </Form>
-        };
+        let example = example2! {"Text Input" => "form.1.example" };
 
         html! {
             <>
@@ -29,7 +23,7 @@ impl Component for FormExample {
                         <FormGroup label="Test">
                             <Button label="Click me" variant={Variant::Primary}/>
                         </FormGroup>
-                        <FormGroup label="Test" required=true helper_text="Some help for you.">
+                        <FormGroup label="Test" required=true helper_text={Some("Some help for you.".into())}>
                             <Button label="Click me too" variant={Variant::Secondary}/>
                         </FormGroup>
                     </Form>
@@ -38,7 +32,11 @@ impl Component for FormExample {
                         example
                     }
 
-                    <h2>{"More"}</h2>
+                    <Title level={Level::H2}>{"Form Validation"}</Title>
+
+                    { Self::form_validation() }
+
+                    <Title level={Level::H2}>{"More"}</Title>
 
                     <Form>
                         <FormGroup label="Normal">
@@ -72,5 +70,33 @@ impl Component for FormExample {
                 </ExamplePage>
             </>
         }
+    }
+}
+
+impl FormExample {
+    pub fn form_validation() -> Html {
+        html!(
+            <Form>
+                <FormGroupValidated<TextInput>
+                    label="Some text"
+                    required=true
+                    validator={Validator::from(|value:&str| {
+                        if value.is_empty() {
+                            ValidationResult::error("Must not be empty")
+                        } else if value.contains("foo") {
+                            ValidationResult::warning("Should not contain 'foo'")
+                        } else if value == "Nur ein Wort" {
+                            ValidationResult::new(InputState::Success, "Congratulations, you found the magic value!")
+                        } else {
+                            ValidationResult::default()
+                        }
+                    })}
+                >
+                    <TextInput
+                        placeholder="Enter some text"
+                    />
+                </FormGroupValidated<TextInput>>
+            </Form>
+        )
     }
 }
