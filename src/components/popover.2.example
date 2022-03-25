@@ -1,5 +1,5 @@
 {
-let header = html!{<Title size={Size::Medium}>{"Popover Title"}</Title>};
+let header = html!{{"Popover Title"}};
 let footer = html!{"Some footer content."};
 let target = html!{
      <span
