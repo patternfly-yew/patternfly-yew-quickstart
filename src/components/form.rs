@@ -80,12 +80,12 @@ impl FormExample {
                 <FormGroupValidated<TextInput>
                     label="Some text"
                     required=true
-                    validator={Validator::from(|value:&str| {
-                        if value.is_empty() {
+                    validator={Validator::from(|ctx: ValidationContext<String>| {
+                        if ctx.value.is_empty() {
                             ValidationResult::error("Must not be empty")
-                        } else if value.contains("foo") {
+                        } else if ctx.value.contains("foo") {
                             ValidationResult::warning("Should not contain 'foo'")
-                        } else if value == "Nur ein Wort" {
+                        } else if ctx.value == "Nur ein Wort" {
                             ValidationResult::new(InputState::Success, "Congratulations, you found the magic value!")
                         } else {
                             ValidationResult::default()
