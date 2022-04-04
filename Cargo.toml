@@ -29,7 +29,7 @@ log = "0.4"
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "d6830d5ef0bd28b47e657c0d383b7741eb62b6ff" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "ad0b2730402c004cd6e10ec6c52a2a0da2e13310" } # FIXME: awaiting release
 #yew-router = { git = "https://github.com/ctron/yew-router", branch="main" }
 #yew-router-macro = { git = "https://github.com/ctron/yew-router", branch="main" }
 #yew-router-route-parser = { git = "https://github.com/ctron/yew-router", branch="main" }
