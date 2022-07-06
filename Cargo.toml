@@ -1,6 +1,6 @@
 [package]
 name = "patternfly-yew-quickstart"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Jens Reimann <jreimann@redhat.com>"]
 edition = "2018"
 license = "Apache-2.0"
@@ -29,7 +29,7 @@ log = "0.4"
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "ad0b2730402c004cd6e10ec6c52a2a0da2e13310" } # FIXME: awaiting release
+#patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "ad0b2730402c004cd6e10ec6c52a2a0da2e13310" } # FIXME: awaiting release
 #yew-router = { git = "https://github.com/ctron/yew-router", branch="main" }
 #yew-router-macro = { git = "https://github.com/ctron/yew-router", branch="main" }
 #yew-router-route-parser = { git = "https://github.com/ctron/yew-router", branch="main" }
