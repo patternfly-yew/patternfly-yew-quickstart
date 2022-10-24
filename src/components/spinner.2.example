@@ -1,0 +1,10 @@
+{
+    html!(
+        <>
+        <Spinner size={SpinnerSize::Sm} />
+        <Spinner size={SpinnerSize::Md} />
+        <Spinner size={SpinnerSize::Lg} />
+        <Spinner size={SpinnerSize::Xl} />
+        </>
+    )
+}
