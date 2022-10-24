@@ -40,6 +40,8 @@ pub enum Component {
     Select,
     #[to = "/slider"]
     Slider,
+    #[to = "/spinner"]
+    Spinner,
     #[to = "/switch"]
     Switch,
     #[to = "/tabs{*}"]
@@ -169,6 +171,9 @@ impl Model {
             AppRoute::Component(Component::Slider) => {
                 Self::page(html! {<components::SliderExample/>})
             }
+            AppRoute::Component(Component::Spinner) => {
+                Self::page(html! {<components::SpinnerExample/>})
+            }
             AppRoute::Component(Component::Switch) => {
                 Self::page(html! {<components::SwitchExample/>})
             }
@@ -211,6 +216,7 @@ impl Model {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Select)}>{"Select"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>{"Spinner"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>{"Switch"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>{"Table"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))}>{"Tabs"}</NavRouterItem<AppRoute>>
