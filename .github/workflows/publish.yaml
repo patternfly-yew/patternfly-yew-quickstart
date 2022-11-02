@@ -32,17 +32,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          components: rustfmt, clippy
-          override: true
-          target: wasm32-unknown-unknown
-
       - name: Install trunk
         run: |
-          curl -sL https://github.com/thedodd/trunk/releases/download/v0.14.0/trunk-x86_64-unknown-linux-gnu.tar.gz -o trunk-x86_64-unknown-linux-gnu.tar.gz
+          curl -sL https://github.com/thedodd/trunk/releases/download/v0.16.0/trunk-x86_64-unknown-linux-gnu.tar.gz -o trunk-x86_64-unknown-linux-gnu.tar.gz
           tar xzf trunk-x86_64-unknown-linux-gnu.tar.gz
           sudo install trunk /usr/bin/trunk
 
