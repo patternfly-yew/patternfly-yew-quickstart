@@ -1,7 +1,7 @@
 {
     html!(
         <>
-        <Spinner diameter="80px" aria_label="Contents of the custom size example" />
+        <Spinner size={SpinnerSize::Custom(String::from("80px"))} aria_label="Contents of the custom size example" />
         </>
     )
 }
