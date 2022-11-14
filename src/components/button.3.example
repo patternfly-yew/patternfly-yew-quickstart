@@ -1,0 +1,45 @@
+{
+
+    #[derive(Clone, Debug, PartialEq, Eq, yew::Properties)]
+    struct Props {
+        #[prop_or_default]
+        variant: Variant,
+        active: String,
+        inactive: String,
+    }
+
+    #[function_component(ProgressButton)]
+    fn progress_button(props: &Props) -> yew::Html {
+        let loading = use_state(|| true);
+        let onclick = {
+            let loading = loading.clone();
+            Callback::from(move |_| loading.set(!*loading))
+        };
+
+        html!(
+            <Button
+                loading={*loading}
+                variant={props.variant}
+                onclick={onclick}
+            >
+                if *loading {
+                    { &props.active }
+                } else {
+                    { &props.inactive }
+                }
+            </Button>
+        )
+    }
+
+    html!{
+        <>
+            <ProgressButton variant={Variant::Primary} active="Pause loading logs" inactive="Resume loading logs" />
+            {" "}
+            <ProgressButton variant={Variant::Secondary} active="Click to stop loading" inactive="Click to start loading" />
+            {" "}
+            <ProgressButton variant={Variant::Warning} active="Click to stop loading" inactive="Click to start loading" />
+            {" "}
+            <ProgressButton active="Click to stop loading" inactive="Click to start loading" />
+        </>
+    }
+}

@@ -20,6 +20,8 @@ pub enum Component {
     AppLauncher,
     #[to = "/badge"]
     Badge,
+    #[to = "/button"]
+    Button,
     #[to = "/clipboard"]
     Clipboard,
     #[to = "/context_selector"]
@@ -143,6 +145,9 @@ impl Model {
             AppRoute::Component(Component::Badge) => {
                 Self::page(html! {<components::BadgeExample/>})
             }
+            AppRoute::Component(Component::Button) => {
+                Self::page(html! {<components::ButtonExample/>})
+            }
             AppRoute::Component(Component::Clipboard) => {
                 Self::page(html! {<components::ClipboardExample/>})
             }
@@ -206,6 +211,7 @@ impl Model {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::AppLauncher)}>{"AppLauncher"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"ContextSelector"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
