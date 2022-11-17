@@ -40,7 +40,7 @@ pub fn login_page_example() -> Html {
                                 <TextInput required=true name="password" r#type="password"/>
                             </FormGroup>
                             <ActionGroup>
-                                <Button label="Log In" r#type="submit" variant={Variant::Primary}/>
+                                <Button label="Log In" r#type={ButtonType::Submit} variant={Variant::Primary}/>
                             </ActionGroup>
                         </Form>
                     </LoginMainBody>
