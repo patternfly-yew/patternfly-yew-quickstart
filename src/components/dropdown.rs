@@ -17,10 +17,13 @@ impl Component for DropdownExample {
         Self {}
     }
 
-    fn update(&mut self, _: &Context<Self>, msg: Self::Message) -> bool {
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Self::Message::ShowToast(toast) => {
-                ToastDispatcher::new().toast(toast);
+                if let Some((toaster, _)) = ctx.link().context::<Toaster>(Callback::default()) {
+                    toaster.toast(toast);
+                }
+
                 false
             }
         }

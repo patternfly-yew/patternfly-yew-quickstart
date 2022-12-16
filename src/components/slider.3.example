@@ -1,5 +1,4 @@
 {
-    let msg = use_state(|| String::new());
     let onchange = {
         let msg = msg.clone();
         Callback::from(move |value:f64| msg.set(format!("{value:.2}")))

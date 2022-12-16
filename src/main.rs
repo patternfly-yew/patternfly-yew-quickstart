@@ -13,6 +13,6 @@ use wasm_bindgen::prelude::*;
 
 pub fn main() -> Result<(), JsValue> {
     wasm_logger::init(wasm_logger::Config::new(Level::Debug));
-    yew::start_app::<app::Model>();
+    yew::Renderer::<app::Application>::new().render();
     Ok(())
 }

@@ -4,7 +4,7 @@ html!{
         <Select<String> placeholder="Placeholder text">
             <SelectOption<String> value="One" description="First entry"/>
             <SelectOption<String> value="Two"/>
-            <SelectOption<String> value="Three" selected=true/>
+            <SelectOption<String> value="Three"/>
         </Select<String>>
     </p>
     </>

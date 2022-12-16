@@ -1,15 +1,12 @@
 use crate::{example::ExamplePage, example2};
 use patternfly_yew::*;
 use yew::prelude::*;
-use yew_router::prelude::*;
+use yew_nested_router::prelude::{Switch as RouterSwitch, *};
 
-#[derive(Switch, Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, Target)]
 pub enum TabRoutes {
-    #[to = "/foo"]
     Foo,
-    #[to = "/bar"]
     Bar,
-    #[to = "/baz"]
     Baz,
 }
 
@@ -19,8 +16,6 @@ pub struct Props {
 }
 
 pub struct TabsExample {}
-
-type MyTabsRouter = TabsRouter<crate::app::AppRoute, TabRoutes>;
 
 impl Component for TabsExample {
     type Message = ();
@@ -37,11 +32,13 @@ impl Component for TabsExample {
 
         html! {
             <>
-                <ExamplePage title="Tabs">
-                    <PageSection variant={PageSectionVariant::Light} limit_width=true>
-                        { for examples }
-                    </PageSection>
-                </ExamplePage>
+                <Scope<crate::app::Component, TabRoutes> mapper={crate::app::Component::mapper_tabs}>
+                    <ExamplePage title="Tabs">
+                        <PageSection variant={PageSectionVariant::Light} limit_width=true>
+                            { for examples }
+                        </PageSection>
+                    </ExamplePage>
+                </Scope<crate::app::Component, TabRoutes>>
             </>
         }
     }

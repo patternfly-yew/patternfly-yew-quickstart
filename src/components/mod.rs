@@ -1,5 +1,6 @@
 mod alert;
 mod applauncher;
+mod backdrop;
 mod badge;
 mod button;
 mod clipboard;
@@ -18,10 +19,12 @@ mod table;
 mod tabs;
 mod text;
 mod title;
+mod toast;
 mod tooltip;
 
 pub use alert::*;
 pub use applauncher::*;
+pub use backdrop::*;
 pub use badge::*;
 pub use button::*;
 pub use clipboard::*;
@@ -40,4 +43,5 @@ pub use table::*;
 pub use tabs::*;
 pub use text::*;
 pub use title::*;
+pub use toast::*;
 pub use tooltip::*;

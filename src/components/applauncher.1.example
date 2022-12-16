@@ -1,7 +1,10 @@
 html!{
     <AppLauncher>
-        <AppLauncherItem>{"Foo"}</AppLauncherItem>
+        <AppLauncherItem onclick={move |_|toast("Success")}>{"Foo"}</AppLauncherItem>
+
         <Divider/>
+
         <AppLauncherItem href="https://patternfly.org" external=true>{"PatternFly"}</AppLauncherItem>
+
     </AppLauncher>
 }

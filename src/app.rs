@@ -7,255 +7,234 @@ use crate::layouts;
 use patternfly_yew::*;
 
 use yew::prelude::*;
-use yew_router::prelude::*;
-use yew_router::router::Render;
+use yew_nested_router::prelude::{Switch as RouterSwitch, *};
+use yew_nested_router::Target;
 
-pub struct Model {}
-
-#[derive(Switch, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum Component {
-    #[to = "/alert"]
     Alert,
-    #[to = "/applauncher"]
     AppLauncher,
-    #[to = "/badge"]
+    Backdrop,
     Badge,
-    #[to = "/button"]
     Button,
-    #[to = "/clipboard"]
     Clipboard,
-    #[to = "/context_selector"]
+    #[target(rename = "context_selector")]
     ContextSelector,
-    #[to = "/dropdown"]
     Dropdown,
-    #[to = "/empty"]
+    #[target(rename = "empty")]
     EmptyState,
-    #[to = "/form"]
     Form,
-    #[to = "/label"]
     Label,
-    #[to = "/modal"]
     Modal,
-    #[to = "/popover"]
     Popover,
-    #[to = "/select"]
     Select,
-    #[to = "/slider"]
     Slider,
-    #[to = "/spinner"]
     Spinner,
-    #[to = "/switch"]
     Switch,
-    #[to = "/tabs{*}"]
     Tabs(components::TabRoutes),
-    #[to = "/table"]
     Table,
-    #[to = "/text"]
     Text,
-    #[to = "/title"]
     Title,
-    #[to = "/tooltip"]
+    Toast,
     Tooltip,
 }
 
-#[derive(Switch, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum Layout {
-    #[to = "/bullseye"]
     Bullseye,
-    #[to = "/flex"]
     Flex,
-    #[to = "/gallery"]
     Gallery,
-    #[to = "/grid"]
     Grid,
-    #[to = "/split"]
     Split,
-    #[to = "/stack"]
     Stack,
 }
 
-#[derive(Switch, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum FullPage {
-    #[to = "/login"]
     Login,
 }
 
-#[derive(Switch, Debug, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Eq, Target)]
 pub enum AppRoute {
-    #[to = "/components{*:rest}"]
     Component(Component),
-    #[to = "/fullpage{*:rest}"]
+    #[target(rename = "fullpage")]
     FullPageExample(FullPage),
-    #[to = "/full{*:rest}"]
+    #[target(rename = "full")]
     FullPage(FullPage),
-    #[to = "/layout{*:rest}"]
     Layout(Layout),
-    #[to = "/counter"]
     Counter,
-    #[to = "/"]
+    #[default]
     Index,
 }
 
-impl yew::Component for Model {
-    type Message = ();
-    type Properties = ();
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
+#[function_component(Application)]
+pub fn app() -> Html {
+    html! {
+        <>
+        <BackdropViewer>
+            <ToastViewer>
+                <Router<AppRoute> default={AppRoute::Index}>
+                    <RouterSwitch<AppRoute> render={switch_app_route} />
+                </Router<AppRoute>>
+            </ToastViewer>
+        </BackdropViewer>
+        </>
     }
+}
 
-    fn view(&self, _: &Context<Self>) -> Html {
-        html! {
-            <>
-            <BackdropViewer/>
-            <ToastViewer/>
+fn switch_app_route(target: AppRoute) -> Html {
+    let component = |target: Component| match target {
+        Component::Alert => html! {<components::AlertExample/>},
+        Component::AppLauncher => html! {<components::AppLauncherExample/>},
+        Component::Backdrop => html! {<components::BackdropExample/>},
+        Component::Badge => html! {<components::BadgeExample/>},
+        Component::Button => html! {<components::ButtonExample/>},
+        Component::Clipboard => html! {<components::ClipboardExample/>},
+        Component::ContextSelector => html! {<components::ContextSelectorExample/>},
+        Component::Dropdown => html! {<components::DropdownExample/>},
+        Component::EmptyState => html! {<components::EmptyStateExample/>},
+        Component::Form => html! {<components::FormExample/>},
+        Component::Label => html! {<components::LabelExample/>},
+        Component::Modal => html! {<components::ModalExample/>},
+        Component::Popover => html! {<components::PopoverExample/>},
+        Component::Select => html! {<components::SelectExample/>},
+        Component::Slider => html! {<components::SliderExample/>},
+        Component::Spinner => html! {<components::SpinnerExample/>},
+        Component::Switch => html! {<components::SwitchExample/>},
+        Component::Table => html! {<components::TableExample/>},
+        Component::Tabs(current) => html! {<components::TabsExample current={current}/>},
+        Component::Text => html! {<components::TextExample/>},
+        Component::Title => html! {<components::TitleExample/>},
+        Component::Toast => html! {<components::ToastExample/>},
+        Component::Tooltip => html! {<components::TooltipExample/>},
+    };
 
-            <Router<AppRoute, ()>
-                redirect = {Router::redirect(|_|AppRoute::Index)}
-                render = {Self::switch_main()}
-            />
-            </>
+    let layout = |target: Layout| match target {
+        Layout::Bullseye => html! {<layouts::BullseyeExample/>},
+        Layout::Flex => html! {<layouts::FlexExample/>},
+        Layout::Gallery => html! {<layouts::GalleryExample/>},
+        Layout::Grid => html! {<layouts::GridExample/>},
+        Layout::Split => html! {<layouts::SplitExample/>},
+        Layout::Stack => html! {<layouts::StackExample/>},
+    };
+
+    let fullpage = |target: FullPage| match target {
+        FullPage::Login => html! {<full::LoginPageExample/>},
+    };
+
+    let fullpage_entrypoint = |target: FullPage| match target {
+        FullPage::Login => {
+            html! {<full::FullPageExample url="../../full/login"/>}
+        }
+    };
+
+    match target {
+        AppRoute::Counter => html! {<AppPage><Counter/></AppPage>},
+        AppRoute::Index => html! {<AppPage><Index/></AppPage>},
+
+        AppRoute::FullPageExample(_) => {
+            html!(
+                <AppPage>
+                    <Scope<AppRoute, FullPage> mapper={AppRoute::mapper_full_page_example}>
+                        <RouterSwitch<FullPage> render={fullpage_entrypoint}/>
+                    </Scope<AppRoute, FullPage>>
+                </AppPage>
+            )
+        }
+        AppRoute::FullPage(_) => {
+            html!(
+                <Scope<AppRoute, FullPage> mapper={AppRoute::mapper_full_page}>
+                    <RouterSwitch<FullPage> render={fullpage}/>
+                </Scope<AppRoute, FullPage>>
+            )
+        }
+
+        AppRoute::Layout(_) => {
+            html!(
+                <AppPage>
+                    <Scope<AppRoute, Layout>  mapper={AppRoute::mapper_layout}>
+                        <RouterSwitch<Layout> render={layout}/>
+                    </Scope<AppRoute, Layout>>
+                </AppPage>
+            )
+        }
+        AppRoute::Component(_) => {
+            html!(
+                <AppPage>
+                    <Scope<AppRoute, Component> mapper={AppRoute::mapper_component}>
+                        <RouterSwitch<Component> render={component}/>
+                    </Scope<AppRoute, Component>>
+                </AppPage>
+            )
         }
     }
 }
 
-impl Model {
-    fn switch_main() -> Render<AppRoute, ()> {
-        Router::render(|switch: AppRoute| match switch {
-            AppRoute::Counter => Self::page(html! {<Counter/>}),
-            AppRoute::Index => Self::page(html! {<Index/>}),
+#[derive(Clone, Debug, PartialEq, Properties)]
+pub struct PageProps {
+    pub children: Children,
+}
 
-            AppRoute::FullPageExample(FullPage::Login) => {
-                Self::page(html! {<full::FullPageExample url="../../full/login"/>})
-            }
-            AppRoute::FullPage(FullPage::Login) => html! {<full::LoginPageExample/>},
+#[function_component(AppPage)]
+fn page(props: &PageProps) -> Html {
+    let sidebar = html_nested! {
+        <PageSidebar>
+            <Nav>
+                <NavExpandable title="Basics">
+                    <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
+                    <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
+                </NavExpandable>
+                <NavExpandable title="Components">
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::AppLauncher)}>{"AppLauncher"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"ContextSelector"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form)}>{"Form"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Select)}>{"Select"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>{"Spinner"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>{"Switch"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>{"Table"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))} predicate={AppRoute::with_component(Component::is_tabs)}>{"Tabs"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Text)}>{"Text"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
+                </NavExpandable>
+                <NavExpandable title="Layouts">
+                    <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Flex)}>{"Flex"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Gallery)}>{"Gallery"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Grid)}>{"Grid"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Split)}>{"Split"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Stack)}>{"Stack"}</NavRouterItem<AppRoute>>
+                </NavExpandable>
+                <NavExpandable title="Full Page">
+                    <NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
+                </NavExpandable>
+            </Nav>
+        </PageSidebar>
+    };
 
-            AppRoute::Layout(Layout::Bullseye) => Self::page(html! {<layouts::BullseyeExample/>}),
-            AppRoute::Layout(Layout::Flex) => Self::page(html! {<layouts::FlexExample/>}),
-            AppRoute::Layout(Layout::Gallery) => Self::page(html! {<layouts::GalleryExample/>}),
-            AppRoute::Layout(Layout::Grid) => Self::page(html! {<layouts::GridExample/>}),
-            AppRoute::Layout(Layout::Split) => Self::page(html! {<layouts::SplitExample/>}),
-            AppRoute::Layout(Layout::Stack) => Self::page(html! {<layouts::StackExample/>}),
+    let logo = html! {
+        <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+    };
 
-            AppRoute::Component(Component::Alert) => {
-                Self::page(html! {<components::AlertExample/>})
-            }
-            AppRoute::Component(Component::AppLauncher) => {
-                Self::page(html! {<components::AppLauncherExample/>})
-            }
-            AppRoute::Component(Component::Badge) => {
-                Self::page(html! {<components::BadgeExample/>})
-            }
-            AppRoute::Component(Component::Button) => {
-                Self::page(html! {<components::ButtonExample/>})
-            }
-            AppRoute::Component(Component::Clipboard) => {
-                Self::page(html! {<components::ClipboardExample/>})
-            }
-            AppRoute::Component(Component::ContextSelector) => {
-                Self::page(html! {<components::ContextSelectorExample/>})
-            }
-            AppRoute::Component(Component::Dropdown) => {
-                Self::page(html! {<components::DropdownExample/>})
-            }
-            AppRoute::Component(Component::EmptyState) => {
-                Self::page(html! {<components::EmptyStateExample/>})
-            }
-            AppRoute::Component(Component::Form) => Self::page(html! {<components::FormExample/>}),
-            AppRoute::Component(Component::Label) => {
-                Self::page(html! {<components::LabelExample/>})
-            }
-            AppRoute::Component(Component::Modal) => {
-                Self::page(html! {<components::ModalExample/>})
-            }
-            AppRoute::Component(Component::Popover) => {
-                Self::page(html! {<components::PopoverExample/>})
-            }
-            AppRoute::Component(Component::Select) => {
-                Self::page(html! {<components::SelectExample/>})
-            }
-            AppRoute::Component(Component::Slider) => {
-                Self::page(html! {<components::SliderExample/>})
-            }
-            AppRoute::Component(Component::Spinner) => {
-                Self::page(html! {<components::SpinnerExample/>})
-            }
-            AppRoute::Component(Component::Switch) => {
-                Self::page(html! {<components::SwitchExample/>})
-            }
-            AppRoute::Component(Component::Table) => {
-                Self::page(html! {<components::TableExample/>})
-            }
-            AppRoute::Component(Component::Tabs(current)) => {
-                Self::page(html! {<components::TabsExample current={current}/>})
-            }
-            AppRoute::Component(Component::Text) => Self::page(html! {<components::TextExample/>}),
-            AppRoute::Component(Component::Title) => {
-                Self::page(html! {<components::TitleExample/>})
-            }
-            AppRoute::Component(Component::Tooltip) => {
-                Self::page(html! {<components::TooltipExample/>})
-            }
-        })
-    }
-
-    fn page(html: Html) -> Html {
-        let sidebar = html_nested! {
-            <PageSidebar>
-                <Nav>
-                    <NavRouterExpandable<AppRoute> title="Basics">
-                        <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
-                        <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
-                    </NavRouterExpandable<AppRoute>>
-                    <NavRouterExpandable<AppRoute> title="Components">
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::AppLauncher)}>{"AppLauncher"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"ContextSelector"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form)}>{"Form"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Select)}>{"Select"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>{"Spinner"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>{"Switch"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>{"Table"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))}>{"Tabs"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Text)}>{"Text"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
-                    </NavRouterExpandable<AppRoute>>
-                    <NavRouterExpandable<AppRoute> title="Layouts">
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Flex)}>{"Flex"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Gallery)}>{"Gallery"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Grid)}>{"Grid"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Split)}>{"Split"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Stack)}>{"Stack"}</NavRouterItem<AppRoute>>
-                    </NavRouterExpandable<AppRoute>>
-                    <NavRouterExpandable<AppRoute> title="Full Page">
-                        <NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
-                    </NavRouterExpandable<AppRoute>>
-                </Nav>
-            </PageSidebar>
-        };
-
-        let logo = html_nested! {
-            <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
-        };
-
-        html! {
-            <Page
-                logo={logo}
-                sidebar={sidebar}
-                >
-                { html }
-            </Page>
-        }
+    html! {
+        <Page
+            logo={logo}
+            sidebar={sidebar}
+            >
+            { for props.children.iter() }
+        </Page>
     }
 }
