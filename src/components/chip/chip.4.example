@@ -1,0 +1,7 @@
+html!{
+    <>
+        <Chip text="Foo" onclose={Callback::from(|_|{})} />
+        <Chip text="Bar" onclose={Callback::from(|_|{})} />
+        <Chip text="Baz" onclose={Callback::from(|_|{})} />
+    </>
+}

@@ -18,6 +18,7 @@ pub enum Component {
     Badge,
     Button,
     Clipboard,
+    Chip,
     #[target(rename = "context_selector")]
     ContextSelector,
     Dropdown,
@@ -89,6 +90,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Backdrop => html! {<components::BackdropExample/>},
         Component::Badge => html! {<components::BadgeExample/>},
         Component::Button => html! {<components::ButtonExample/>},
+        Component::Chip => html! {<components::ChipExample/>},
         Component::Clipboard => html! {<components::ClipboardExample/>},
         Component::ContextSelector => html! {<components::ContextSelectorExample/>},
         Component::Dropdown => html! {<components::DropdownExample/>},
@@ -191,6 +193,7 @@ fn page(props: &PageProps) -> Html {
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Chip)}>{"Chip"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"ContextSelector"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
