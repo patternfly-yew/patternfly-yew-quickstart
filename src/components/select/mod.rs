@@ -9,6 +9,7 @@ pub fn select_example() -> Html {
     let example2 = example2! ("Select (with divider)" => "select.2.example");
     let example3 = example2! ("Select (with groups)" => "select.3.example");
     let example4 = example2! ("Select Checkbox (with groups)" => "select.4.example");
+    let example5 = example2! ("Select (multiple)" => "select.5.example");
 
     html! {
         <>
@@ -17,6 +18,7 @@ pub fn select_example() -> Html {
                 {example2}
                 {example3}
                 {example4}
+                {example5}
             </ExamplePage>
         </>
     }
