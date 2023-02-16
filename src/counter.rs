@@ -37,8 +37,7 @@ impl Component for Counter {
                 <ExamplePage title="Counting clicks">
                     <Gallery gutter=true>
                         <Card
-                            selectable=true
-                            selected=true
+                            selection={CardSelection::Selectable {selected: true}}
                             title={title}
                             >
 

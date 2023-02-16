@@ -607,9 +607,8 @@ checksum = "86f0b0d4bf799edbc74508c1e8bf170ff5f41238e5f8225603ca7caaae2b7860"
 
 [[package]]
 name = "patternfly-yew"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ce0528bef8509606a10521d2cc5acd6c507f9194d76bc14069f45d1904ae874"
+version = "0.4.0-alpha.1"
+source = "git+https://github.com/ctron/patternfly-yew?rev=4688a69d8f7b53d638d6701947f135900367ac38#4688a69d8f7b53d638d6701947f135900367ac38"
 dependencies = [
  "chrono",
  "gloo-events",
@@ -631,7 +630,7 @@ dependencies = [
 
 [[package]]
 name = "patternfly-yew-quickstart"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "chrono",
  "gloo-utils",
@@ -1179,9 +1178,9 @@ dependencies = [
 
 [[package]]
 name = "yew-nested-router"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f5482a5ac9df368771a90d6ac6d6b85a5cf184716d363a076177aa187339b422"
+checksum = "d9cf5328c997e563adf4018fdd43deb2ff390e0ee9e7f75ceaeb43471119e44a"
 dependencies = [
  "gloo-history",
  "gloo-utils",

@@ -1,6 +1,6 @@
 use patternfly_yew::{
-    Flex, FlexItem, FlexModifier, Level, PageSection, PageSectionVariant, Size, Title,
-    WithBreakpointExt,
+    Flex, FlexItem, FlexModifier, Level, PageSection, PageSectionSticky, PageSectionVariant, Size,
+    Title, WithBreakpointExt,
 };
 use yew::prelude::*;
 
@@ -72,28 +72,22 @@ pub struct Props {
     pub children: Children,
 }
 
-pub struct ExamplePage {}
-
-impl Component for ExamplePage {
-    type Message = ();
-    type Properties = Props;
-
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        html! {
-            <>
-                <PageSection variant={PageSectionVariant::Light} limit_width=true>
-                    <Title level={Level::H1} size={Size::XXXXLarge}>{ &ctx.props().title }</Title>
-                </PageSection>
-                { for ctx.props().children.iter().map(|child|{
-                    html!{<PageSection>{child}</PageSection>}
-                }) }
-            </>
-        }
-    }
+#[function_component(ExamplePage)]
+pub fn example_page(props: &Props) -> Html {
+    html! (
+        <>
+            <PageSection
+                variant={PageSectionVariant::Light}
+                limit_width=true
+                sticky={[PageSectionSticky::Top]}
+            >
+                <Title level={Level::H1} size={Size::XXXXLarge}>{ &props.title }</Title>
+            </PageSection>
+            { for props.children.iter().map(|child|{
+                html!{<PageSection>{child}</PageSection>}
+            }) }
+        </>
+    )
 }
 
 #[derive(Clone, Debug, Properties, PartialEq)]

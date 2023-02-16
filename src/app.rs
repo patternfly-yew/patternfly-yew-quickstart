@@ -3,9 +3,7 @@ use crate::counter::*;
 use crate::full;
 use crate::index::*;
 use crate::layouts;
-
 use patternfly_yew::*;
-
 use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
 use yew_nested_router::Target;
@@ -233,10 +231,7 @@ fn page(props: &PageProps) -> Html {
     };
 
     html! {
-        <Page
-            logo={logo}
-            sidebar={sidebar}
-            >
+        <Page {logo} {sidebar}>
             { for props.children.iter() }
         </Page>
     }
