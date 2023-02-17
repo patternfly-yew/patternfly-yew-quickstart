@@ -16,9 +16,9 @@ html!{
             >
         </Table<SharedTableModel<ExampleEntry>>>
 
-        <Button label="Prepend entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PrependToExample4)}/>
-        <Button label="Append entry" icon={Icon::PlusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AppendToExample4)}/>
-        <Button label="Pop entry" icon={Icon::MinusCircleIcon} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PopFromExample4)}/>
+        <Button label="Prepend entry" icon={Icon::PlusCircle} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PrependToExample4)}/>
+        <Button label="Append entry" icon={Icon::PlusCircle} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AppendToExample4)}/>
+        <Button label="Pop entry" icon={Icon::MinusCircle} align={Align::Start} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::PopFromExample4)}/>
     </>
 }
 }

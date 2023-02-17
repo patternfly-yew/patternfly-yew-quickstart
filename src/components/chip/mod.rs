@@ -12,7 +12,6 @@ pub fn chip() -> Html {
 
     html! {
         <>
-            <Chip/>
             <ExamplePage title="Chip">
                 {example1}
                 {example2}

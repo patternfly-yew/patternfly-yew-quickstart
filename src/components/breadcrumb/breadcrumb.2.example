@@ -1,0 +1,8 @@
+html!(
+    <Breadcrumb>
+        <BreadcrumbItem href="#">{"Root"}</BreadcrumbItem>
+        <BreadcrumbItem href="#">{"Path"}</BreadcrumbItem>
+        <BreadcrumbItem href="#">{"To"}</BreadcrumbItem>
+        <BreadcrumbItem href="#">{"Some"}</BreadcrumbItem>
+    </Breadcrumb>
+)
