@@ -5,6 +5,7 @@ mod components;
 mod counter;
 mod example;
 mod full;
+mod icons;
 mod index;
 mod layouts;
 

@@ -1,6 +1,7 @@
 use crate::components;
 use crate::counter::*;
 use crate::full;
+use crate::icons::Icons;
 use crate::index::*;
 use crate::layouts;
 use patternfly_yew::*;
@@ -65,6 +66,7 @@ pub enum AppRoute {
     Counter,
     #[default]
     Index,
+    Icons,
 }
 
 #[function_component(Application)]
@@ -133,6 +135,7 @@ fn switch_app_route(target: AppRoute) -> Html {
     match target {
         AppRoute::Counter => html! {<AppPage><Counter/></AppPage>},
         AppRoute::Index => html! {<AppPage><Index/></AppPage>},
+        AppRoute::Icons => html! {<AppPage><Icons/></AppPage>},
 
         AppRoute::FullPageExample(_) => {
             html!(
@@ -185,6 +188,7 @@ fn page(props: &PageProps) -> Html {
                 <NavExpandable title="Basics">
                     <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Icons}>{"Icons"}</NavRouterItem<AppRoute>>
                     <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
                 </NavExpandable>
                 <NavExpandable title="Components">

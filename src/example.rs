@@ -1,7 +1,4 @@
-use patternfly_yew::{
-    Flex, FlexItem, FlexModifier, Level, PageSection, PageSectionSticky, PageSectionVariant, Size,
-    Title, WithBreakpointExt,
-};
+use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
 #[macro_export]
@@ -68,7 +65,10 @@ macro_rules! example2 {
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub title: String,
+    pub title: AttrValue,
+    #[prop_or_default]
+    pub subtitle: Children,
+    #[prop_or_default]
     pub children: Children,
 }
 
@@ -81,7 +81,12 @@ pub fn example_page(props: &Props) -> Html {
                 limit_width=true
                 sticky={[PageSectionSticky::Top]}
             >
-                <Title level={Level::H1} size={Size::XXXXLarge}>{ &props.title }</Title>
+                <Content>
+                    <Title size={Size::XXXXLarge}>
+                        { &props.title }
+                    </Title>
+                    { for props.subtitle.iter() }
+                </Content>
             </PageSection>
             { for props.children.iter().map(|child|{
                 html!{<PageSection>{child}</PageSection>}
