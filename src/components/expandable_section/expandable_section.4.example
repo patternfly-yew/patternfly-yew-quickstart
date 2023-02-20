@@ -1,0 +1,25 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let expanded = use_state_eq(||false);
+
+        let ontoggle = use_callback(|(), expanded| {
+            expanded.set(!**expanded);
+        }, expanded.clone());
+
+        html!(
+            <Stack gutter=true>
+                <StackItem>
+                    <ExpandableSection detached=true expanded={*expanded}>
+                        { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non eros arcu. Duis feugiat nunc at consequat ultricies. Ut congue consequat ipsum ut congue. Maecenas sit amet sodales elit, in lacinia justo. Aliquam blandit ultrices nibh maximus aliquet. Nullam eget neque sit amet tortor pellentesque vestibulum at at massa. Donec porttitor, orci eu auctor condimentum, risus ex luctus nulla, viverra lacinia lacus sem quis libero. Sed et blandit ligula. Curabitur at mattis sapien, at pellentesque ante. " }
+                    </ExpandableSection>
+                </StackItem>
+                <StackItem>
+                    <ExpandableSectionToggle {ontoggle} expanded={*expanded} direction={ExpandableSectionToggleDirection::Up}/>
+                </StackItem>
+            </Stack>
+        )
+    }
+
+    html!(<Example/>)
+}

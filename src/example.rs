@@ -55,6 +55,7 @@ macro_rules! example {
 #[macro_export]
 macro_rules! example2 {
     ($title:expr => $file:expr) => {{
+
         html! {
             <>
                 <$crate::example::Example title={$title} code={include_str!($file)}>{{include!($file)}}</$crate::example::Example>

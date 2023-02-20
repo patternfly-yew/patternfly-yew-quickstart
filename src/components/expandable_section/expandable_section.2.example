@@ -1,0 +1,5 @@
+html!(
+    <ExpandableSection indented=true>
+    { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non eros arcu. Duis feugiat nunc at consequat ultricies. Ut congue consequat ipsum ut congue. Maecenas sit amet sodales elit, in lacinia justo. Aliquam blandit ultrices nibh maximus aliquet. Nullam eget neque sit amet tortor pellentesque vestibulum at at massa. Donec porttitor, orci eu auctor condimentum, risus ex luctus nulla, viverra lacinia lacus sem quis libero. Sed et blandit ligula. Curabitur at mattis sapien, at pellentesque ante. " }
+    </ExpandableSection>
+)

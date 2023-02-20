@@ -19,11 +19,13 @@ pub enum Component {
     Button,
     Clipboard,
     Chip,
+    CodeBlock,
     #[target(rename = "context_selector")]
     ContextSelector,
     Dropdown,
     #[target(rename = "empty")]
     EmptyState,
+    ExpandableSection,
     Form,
     Label,
     Modal,
@@ -94,9 +96,11 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Button => html! {<components::ButtonExample/>},
         Component::Chip => html! {<components::ChipExample/>},
         Component::Clipboard => html! {<components::ClipboardExample/>},
+        Component::CodeBlock => html! {<components::CodeBlockExample/>},
         Component::ContextSelector => html! {<components::ContextSelectorExample/>},
         Component::Dropdown => html! {<components::DropdownExample/>},
         Component::EmptyState => html! {<components::EmptyStateExample/>},
+        Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
         Component::Form => html! {<components::FormExample/>},
         Component::Label => html! {<components::LabelExample/>},
         Component::Modal => html! {<components::ModalExample/>},
@@ -200,9 +204,11 @@ fn page(props: &PageProps) -> Html {
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Chip)}>{"Chip"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
-                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"ContextSelector"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>{"Code Block"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"Context Selector"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
+                    <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form)}>{"Form"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
                     <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>

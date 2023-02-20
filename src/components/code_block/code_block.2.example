@@ -1,0 +1,42 @@
+{
+
+    #[function_component(Example)]
+    fn example() -> Html {
+        let expanded = use_state_eq(||true);
+        let ontoggle = use_callback(|(),expanded|{
+            expanded.set(!**expanded);
+        }, expanded.clone());
+
+        html!(
+            <CodeBlock>
+                <CodeBlockCode>
+                {r#"// This is a comment, and is ignored by the compiler
+// You can test this code by clicking the "Run" button over there ->
+// or if you prefer to use your keyboard, you can use the "Ctrl + Enter" shortcut
+
+// This code is editable, feel free to hack it!
+// You can always return to the original code by clicking the "Reset" button ->
+
+// This is the main function
+fn main() {"#}
+
+        <ExpandableSection detached=true expanded={*expanded}>
+        {r#"  // Statements here are executed when the compiled binary is called
+
+  // Print text to the console
+  println!("Hello World!");
+}"#}
+        </ExpandableSection>
+
+        { r#"}"# }
+                </CodeBlockCode>
+
+                <ExpandableSectionToggle {ontoggle} expanded={*expanded}/>
+
+            </CodeBlock>
+        )
+    }
+
+    html!(<Example/>)
+
+}
