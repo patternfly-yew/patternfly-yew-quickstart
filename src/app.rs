@@ -1,6 +1,7 @@
 use crate::components;
 use crate::counter::*;
 use crate::full;
+use crate::hook::use_open;
 use crate::icons::Icons;
 use crate::index::*;
 use crate::layouts;
@@ -239,12 +240,25 @@ fn page(props: &PageProps) -> Html {
         </PageSidebar>
     };
 
-    let logo = html! {
+    let logo = html! (
         <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
-    };
+    );
+
+    let callback_github = use_open(
+        "https://github.com/ctron/patternfly-yew-quickstart",
+        "_blank",
+    );
+
+    let tools = html!(
+        <Toolbar>
+            <ToolbarItem>
+                <Button icon={Icon::Github} onclick={callback_github}/>
+            </ToolbarItem>
+        </Toolbar>
+    );
 
     html! {
-        <Page {logo} {sidebar}>
+        <Page {logo} {sidebar} {tools}>
             { for props.children.iter() }
         </Page>
     }
