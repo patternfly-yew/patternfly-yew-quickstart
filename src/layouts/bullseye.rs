@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -14,7 +14,7 @@ impl Component for BullseyeExample {
     }
 
     fn view(&self, _: &Context<Self>) -> Html {
-        let example1 = example2! ("Bullseye" => "bullseye.1.example");
+        let example1 = example! ("Bullseye" => "bullseye.1.example");
 
         html! {
             <>

@@ -1,12 +1,12 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
 
 #[function_component(BreadcrumbExample)]
 pub fn breadcrumb() -> Html {
-    let example1 = example2! ("Breadcrumb" => "breadcrumb.1.example");
-    let example2 = example2! ("Breadcrumb (clickable root)" => "breadcrumb.2.example");
+    let example1 = example! ("Breadcrumb" => "breadcrumb.1.example");
+    let example2 = example! ("Breadcrumb (clickable root)" => "breadcrumb.2.example");
 
     html! {
         <>

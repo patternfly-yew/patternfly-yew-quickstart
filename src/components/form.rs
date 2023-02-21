@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -14,7 +14,7 @@ impl Component for FormExample {
     }
 
     fn view(&self, _: &Context<Self>) -> Html {
-        let example = example2! {"Text Input" => "form.1.example" };
+        let example = example! {"Text Input" => "form.1.example" };
 
         html! {
             <>

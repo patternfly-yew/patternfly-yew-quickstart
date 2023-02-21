@@ -1,15 +1,15 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
 
 #[function_component(SelectExample)]
 pub fn select_example() -> Html {
-    let example1 = example2! ("Select" => "select.1.example");
-    let example2 = example2! ("Select (with divider)" => "select.2.example");
-    let example3 = example2! ("Select (with groups)" => "select.3.example");
-    let example4 = example2! ("Select Checkbox (with groups)" => "select.4.example");
-    let example5 = example2! ("Select (multiple)" => "select.5.example");
+    let example1 = example! ("Select" => "select.1.example");
+    let example2 = example! ("Select (with divider)" => "select.2.example");
+    let example3 = example! ("Select (with groups)" => "select.3.example");
+    let example4 = example! ("Select Checkbox (with groups)" => "select.4.example");
+    let example5 = example! ("Select (multiple)" => "select.5.example");
 
     html! {
         <>

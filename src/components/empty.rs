@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -14,8 +14,8 @@ impl Component for EmptyStateExample {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let example1 = example2! ("Empty state" => "empty.1.example");
-        let example2 = example2! ("Empty state (XLarge)" => "empty.2.example");
+        let example1 = example! ("Empty state" => "empty.1.example");
+        let example2 = example! ("Empty state (XLarge)" => "empty.2.example");
 
         html! {
             <>

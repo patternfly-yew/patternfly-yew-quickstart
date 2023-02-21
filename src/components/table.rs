@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -79,11 +79,11 @@ impl Component for TableExample {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let example1 = example2!("Table" => "table.1.example");
-        let example2 = example2!("Compact Table" => "table.2.example");
-        let example3 = example2!("Compact, No Border Table" => "table.3.example");
-        let example4 = example2!("Compact, Expandable Table, Shared Model" => "table.4.example");
-        let example5 = example2!("Compact, Expandable Table, Shared Model" => "table.5.example");
+        let example1 = example!("Table" => "table.1.example");
+        let example2 = example!("Compact Table" => "table.2.example");
+        let example3 = example!("Compact, No Border Table" => "table.3.example");
+        let example4 = example!("Compact, Expandable Table, Shared Model" => "table.4.example");
+        let example5 = example!("Compact, Expandable Table, Shared Model" => "table.5.example");
 
         html! {
             <>

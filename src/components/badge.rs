@@ -1,12 +1,12 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
 
 #[function_component(BadgeExample)]
 pub fn badge_example() -> Html {
-    let example1 = example2! ("Badge" => "badge.1.example");
-    let example2 = example2! ("Badge (Read-only)" => "badge.2.example");
+    let example1 = example! ("Badge" => "badge.1.example");
+    let example2 = example! ("Badge (Read-only)" => "badge.2.example");
 
     html! {
         <>

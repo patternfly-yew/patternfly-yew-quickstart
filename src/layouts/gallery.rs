@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2, layouts::LayoutItem};
+use crate::{example, example::ExamplePage, layouts::LayoutItem};
 use patternfly_yew::*;
 use yew::prelude::*;
 
@@ -13,8 +13,8 @@ impl Component for GalleryExample {
     }
 
     fn view(&self, _: &Context<Self>) -> Html {
-        let example1 = example2!("Gallery" => "gallery.1.example");
-        let example2 = example2!("Gallery (gutter)" => "gallery.2.example");
+        let example1 = example!("Gallery" => "gallery.1.example");
+        let example2 = example!("Gallery (gutter)" => "gallery.2.example");
         html! {
             <>
                 <ExamplePage title="Gallery Layout">

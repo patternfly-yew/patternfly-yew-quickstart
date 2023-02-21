@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 use patternfly_yew::*;
 use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
@@ -28,7 +28,7 @@ impl Component for TabsExample {
     fn view(&self, ctx: &Context<Self>) -> Html {
         log::info!("Route: {:?}", ctx.props().current);
 
-        let examples: Vec<Html> = vec![example2! ("Tabs" => "tabs.1.example")];
+        let examples: Vec<Html> = vec![example! ("Tabs" => "tabs.1.example")];
 
         html! {
             <>

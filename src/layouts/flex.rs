@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2, layouts::LayoutItem};
+use crate::{example, example::ExamplePage, layouts::LayoutItem};
 use patternfly_yew::*;
 use yew::prelude::*;
 
@@ -13,9 +13,9 @@ impl Component for FlexExample {
     }
 
     fn view(&self, _: &Context<Self>) -> Html {
-        let example1 = example2! ("Flex" => "flex.1.example");
-        let example2 = example2! ("Flex (nested and grow)" => "flex.2.example");
-        let example3 = example2! ("Flex (column on lg)" => "flex.3.example");
+        let example1 = example! ("Flex" => "flex.1.example");
+        let example2 = example! ("Flex (nested and grow)" => "flex.2.example");
+        let example3 = example! ("Flex (column on lg)" => "flex.3.example");
 
         html! {
             <>

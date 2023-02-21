@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -7,7 +7,7 @@ use yew::prelude::*;
 pub fn backdrop() -> Html {
     let backdropper = use_backdrop().expect("Requires BackdropViewer in its hierarchy");
 
-    let example1 = example2! ("Backdrop" => "backdrop.1.example");
+    let example1 = example! ("Backdrop" => "backdrop.1.example");
 
     html! {
         <>

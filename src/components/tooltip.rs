@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -14,8 +14,8 @@ impl Component for TooltipExample {
     }
 
     fn view(&self, _: &Context<Self>) -> Html {
-        let example1 = example2! ("Tooltip Popup" => "tooltip.1.example");
-        let example2 = example2! ("Tooltip" => "tooltip.2.example");
+        let example1 = example! ("Tooltip Popup" => "tooltip.1.example");
+        let example2 = example! ("Tooltip" => "tooltip.2.example");
 
         html! {
             <>

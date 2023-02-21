@@ -1,15 +1,18 @@
-use crate::{example::Example, example::ExamplePage};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
 
 #[function_component(PopoverExample)]
 pub fn popover_example() -> Html {
+    let example1 = example! ("Popover Popup" => "popover.1.example");
+    let example2 = example! ("Popover" => "popover.2.example");
+
     html! {
         <>
             <ExamplePage title="Popover">
-                <Example title="Popover Popup" code={include_str!("popover.1.example")}>{include!("popover.1.example")}</Example>
-                <Example title="Popover" code={include_str!("popover.2.example")}>{include!("popover.2.example")}</Example>
+                {example1}
+                {example2}
             </ExamplePage>
         </>
     }

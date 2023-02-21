@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 use patternfly_yew::*;
 use std::time::Duration;
 use yew::prelude::*;
@@ -7,7 +7,7 @@ use yew::prelude::*;
 pub fn toast() -> Html {
     let toaster = use_toaster().expect("Must be nested inside a ToastViewer");
 
-    let example1 = example2!("Toast" => "toast.1.example");
+    let example1 = example!("Toast" => "toast.1.example");
 
     html!(
         <ExamplePage title="Tooltip">

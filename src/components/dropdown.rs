@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -30,9 +30,9 @@ impl Component for DropdownExample {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let example1 = example2! ("Dropdown" => "dropdown.1.example");
-        let example2 = example2! ("Dropdown (Kebab)" => "dropdown.2.example");
-        let example3 = example2! ("Dropdown (User)" => "dropdown.3.example");
+        let example1 = example! ("Dropdown" => "dropdown.1.example");
+        let example2 = example! ("Dropdown (Kebab)" => "dropdown.2.example");
+        let example3 = example! ("Dropdown (User)" => "dropdown.3.example");
 
         html! {
             <>

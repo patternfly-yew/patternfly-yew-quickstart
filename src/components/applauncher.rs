@@ -1,4 +1,4 @@
-use crate::{example::ExamplePage, example2};
+use crate::{example, example::ExamplePage};
 
 use patternfly_yew::*;
 use yew::prelude::*;
@@ -19,7 +19,7 @@ pub fn app_launcher_example() -> Html {
         }
     };
 
-    let example1 = example2! ("AppLauncher" => "applauncher.1.example");
+    let example1 = example! ("AppLauncher" => "applauncher.1.example");
 
     html! {
         <>
