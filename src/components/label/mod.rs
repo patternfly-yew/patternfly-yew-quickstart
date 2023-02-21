@@ -8,7 +8,7 @@ use strum::IntoEnumIterator;
 #[function_component(LabelExample)]
 pub fn label_example() -> Html {
     let example1 = example!("Label" => "label.1.example");
-    let example2 = example!("Label" => "label.2.example");
+    let example2 = example!("Label (outline)" => "label.2.example");
 
     html! (
         <>

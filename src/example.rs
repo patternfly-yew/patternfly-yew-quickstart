@@ -63,52 +63,44 @@ pub struct ExampleProps {
     pub code: String,
 }
 
-pub struct Example {}
+#[function_component(Example)]
+pub fn example(props: &ExampleProps) -> Html {
+    html!(
+        <Flex modifiers={[FlexModifier::Column]}>
 
-impl Component for Example {
-    type Message = ();
-    type Properties = ExampleProps;
+            <FlexItem>
+                <Title level={Level::H2} size={Size::XXLarge}>
+                    { &props.title }
+                </Title>
+            </FlexItem>
 
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
-    }
+            <Flex>
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        html! {
-            <>
-                <Flex modifiers={[FlexModifier::Column.all()]}>
+                <FlexItem modifiers={[FlexModifier::Flex1]}>
+                    <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
+                    <Panel>
+                        <PanelMain>
+                            { for props.children.iter() }
+                        </PanelMain>
+                    </Panel>
+                </FlexItem>
 
-                    <FlexItem>
-                        <Title level={Level::H2} size={Size::XXLarge}>
-                            { &ctx.props().title }
-                        </Title>
-                    </FlexItem>
+                <FlexItem modifiers={[FlexModifier::Flex1]}>
+                    <Title level={Level::H3} size={Size::Large}>{"Code"}</Title>
 
-                    <Flex modifiers={[FlexModifier::Column.all()]}>
-
-                        <FlexItem>
-                            <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
-                            { for ctx.props().children.iter() }
-                        </FlexItem>
-
-                        <FlexItem>
-                            <Title level={Level::H3} size={Size::Large}>{"Code"}</Title>
-
-                            <div class="pf-c-code-editor">
-                                <div class="pf-c-code-editor__main">
-                                    <div class="pf-c-code-editor__code">
-                                        <pre class="pf-c-code-editor__code-pre">
-                                            {&ctx.props().code}
-                                        </pre>
-                                    </div>
-                                </div>
+                    <div class="pf-c-code-editor">
+                        <div class="pf-c-code-editor__main">
+                            <div class="pf-c-code-editor__code">
+                                <pre class="pf-c-code-editor__code-pre">
+                                    {&props.code}
+                                </pre>
                             </div>
+                        </div>
+                    </div>
 
-                        </FlexItem>
-                    </Flex>
+                </FlexItem>
+            </Flex>
 
-                </Flex>
-            </>
-        }
-    }
+        </Flex>
+    )
 }

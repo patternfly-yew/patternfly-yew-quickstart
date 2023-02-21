@@ -608,7 +608,7 @@ checksum = "86f0b0d4bf799edbc74508c1e8bf170ff5f41238e5f8225603ca7caaae2b7860"
 [[package]]
 name = "patternfly-yew"
 version = "0.4.0-alpha.1"
-source = "git+https://github.com/ctron/patternfly-yew?rev=bc6e783983174863ade3ccacd13e7ed7d9af2652#bc6e783983174863ade3ccacd13e7ed7d9af2652"
+source = "git+https://github.com/ctron/patternfly-yew?rev=215426919d7fe82d58c7f9e7337a772dff041adc#215426919d7fe82d58c7f9e7337a772dff041adc"
 dependencies = [
  "chrono",
  "gloo-events",
