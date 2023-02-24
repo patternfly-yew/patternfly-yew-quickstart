@@ -8,14 +8,14 @@
 
     html! {
         <>
-            <Button variant={Variant::Primary} label="Toast" onclick={{
+            <Button variant={ButtonVariant::Primary} label="Toast" onclick={{
                 let toaster = toaster.clone();
                 Callback::from(move |_|{
                     toaster.toast("A toast".into());
                 })
             }} />
 
-            <Button variant={Variant::Secondary} label="Toast (5s)" onclick={{
+            <Button variant={ButtonVariant::Secondary} label="Toast (5s)" onclick={{
                 let toaster = toaster.clone();
                 Callback::from(move |_|{
                     toaster.toast(Toast{
@@ -26,7 +26,7 @@
                 })
             }} />
 
-            <Button variant={Variant::Danger} label="Toast (with children)" onclick={Callback::from(move |_|{
+            <Button variant={ButtonVariant::Danger} label="Toast (with children)" onclick={Callback::from(move |_|{
                 toaster.toast(Toast{
                     title: "A toast that will disappear in 5 seconds".into(),
                     timeout: Some(Duration::from_secs(5)),

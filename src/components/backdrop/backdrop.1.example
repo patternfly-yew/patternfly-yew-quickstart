@@ -1,7 +1,7 @@
 html!{
     <Button
         label="Try"
-        variant={Variant::Primary}
+        variant={ButtonVariant::Primary}
         onclick={move |_| backdropper.open(Backdrop {
             content: html!{
                 <Bullseye>

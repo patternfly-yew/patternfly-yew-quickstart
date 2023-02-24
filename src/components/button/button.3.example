@@ -3,7 +3,7 @@
     #[derive(Clone, Debug, PartialEq, Eq, yew::Properties)]
     struct Props {
         #[prop_or_default]
-        variant: Variant,
+        variant: ButtonVariant,
         active: String,
         inactive: String,
     }
@@ -33,11 +33,11 @@
 
     html!{
         <>
-            <ProgressButton variant={Variant::Primary} active="Pause loading logs" inactive="Resume loading logs" />
+            <ProgressButton variant={ButtonVariant::Primary} active="Pause loading logs" inactive="Resume loading logs" />
             {" "}
-            <ProgressButton variant={Variant::Secondary} active="Click to stop loading" inactive="Click to start loading" />
+            <ProgressButton variant={ButtonVariant::Secondary} active="Click to stop loading" inactive="Click to start loading" />
             {" "}
-            <ProgressButton variant={Variant::Warning} active="Click to stop loading" inactive="Click to start loading" />
+            <ProgressButton variant={ButtonVariant::Warning} active="Click to stop loading" inactive="Click to start loading" />
             {" "}
             <ProgressButton active="Click to stop loading" inactive="Click to start loading" />
         </>

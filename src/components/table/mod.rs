@@ -14,24 +14,26 @@ pub struct ExampleEntry {
     pub foo: String,
 }
 
-impl TableRenderer for ExampleEntry {
-    fn render(&self, column: ColumnIndex) -> Html {
-        match column.index {
-            0 => html! {{&self.foo}},
-            1 => html! {{&self.foo.len()}},
-            3 => html! {
+impl TableEntryRenderer for ExampleEntry {
+    fn render_cell(&self, ctx: &CellContext) -> Cell {
+        match ctx.column {
+            0 => html!({ &self.foo }),
+            1 => html!({ &self.foo.len() }),
+            // this is a column which can't be seen
+            3 => html! (
                 <a href="#">{"Link"}</a>
-            },
-            _ => html! {},
+            ),
+            _ => html!(),
         }
+        .into()
     }
 
     fn render_details(&self) -> Vec<Span> {
-        vec![Span::max(html! {
+        vec![Span::max(html! (
             <>
                 { "So many details for " }{ &self.foo }
             </>
-        })]
+        ))]
     }
 }
 
@@ -84,6 +86,9 @@ impl Component for TableExample {
         let example3 = example!("Compact, No Border Table" => "table.3.example");
         let example4 = example!("Compact, Expandable Table, Shared Model" => "table.4.example");
         let example5 = example!("Compact, Expandable Table, Shared Model" => "table.5.example");
+        let example6 = example!("Table (centered)" => "table.6.example");
+        let example7 = example!("Table (grid)" => "table.7.example");
+        let example8 = example!("Table (widths)" => "table.8.example");
 
         html! {
             <>
@@ -93,6 +98,9 @@ impl Component for TableExample {
                     {example3}
                     {example4}
                     {example5}
+                    {example6}
+                    {example7}
+                    {example8}
                 </ExamplePage>
             </>
         }

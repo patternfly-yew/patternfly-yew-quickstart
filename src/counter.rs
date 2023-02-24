@@ -46,7 +46,7 @@ impl Component for Counter {
                         </Card>
                     </Gallery>
                     <Form>
-                        <Button label="Add One" align={Align::Start} icon={Icon::PlusCircle} variant={Variant::Link} onclick={ctx.link().callback(|_| Msg::AddOne)}/>
+                        <Button label="Add One" align={Align::Start} icon={Icon::PlusCircle} variant={ButtonVariant::Link} onclick={ctx.link().callback(|_| Msg::AddOne)}/>
                     </Form>
                 </ExamplePage>
             </>

@@ -6,18 +6,19 @@ use yew::prelude::*;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct IconDescriptor(Icon);
 
-impl TableRenderer for IconDescriptor {
-    fn render(&self, column: ColumnIndex) -> Html {
-        match column.index {
-            0 => html!(self.0.as_html()),
+impl TableEntryRenderer for IconDescriptor {
+    fn render_cell(&self, context: &CellContext) -> Cell {
+        match context.column {
+            0 => self.0.as_html(),
             1 => html!(<code>{self.0.as_ref()}</code>),
-            2 => html!(self
+            2 => self
                 .0
                 .get_documentation()
                 .map(Html::from)
-                .unwrap_or_default()),
+                .unwrap_or_default(),
             _ => html!(),
         }
+        .into()
     }
 }
 
@@ -26,7 +27,7 @@ pub fn icons() -> Html {
     let subtitle = html!(
         <div>
             <p>{"Sprinkle some icons into you application to make it look nice."}
-            <Button variant={Variant::Link} label="PatternFly - Icons" icon={Icon::ExternalLinkAlt} align={Align::End} />
+            <Button variant={ButtonVariant::Link} label="PatternFly - Icons" icon={Icon::ExternalLinkAlt} align={Align::End} />
             </p>
         </div>
     );

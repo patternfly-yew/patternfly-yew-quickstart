@@ -1,0 +1,15 @@
+html!{
+    <>
+        <Button variant={ButtonVariant::None}>{ "Default / None" }</Button>{" "}
+        <Button variant={ButtonVariant::Primary}>{ "Primary" }</Button>{" "}
+        <Button variant={ButtonVariant::Secondary}>{ "Secondary" }</Button>{" "}
+        <Button variant={ButtonVariant::Tertiary}>{ "Tertiary" }</Button>{" "}
+        <Button variant={ButtonVariant::Warning}>{ "Warning" }</Button>{" "}
+        <Button variant={ButtonVariant::Danger}>{ "Danger" }</Button>{" "}
+        <Button variant={ButtonVariant::DangerSecondary}>{ "DangerSecondary" }</Button>{" "}
+        <Button variant={ButtonVariant::Link}>{ "Link" }</Button>{" "}
+        <Button variant={ButtonVariant::InlineLink}>{ "InlineLink" }</Button>{" "}
+        <Button variant={ButtonVariant::Control}>{ "Control" }</Button>{" "}
+        <Button variant={ButtonVariant::Plain}>{ "Plain" }</Button>
+    </>
+}

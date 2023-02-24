@@ -21,10 +21,10 @@ impl Component for FormExample {
                 <ExamplePage title="Form">
                     <Form>
                         <FormGroup label="Test">
-                            <Button label="Click me" variant={Variant::Primary}/>
+                            <Button label="Click me" variant={ButtonVariant::Primary}/>
                         </FormGroup>
                         <FormGroup label="Test" required=true helper_text={Some("Some help for you.".into())}>
-                            <Button label="Click me too" variant={Variant::Secondary}/>
+                            <Button label="Click me too" variant={ButtonVariant::Secondary}/>
                         </FormGroup>
                     </Form>
 

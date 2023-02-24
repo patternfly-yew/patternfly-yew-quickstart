@@ -21,5 +21,5 @@ yew-nested-router = "0.2"
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "e012d37698eeaaed138653f4c486124180e0a810" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "62bef19d36d1621710c1d5cfa1cbdc9e6c3af301" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }

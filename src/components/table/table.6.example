@@ -1,0 +1,43 @@
+{
+
+    #[derive(PartialEq)]
+    pub struct Centered(pub ExampleEntry);
+
+    impl TableEntryRenderer for Centered {
+        fn render_cell(&self, context: &CellContext) -> Cell {
+            let mut cell = self.0.render_cell(context);
+
+            if context.column == 0 {
+                cell.center = true;
+            }
+
+            cell
+        }
+    }
+
+    let entries = vec![
+        ExampleEntry { foo: "bar".into() },
+        ExampleEntry {
+            foo: "Much, much longer foo".into(),
+        },
+    ];
+    let entries: Vec<_> = entries.into_iter()
+        .map(Centered)
+        .collect();
+    let model = SharedTableModel::from(entries);
+
+    let header = html_nested! {
+        <TableHeader>
+            <TableColumn label="foo (centered)" center=true/> // center the header
+            <TableColumn label="bar"/>
+            <TableColumn label="baz"/>
+        </TableHeader>
+    };
+
+    html!(
+        <Table<SharedTableModel<Centered>>
+            header={header}
+            entries={model}
+        />
+    )
+}
