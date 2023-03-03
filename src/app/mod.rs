@@ -10,6 +10,8 @@ use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
 use yew_nested_router::Target;
 
+mod about;
+
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum Component {
     Alert,
@@ -249,17 +251,33 @@ fn page(props: &PageProps) -> Html {
         "_blank",
     );
 
+    let backdropper = use_backdrop();
+
+    let onabout = Callback::from(move |_| {
+        if let Some(backdropper) = &backdropper {
+            backdropper.open(html!(<about::About/>));
+        }
+    });
+
     let tools = html!(
         <Toolbar>
             <ToolbarItem>
                 <Button icon={Icon::Github} onclick={callback_github}/>
             </ToolbarItem>
+            <ToolbarItem>
+                <AppLauncher
+                    position={Position::Right}
+                    toggle={Icon::QuestionCircle}
+                >
+                    <AppLauncherItem onclick={onabout}>{ "About" }</AppLauncherItem>
+                </AppLauncher>
+            </ToolbarItem>
         </Toolbar>
     );
 
-    html! {
+    html! (
         <Page {logo} {sidebar} {tools}>
             { for props.children.iter() }
         </Page>
-    }
+    )
 }
