@@ -1,5 +1,5 @@
 use crate::{example, example::ExamplePage, layouts::LayoutItem};
-use patternfly_yew::*;
+use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
 pub struct GalleryExample {}

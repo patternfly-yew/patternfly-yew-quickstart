@@ -5,7 +5,7 @@ use crate::hook::use_open;
 use crate::icons::Icons;
 use crate::index::*;
 use crate::layouts;
-use patternfly_yew::*;
+use patternfly_yew::prelude::*;
 use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
 use yew_nested_router::Target;
@@ -243,7 +243,7 @@ fn page(props: &PageProps) -> Html {
     };
 
     let logo = html! (
-        <Logo src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+        <Brand src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
     );
 
     let callback_github = use_open(
