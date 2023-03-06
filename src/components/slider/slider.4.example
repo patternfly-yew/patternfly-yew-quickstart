@@ -1,0 +1,34 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let msg = use_state(|| String::new());
+
+        let onchange = {
+            let msg = msg.clone();
+            Callback::from(move |value: f64| msg.set(format!("{value:.2}")))
+        };
+
+        html!(
+            <>
+                <div>
+                    <strong>{ "Value: " }</strong> { (*msg).clone() }
+                </div>
+                <Slider
+                    min={(0f64, "Zero")}
+                    max={(100f64, "All In")}
+                    ticks={vec![
+                        (25f64, "Quarter").into(),
+                        (100f64/3.0, "One third").into(),
+                        (50f64, "Half").into(),
+                        (100f64/3.0*2.0, "Two thirds").into(),
+                        (75f64, "Three fourth").into(),
+                    ]}
+                    snap_mode={SnapMode::Nearest}
+                    {onchange}
+                />
+            </>
+        )
+    }
+
+    html!(<Example/>)
+}
