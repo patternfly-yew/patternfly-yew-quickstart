@@ -1,3 +1,23 @@
-html!(
-    <Slider min={(0f64, "0%")} max={(1f64, "100%")} />
-)
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let msg = use_state(|| String::new());
+
+        let onchange = {
+            let msg = msg.clone();
+            Callback::from(move |value: f64| msg.set(format!("{:.2} %", value * 100f64)))
+        };
+
+        html!(
+            <>
+                <div>
+                    <strong>{ "Value: " }</strong> { (*msg).clone() }
+                </div>
+                <Slider min={(0f64, "0%")} max={(1f64, "100%")} {onchange}/>
+            </>
+        )
+
+    }
+
+    html!(<Example/>)
+}
