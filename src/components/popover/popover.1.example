@@ -1,13 +1,12 @@
 {
-let header = html!{{"Popover Title"}};
-let footer = html!{"Some footer content."};
-
-html!{
-    <PopoverPopup orientation={Orientation::Left}
-        header={header}
-        footer={footer}
+    let body = html_nested!(
+        <PopoverBody
+            header={html!("Popover Title")}
+            footer={html!("Some footer content.")}
         >
-        {"This is just an example popover."}
-    </PopoverPopup>
-}
+            {"This is just an example popover."}
+        </PopoverBody>
+    );
+
+    html!( <PopoverPopup orientation={Orientation::Left} {body}/> )
 }

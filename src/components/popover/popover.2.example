@@ -1,21 +1,19 @@
 {
-let header = html!{{"Popover Title"}};
-let footer = html!{"Some footer content."};
-let target = html!{
-     <span
-         style="border: 1px solid black;">
-         {"I have a popover. Click me."}
-     </span>
-};
+    let target = html!{
+         <span
+             style="border: 1px solid black;">
+             {"I have a popover. Click me."}
+         </span>
+    };
 
-html!{
-    <Popover
-        toggle_by_onclick=true
-        header={header}
-        footer={footer}
-        target={target}
+    let body = html_nested!(
+        <PopoverBody
+            header={html!("Popover Title")}
+            footer={html!("Some footer content.")}
         >
-        {"This is just an example popover."}
-    </Popover>
-}
+            {"This is just an example popover."}
+        </PopoverBody>
+    );
+
+    html!( <Popover toggle_by_onclick=true {target} {body} /> )
 }
