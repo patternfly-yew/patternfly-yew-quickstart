@@ -9,7 +9,7 @@ pub fn tree_example() -> Html {
 
     html! (
         <>
-            <ExamplePage title="Tree Table">
+            <ExamplePage title="Tree Table" experimental=true>
                 {example1}
             </ExamplePage>
         </>
