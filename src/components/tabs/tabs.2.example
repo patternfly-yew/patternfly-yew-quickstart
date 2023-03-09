@@ -1,0 +1,17 @@
+{
+html!{
+    <>
+        <Tabs>
+            <Tab label="Foo">
+                {"Foo"}
+            </Tab>
+            <Tab label="Bar">
+                {"Bar"}
+            </Tab>
+            <Tab label="Baz">
+                {"Baz"}
+            </Tab>
+        </Tabs>
+    </>
+}
+}

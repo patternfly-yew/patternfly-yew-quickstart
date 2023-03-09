@@ -1,0 +1,27 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let selected = use_state_eq(|| 0);
+        let onselect = {
+            let selected = selected.clone();
+            Callback::from(move |index|{
+                selected.set(index);
+            })
+        };
+
+        html!(
+            <>
+                <Tabs detached=true {onselect}>
+                    <Tab label="Foo"/>
+                    <Tab label="Bar"/>
+                    <Tab label="Baz"/>
+                </Tabs>
+                <section hidden={(*selected) != 0}>{ "Foo" }</section>
+                <section hidden={(*selected) != 1}>{ "Bar" }</section>
+                <section hidden={(*selected) != 2}>{ "Baz" }</section>
+            </>
+        )
+    }
+
+    html!(<Example/>)
+}

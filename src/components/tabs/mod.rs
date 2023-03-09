@@ -28,18 +28,18 @@ impl Component for TabsExample {
     fn view(&self, ctx: &Context<Self>) -> Html {
         log::info!("Route: {:?}", ctx.props().current);
 
-        let examples: Vec<Html> = vec![example! ("Tabs" => "tabs.1.example")];
+        let example1 = example! ("Tabs (Router)" => "tabs.1.example");
+        let example2 = example! ("Tabs (Simple)" => "tabs.2.example");
+        let example3 = example! ("Tabs (Simple, detached)" => "tabs.3.example");
 
         html! {
-            <>
-                <Scope<crate::app::Component, TabRoutes> mapper={crate::app::Component::mapper_tabs}>
-                    <ExamplePage title="Tabs">
-                        <PageSection variant={PageSectionVariant::Light} limit_width=true>
-                            { for examples }
-                        </PageSection>
-                    </ExamplePage>
-                </Scope<crate::app::Component, TabRoutes>>
-            </>
+            <Scope<crate::app::Component, TabRoutes> mapper={crate::app::Component::mapper_tabs}>
+                <ExamplePage title="Tabs">
+                    {example1}
+                    {example2}
+                    {example3}
+                </ExamplePage>
+            </Scope<crate::app::Component, TabRoutes>>
         }
     }
 }
