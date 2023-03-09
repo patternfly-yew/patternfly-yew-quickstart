@@ -53,7 +53,8 @@ pub fn example_page(props: &Props) -> Html {
             </PageSection>
 
             <PageSection>
-                <Alert inline=true title="Experimental feature" r#type={AlertType::Info}>
+                if props.experimental {
+                    <Alert inline=true title="Experimental feature" r#type={AlertType::Info}>
                         { Html::from_html_unchecked(r#"
 <p>
 This functionality is considered experimental. This means that the whole idea of it might be
@@ -66,7 +67,8 @@ features, enable the <code>experimental</code> feature. Individual experimental 
 be enabled using individual features. See the Rust docmentation for more details on which features
 exist.
 </p>"#.into()) }
-                </Alert>
+                    </Alert>
+                }
             </PageSection>
 
             { for props.children.iter().map(|child|{
