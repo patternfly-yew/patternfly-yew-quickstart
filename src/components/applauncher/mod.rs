@@ -11,7 +11,7 @@ pub fn app_launcher_example() -> Html {
         if let Some(toaster) = &toaster {
             toaster.toast(Toast {
                 title: message.into(),
-                r#type: Type::Success,
+                r#type: AlertType::Success,
                 ..Default::default()
             });
         } else {

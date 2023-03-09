@@ -30,7 +30,7 @@
                 toaster.toast(Toast{
                     title: "A toast that will disappear in 5 seconds".into(),
                     timeout: Some(Duration::from_secs(5)),
-                    r#type: Type::Danger,
+                    r#type: AlertType::Danger,
                     body: html!{
                         <p>{"Some explanation of what went wrong..."}</p>
                     },
