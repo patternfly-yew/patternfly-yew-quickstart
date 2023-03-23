@@ -12,23 +12,20 @@ pub fn counter() -> Html {
         Callback::from(move |_| counter.set(*counter + 1))
     };
 
-    let title = html! {<>
-        {"Clicks"}
-    </>};
+    let title = html!("Clicks");
 
     html! (
         <ExamplePage title="Counting clicks">
             <Gallery gutter=true>
-                <Card
-                    selection={CardSelection::Selectable {selected: true}}
-                    title={title}
-                    >
+                <Card {title}>
                     <p>{ *counter }</p>
+                    <Button label="Add One"
+                        align={Align::Start} icon={Icon::PlusCircle}
+                        variant={ButtonVariant::Link}
+                        {onclick}
+                    />
                 </Card>
             </Gallery>
-            <Form>
-                <Button label="Add One" align={Align::Start} icon={Icon::PlusCircle} variant={ButtonVariant::Link} {onclick}/>
-            </Form>
         </ExamplePage>
     )
 }
