@@ -12,7 +12,7 @@ repository = "https://github.com/ctron/patternfly-yew-quickstart"
 chrono = { version = "0.4", features = ["wasmbind"] }
 gloo-utils = "0.1"
 log = "0.4"
-patternfly-yew = { version = "0.4.0-alpha.3", features = ["icons-fab", "tree"] }
+patternfly-yew = { version = "0.4.0-rc", features = ["icons-fab", "tree"] }
 strum = "0.24"
 wasm-bindgen = "0.2"
 wasm-logger = "0.2"
@@ -21,5 +21,5 @@ yew-nested-router = "0.2"
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "90ddfd7ae07aea2457528449bcaa088b17d245f8" } # FIXME: awaiting release
+#patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "90ddfd7ae07aea2457528449bcaa088b17d245f8" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
