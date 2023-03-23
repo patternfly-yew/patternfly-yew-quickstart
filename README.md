@@ -8,11 +8,15 @@ Here you can see this page in action: https://ctron.github.io/patternfly-yew-qui
 
 * Rust
 
-      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```shell
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```
 
 * Trunk
 
-      cargo install trunk
+  ```shell
+  cargo install trunk
+  ```
 
 * NodeJS `npm`
 
@@ -20,13 +24,17 @@ Here you can see this page in action: https://ctron.github.io/patternfly-yew-qui
 
 Fetch the PatternFly dependencies:
 
-    npm install
+```shell
+npm ci
+```
 
 ## Run local developer setup
 
 Start a local development server, which re-builds every time you make changes to the code:
 
-    trunk serve
+```shell
+trunk serve
+```
 
 Direct your web browser to: http://localhost:8080
 
@@ -34,6 +42,8 @@ Direct your web browser to: http://localhost:8080
 
 To build the Rust components and package up the page, run:
 
-    trunk build
+```shell
+trunk build --release
+```
 
 The release is in the `dist/` folder.
