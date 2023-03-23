@@ -7,7 +7,7 @@ html!{
         toggle={toggle}
     >
         <DropdownItem>{"Foo"}</DropdownItem>
-        <Divider/>
+        <ListDivider/>
         <DropdownItem>{"Bar"}</DropdownItem>
     </Dropdown>
 }

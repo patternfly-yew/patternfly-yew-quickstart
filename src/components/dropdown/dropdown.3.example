@@ -16,7 +16,7 @@ html!{
             </DropdownItemText>
             <DropdownItemText>{"Foo"}</DropdownItemText>
         </DropdownItemGroup>
-        <Divider/>
+        <ListDivider/>
         <DropdownItemGroup>
             <DropdownItem>{"Bar"}</DropdownItem>
             <DropdownItem>{"Foo"}</DropdownItem>

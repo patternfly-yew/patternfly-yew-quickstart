@@ -6,9 +6,9 @@ html!{
         toggle={toggle}
     >
         <DropdownItem onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Foo".into()))}>{"Foo"}</DropdownItem>
-        <Divider/>
+        <ListDivider/>
         <DropdownItem onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Bar".into()))}>{"Bar"}</DropdownItem>
-        <Divider/>
+        <ListDivider/>
         <DropdownItem href="https://patternfly.org" target="_blank">{"PatternFly"}</DropdownItem>
     </Dropdown>
 }
