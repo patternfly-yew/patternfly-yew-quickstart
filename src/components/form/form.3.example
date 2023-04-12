@@ -1,23 +1,31 @@
 html!(
     <Form>
-        <FormGroupValidated<TextInput>
-            label="Some text"
-            required=true
-            validator={Validator::from(|ctx: ValidationContext<String>| {
-                if ctx.value.is_empty() {
-                    ValidationResult::error("Must not be empty")
-                } else if ctx.value.contains("foo") {
-                    ValidationResult::warning("Should not contain 'foo'")
-                } else if ctx.value == "Nur ein Wort" {
-                    ValidationResult::new(InputState::Success, "Congratulations, you found the magic value!")
-                } else {
-                    ValidationResult::default()
-                }
-            })}
-        >
-            <TextInput
-                placeholder="Enter some text"
-            />
-        </FormGroupValidated<TextInput>>
+        <FormGroup label="Normal">
+            <TextInput/>
+        </FormGroup>
+        <FormGroup label="Success">
+            <TextInput state={InputState::Success}/>
+        </FormGroup>
+        <FormGroup label="Warning">
+            <TextInput state={InputState::Warning}/>
+        </FormGroup>
+        <FormGroup label="Error">
+            <TextInput state={InputState::Error}/>
+        </FormGroup>
+        <FormGroup label="Read Only">
+            <TextInput readonly=true/>
+        </FormGroup>
+        <FormGroup label="Disabled">
+            <TextInput disabled=true/>
+        </FormGroup>
+        <FormGroup label="Search">
+            <TextInput icon={TextInputIcon::Search}/>
+        </FormGroup>
+        <FormGroup label="Calendar">
+            <TextInput icon={TextInputIcon::Calendar}/>
+        </FormGroup>
+        <FormGroup label="Clock">
+            <TextInput icon={TextInputIcon::Clock}/>
+        </FormGroup>
     </Form>
 )

@@ -1,0 +1,40 @@
+{
+    #[function_component(Example)]
+    pub fn example() -> Html {
+        let value = use_state_eq(String::default);
+        let oninput = {
+            let value = value.clone();
+            Callback::from(move |data| value.set(data))
+        };
+
+        html!(
+            <Form>
+                <FormGroupValidated<TextInput>
+                    label="Some text"
+                    required=true
+                    validator={Validator::from(|ctx: ValidationContext<String>| {
+                        if ctx.initial {
+                            ValidationResult::default()
+                        } else if ctx.value.is_empty() {
+                            ValidationResult::error("Must not be empty")
+                        } else if ctx.value.contains("foo") {
+                            ValidationResult::warning("Should not contain 'foo'")
+                        } else if ctx.value == "Nur ein Wort" {
+                            ValidationResult::new(InputState::Success, "Congratulations, you found the magic value!")
+                        } else {
+                            ValidationResult::default()
+                        }
+                    })}
+                >
+                    <TextInput
+                        value={(*value).clone()}
+                        {oninput}
+                        placeholder="Enter some text"
+                    />
+                </FormGroupValidated<TextInput>>
+            </Form>
+        )
+    }
+
+    html!(<Example/>)
+}
