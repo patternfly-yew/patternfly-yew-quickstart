@@ -23,3 +23,10 @@ yew-nested-router = "0.2"
 #patternfly-yew = { path = "../patternfly-yew" }
 #patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "45bbff65c5afdc5429b610f49a68056fcb633832" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
+
+# release profile settings to reduce the final binary size
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = 's'
+lto = true
