@@ -13,16 +13,29 @@ chrono = { version = "0.4", features = ["wasmbind"] }
 gloo-utils = "0.1"
 log = "0.4"
 patternfly-yew = { version = "0.4.1", features = ["icons-fab", "tree"] }
+serde_json = "1"
 strum = "0.24"
 wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
 wasm-logger = "0.2"
 yew = { version = "0.20", features = ["csr"] }
+yew-hooks = "0.2"
+yew-more-hooks = { version = "0.1.2", features = ["yew-hooks"] }
 yew-nested-router = "0.2"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "HtmlElement",
+    "HtmlInputElement"
+]
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "d0eae4afdc6d96322727d77f9c042c92b16de89d" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "3bfd4f657318ebbb8e1f5ace1dbcba55f3780cd9" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
+yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
+#yew-more-hooks = { path = "../yew-more-hooks" }
 
 # release profile settings to reduce the final binary size
 [profile.release]

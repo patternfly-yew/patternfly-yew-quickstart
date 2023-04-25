@@ -29,6 +29,7 @@ pub enum Component {
     #[target(rename = "empty")]
     EmptyState,
     ExpandableSection,
+    FileUpload,
     Form,
     Label,
     Modal,
@@ -105,6 +106,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Dropdown => html! {<components::DropdownExample/>},
         Component::EmptyState => html! {<components::EmptyStateExample/>},
         Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
+        Component::FileUpload => html! {<components::FileUploadExample/>},
         Component::Form => html! {<components::FormExample/>},
         Component::Label => html! {<components::LabelExample/>},
         Component::Modal => html! {<components::ModalExample/>},
@@ -215,6 +217,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>{"File Upload"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form)}>{"Form"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
