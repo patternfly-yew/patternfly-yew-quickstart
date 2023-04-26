@@ -51,7 +51,6 @@ jobs:
       - name: Build page
         env:
           BUILD_COMMIT: ${{ github.sha }}
-          BUILD_TIMESTAMP: ${{ }}
         run: cd main && trunk build --public-url /patternfly-yew-quickstart
 
       - name: Checkout current pages
