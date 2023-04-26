@@ -45,7 +45,13 @@ jobs:
       - name: Install dependencies
         run: cd main && npm install
 
+      - name: Set build timestamp
+        run: echo "BUILD_TIMESTAMP=$(date --rfc-3339=seconds --utc)" >> $GITHUB_ENV
+
       - name: Build page
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          BUILD_TIMESTAMP: ${{ }}
         run: cd main && trunk build --public-url /patternfly-yew-quickstart
 
       - name: Checkout current pages

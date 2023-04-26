@@ -22,6 +22,14 @@ pub fn about() -> Html {
                         <dd>{ env!("CARGO_PKG_VERSION") }</dd>
                         <dt>{ "License" }</dt>
                         <dd>{ env!("CARGO_PKG_LICENSE") }</dd>
+                        if let Some(value) = option_env!("BUILD_COMMIT") {
+                            <dt>{ "Build commit" }</dt>
+                            <dd>{ value }</dd>
+                        }
+                        if let Some(value) = option_env!("BUILD_TIMESTAMP") {
+                            <dt>{ "Build timestamp" }</dt>
+                            <dd>{ value }</dd>
+                        }
                     </dl>
                 </Content>
             </patternfly_yew::prelude::About>
