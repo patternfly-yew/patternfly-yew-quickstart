@@ -9,7 +9,7 @@
             })
         };
 
-        html!(
+        html! (
             <>
                 <Tabs detached=true {onselect}>
                     <Tab label="Foo"/>
