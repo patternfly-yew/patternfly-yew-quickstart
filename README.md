@@ -38,6 +38,12 @@ trunk serve
 
 Direct your web browser to: http://localhost:8080
 
+You can also start on a different port:
+
+```shell
+trunk serve --port 8010
+```
+
 ## Perform a release build
 
 To build the Rust components and package up the page, run:
