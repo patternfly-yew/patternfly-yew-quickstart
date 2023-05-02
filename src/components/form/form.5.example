@@ -1,0 +1,84 @@
+{
+    #[derive(Clone, PartialEq)]
+    enum ExampleOptions {
+        Foo,
+        Bar,
+        Baz,
+    }
+
+    impl std::fmt::Display for ExampleOptions {
+        fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+            match self {
+                Self::Foo => write!(f, "Foo"),
+                Self::Bar => write!(f, "Bar"),
+                Self::Baz => write!(f, "Baz"),
+            }
+        }
+    }
+
+    impl std::str::FromStr for ExampleOptions {
+        type Err = ();
+
+        fn from_str(value: &str) -> Result<Self, Self::Err> {
+            Ok(match value {
+                "Foo" => Self::Foo,
+                "Bar" => Self::Bar,
+                "Baz" => Self::Baz,
+                _ => return Err(()),
+            })
+        }
+    }
+
+    #[function_component(Example)]
+    fn example() -> Html {
+
+        let value = use_state_eq(|| None);
+
+        let onchange = {
+            let value = value.clone();
+            Callback::from(move |data|{
+                value.set(data);
+            })
+        };
+
+        let onreset = {
+            let value = value.clone();
+            Callback::from(move |_|{
+                value.set(None);
+            })
+        };
+
+        html!(
+            <Form>
+                <FormGroup
+                    label="Some select value"
+                    required=true
+                    label_icon={LabelIcon::Help(html_nested!(<PopoverBody>{ "Just a test. And here is some help." } </PopoverBody>))}
+                >
+                    <FormSelect<ExampleOptions>
+                        placeholder="Choose an option"
+                        value={(*value).clone()}
+                        {onchange}
+                    >
+                        <FormSelectOption<ExampleOptions> value={ExampleOptions::Foo} />
+                        <FormSelectGroup<ExampleOptions> label="Group">
+                            <FormSelectOption<ExampleOptions> value={ExampleOptions::Bar} />
+                            <FormSelectOption<ExampleOptions> value={ExampleOptions::Baz} />
+                        </FormSelectGroup<ExampleOptions>>
+                    </FormSelect<ExampleOptions>>
+                </FormGroup>
+                <FormGroup
+                    label="Input value (mirrored)"
+                >
+                    <TextInput value={(*value).as_ref().map(|s|s.to_string()).unwrap_or_default()} disabled=true />
+                </FormGroup>
+                <ActionGroup>
+                    <Button variant={ButtonVariant::Secondary} label="Reset" onclick={onreset}/>
+                </ActionGroup>
+            </Form>
+        )
+    }
+
+    html!(<Example/>)
+
+}

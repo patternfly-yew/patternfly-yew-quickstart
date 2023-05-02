@@ -32,9 +32,9 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "d15a4c92055a03f80b8e2f6cf3914d6d8d8f120a" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "d8d7a38dd03ed89cffef6ad2cd6f0e9449b32bbe" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
-yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
+#yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
 
 # release profile settings to reduce the final binary size
