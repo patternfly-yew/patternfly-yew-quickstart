@@ -66,7 +66,6 @@ dependencies = [
  "js-sys",
  "num-integer",
  "num-traits",
- "time",
  "wasm-bindgen",
  "winapi",
 ]
@@ -286,7 +285,7 @@ dependencies = [
  "cfg-if",
  "js-sys",
  "libc",
- "wasi 0.11.0+wasi-snapshot-preview1",
+ "wasi",
  "wasm-bindgen",
 ]
 
@@ -608,7 +607,7 @@ checksum = "b7e5500299e16ebb147ae15a00a942af264cf3688f47923b8fc2cd5858f23ad3"
 [[package]]
 name = "patternfly-yew"
 version = "0.4.1"
-source = "git+https://github.com/ctron/patternfly-yew?rev=4b9905da4968d6f48c38e030ee86bb8599b2c4f9#4b9905da4968d6f48c38e030ee86bb8599b2c4f9"
+source = "git+https://github.com/ctron/patternfly-yew?rev=8ef2b7aaa6b7ccfcf6a065901889ad3b5ad38d42#8ef2b7aaa6b7ccfcf6a065901889ad3b5ad38d42"
 dependencies = [
  "chrono",
  "gloo-events",
@@ -924,17 +923,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "time"
-version = "0.1.45"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1b797afad3f312d1c66a56d11d0316f916356d11bd158fbc6ca6389ff6bf805a"
-dependencies = [
- "libc",
- "wasi 0.10.0+wasi-snapshot-preview1",
- "winapi",
-]
-
-[[package]]
 name = "tokio"
 version = "1.26.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1021,12 +1009,6 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
-
-[[package]]
-name = "wasi"
-version = "0.10.0+wasi-snapshot-preview1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1a143597ca7c7793eff794def352d41792a93c481eb1042423ff7ff72ba2c31f"
 
 [[package]]
 name = "wasi"

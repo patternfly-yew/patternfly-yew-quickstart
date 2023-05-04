@@ -9,6 +9,7 @@ pub fn chip() -> Html {
     let example2 = example! ("Chip (with badge)" => "chip.2.example");
     let example3 = example! ("Chip (draggable)" => "chip.3.example");
     let example4 = example! ("Chip (onclose)" => "chip.4.example");
+    let example5 = example! ("Chip Groups" => "chip.5.example");
 
     html! {
         <>
@@ -17,6 +18,7 @@ pub fn chip() -> Html {
                 {example2}
                 {example3}
                 {example4}
+                {example5}
             </ExamplePage>
         </>
     }
