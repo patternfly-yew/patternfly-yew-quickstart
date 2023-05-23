@@ -31,6 +31,7 @@ pub enum Component {
     ExpandableSection,
     FileUpload,
     Form,
+    Hint,
     Label,
     Modal,
     Popover,
@@ -108,6 +109,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
         Component::FileUpload => html! {<components::FileUploadExample/>},
         Component::Form => html! {<components::FormExample/>},
+        Component::Hint => html! {<components::HintExample/>},
         Component::Label => html! {<components::LabelExample/>},
         Component::Modal => html! {<components::ModalExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
@@ -219,6 +221,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>{"File Upload"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form)}>{"Form"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>{"Hint"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>

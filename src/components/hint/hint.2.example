@@ -1,0 +1,8 @@
+html!{
+    <Hint>
+        <HintBody>
+            { "Welcome to the new documentation experience. " }
+            <a href="#">{ "Learn more about the improved features" }</a>{ "." }
+        </HintBody>
+    </Hint>
+}
