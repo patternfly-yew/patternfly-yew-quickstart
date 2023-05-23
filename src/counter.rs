@@ -1,6 +1,9 @@
 use crate::example::ExamplePage;
 
-use patternfly_yew::*;
+use patternfly_yew::{
+    next::{Card, CardBody},
+    prelude::*,
+};
 use yew::prelude::*;
 
 #[function_component(Counter)]
@@ -18,12 +21,14 @@ pub fn counter() -> Html {
         <ExamplePage title="Counting clicks">
             <Gallery gutter=true>
                 <Card {title}>
-                    <p>{ *counter }</p>
-                    <Button label="Add One"
-                        align={Align::Start} icon={Icon::PlusCircle}
-                        variant={ButtonVariant::Link}
-                        {onclick}
-                    />
+                    <CardBody>
+                        <p>{ *counter }</p>
+                        <Button label="Add One"
+                            align={Align::Start} icon={Icon::PlusCircle}
+                            variant={ButtonVariant::Link}
+                            {onclick}
+                        />
+                    </CardBody>
                 </Card>
             </Gallery>
         </ExamplePage>
