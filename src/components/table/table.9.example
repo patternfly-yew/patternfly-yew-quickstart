@@ -9,25 +9,25 @@ fn example() -> Html {
             },
         ]
     }, ());
-    let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
+    let (entries, onexpand) = use_table_data(MemoizedTableModel::new(entries));
 
     let header = html_nested! {
         <TableHeader<Columns>>
-            <TableColumn<Columns> label="foo" index={Columns::First} />
-            <TableColumn<Columns> label="bar" index={Columns::Second} />
+            <TableColumn<Columns> label="foo" index={Columns::First} width={ColumnWidth::Percent(30)}/>
+            <TableColumn<Columns> label="bar" index={Columns::Second} width={ColumnWidth::Percent(20)}/>
             <TableColumn<Columns> label="baz" index={Columns::Third} />
         </TableHeader<Columns>>
     };
 
-    html! (
+    html!(
         <Table<Columns, UseTableData<Columns, MemoizedTableModel<ExampleEntry>>>
-            mode={TableMode::CompactNoBorders}
+            mode={TableMode::CompactExpandable}
             {header}
             {entries}
+            {onexpand}
         />
     )
 }
 
 html!(<Example/>)
-
 }

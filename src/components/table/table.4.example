@@ -1,24 +1,29 @@
 {
-let header = html_nested! {
-    <TableHeader>
-        <TableColumn label="foo"/>
-        <TableColumn label="bar"/>
-        <TableColumn label="baz"/>
-    </TableHeader>
-};
+    let header = html_nested! {
+        <TableHeader<Columns>>
+            <TableColumn<Columns> label="foo" index={Columns::First} />
+            <TableColumn<Columns> label="bar" index={Columns::Second} />
+            <TableColumn<Columns> label="baz" index={Columns::Third} />
+        </TableHeader<Columns>>
+    };
 
-html!{
-    <>
-        <Table<SharedTableModel<ExampleEntry>>
-            mode={TableMode::CompactExpandable}
-            header={header}
-            entries={self.model4.clone()}
-            >
-        </Table<SharedTableModel<ExampleEntry>>>
+    html!(
+        <>
+            <Toolbar>
+                <ToolbarItem>
+                    <Button label="Prepend entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onprepend.clone()}/>
+                    <Button label="Append entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onappend.clone()}/>
+                    <Button label="Pop entry" icon={Icon::MinusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onpopentry.clone()}/>
+                </ToolbarItem>
+            </Toolbar>
 
-        <Button label="Prepend entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={ctx.link().callback(|_| Msg::PrependToExample4)}/>
-        <Button label="Append entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={ctx.link().callback(|_| Msg::AppendToExample4)}/>
-        <Button label="Pop entry" icon={Icon::MinusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={ctx.link().callback(|_| Msg::PopFromExample4)}/>
-    </>
-}
+            <Table<Columns, UseTableData<Columns, UseStateTableModel<ExampleEntry>>>
+                mode={TableMode::CompactExpandable}
+                {header}
+                entries={model4.clone()}
+                onexpand={onexpand.clone()}
+            />
+
+        </>
+    )
 }

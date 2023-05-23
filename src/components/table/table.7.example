@@ -1,25 +1,32 @@
 {
-    let entries = vec![
-        ExampleEntry { foo: "bar".into() },
-        ExampleEntry {
-            foo: "Much, much longer foo".into(),
-        },
-    ];
-    let model: SharedTableModel<_> = entries.into();
+#[function_component(Example)]
+fn example() -> Html {
+    let entries = use_memo(|()| {
+        vec![
+            ExampleEntry { foo: "bar".into() },
+            ExampleEntry {
+                foo: "Much, much longer foo".into(),
+            },
+        ]
+    }, ());
+    let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 
     let header = html_nested! {
-        <TableHeader>
-            <TableColumn label="foo"/>
-            <TableColumn label="bar"/>
-            <TableColumn label="baz"/>
-        </TableHeader>
+        <TableHeader<Columns>>
+            <TableColumn<Columns> label="foo" index={Columns::First} />
+            <TableColumn<Columns> label="bar" index={Columns::Second} />
+            <TableColumn<Columns> label="baz" index={Columns::Third} />
+        </TableHeader<Columns>>
     };
 
     html!(
-        <Table<SharedTableModel<ExampleEntry>>
+        <Table<Columns, UseTableData<Columns, MemoizedTableModel<ExampleEntry>>>
             grid={TableGridMode::Medium}
-            header={header}
-            entries={model}
+            {header}
+            {entries}
         />
     )
+}
+
+html!(<Example/>)
 }
