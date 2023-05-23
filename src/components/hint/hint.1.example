@@ -33,7 +33,7 @@
                 <a href="#">{ "Learn more about the improved features" }</a>{ "." }
             </HintBody>
             <HintFooter>
-                <Button variant={ButtonVariant::Link}>
+                <Button variant={ButtonVariant::InlineLink}>
                     { "Try it for 90 days" }
                 </Button>
             </HintFooter>

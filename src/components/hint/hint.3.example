@@ -4,7 +4,7 @@ html!{
             { "Upgrade to Red Hat Smart Management to remediate all your systems across regions and geographies."}
         </HintBody>
         <HintFooter>
-            <Button variant={ButtonVariant::Link}>
+            <Button variant={ButtonVariant::InlineLink}>
                 { "Try it for 90 days" }
             </Button>
         </HintFooter>
