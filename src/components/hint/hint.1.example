@@ -1,0 +1,42 @@
+{
+    let toggle = html! {
+        <KebabToggle />
+    };
+
+    let actions = html! {
+        <Dropdown
+            {toggle}
+            position={Position::Right}
+            plain=true
+        >
+            <DropdownItem key="link">
+                { "Link" }
+            </DropdownItem>
+            <DropdownItem key="action">
+                { "Action" }
+            </DropdownItem>
+            <ListDivider />
+            <DropdownItem key="separated link">
+                { "Separated Link" }
+            </DropdownItem>
+            <DropdownItem key="separated action">
+                { "Separated Action" }
+            </DropdownItem>
+        </Dropdown>
+    };
+
+    html!{
+        <Hint actions={actions}>
+         <HintTitle>{ "Do more with Find it Fix it capabilities" }</HintTitle>
+            <HintBody>
+                { "Welcome to the new documentation experience. " }
+                <a href="#">{ "Learn more about the improved features" }</a>{ "." }
+            </HintBody>
+            <HintFooter>
+                <Button variant={ButtonVariant::Link}>
+                    { "Try it for 90 days" }
+                </Button>
+            </HintFooter>
+        </Hint>
+    }
+}
