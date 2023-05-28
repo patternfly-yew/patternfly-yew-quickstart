@@ -14,6 +14,7 @@ mod about;
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum Component {
+    About,
     Alert,
     AppLauncher,
     Backdrop,
@@ -94,6 +95,7 @@ pub fn app() -> Html {
 
 fn switch_app_route(target: AppRoute) -> Html {
     let component = |target: Component| match target {
+        Component::About => html! {<components::AboutExample/>},
         Component::Alert => html! {<components::AlertExample/>},
         Component::AppLauncher => html! {<components::AppLauncherExample/>},
         Component::Backdrop => html! {<components::BackdropExample/>},
@@ -206,6 +208,7 @@ fn page(props: &PageProps) -> Html {
                         <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
                     </NavExpandable>
                     <NavExpandable title="Components">
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::About)}>{"About modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::AppLauncher)}>{"AppLauncher"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>

@@ -1,3 +1,4 @@
+mod about;
 mod alert;
 mod applauncher;
 mod backdrop;
@@ -29,6 +30,7 @@ mod toast;
 mod tooltip;
 mod tree;
 
+pub use about::*;
 pub use alert::*;
 pub use applauncher::*;
 pub use backdrop::*;
