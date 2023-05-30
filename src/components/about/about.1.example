@@ -1,0 +1,37 @@
+
+
+html! {
+<Button
+    label="Show About dialog"
+    variant={ButtonVariant::Primary}
+    onclick={move |_| backdropper.open(Backdrop::new(
+        html!(
+            <div class="pf-l-bullseye">
+                <About
+                title="Product Name"
+                brand_src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg"
+                brand_alt="Patternfly Logo"
+                strapline={html!({ "Trademark and copyright information here" })}
+                >
+                    <dl class="pf-c-content">
+                        <dt>{ "CFME Version" }</dt>
+                        <dd>{ "5.5.3.4.20102789036450" }</dd>
+                        <dt>{ "Cloudforms Version" }</dt>
+                        <dd>{ "4.1" }</dd>
+                        <dt>{ "Server Name" }</dt>
+                        <dd>{ "40DemoMaster" }</dd>
+                        <dt>{ "User Name" }</dt>
+                        <dd>{ "Administrator" }</dd>
+                        <dt>{ "User Role" }</dt>
+                        <dd>{ "EvmRole-super_administrator" }</dd>
+                        <dt>{ "Browser Version" }</dt>
+                        <dd>{ "601.2" }</dd>
+                        <dt>{ "Browser OS" }</dt>
+                        <dd>{ "Mac" }</dd>
+                    </dl>
+                </About>
+            </div>
+        )
+    ))}
+/>
+}
