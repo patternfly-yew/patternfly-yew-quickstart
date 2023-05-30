@@ -3,11 +3,11 @@
     #[derive(PartialEq)]
     pub struct Centered(pub ExampleEntry);
 
-    impl TableEntryRenderer for Centered {
-        fn render_cell(&self, context: &CellContext) -> Cell {
+    impl TableEntryRenderer<Columns> for Centered {
+        fn render_cell(&self, context: &CellContext<Columns>) -> Cell {
             let mut cell = self.0.render_cell(context);
 
-            if context.column == 0 {
+            if context.column == &Columns::First {
                 cell.center = true;
             }
 
@@ -15,29 +15,33 @@
         }
     }
 
-    let entries = vec![
-        ExampleEntry { foo: "bar".into() },
-        ExampleEntry {
-            foo: "Much, much longer foo".into(),
-        },
-    ];
-    let entries: Vec<_> = entries.into_iter()
-        .map(Centered)
-        .collect();
-    let model = SharedTableModel::from(entries);
+    #[function_component(Example)]
+    fn example() -> Html {
+        let entries = use_memo(|()| {
+            vec![
+                Centered(ExampleEntry { foo: "bar".into() }),
+                Centered(ExampleEntry {
+                    foo: "Much, much longer foo".into(),
+                }),
+            ]
+        }, ());
+        let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 
-    let header = html_nested! {
-        <TableHeader>
-            <TableColumn label="foo (centered)" center=true/> // center the header
-            <TableColumn label="bar"/>
-            <TableColumn label="baz"/>
-        </TableHeader>
-    };
+        let header = html_nested! {
+            <TableHeader<Columns>>
+                <TableColumn<Columns> label="foo" index={Columns::First} />
+                <TableColumn<Columns> label="bar" index={Columns::Second} />
+                <TableColumn<Columns> label="baz" index={Columns::Third} />
+            </TableHeader<Columns>>
+        };
 
-    html!(
-        <Table<SharedTableModel<Centered>>
-            header={header}
-            entries={model}
-        />
-    )
+        html!(
+            <Table<Columns, UseTableData<Columns, MemoizedTableModel<Centered>>>
+                {header}
+                {entries}
+            />
+        )
+    }
+
+    html!(<Example/>)
 }

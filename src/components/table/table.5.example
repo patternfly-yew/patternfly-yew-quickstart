@@ -1,17 +1,18 @@
 {
 let header = html_nested! (
-    <TableHeader>
-        <TableColumn label="foo"/>
-        <TableColumn label="bar"/>
-        <TableColumn label="baz"/>
-    </TableHeader>
+    <TableHeader<Columns>>
+        <TableColumn<Columns> label="foo" index={Columns::First} />
+        <TableColumn<Columns> label="bar" index={Columns::Second} />
+        <TableColumn<Columns> label="baz" index={Columns::Third} />
+    </TableHeader<Columns>>
 );
 
 html!(
-    <Table<SharedTableModel<ExampleEntry>>
+    <Table<Columns, UseTableData<Columns, UseStateTableModel<ExampleEntry>>>
         mode={TableMode::CompactExpandable}
-        header={header}
-        entries={self.model4.clone()}
+        {header}
+        entries={model4.clone()}
+        onexpand={onexpand.clone()}
     />
 )
 }
