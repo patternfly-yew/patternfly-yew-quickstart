@@ -543,7 +543,7 @@ checksum = "b7e5500299e16ebb147ae15a00a942af264cf3688f47923b8fc2cd5858f23ad3"
 [[package]]
 name = "patternfly-yew"
 version = "0.5.0-alpha.1"
-source = "git+https://github.com/ctron/patternfly-yew?rev=d38d2f7d7d26b41f9741a47f42171ffa6426be2f#d38d2f7d7d26b41f9741a47f42171ffa6426be2f"
+source = "git+https://github.com/ctron/patternfly-yew?rev=3d4a89f2df4517437197b9885a2aa6340e8c641d#3d4a89f2df4517437197b9885a2aa6340e8c641d"
 dependencies = [
  "chrono",
  "gloo-events",
@@ -560,6 +560,7 @@ dependencies = [
  "wasm-bindgen-futures",
  "web-sys",
  "yew",
+ "yew-hooks",
  "yew-nested-router",
 ]
 

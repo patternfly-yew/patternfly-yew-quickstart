@@ -40,7 +40,7 @@ fn example() -> Html {
                 Navigation::Last => TOTAL_ENTRIES - limit,
                 Navigation::Previous => *offset - limit,
                 Navigation::Next => *offset + limit,
-                Navigation::Page(n) => n * limit,
+                Navigation::Page(n) => (n-1) * limit,
             };
             offset.set(o);
         })
@@ -52,12 +52,13 @@ fn example() -> Html {
                 <ToolbarContent>
                     <ToolbarItem r#type={ToolbarItemType::Pagination}>
                         <Pagination
+                            style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 5;"
                             {total_entries}
                             offset={*offset}
-                            entries_per_page_choices={vec![5, 10, 25,50,100]}
+                            entries_per_page_choices={vec![5, 10, 25, 50, 100]}
                             selected_choice={*limit}
-                            limit_callback={limit_callback}
-                            navigation_callback={nav_callback}
+                            onlimit={limit_callback}
+                            onnavigation={nav_callback}
                         />
                     </ToolbarItem>
                 </ToolbarContent>
