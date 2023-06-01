@@ -1,4 +1,7 @@
-use patternfly_yew::prelude::*;
+use patternfly_yew::{
+    next::{Card, CardBody},
+    prelude::*,
+};
 use yew::prelude::*;
 
 /// Include an example from an external file.
@@ -101,7 +104,9 @@ pub fn example(props: &ExampleProps) -> Html {
                 <FlexItem modifiers={[FlexModifier::Flex1]}>
                     <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
                     <Card flat=true>
-                        { for props.children.iter() }
+                        <CardBody>
+                            { for props.children.iter() }
+                        </CardBody>
                     </Card>
                 </FlexItem>
 
