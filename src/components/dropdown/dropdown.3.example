@@ -10,7 +10,7 @@ html!{
         <DropdownItemGroup>
             <DropdownItemText>
                 <dl>
-                    <dt class="pf-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
+                    <dt class="pf-v5-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
                     <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
                 </dl>
             </DropdownItemText>

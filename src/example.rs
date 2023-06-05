@@ -113,10 +113,10 @@ pub fn example(props: &ExampleProps) -> Html {
                 <FlexItem modifiers={[FlexModifier::Flex1]}>
                     <Title level={Level::H3} size={Size::Large}>{"Code"}</Title>
 
-                    <div class="pf-c-code-editor">
-                        <div class="pf-c-code-editor__main">
-                            <div class="pf-c-code-editor__code">
-                                <pre class="pf-c-code-editor__code-pre">
+                    <div class="pf-v5-c-code-editor">
+                        <div class="pf-v5-c-code-editor__main">
+                            <div class="pf-v5-c-code-editor__code">
+                                <pre class="pf-v5-c-code-editor__code-pre">
                                     {&props.code}
                                 </pre>
                             </div>
