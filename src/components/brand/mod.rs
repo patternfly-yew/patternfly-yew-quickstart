@@ -5,8 +5,7 @@ use yew::prelude::*;
 
 #[function_component(BrandExample)]
 pub fn brand() -> Html {
-   let example1 = example! ("Basic" => "brand.1.example");
-
+    let example1 = example! ("Basic" => "brand.1.example");
 
     html! {
         <>
