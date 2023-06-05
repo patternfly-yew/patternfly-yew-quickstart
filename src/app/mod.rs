@@ -19,6 +19,7 @@ pub enum Component {
     Avatar,
     Backdrop,
     Badge,
+    Brand,
     Breadcrumb,
     Button,
     Clipboard,
@@ -101,6 +102,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Avatar => html! {<components::AvatarExample/>},
         Component::Backdrop => html! {<components::BackdropExample/>},
         Component::Badge => html! {<components::BadgeExample/>},
+        Component::Brand => html! {<components::BrandExample/>},
         Component::Breadcrumb => html! {<components::BreadcrumbExample/>},
         Component::Button => html! {<components::ButtonExample/>},
         Component::Chip => html! {<components::ChipExample/>},
@@ -215,6 +217,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>{"Avatar"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Brand)}>{"Brand"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Breadcrumb)}>{"Breadcrumb"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Chip)}>{"Chip"}</NavRouterItem<AppRoute>>
