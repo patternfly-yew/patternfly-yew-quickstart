@@ -1,0 +1,19 @@
+{
+    let img_src = "/assets/images/img_avatar-light.svg";
+
+    html!(
+        <>
+            {"No border"}
+            <br />
+            <Avatar src={img_src} alt="avatar" size={AvatarSize::Large} />
+            <br />
+            {"Light border"}
+            <br />
+            <Avatar src={img_src} alt="avatar" border={AvatarBorder::Light} size={AvatarSize::Large} />
+            <br />
+            {"Dark border"}
+            <br />
+            <Avatar src={img_src} alt="avatar" border={AvatarBorder::Dark} size={AvatarSize::Large} />
+        </>
+    )
+}
