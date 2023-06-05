@@ -1,0 +1,23 @@
+{
+    let img_src = "/assets/images/img_avatar-light.svg";
+
+    html!(
+        <>
+            {"Small"}
+            <br />
+            <Avatar src={img_src} alt="avatar" size={AvatarSize::Small} />
+            <br />
+            {"Medium"}
+            <br />
+            <Avatar src={img_src} alt="avatar" size={AvatarSize::Medium} />
+            <br />
+            {"Large"}
+            <br />
+            <Avatar src={img_src} alt="avatar" size={AvatarSize::Large} />
+            <br />
+            {"Extra Large"}
+            <br />
+            <Avatar src={img_src} alt="avatar" size={AvatarSize::XLarge} />
+        </>
+    )
+}

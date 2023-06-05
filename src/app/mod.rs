@@ -16,6 +16,7 @@ mod about;
 pub enum Component {
     Alert,
     AppLauncher,
+    Avatar,
     Backdrop,
     Badge,
     Breadcrumb,
@@ -97,6 +98,7 @@ fn switch_app_route(target: AppRoute) -> Html {
     let component = |target: Component| match target {
         Component::Alert => html! {<components::AlertExample/>},
         Component::AppLauncher => html! {<components::AppLauncherExample/>},
+        Component::Avatar => html! {<components::AvatarExample/>},
         Component::Backdrop => html! {<components::BackdropExample/>},
         Component::Badge => html! {<components::BadgeExample/>},
         Component::Breadcrumb => html! {<components::BreadcrumbExample/>},
@@ -210,6 +212,7 @@ fn page(props: &PageProps) -> Html {
                     <NavExpandable title="Components">
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::AppLauncher)}>{"AppLauncher"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>{"Avatar"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Breadcrumb)}>{"Breadcrumb"}</NavRouterItem<AppRoute>>
