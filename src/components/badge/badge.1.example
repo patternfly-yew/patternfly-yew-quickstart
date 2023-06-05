@@ -1,3 +1,8 @@
 html!{
-    <Badge>{"123"}</Badge>
+    <>
+        <Badge read=true>{"7"}</Badge>
+        <Badge read=true>{"24"}</Badge>
+        <Badge read=true>{"240"}</Badge>
+        <Badge read=true>{"999+"}</Badge>
+    </>
 }
