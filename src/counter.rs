@@ -1,7 +1,6 @@
 use crate::example::ExamplePage;
 
 use patternfly_yew::{
-    next::{Card, CardBody},
     prelude::*,
 };
 use yew::prelude::*;
