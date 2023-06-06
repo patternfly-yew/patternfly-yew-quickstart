@@ -24,6 +24,15 @@ pub fn app_launcher_example() -> Html {
     html! {
         <>
             <ExamplePage title="AppLauncher">
+                <Alert inline=true title="AppLauncher Depreciated" r#type={AlertType::Warning}>
+                    {"The AppLauncher component has been depreciated by PatternFly."}
+                    <br />
+                    {"See "}
+                    <a href="https://patternfly-react-v5.surge.sh/components/menus/application-launcher">
+                        {"ApplicationLauncher component page"}
+                    </a>
+                    {" in the PatternFly documents for more information."}
+                </Alert>
                 {example1}
             </ExamplePage>
         </>
