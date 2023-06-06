@@ -1,5 +1,4 @@
 use patternfly_yew::{
-    next::{Card, CardBody},
     prelude::*,
 };
 use yew::prelude::*;
