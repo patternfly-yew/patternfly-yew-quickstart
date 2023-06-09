@@ -1,5 +1,4 @@
 use crate::{example, example::ExamplePage};
-use patternfly_yew::next::TextInput;
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
 

@@ -1,4 +1,3 @@
-use patternfly_yew::next::TextInput;
 use patternfly_yew::prelude::*;
 use yew::html::ChildrenRenderer;
 use yew::prelude::*;
