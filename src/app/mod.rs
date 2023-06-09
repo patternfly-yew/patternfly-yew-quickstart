@@ -48,7 +48,7 @@ pub enum Component {
     Title,
     Toast,
     Tooltip,
-    Tree,
+    //Tree,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
@@ -129,7 +129,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Title => html! {<components::TitleExample/>},
         Component::Toast => html! {<components::ToastExample/>},
         Component::Tooltip => html! {<components::TooltipExample/>},
-        Component::Tree => html! {<components::TreeExample/>},
+        //Component::Tree => html! {<components::TreeExample/>},
     };
 
     let layout = |target: Layout| match target {
@@ -244,7 +244,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
+                        //<NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
                     </NavExpandable>
                     <NavExpandable title="Layouts">
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
