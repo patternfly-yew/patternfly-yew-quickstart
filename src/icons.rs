@@ -6,17 +6,23 @@ use yew::prelude::*;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct IconDescriptor(Icon);
 
-impl TableEntryRenderer for IconDescriptor {
-    fn render_cell(&self, context: &CellContext) -> Cell {
+#[derive(Copy, Clone, Eq, PartialEq)]
+pub enum Columns {
+    Icon,
+    Name,
+    Description,
+}
+
+impl TableEntryRenderer<Columns> for IconDescriptor {
+    fn render_cell(&self, context: &CellContext<Columns>) -> Cell {
         match context.column {
-            0 => self.0.as_html(),
-            1 => html!(<code>{self.0.as_ref()}</code>),
-            2 => self
+            Columns::Icon => self.0.as_html(),
+            Columns::Name => html!(<code>{self.0.as_ref()}</code>),
+            Columns::Description => self
                 .0
                 .get_documentation()
                 .map(Html::from)
                 .unwrap_or_default(),
-            _ => html!(),
         }
         .into()
     }
@@ -36,27 +42,28 @@ pub fn icons() -> Html {
         |()| {
             let mut icons = Icon::iter().map(IconDescriptor).collect::<Vec<_>>();
             icons.sort_by(|a, b| a.0.as_ref().cmp(b.0.as_ref()));
-            SharedTableModel::new(icons)
-        },
-        (),
-    );
+            icons
+        }, ());
 
-    let header = use_memo(
-        |()| {
-            html_nested!(
-                <TableHeader>
-                    <TableColumn/>
-                    <TableColumn label="Name"/>
-                    <TableColumn label="Description"/>
-                </TableHeader>
-            )
-        },
-        (),
-    );
+    let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
+
+    let header =
+            html_nested! {
+                <TableHeader<Columns>>
+                    <TableColumn<Columns> index={Columns::Icon}/>
+                    <TableColumn<Columns> label="Name" index={Columns::Name}/>
+                    <TableColumn<Columns> label="Description" index={Columns::Description}/>
+                </TableHeader<Columns>>
+            };
+
 
     html!(
         <ExamplePage title="Icons" {subtitle}>
-            <Table<SharedTableModel<IconDescriptor>> header={(*header).clone()} entries={(*entries).clone()}/>
+            <Table<Columns, UseTableData<Columns, MemoizedTableModel<IconDescriptor>>>
+                {header}
+                {entries}
+            />
+        // <Table<SharedTableModel<IconDescriptor>> header={(*header).clone()} entries={(*entries).clone()}/>
         </ExamplePage>
     )
 }
