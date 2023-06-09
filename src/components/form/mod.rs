@@ -1,5 +1,4 @@
 use crate::{example, example::ExamplePage};
-use patternfly_yew::next::{FormSelect, FormSelectGroup, FormSelectOption, TextInput};
 use patternfly_yew::prelude::*;
 use std::fmt::Formatter;
 use yew::prelude::*;
