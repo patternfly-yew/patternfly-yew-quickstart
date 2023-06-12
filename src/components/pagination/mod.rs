@@ -4,7 +4,7 @@ use patternfly_yew::{
         use_table_data, Cell, CellContext, MemoizedTableModel, Table, TableColumn,
         TableEntryRenderer, TableHeader, UseTableData,
     },
-    components::toolbar::next::{Toolbar, ToolbarContent},
+    components::toolbar::{Toolbar, ToolbarContent},
     prelude::*,
 };
 use yew::prelude::*;

@@ -280,18 +280,26 @@ fn page(props: &PageProps) -> Html {
     });
 
     let tools = html!(
-        <Toolbar>
-            <ToolbarItem>
-                <Button icon={Icon::Github} onclick={callback_github}/>
-            </ToolbarItem>
-            <ToolbarItem>
-                <AppLauncher
-                    position={Position::Right}
-                    toggle={Icon::QuestionCircle}
+        <Toolbar full_height=true>
+            <ToolbarContent>
+                <ToolbarGroup
+                    modifiers={ToolbarElementModifier::Right.all()}
+                    variant={GroupVariant::IconButton}
                 >
-                    <AppLauncherItem onclick={onabout}>{ "About" }</AppLauncherItem>
-                </AppLauncher>
-            </ToolbarItem>
+                    <ToolbarItem>
+                        <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
+                    </ToolbarItem>
+                    <ToolbarItem>
+                        <AppLauncher
+                            position={Position::Right}
+                            toggle={Icon::QuestionCircle}
+                        >
+                            <AppLauncherItem onclick={onabout}
+                            >{ "About" }</AppLauncherItem>
+                        </AppLauncher>
+                    </ToolbarItem>
+                </ToolbarGroup>
+            </ToolbarContent>
         </Toolbar>
     );
 
