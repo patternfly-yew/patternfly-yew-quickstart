@@ -40,8 +40,9 @@ pub struct Props {
 #[function_component(ExamplePage)]
 pub fn example_page(props: &Props) -> Html {
     html! (
-        <>
+        <PageSectionGroup>
             <PageSection
+                r#type={PageSectionType::Default}
                 variant={PageSectionVariant::Light}
                 limit_width=true
                 sticky={[PageSectionSticky::Top]}
@@ -76,7 +77,7 @@ exist.
             { for props.children.iter().map(|child|{
                 html!(<PageSection>{child}</PageSection>)
             })}
-        </>
+        </PageSectionGroup>
     )
 }
 
