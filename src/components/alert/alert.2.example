@@ -1,6 +1,6 @@
 html!(
     <AlertGroup>
-        <Alert inline=true title="Default alert">{"Some reason for the alert"}</Alert>
+        <Alert inline=true title="Custom alert (Default)">{"Some reason for the alert"}</Alert>
         <Alert inline=true title="Success alert" r#type={AlertType::Success}>{"Some reason for the alert"}</Alert>
         <Alert inline=true title="Info alert" r#type={AlertType::Info}>{"Some reason for the alert"}</Alert>
         <Alert inline=true title="Warning alert" r#type={AlertType::Warning}>{"Some reason for the alert"}</Alert>
