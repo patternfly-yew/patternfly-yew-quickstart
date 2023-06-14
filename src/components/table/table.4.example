@@ -10,11 +10,13 @@
     html!(
         <>
             <Toolbar>
-                <ToolbarItem>
-                    <Button label="Prepend entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onprepend.clone()}/>
-                    <Button label="Append entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onappend.clone()}/>
-                    <Button label="Pop entry" icon={Icon::MinusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onpopentry.clone()}/>
-                </ToolbarItem>
+                <ToolbarContent>
+                    <ToolbarItem>
+                        <Button label="Prepend entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onprepend.clone()}/>
+                        <Button label="Append entry" icon={Icon::PlusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onappend.clone()}/>
+                        <Button label="Pop entry" icon={Icon::MinusCircle} align={Align::Start} variant={ButtonVariant::Link} onclick={onpopentry.clone()}/>
+                    </ToolbarItem>
+                </ToolbarContent>
             </Toolbar>
 
             <Table<Columns, UseTableData<Columns, UseStateTableModel<ExampleEntry>>>
