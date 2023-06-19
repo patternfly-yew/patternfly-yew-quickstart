@@ -57,8 +57,8 @@ fn example() -> Html {
                             offset={*offset}
                             entries_per_page_choices={vec![5, 10, 25, 50, 100]}
                             selected_choice={*limit}
-                            onlimit={limit_callback}
-                            onnavigation={nav_callback}
+                            onlimit={&limit_callback}
+                            onnavigation={&nav_callback}
                         />
                     </ToolbarItem>
                 </ToolbarContent>
@@ -67,6 +67,16 @@ fn example() -> Html {
                 mode={TableMode::Compact}
                 {header}
                 {entries}
+            />
+            <Pagination
+                style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 5;"
+                {total_entries}
+                offset={*offset}
+                entries_per_page_choices={vec![5, 10, 25, 50, 100]}
+                selected_choice={*limit}
+                onlimit={&limit_callback}
+                onnavigation={&nav_callback}
+                is_bottom={true} 
             />
         </>
     )
