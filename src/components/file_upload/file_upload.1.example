@@ -1,5 +1,5 @@
 {
-    use patternfly_yew::TextInput;
+    use patternfly_yew::prelude::TextInput;
     use yew_hooks::prelude::*;
     use yew_more_hooks::hooks::r#async::{*, UseAsyncState};
     use wasm_bindgen_futures::JsFuture;

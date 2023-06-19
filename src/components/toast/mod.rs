@@ -1,5 +1,5 @@
 use crate::{example, example::ExamplePage};
-use patternfly_yew::*;
+use patternfly_yew::prelude::*;
 use std::time::Duration;
 use yew::prelude::*;
 

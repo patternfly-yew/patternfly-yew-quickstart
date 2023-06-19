@@ -1,5 +1,4 @@
 mod alert;
-mod applauncher;
 mod avatar;
 mod backdrop;
 mod badge;
@@ -39,7 +38,6 @@ mod tooltip;
 //mod tree;
 
 pub use alert::*;
-pub use applauncher::*;
 pub use avatar::*;
 pub use backdrop::*;
 pub use badge::*;
