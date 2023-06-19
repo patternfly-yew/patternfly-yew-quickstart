@@ -76,7 +76,7 @@ fn example() -> Html {
                 selected_choice={*limit}
                 onlimit={&limit_callback}
                 onnavigation={&nav_callback}
-                is_bottom={true} 
+                position={PaginationPosition::Bottom}
             />
         </>
     )
