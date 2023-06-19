@@ -1,0 +1,49 @@
+{
+    // The following varables are instantiated out side of this example. This cannot be done here due to the `Rules Of Hooks`
+    // let compact = use_state(|| false);
+    // let flat = use_state(|| false);
+    // let full_height = use_state(|| false);
+    // let large = use_state(|| false);
+    // let plain = use_state(|| false);
+    // let rounded = use_state(|| false);
+
+    let change_callback = |handle: &UseStateHandle<bool>| {
+        let handle = handle.clone();
+            Callback::from(move |checked| {
+                handle.set(checked);
+            })
+    };
+
+    let title = html!({"Title"});
+    let footer = html!({"Footer"});
+
+    html!{
+        <>
+            <List r#type={ListType::Plain}>
+                <Switch label="compact" checked={*compact} onchange={change_callback(&compact)} />
+                <Switch label="flat" checked={*flat} onchange={change_callback(&flat)} />
+                <Switch label="full height" checked={*full_height} onchange={change_callback(&full_height)} />
+                <Switch label="large" checked={*large} onchange={change_callback(&large)} />
+                <Switch label="plain" checked={*plain} onchange={change_callback(&plain)} />
+                <Switch label="rounded" checked={*rounded} onchange={change_callback(&rounded)} />
+            </List>
+            <br />
+            <Divider />
+            <br />
+            <div style="height:15rem">
+                <Card
+                    title={title.clone()}
+                    footer={footer.clone()}
+                    compact={*compact}
+                    flat={*flat}
+                    full_height={*full_height}
+                    large={*large}
+                    plain={*plain}
+                    rounded={*rounded}
+                    >
+                    <CardBody>{ "Body" }</CardBody>
+                </Card>
+            </div>
+        </>
+    }
+}

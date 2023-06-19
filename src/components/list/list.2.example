@@ -1,0 +1,9 @@
+html!{
+    <>
+        <List r#type={ListType::Inline}>
+            {"First"}
+            {"Second"}
+            {"Third"}
+        </List>
+    </>
+}

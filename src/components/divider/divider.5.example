@@ -1,0 +1,20 @@
+html!{
+    <>
+        <div>
+            <ul class="pf-c-list pf-m-inline" style="line-height:4rem">
+                <li>{"None"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} inset={Inset::None.all()} />
+                <li>{"Small"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} inset={Inset::Small.all()} />
+                <li>{"Medium"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} inset={Inset::Medium.all()} />
+                <li>{"Large"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} inset={Inset::Large.all()} />
+                <li>{"XLarge"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} inset={Inset::XLarge.all()} />
+                <li>{"XXLarge"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} inset={Inset::XXLarge.all()} />
+            </ul>
+        </div>
+    </>
+}

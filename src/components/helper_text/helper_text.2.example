@@ -1,0 +1,29 @@
+html!{
+    <>
+        <HelperText>
+            <HelperTextItem state={HelperTextState::Default} icon={Icon::ArrowRight}>
+                {"This is the default helper text"}
+            </HelperTextItem>
+        </HelperText>
+        <HelperText>
+            <HelperTextItem state={HelperTextState::Intermediate} icon={Icon::ArrowRight}>
+                {"This is indeterminate helper text"}
+            </HelperTextItem>
+        </HelperText>
+        <HelperText>
+            <HelperTextItem state={HelperTextState::Warning} icon={Icon::ArrowRight}>
+                {"This is warning helper text"}
+            </HelperTextItem>
+        </HelperText>
+        <HelperText>
+            <HelperTextItem state={HelperTextState::Success} icon={Icon::ArrowRight}>
+                {"This is success helper text"}
+            </HelperTextItem>
+        </HelperText>
+        <HelperText>
+            <HelperTextItem state={HelperTextState::Error} icon={Icon::ArrowRight}>
+                {"This is error helper text"}
+            </HelperTextItem>
+        </HelperText>
+    </>
+}

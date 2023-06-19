@@ -1,6 +1,4 @@
-use patternfly_yew::{
-    prelude::*,
-};
+use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
 /// Include an example from an external file.

@@ -1,0 +1,7 @@
+html!{
+    <>
+        {"By default the Divider component"}
+        <Divider />
+        {"uses a horizontal rule."}
+    </>
+}

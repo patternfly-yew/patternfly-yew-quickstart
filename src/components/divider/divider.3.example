@@ -1,0 +1,23 @@
+html!{
+    <>
+        <div style="height:3rem">
+            {"DividerOrientation::Vertical"}
+            <Divider r#type={DividerType::Hr} orientation={DividerOrientation::Vertical.all()} />
+            {"combined with DividerType::Hr"}
+        </div>
+        <br />
+        <div style="height:3rem">
+            <ul class="pf-c-list pf-m-inline">
+                <li>{"DividerOrientation::Vertical"}</li>
+                <Divider r#type={DividerType::Li} orientation={DividerOrientation::Vertical.all()} />
+                <li>{"combined with DividerType::Li"}</li>
+            </ul>
+        </div>
+        <br />
+        <div style="height:3rem">
+            {"DividerOrientation::Vertical"}
+            <Divider r#type={DividerType::Div} orientation={DividerOrientation::Vertical.all()} />
+            {"combined with DividerType::Div"}
+        </div>
+    </>
+}

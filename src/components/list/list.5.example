@@ -1,0 +1,9 @@
+html!{
+    <>
+        <List r#type={ListType::Bordered}>
+            {"First"}
+            {"Second"}
+            {"Third"}
+        </List>
+    </>
+}

@@ -1,0 +1,12 @@
+{
+    let title = html!({"Title"});
+    let footer = html!({"Footer"});
+
+    html!{
+        <Card {title} {footer} expandable=true>
+            <CardBody>{ "Body" }</CardBody>
+            <CardDivider/>
+            <CardBody>{ "Body" }</CardBody>
+        </Card>
+    }
+}

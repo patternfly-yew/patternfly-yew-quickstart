@@ -43,19 +43,19 @@ pub fn icons() -> Html {
             let mut icons = Icon::iter().map(IconDescriptor).collect::<Vec<_>>();
             icons.sort_by(|a, b| a.0.as_ref().cmp(b.0.as_ref()));
             icons
-        }, ());
+        },
+        (),
+    );
 
     let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 
-    let header =
-            html_nested! {
-                <TableHeader<Columns>>
-                    <TableColumn<Columns> index={Columns::Icon}/>
-                    <TableColumn<Columns> label="Name" index={Columns::Name}/>
-                    <TableColumn<Columns> label="Description" index={Columns::Description}/>
-                </TableHeader<Columns>>
-            };
-
+    let header = html_nested! {
+        <TableHeader<Columns>>
+            <TableColumn<Columns> index={Columns::Icon}/>
+            <TableColumn<Columns> label="Name" index={Columns::Name}/>
+            <TableColumn<Columns> label="Description" index={Columns::Description}/>
+        </TableHeader<Columns>>
+    };
 
     html!(
         <ExamplePage title="Icons" {subtitle}>

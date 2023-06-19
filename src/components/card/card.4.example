@@ -1,0 +1,15 @@
+{
+    html!{
+        <>
+            <Card disabled={ true } selectable={ true }>
+                <CardBody>{ "This card is disabled" }</CardBody>
+            </Card>
+            <Card disabled={ true } selectable={ true } selected={ true }>
+                <CardBody>{ "This card is disabled and selected" }</CardBody>
+            </Card>
+            <Card selectable={ true }>
+                <CardBody>{ "CardSelection::Selectable{selected: true}" }</CardBody>
+            </Card>
+        </>
+    }
+}

@@ -1,0 +1,41 @@
+html!{
+    <>
+        <DescriptionList>
+            <DescriptionGroup term="ListOrder::Number">
+                <List r#type={ListType::Ordered(ListOrder::Number)}>
+                    {"First"}
+                    {"Second"}
+                    {"Third"}
+                </List>
+            </DescriptionGroup>
+            <DescriptionGroup term="ListOrder::LowercaseLetter">
+                <List r#type={ListType::Ordered(ListOrder::LowercaseLetter)}>
+                    {"First"}
+                    {"Second"}
+                    {"Third"}
+                </List>
+            </DescriptionGroup>
+            <DescriptionGroup term="ListOrder::UppercaseLetter">
+                <List r#type={ListType::Ordered(ListOrder::UppercaseLetter)}>
+                    {"First"}
+                    {"Second"}
+                    {"Third"}
+                </List>
+            </DescriptionGroup>
+            <DescriptionGroup term="ListOrder::LowercaseRomanNumber">
+                <List r#type={ListType::Ordered(ListOrder::LowercaseRomanNumber)}>
+                    {"First"}
+                    {"Second"}
+                    {"Third"}
+                </List>
+            </DescriptionGroup>
+            <DescriptionGroup term="ListOrder::UppercaseRomanNumber">
+                <List r#type={ListType::Ordered(ListOrder::UppercaseRomanNumber)}>
+                    {"First"}
+                    {"Second"}
+                    {"Third"}
+                </List>
+            </DescriptionGroup>
+        </DescriptionList>
+    </>
+}
