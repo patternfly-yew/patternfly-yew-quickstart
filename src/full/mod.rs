@@ -3,7 +3,7 @@ mod login_page;
 pub use self::login_page::*;
 
 use crate::example::*;
-use patternfly_yew::*;
+use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]

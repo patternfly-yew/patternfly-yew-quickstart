@@ -15,7 +15,6 @@ mod about;
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum Component {
     Alert,
-    AppLauncher,
     Avatar,
     Backdrop,
     Badge,
@@ -104,7 +103,6 @@ pub fn app() -> Html {
 fn switch_app_route(target: AppRoute) -> Html {
     let component = |target: Component| match target {
         Component::Alert => html! {<components::AlertExample/>},
-        Component::AppLauncher => html! {<components::AppLauncherExample/>},
         Component::Avatar => html! {<components::AvatarExample/>},
         Component::Backdrop => html! {<components::BackdropExample/>},
         Component::Badge => html! {<components::BadgeExample/>},
@@ -225,7 +223,6 @@ fn page(props: &PageProps) -> Html {
                     </NavExpandable>
                     <NavExpandable title="Components">
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::AppLauncher)}>{"AppLauncher"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>{"Avatar"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
@@ -306,15 +303,12 @@ fn page(props: &PageProps) -> Html {
                 >
                     <ToolbarItem>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
-                    </ToolbarItem>
-                    <ToolbarItem>
-                        <AppLauncher
-                            position={Position::Right}
-                            toggle={Icon::QuestionCircle}
-                        >
-                            <AppLauncherItem onclick={onabout}
-                            >{ "About" }</AppLauncherItem>
-                        </AppLauncher>
+                        <Button
+                            label="About"
+                            variant={ButtonVariant::Plain}
+                            icon={Icon::QuestionCircle}
+                            onclick={onabout}
+                        />
                     </ToolbarItem>
                 </ToolbarGroup>
             </ToolbarContent>
