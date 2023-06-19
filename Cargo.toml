@@ -9,6 +9,7 @@ description = "A quickstart project for using PatternFly with Yew Stack"
 repository = "https://github.com/ctron/patternfly-yew-quickstart"
 
 [dependencies]
+browser-panic-hook = "0.2"
 chrono = { version = "0.4", default-features = false, features = ["wasmbind"] }
 gloo-utils = "0.1"
 log = "0.4"
