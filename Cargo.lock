@@ -39,6 +39,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cfa8873f51c92e232f9bac4065cddef41b714152812bfc5f7672ba16d6ef8cd9"
 
 [[package]]
+name = "browser-panic-hook"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "df58380dfaf4b0edf27a6d3b946ce3c314d7b43eeae720bd770946ac644d299e"
+dependencies = [
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -568,6 +578,7 @@ dependencies = [
 name = "patternfly-yew-quickstart"
 version = "0.5.0-alpha.1"
 dependencies = [
+ "browser-panic-hook",
  "chrono",
  "gloo-utils",
  "log",
