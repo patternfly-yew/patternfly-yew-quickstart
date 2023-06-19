@@ -3,7 +3,7 @@ use chrono::Utc;
 use patternfly_yew::{
     components::table::{
         use_table_data, Cell, CellContext, ColumnWidth, MemoizedTableModel, Span, Table,
-        TableColumn, TableEntryRenderer, TableHeader, UseStateTableModel, UseTableData
+        TableColumn, TableEntryRenderer, TableHeader, UseStateTableModel, UseTableData,
     },
     prelude::*,
 };

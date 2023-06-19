@@ -1,8 +1,6 @@
 use crate::example::ExamplePage;
 
-use patternfly_yew::{
-    prelude::*,
-};
+use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
 #[function_component(Counter)]

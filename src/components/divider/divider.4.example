@@ -1,0 +1,23 @@
+html!{
+    <>
+        <div>
+            {"Inset::None"}
+            <Divider inset={Inset::None.all()} />
+            <br />
+            {"Inset::Small"}
+            <Divider inset={Inset::Small.all()} />
+            <br />
+            {"Inset::Medium"}
+            <Divider inset={Inset::Medium.all()} />
+            <br />
+            {"Inset::Large"}
+            <Divider inset={Inset::Large.all()} />
+            <br />
+            {"Inset::XLarge"}
+            <Divider inset={Inset::XLarge.all()} />
+            <br />
+            {"Inset::XXLarge"}
+            <Divider inset={Inset::XXLarge.all()} />
+        </div>
+    </>
+}

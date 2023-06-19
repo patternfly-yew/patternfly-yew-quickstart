@@ -1,0 +1,23 @@
+html!{
+    <>
+        <div>
+            {"DividerType::Hr"}
+            <Divider r#type={DividerType::Hr} />
+            {"uses a horizontal rule."}
+        </div>
+        <br />
+        <div>
+            <ul>
+                <li>{"DividerType::Li"}</li>
+                <Divider r#type={DividerType::Li} />
+                <li>{"Creates a list item divider."}</li>
+            </ul>
+        </div>
+        <div>
+            <br />
+            {"DividerType::Div"}
+            <Divider r#type={DividerType::Div} />
+            {"uses a div element."}
+        </div>
+    </>
+}

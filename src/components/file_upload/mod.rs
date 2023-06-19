@@ -1,5 +1,5 @@
 use crate::{example, example::ExamplePage};
-use patternfly_yew::{TextArea, prelude::*};
+use patternfly_yew::{prelude::*, TextArea};
 use yew::prelude::*;
 
 #[function_component(FileUploadExample)]

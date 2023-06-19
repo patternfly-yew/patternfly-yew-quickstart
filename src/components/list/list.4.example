@@ -1,0 +1,9 @@
+html!{
+    <>
+        <List r#type={ListType::Plain}>
+            {"First"}
+            {"Second"}
+            {"Third"}
+        </List>
+    </>
+}

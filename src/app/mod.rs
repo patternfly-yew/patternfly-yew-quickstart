@@ -22,19 +22,24 @@ pub enum Component {
     Brand,
     Breadcrumb,
     Button,
+    Card,
     Clipboard,
     Chip,
     CodeBlock,
     #[target(rename = "context_selector")]
     ContextSelector,
+    DescriptionList,
+    Divider,
     Dropdown,
     #[target(rename = "empty")]
     EmptyState,
     ExpandableSection,
     FileUpload,
     Form,
+    HelperText,
     Hint,
     Label,
+    List,
     Modal,
     Pagination,
     Popover,
@@ -45,6 +50,7 @@ pub enum Component {
     Tabs(components::TabRoutes),
     Table,
     Text,
+    TextInputGroup,
     Title,
     Toast,
     Tooltip,
@@ -105,17 +111,22 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Brand => html! {<components::BrandExample/>},
         Component::Breadcrumb => html! {<components::BreadcrumbExample/>},
         Component::Button => html! {<components::ButtonExample/>},
+        Component::Card => html! {<components::CardExample/>},
         Component::Chip => html! {<components::ChipExample/>},
         Component::Clipboard => html! {<components::ClipboardExample/>},
         Component::CodeBlock => html! {<components::CodeBlockExample/>},
         Component::ContextSelector => html! {<components::ContextSelectorExample/>},
+        Component::DescriptionList => html! {<components::DescriptionListExample/>},
+        Component::Divider => html! {<components::DividerExample/>},
         Component::Dropdown => html! {<components::DropdownExample/>},
         Component::EmptyState => html! {<components::EmptyStateExample/>},
         Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
         Component::FileUpload => html! {<components::FileUploadExample/>},
         Component::Form => html! {<components::FormExample/>},
+        Component::HelperText => html! {<components::HelperTextExample/>},
         Component::Hint => html! {<components::HintExample/>},
         Component::Label => html! {<components::LabelExample/>},
+        Component::List => html! {<components::ListExample/>},
         Component::Modal => html! {<components::ModalExample/>},
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
@@ -126,6 +137,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Table => html! {<components::TableExample/>},
         Component::Tabs(current) => html! {<components::TabsExample current={current}/>},
         Component::Text => html! {<components::TextExample/>},
+        Component::TextInputGroup => html! {<components::TextInputGroupExample/>},
         Component::Title => html! {<components::TitleExample/>},
         Component::Toast => html! {<components::ToastExample/>},
         Component::Tooltip => html! {<components::TooltipExample/>},
@@ -220,17 +232,22 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Brand)}>{"Brand"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Breadcrumb)}>{"Breadcrumb"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Card)}>{"Card"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Chip)}>{"Chip"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>{"Code Block"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"Context Selector"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::DescriptionList)}>{"DescriptionList"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Divider)}>{"Divider"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>{"File Upload"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form)}>{"Form"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::HelperText)}>{"HelperText"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>{"Hint"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::List)}>{"List"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
@@ -241,6 +258,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>{"Table"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))} predicate={AppRoute::with_component(Component::is_tabs)}>{"Tabs"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Text)}>{"Text"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::TextInputGroup)}>{"TextInputGroup"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>

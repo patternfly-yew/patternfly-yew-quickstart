@@ -12,23 +12,19 @@ pub fn about() -> Html {
                 product_name="PatternFly Yew Quickstart"
                 trademark="Copyright © 2020, 2023 PatternFly for Yew contributors"
             >
-                <Content>
                     <p>{ env!("CARGO_PKG_DESCRIPTION") }</p>
-                    <dl style="width: 100%">
-                        <dt>{ "Version" }</dt>
-                        <dd>{ env!("CARGO_PKG_VERSION") }</dd>
-                        <dt>{ "License" }</dt>
-                        <dd>{ env!("CARGO_PKG_LICENSE") }</dd>
+                    <br />
+                    <DescriptionList mode={DescriptionListMode::Horizontal}>
+                        <DescriptionGroup term="Version">{env!("CARGO_PKG_VERSION")}</DescriptionGroup>
+                        <DescriptionGroup term="Name">{env!("CARGO_PKG_VERSION")}</DescriptionGroup>
+                        <DescriptionGroup term="License">{env!("CARGO_PKG_LICENSE")}</DescriptionGroup>
                         if let Some(value) = option_env!("BUILD_COMMIT") {
-                            <dt>{ "Build commit" }</dt>
-                            <dd>{ value }</dd>
+                            <DescriptionGroup term="Build commit">{value}</DescriptionGroup>
                         }
                         if let Some(value) = option_env!("BUILD_TIMESTAMP") {
-                            <dt>{ "Build timestamp" }</dt>
-                            <dd>{ value }</dd>
+                            <DescriptionGroup term="Build timestamp">{value}</DescriptionGroup>
                         }
-                    </dl>
-                </Content>
+                    </DescriptionList>
             </AboutModal>
         </Bullseye>
     )
