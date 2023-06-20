@@ -1,9 +1,7 @@
 use crate::{example, example::ExamplePage};
-
 use patternfly_yew::prelude::*;
-use yew::prelude::*;
-
 use strum::IntoEnumIterator;
+use yew::prelude::*;
 
 #[function_component(LabelExample)]
 pub fn label_example() -> Html {

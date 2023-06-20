@@ -35,7 +35,7 @@ mod text_input_group;
 mod title;
 mod toast;
 mod tooltip;
-//mod tree;
+mod tree;
 
 pub use alert::*;
 pub use avatar::*;
@@ -74,4 +74,4 @@ pub use text_input_group::*;
 pub use title::*;
 pub use toast::*;
 pub use tooltip::*;
-//pub use tree::*;
+pub use tree::*;

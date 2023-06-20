@@ -30,7 +30,7 @@ pub fn login_page_example() -> Html {
                     <LoginMainHeader
                         title={title}
                         description="Enter the credentials to your account right here."
-                        />
+                    />
                     <LoginMainBody>
                         <Form>
                             <FormGroup label="Username">

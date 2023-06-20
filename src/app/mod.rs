@@ -53,7 +53,7 @@ pub enum Component {
     Title,
     Toast,
     Tooltip,
-    //Tree,
+    Tree,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
@@ -139,7 +139,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Title => html! {<components::TitleExample/>},
         Component::Toast => html! {<components::ToastExample/>},
         Component::Tooltip => html! {<components::TooltipExample/>},
-        //Component::Tree => html! {<components::TreeExample/>},
+        Component::Tree => html! {<components::TreeExample/>},
     };
 
     let layout = |target: Layout| match target {
@@ -259,7 +259,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
-                        //<NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
                     </NavExpandable>
                     <NavExpandable title="Layouts">
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
@@ -288,11 +288,13 @@ fn page(props: &PageProps) -> Html {
 
     let backdropper = use_backdrop();
 
+    /*
     let onabout = Callback::from(move |_| {
         if let Some(backdropper) = &backdropper {
             backdropper.open(html!(<about::About/>));
         }
     });
+    */
 
     let tools = html!(
         <Toolbar full_height=true>
@@ -303,13 +305,19 @@ fn page(props: &PageProps) -> Html {
                 >
                     <ToolbarItem>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
-                        <Button
-                            label="About"
-                            variant={ButtonVariant::Plain}
-                            icon={Icon::QuestionCircle}
-                            onclick={onabout}
-                        />
                     </ToolbarItem>
+        // FIXME: add using new menu concept
+        /*
+                    <ToolbarItem>
+                        <AppLauncher
+                            position={Position::Right}
+                            toggle={Icon::QuestionCircle}
+                        >
+                            <AppLauncherItem onclick={onabout}
+                            >{ "About" }</AppLauncherItem>
+                        </AppLauncher>
+                    </ToolbarItem>
+         */
                 </ToolbarGroup>
             </ToolbarContent>
         </Toolbar>
