@@ -53,8 +53,8 @@ pub fn example_page(props: &Props) -> Html {
                 </Content>
             </PageSection>
 
-            <PageSection>
-                if props.experimental {
+            if props.experimental {
+                <PageSection>
                     <Alert inline=true title="Experimental feature" r#type={AlertType::Info}>
                         { Html::from_html_unchecked(r#"
 <p>
@@ -69,8 +69,8 @@ be enabled using individual features. See the Rust docmentation for more details
 exist.
 </p>"#.into()) }
                     </Alert>
-                }
-            </PageSection>
+                </PageSection>
+            }
 
             { for props.children.iter().map(|child|{
                 html!(<PageSection>{child}</PageSection>)
