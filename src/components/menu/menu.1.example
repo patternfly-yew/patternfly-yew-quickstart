@@ -1,0 +1,8 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        html!(<MenuToggle/>)
+    }
+
+    html!(<Example/>)
+}
