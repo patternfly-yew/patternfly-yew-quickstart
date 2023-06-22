@@ -1,6 +1,6 @@
 {
 let icon = html!(
-    <Avatar src={"/assets/images/img_avatar-light.svg"} alt="avatar" />
+    <Avatar src={"assets/images/img_avatar-light.svg"} alt="avatar" />
 );
 
 html!{
