@@ -1,26 +1,35 @@
 {
-let toggle = html!{<UserToggle src="https://www.gravatar.com/avatar/00000000000000000000000000000000" name="Foo Bar"/>};
+let icon = html!(
+    <Avatar src={"/assets/images/img_avatar-light.svg"} alt="avatar" />
+);
 
 html!{
     <Dropdown
-        plain=true
-        toggle_style="display: flex;"
-        toggle={toggle}
+        variant={MenuToggleVariant::Plain}
+        {icon}
+        text="Foo Bar"
     >
-        <DropdownItemGroup>
-            <DropdownItemText>
-                <dl>
-                    <dt class="pf-v5-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
-                    <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
-                </dl>
-            </DropdownItemText>
-            <DropdownItemText>{"Foo"}</DropdownItemText>
-        </DropdownItemGroup>
+        <MenuGroup>
+            <Raw>
+                <div class="pf-v5-c-menu__list-item">
+                    <div
+                        class="pf-v5-c-menu__item"
+                        role="menuitem"
+                    >
+                        <dl>
+                            <dt class="pf-v5-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
+                            <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </Raw>
+            <MenuAction text="Foo" />
+        </MenuGroup>
         <ListDivider/>
-        <DropdownItemGroup>
-            <DropdownItem>{"Bar"}</DropdownItem>
-            <DropdownItem>{"Foo"}</DropdownItem>
-        </DropdownItemGroup>
+        <MenuGroup title="Group 1">
+            <MenuAction text="Bar" />
+            <MenuAction text="Foo" />
+        </MenuGroup>
     </Dropdown>
 }
 }

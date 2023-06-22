@@ -89,7 +89,6 @@ pub enum AppRoute {
 #[function_component(Application)]
 pub fn app() -> Html {
     html! {
-        <>
         <BackdropViewer>
             <ToastViewer>
                 <Router<AppRoute> default={AppRoute::Index}>
@@ -97,7 +96,6 @@ pub fn app() -> Html {
                 </Router<AppRoute>>
             </ToastViewer>
         </BackdropViewer>
-        </>
     }
 }
 
@@ -291,13 +289,11 @@ fn page(props: &PageProps) -> Html {
 
     let backdropper = use_backdrop();
 
-    /*
     let onabout = Callback::from(move |_| {
         if let Some(backdropper) = &backdropper {
             backdropper.open(html!(<about::About/>));
         }
     });
-    */
 
     let tools = html!(
         <Toolbar full_height=true>
@@ -309,18 +305,15 @@ fn page(props: &PageProps) -> Html {
                     <ToolbarItem>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
                     </ToolbarItem>
-        // FIXME: add using new menu concept
-        /*
                     <ToolbarItem>
-                        <AppLauncher
+                        <Dropdown
                             position={Position::Right}
-                            toggle={Icon::QuestionCircle}
+                            icon={Icon::QuestionCircle}
+                            variant={MenuToggleVariant::Plain}
                         >
-                            <AppLauncherItem onclick={onabout}
-                            >{ "About" }</AppLauncherItem>
-                        </AppLauncher>
+                            <MenuAction onclick={onabout} text="About" />
+                        </Dropdown>
                     </ToolbarItem>
-         */
                 </ToolbarGroup>
             </ToolbarContent>
         </Toolbar>
