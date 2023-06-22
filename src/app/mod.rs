@@ -295,6 +295,11 @@ fn page(props: &PageProps) -> Html {
         }
     });
 
+    let onthemeswitch = Callback::from(|state| match state {
+        true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
+        false => gloo_utils::document_element().set_class_name(""),
+    });
+
     let tools = html!(
         <Toolbar full_height=true>
             <ToolbarContent>
@@ -302,6 +307,9 @@ fn page(props: &PageProps) -> Html {
                     modifiers={ToolbarElementModifier::Right.all()}
                     variant={GroupVariant::IconButton}
                 >
+                    <ToolbarItem>
+                        <patternfly_yew::prelude::Switch onchange={onthemeswitch} label="Dark Theme" />
+                    </ToolbarItem>
                     <ToolbarItem>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
                     </ToolbarItem>
