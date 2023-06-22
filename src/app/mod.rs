@@ -278,8 +278,10 @@ fn page(props: &PageProps) -> Html {
         </PageSidebar>
     };
 
-    let logo = html! (
-        <Brand src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+    let brand = html! (
+        <MastheadBrand>
+            <Brand src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+        </MastheadBrand>
     );
 
     let callback_github = use_open(
@@ -328,7 +330,7 @@ fn page(props: &PageProps) -> Html {
     );
 
     html! (
-        <Page {logo} {sidebar} {tools}>
+        <Page {brand} {sidebar} {tools}>
             { for props.children.iter() }
         </Page>
     )
