@@ -1,0 +1,49 @@
+{
+    use std::collections::HashSet;
+
+    #[function_component(Example)]
+    fn example() -> Html {
+
+        let state = use_state(HashSet::<String>::new);
+
+        let toggle = |key: &'static str| {
+            let state = state.clone();
+            Callback::from(move |_| {
+                let mut selected = (*state).clone();
+                if selected.contains(key) {
+                    selected.remove(key);
+                } else {
+                    selected.insert(key.to_string());
+                }
+                state.set(selected);
+            })
+        };
+
+        html!(
+            <>
+                <Accordion>
+                    <AccordionItem title="Jun 06, 2023, 23:22" onclick={toggle("first")} expanded={state.contains("first")}>
+                        {"Picard management tip: Keep a log of your journey. You will understand better by writing it down."}
+                    </AccordionItem>
+                    <AccordionItem title="Jun 05, 2023, 22:13" onclick={toggle("second")} expanded={state.contains("second")}>
+                        {"Picard management tip: If a crew member needs to become more responsible, give them more responsibility."}
+                    </AccordionItem>
+                    <AccordionItem title="May 29, 2023, 18:13" onclick={toggle("third")} expanded={state.contains("third")}>
+                        {"Picard engineering tip: Use the metric system."}
+                    </AccordionItem>
+                    <AccordionItem title="May 29, 2023, 18:13" onclick={toggle("fourth")} expanded={state.contains("fourth")}>
+                        <p>{"Picard management tip: Exercise makes you smarter. Don't just sit there thinking."}</p>
+                        <p> {"Get up."} </p>
+                    </AccordionItem>
+                </Accordion>
+
+                <Content>
+                    {"Source: "} <a href="https://botsin.space/@picardtips" target="_new">{"https://botsin.space/@picardtips"}</a>
+                </Content>
+
+            </>
+        )
+    }
+
+    html!(<Example/>)
+}

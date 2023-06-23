@@ -1,3 +1,4 @@
+mod accordion;
 mod alert;
 mod avatar;
 mod backdrop;
@@ -38,6 +39,7 @@ mod toast;
 mod tooltip;
 mod tree;
 
+pub use accordion::*;
 pub use alert::*;
 pub use avatar::*;
 pub use backdrop::*;

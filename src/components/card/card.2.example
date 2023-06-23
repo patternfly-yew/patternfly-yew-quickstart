@@ -1,5 +1,5 @@
 {
-    // The following varables are instantiated out side of this example. This cannot be done here due to the `Rules Of Hooks`
+    // The following variables are instantiated out side of this example. This cannot be done here due to the `Rules Of Hooks`
     // let compact = use_state(|| false);
     // let flat = use_state(|| false);
     // let full_height = use_state(|| false);
@@ -9,9 +9,9 @@
 
     let change_callback = |handle: &UseStateHandle<bool>| {
         let handle = handle.clone();
-            Callback::from(move |checked| {
-                handle.set(checked);
-            })
+        Callback::from(move |checked| {
+            handle.set(checked);
+        })
     };
 
     let title = html!({"Title"});
