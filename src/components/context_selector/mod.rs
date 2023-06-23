@@ -12,8 +12,8 @@ pub fn example() -> Html {
     html! {
         <>
             <ExamplePage title="Context Selector">
-                <Alert inline=true title="AppLauncher Depreciated" r#type={AlertType::Warning}>
-                    {"The ContextSelector component has been depreciated by PatternFly."}
+                <Alert inline=true title="AppLauncher Deprecated" r#type={AlertType::Warning}>
+                    {"The ContextSelector component has been deprecated by PatternFly."}
                     <br />
                     {"See "}
                     <a href="https://pf5.patternfly.org/components/menus/context-selector">
