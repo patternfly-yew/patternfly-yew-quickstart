@@ -2,12 +2,12 @@
     use std::rc::Rc;
 
     let header = html_nested! {
-        <TreeTableHeader>
-            <TableColumn label="foo" width={ColumnWidth::Percent(40)}/>
-            <TableColumn label="L1" width={ColumnWidth::Percent(20)}/>
-            <TableColumn label="L2" width={ColumnWidth::Percent(20)}/>
-            <TableColumn label="L3" width={ColumnWidth::Percent(20)}/>
-        </TreeTableHeader>
+        <TreeTableHeader<Columns>>
+            <TableColumn<Columns> index={Columns::First} label="foo" width={ColumnWidth::Percent(40)}/>
+            <TableColumn<Columns> index={Columns::Second} label="L1" width={ColumnWidth::Percent(20)}/>
+            <TableColumn<Columns> index={Columns::Third} label="L2" width={ColumnWidth::Percent(20)}/>
+            <TableColumn<Columns> index={Columns::Fourth} label="L3" width={ColumnWidth::Percent(20)}/>
+        </TreeTableHeader<Columns>>
     };
 
     #[derive(PartialEq)]
@@ -21,35 +21,32 @@
         Leaf(Vec<String>)
     }
 
-    impl TreeTableModel for Root {
-        fn children(&self) -> Vec<Rc<dyn TreeNode>> {
+    impl TreeTableModel<Columns> for Root {
+        fn children(&self) -> Vec<Rc<dyn TreeNode<Columns>>> {
             self.root.children()
         }
     }
 
-    impl TreeNode for Node {
-        fn render_main(&self) -> Cell {
-            match self {
-                Self::Branch(name, _) => html!({name.join(" / ")}),
-                Self::Leaf(name) => html!({name.join(" / ")}),
-            }.into()
-        }
-
-        fn render_cell(&self, context: CellContext) -> Cell {
+    impl TreeNode<Columns> for Node {
+        fn render_cell(&self, context: CellContext<Columns>) -> Cell {
             let name = match self {
                 Self::Branch(name, _) | Self::Leaf(name) => name,
             };
 
-            // quick alternative to: match context.column { 0=> {}, … }
-            name.get(context.column)
+            match context.column {
+                Columns::First => Some(name.join(" / ")),
+                Columns::Second => name.get(0).cloned(),
+                Columns::Third => name.get(1).cloned(),
+                Columns::Fourth => name.get(2).cloned(),
+            }
                 .map(Html::from)
                 .unwrap_or_default()
                 .into()
         }
 
-        fn children(&self) -> Vec<Rc<dyn TreeNode>> {
+        fn children(&self) -> Vec<Rc<dyn TreeNode<Columns>>> {
             match self {
-                Self::Branch(_, children) => children.iter().map(|c|c.clone() as Rc<dyn TreeNode>).collect(),
+                Self::Branch(_, children) => children.iter().map(|c|c.clone() as Rc<dyn TreeNode<Columns>>).collect(),
                 Self::Leaf(_) => vec![],
             }
         }
@@ -70,11 +67,11 @@
 
     let root = Rc::new(Root {root: Rc::new(Node::Branch(vec![], root))});
 
-    html!{
-        <TreeTable<Root>
+    html! (
+        <TreeTable<Columns, Root>
             mode={TreeTableMode::Compact}
             header={header}
             model={root}
         />
-    }
+    )
 }

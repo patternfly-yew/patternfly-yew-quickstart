@@ -3,13 +3,13 @@
 #[function_component(Example)]
 fn example() -> Html {
 
-    const TOTAL_ENTRIES: usize = 1_000;
+    const TOTAL_ENTRIES: usize = 394;
 
     let offset = use_state_eq(||0);
     let limit = use_state_eq(||5);
 
     let entries = use_memo(|(offset, limit)| {
-        (*offset..offset + limit).into_iter().map(ExampleEntry).collect::<Vec<_>>()
+        (*offset..(offset + limit).clamp(0, TOTAL_ENTRIES)).into_iter().map(ExampleEntry).collect::<Vec<_>>()
     }, (*offset, *limit));
 
     let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
@@ -37,7 +37,7 @@ fn example() -> Html {
         Callback::from(move |page: Navigation| {
             let o = match page {
                 Navigation::First => 0,
-                Navigation::Last => TOTAL_ENTRIES - limit,
+                Navigation::Last => ((TOTAL_ENTRIES - 1) / limit) * limit,
                 Navigation::Previous => *offset - limit,
                 Navigation::Next => *offset + limit,
                 Navigation::Page(n) => (n-1) * limit,
@@ -57,8 +57,8 @@ fn example() -> Html {
                             offset={*offset}
                             entries_per_page_choices={vec![5, 10, 25, 50, 100]}
                             selected_choice={*limit}
-                            onlimit={limit_callback}
-                            onnavigation={nav_callback}
+                            onlimit={&limit_callback}
+                            onnavigation={&nav_callback}
                         />
                     </ToolbarItem>
                 </ToolbarContent>
@@ -67,6 +67,16 @@ fn example() -> Html {
                 mode={TableMode::Compact}
                 {header}
                 {entries}
+            />
+            <Pagination
+                style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 5;"
+                {total_entries}
+                offset={*offset}
+                entries_per_page_choices={vec![5, 10, 25, 50, 100]}
+                selected_choice={*limit}
+                onlimit={&limit_callback}
+                onnavigation={&nav_callback}
+                position={PaginationPosition::Bottom}
             />
         </>
     )

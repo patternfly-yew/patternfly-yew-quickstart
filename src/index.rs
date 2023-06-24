@@ -7,7 +7,7 @@ pub fn index() -> Html {
     let subtitle = Html::from_html_unchecked(
         r#"<div>
 <p>
-This project acts both as a showcase for <strong>PatternFly Yew</strong>, as well as a quick-start template.
+This project acts both as a showcase for <strong>PatternFly Yew</strong>, as well as a quick-start project template.
 </p>
 </div>"#
             .into(),

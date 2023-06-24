@@ -14,6 +14,7 @@ mod about;
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
 pub enum Component {
+    Accordion,
     Alert,
     Avatar,
     Backdrop,
@@ -39,6 +40,7 @@ pub enum Component {
     Hint,
     Label,
     List,
+    Menu,
     Modal,
     Pagination,
     Popover,
@@ -53,7 +55,7 @@ pub enum Component {
     Title,
     Toast,
     Tooltip,
-    //Tree,
+    Tree,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
@@ -88,7 +90,6 @@ pub enum AppRoute {
 #[function_component(Application)]
 pub fn app() -> Html {
     html! {
-        <>
         <BackdropViewer>
             <ToastViewer>
                 <Router<AppRoute> default={AppRoute::Index}>
@@ -96,12 +97,12 @@ pub fn app() -> Html {
                 </Router<AppRoute>>
             </ToastViewer>
         </BackdropViewer>
-        </>
     }
 }
 
 fn switch_app_route(target: AppRoute) -> Html {
     let component = |target: Component| match target {
+        Component::Accordion => html! {<components::AccordionExample/>},
         Component::Alert => html! {<components::AlertExample/>},
         Component::Avatar => html! {<components::AvatarExample/>},
         Component::Backdrop => html! {<components::BackdropExample/>},
@@ -125,6 +126,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Hint => html! {<components::HintExample/>},
         Component::Label => html! {<components::LabelExample/>},
         Component::List => html! {<components::ListExample/>},
+        Component::Menu => html! {<components::MenuExample/>},
         Component::Modal => html! {<components::ModalExample/>},
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
@@ -139,7 +141,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Title => html! {<components::TitleExample/>},
         Component::Toast => html! {<components::ToastExample/>},
         Component::Tooltip => html! {<components::TooltipExample/>},
-        //Component::Tree => html! {<components::TreeExample/>},
+        Component::Tree => html! {<components::TreeExample/>},
     };
 
     let layout = |target: Layout| match target {
@@ -222,6 +224,7 @@ fn page(props: &PageProps) -> Html {
                         <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
                     </NavExpandable>
                     <NavExpandable title="Components">
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Accordion)}>{"Accordion"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>{"Avatar"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
@@ -245,6 +248,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>{"Hint"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::List)}>{"List"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu)}>{"Menu"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
@@ -259,7 +263,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
-                        //<NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
                     </NavExpandable>
                     <NavExpandable title="Layouts">
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
@@ -277,8 +281,10 @@ fn page(props: &PageProps) -> Html {
         </PageSidebar>
     };
 
-    let logo = html! (
-        <Brand src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+    let brand = html! (
+        <MastheadBrand>
+            <Brand src="https://www.patternfly.org/assets/images/PF-Masthead-Logo.svg" alt="Patternfly Logo" />
+        </MastheadBrand>
     );
 
     let callback_github = use_open(
@@ -294,6 +300,11 @@ fn page(props: &PageProps) -> Html {
         }
     });
 
+    let onthemeswitch = Callback::from(|state| match state {
+        true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
+        false => gloo_utils::document_element().set_class_name(""),
+    });
+
     let tools = html!(
         <Toolbar full_height=true>
             <ToolbarContent>
@@ -302,13 +313,19 @@ fn page(props: &PageProps) -> Html {
                     variant={GroupVariant::IconButton}
                 >
                     <ToolbarItem>
+                        <patternfly_yew::prelude::Switch onchange={onthemeswitch} label="Dark Theme" />
+                    </ToolbarItem>
+                    <ToolbarItem>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
-                        <Button
-                            label="About"
-                            variant={ButtonVariant::Plain}
+                    </ToolbarItem>
+                    <ToolbarItem>
+                        <Dropdown
+                            position={Position::Right}
                             icon={Icon::QuestionCircle}
-                            onclick={onabout}
-                        />
+                            variant={MenuToggleVariant::Plain}
+                        >
+                            <MenuAction onclick={onabout} text="About" />
+                        </Dropdown>
                     </ToolbarItem>
                 </ToolbarGroup>
             </ToolbarContent>
@@ -316,7 +333,7 @@ fn page(props: &PageProps) -> Html {
     );
 
     html! (
-        <Page {logo} {sidebar} {tools}>
+        <Page {brand} {sidebar} {tools}>
             { for props.children.iter() }
         </Page>
     )

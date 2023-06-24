@@ -1,6 +1,6 @@
 [package]
 name = "patternfly-yew-quickstart"
-version = "0.5.0-alpha.1"
+version = "0.5.0-alpha.2"
 authors = ["Jens Reimann <jreimann@redhat.com>"]
 edition = "2021"
 license = "Apache-2.0"
@@ -13,9 +13,9 @@ browser-panic-hook = "0.2"
 chrono = { version = "0.4", default-features = false, features = ["wasmbind"] }
 gloo-utils = "0.1"
 log = "0.4"
-patternfly-yew = { version = "0.5.0-alpha.1", features = ["icons-fab", "tree"] }
+patternfly-yew = { version = "0.5.0-alpha.2", features = ["icons-fab", "tree"] }
 serde_json = "1"
-strum = "0.24"
+strum = "0.25"
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
 wasm-logger = "0.2"
@@ -33,10 +33,11 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "3d4a89f2df4517437197b9885a2aa6340e8c641d" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "bf429ef877689fa468cb27b0a024caabbf38a6a5" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
 #yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
+#yew-hooks = { path = "../yew-hooks/crates/yew-hooks" }
 
 # release profile settings to reduce the final binary size
 [profile.release]

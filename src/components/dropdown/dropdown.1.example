@@ -1,15 +1,13 @@
 {
-let toggle = html!{<DropdownToggle text="Foo"></DropdownToggle>};
-
-html!{
+html!(
     <Dropdown
-        toggle={toggle}
+        text="Foo"
     >
-        <DropdownItem onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Foo".into()))}>{"Foo"}</DropdownItem>
+        <MenuAction text="Foo" onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Foo".into()))} />
         <ListDivider/>
-        <DropdownItem onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Bar".into()))}>{"Bar"}</DropdownItem>
+        <MenuAction text="Bar" onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Bar".into()))} />
         <ListDivider/>
-        <DropdownItem href="https://patternfly.org" target="_blank">{"PatternFly"}</DropdownItem>
+        <MenuLink text="PatternFly" icon={Icon::ExternalLinkAlt} href="https://patternfly.org" target="_blank" />
     </Dropdown>
-}
+)
 }

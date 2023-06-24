@@ -1,0 +1,83 @@
+{
+    use yew_hooks::prelude::use_click_away;
+    use patternfly_yew::utils::popper::*;
+
+    #[derive(PartialEq, Properties)]
+    struct ExampleMenuProperties {
+        r#ref: NodeRef,
+        style: AttrValue,
+    }
+
+    #[function_component(ExampleMenu)]
+    fn example_menu(props: &ExampleMenuProperties) -> Html {
+        html!(
+            <Menu r#ref={props.r#ref.clone()} style={&props.style}>
+                <MenuAction text="Action" />
+                <MenuLink text="Link" href="/" />
+                <MenuAction text="Action (disabled)" disabled=true />
+                <MenuLink text="Link (disabled)" disabled=true href="/" />
+                <ListDivider />
+                <MenuAction text="Action" danger=true />
+            </Menu>
+        )
+    }
+
+    #[function_component(Example)]
+    fn example() -> Html {
+        let expanded = use_state_eq(||false);
+        let ontoggle = {
+            let expanded = expanded.clone();
+            Callback::from(move |()| {
+                log::debug!("Toggled");
+                expanded.set(!*expanded);
+            })
+        };
+
+        let menu_ref = use_node_ref();
+        {
+            let expanded = expanded.clone();
+            use_click_away(menu_ref.clone(), move |_: Event| {
+                log::debug!("Click away");
+                 expanded.set(false);
+            });
+        }
+
+        let popper = use_state_eq(|| Option::<PopperState>::None);
+
+        let onstatechange = {
+            let popper = popper.clone();
+            Callback::from(move |state| {
+                log::info!("Popper state: {state:?}");
+                popper.set(Some(state));
+            })
+        };
+
+        let content = html!(
+            <ExampleMenu r#ref={menu_ref} style={popper.as_ref().map(|state|state.styles.clone()).unwrap_or_default()} />
+        );
+
+        html!(
+            <Popper
+                {content}
+                mode={PopperMode::Inline}
+                visible={*expanded}
+                options={
+                    Options {
+                        placement: PopperPlacement::Bottom,
+                        ..Default::default()
+                    }
+                }
+                {onstatechange}
+            >
+                <MenuToggle
+                    text="Example Menu"
+                    expanded={*expanded}
+                    {ontoggle}
+                >
+                </MenuToggle>
+            </Popper>
+        )
+    }
+
+    html!(<Example/>)
+}

@@ -15,5 +15,5 @@
         </PopoverBody>
     );
 
-    html!( <Popover toggle_by_onclick=true {target} {body} /> )
+    html!( <Popover {target} {body} /> )
 }

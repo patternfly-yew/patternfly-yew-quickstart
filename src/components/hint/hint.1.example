@@ -1,27 +1,15 @@
 {
-    let toggle = html! {
-        <KebabToggle />
-    };
-
     let actions = html! {
         <Dropdown
-            {toggle}
+            icon={Icon::EllipsisV}
             position={Position::Right}
-            plain=true
+            variant={MenuToggleVariant::Plain}
         >
-            <DropdownItem key="link">
-                { "Link" }
-            </DropdownItem>
-            <DropdownItem key="action">
-                { "Action" }
-            </DropdownItem>
+            <MenuAction text="Link" key="link" />
+            <MenuAction text="Action" key="action" />
             <ListDivider />
-            <DropdownItem key="separated link">
-                { "Separated Link" }
-            </DropdownItem>
-            <DropdownItem key="separated action">
-                { "Separated Action" }
-            </DropdownItem>
+            <MenuAction text="Separated Link" key="separated link" />
+            <MenuAction text="Separated Action" key="separated action" />
         </Dropdown>
     };
 

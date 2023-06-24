@@ -1,0 +1,20 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let expanded = use_state_eq(||false);
+        let ontoggle = {
+            let expanded = expanded.clone();
+            Callback::from(move |()|{
+                expanded.set(!*expanded);
+            })
+        };
+        html!(
+            <MenuToggle
+                expanded={*expanded}
+                {ontoggle}
+            />
+        )
+    }
+
+    html!(<Example/>)
+}

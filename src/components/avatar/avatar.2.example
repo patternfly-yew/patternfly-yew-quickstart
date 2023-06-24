@@ -1,5 +1,5 @@
 {
-    let img_src = "/assets/images/img_avatar-light.svg";
+    let img_src = "assets/images/img_avatar-light.svg";
 
     html!(
         <>

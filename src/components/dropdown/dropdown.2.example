@@ -1,14 +1,12 @@
 {
-let toggle = html!{<KebabToggle/>};
-
-html!{
+html!(
     <Dropdown
-        plain=true
-        toggle={toggle}
+        variant={MenuToggleVariant::Plain}
+        icon={Icon::EllipsisV}
     >
-        <DropdownItem>{"Foo"}</DropdownItem>
+        <MenuAction text="Foo" />
         <ListDivider/>
-        <DropdownItem>{"Bar"}</DropdownItem>
+        <MenuAction text="Bar"/>
     </Dropdown>
-}
+)
 }
