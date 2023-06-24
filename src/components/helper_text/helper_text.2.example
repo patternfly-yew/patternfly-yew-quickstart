@@ -1,29 +1,67 @@
-html!{
-    <>
-        <HelperText>
-            <HelperTextItem state={HelperTextState::Default} icon={Icon::ArrowRight}>
-                {"This is the default helper text"}
-            </HelperTextItem>
-        </HelperText>
-        <HelperText>
-            <HelperTextItem state={HelperTextState::Intermediate} icon={Icon::ArrowRight}>
-                {"This is indeterminate helper text"}
-            </HelperTextItem>
-        </HelperText>
-        <HelperText>
-            <HelperTextItem state={HelperTextState::Warning} icon={Icon::ArrowRight}>
-                {"This is warning helper text"}
-            </HelperTextItem>
-        </HelperText>
-        <HelperText>
-            <HelperTextItem state={HelperTextState::Success} icon={Icon::ArrowRight}>
-                {"This is success helper text"}
-            </HelperTextItem>
-        </HelperText>
-        <HelperText>
-            <HelperTextItem state={HelperTextState::Error} icon={Icon::ArrowRight}>
-                {"This is error helper text"}
-            </HelperTextItem>
-        </HelperText>
-    </>
+{
+    #[function_component(HelperTextComponentExample)]
+    fn helper_text_component_example() -> Html {
+        let option_index_state = use_state(usize::default);
+
+        let options = vec![
+            (HelperTextComponent::Div, String::from("HelperTextComponent::Div (Default)")),
+            (HelperTextComponent::Ul, String::from("HelperTextComponent::Ul")),
+        ];
+
+        let on_select_change = {
+            let option_index_state = option_index_state.clone();
+            Callback::from(
+                move |value| {
+                    if let Some(i) = value { option_index_state.set(i) }
+                }
+            )
+        };
+
+        html! {
+            <>
+                <p>{ "The component property specifies if the HelperText component should use a \
+                div or li html element. HelperText component automatically chooses the correct \
+                html element for its children." }</p>
+                <p>{ "Hint: You will need to inspect the source of the HelperText component to see \
+                any change."}</p>
+                <Form horizontal={ FormHorizontal.all() }>
+                    <FormGroup label="component">
+                        <FormSelect<usize>
+                            value={ 0 }
+                            onchange={ on_select_change }
+                        >
+                            { for options.clone().into_iter().enumerate().map(
+                                |(i, (_, option))| html_nested! (
+                                    <FormSelectOption<usize> value={ i } description={ Some(option) } />
+                                )
+                            )}
+                        </FormSelect<usize>>
+                    </FormGroup>
+                </Form>
+                <br />
+                <Divider />
+                <br />
+                <HelperText component={ options[*option_index_state].0 }>
+                    <HelperTextItem variant={HelperTextItemVariant::Default}>
+                        {"This is the default helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem variant={HelperTextItemVariant::Intermediate}>
+                        {"This is indeterminate helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem variant={HelperTextItemVariant::Warning}>
+                        {"This is warning helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem variant={HelperTextItemVariant::Success}>
+                        {"This is success helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem variant={HelperTextItemVariant::Error}>
+                        {"This is error helper text"}
+                    </HelperTextItem>
+                </HelperText>
+            </>
+        }
+    }
+    html!{
+        <HelperTextComponentExample />
+    }
 }
