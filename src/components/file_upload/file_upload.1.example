@@ -122,10 +122,18 @@
             })
         };
 
-        let helper_text = processing.error().map(|err|{
-            FormHelperText::from((err.1.to_string(), InputState::Error))
+        let error = processing.error().map(|err|{err.1.to_string()});
+        let helper_text = error.clone().map(|err|{
+            html!(
+                <FormHelperText>
+                    <HelperText live_region=true>
+                        <HelperTextItem dynamic=true variant={HelperTextItemVariant::Error}>
+                            {err}
+                        </HelperTextItem>
+                    </HelperText>
+                </FormHelperText>
+            )
         });
-        let state = helper_text.as_ref().map(|h|h.input_state).unwrap_or_default();
         let content = use_memo(|processing|{
             match &**processing {
                 UseAsyncState::Ready(Ok(content)) => content.clone(),
@@ -198,9 +206,7 @@
 
         html!(
             <Form>
-                <FormGroup
-                    {helper_text}
-                >
+                <FormGroup>
                     <FileUpload
                         drag_over={*drop.over}
                         r#ref={node.clone()}
@@ -218,7 +224,7 @@
                                 </Button>
                                 <Button
                                     variant={ButtonVariant::Control}
-                                    disabled={state == InputState::Error}
+                                    disabled={error.is_some()}
                                     onclick={onsubmit}
                                 >
                                     {"Upload"}
@@ -233,16 +239,17 @@
                         </FileUploadSelect>
                         <FileUploadDetails
                             processing={processing.is_processing()}
-                            invalid={state == InputState::Error}
+                            invalid={error.is_some()}
                         >
                             <TextArea
                                 value={(*content).clone()}
                                 resize={ResizeOrientation::Vertical}
                                 oninput={oninput_text}
-                                {state}
+                                state={ if error.is_some() {InputState::Error} else {InputState::Default} }
                             />
                         </FileUploadDetails>
                     </FileUpload>
+                    {helper_text}
                 </FormGroup>
             </Form>
         )

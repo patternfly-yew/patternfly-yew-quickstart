@@ -1,27 +1,27 @@
 html!{
     <>
         <HelperText>
-            <HelperTextItem state={HelperTextState::Default}>
+            <HelperTextItem variant={HelperTextItemVariant::Default}>
                 {"This is the default helper text"}
             </HelperTextItem>
         </HelperText>
         <HelperText>
-            <HelperTextItem state={HelperTextState::Intermediate}>
+            <HelperTextItem variant={HelperTextItemVariant::Intermediate}>
                 {"This is indeterminate helper text"}
             </HelperTextItem>
         </HelperText>
         <HelperText>
-            <HelperTextItem state={HelperTextState::Warning}>
+            <HelperTextItem variant={HelperTextItemVariant::Warning}>
                 {"This is warning helper text"}
             </HelperTextItem>
         </HelperText>
         <HelperText>
-            <HelperTextItem state={HelperTextState::Success}>
+            <HelperTextItem variant={HelperTextItemVariant::Success}>
                 {"This is success helper text"}
             </HelperTextItem>
         </HelperText>
         <HelperText>
-            <HelperTextItem state={HelperTextState::Error}>
+            <HelperTextItem variant={HelperTextItemVariant::Error}>
                 {"This is error helper text"}
             </HelperTextItem>
         </HelperText>

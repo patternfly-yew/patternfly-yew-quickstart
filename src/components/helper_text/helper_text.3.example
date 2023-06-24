@@ -1,0 +1,96 @@
+{
+    #[function_component(HelperTextIconExample)]
+    fn helper_text_icon_example() -> Html {
+        let option_index_state = use_state(usize::default);
+        let dynamic_state = use_state(|| false);
+
+        let options = vec![
+            (HelperTextItemIcon::Default, String::from("HelperTextItemIcon::Default")),
+            (HelperTextItemIcon::Hidden, String::from("HelperTextItemIcon::Hidden")),
+            (HelperTextItemIcon::Visible, String::from("HelperTextItemIcon::Visible")),
+            (HelperTextItemIcon::Custom(Icon::ArrowRight), String::from("HelperTextItemIcon::Custom(Icon::ArrowRight)"))
+        ];
+
+        let on_select_change = {
+            let option_index_state = option_index_state.clone();
+            Callback::from(
+                move |value| {
+                    if let Some(i) = value { option_index_state.set(i) }
+                }
+            )
+        };
+
+        let dynamic_switch_callback = {
+            let dynamic_state = dynamic_state.clone();
+            Callback::from(move |checked| {
+                dynamic_state.set(checked);
+            })
+        };
+
+        html! {
+            <>
+                { "An icon is shown when HelperTextItem dynamic property is set to true. The icon \
+                property allows icon visibility to be overriden." }
+                <Form horizontal={ FormHorizontal.all() }>
+                    <FormGroup label="icon">
+                        <FormSelect<usize>
+                            id="HelperTextItemIconSelect"
+                            value={ 0 }
+                            onchange={ on_select_change }
+                        >
+                            { for options.clone().into_iter().enumerate().map(
+                                |(i, (_, option))| html_nested! (
+                                    <FormSelectOption<usize> value={ i } description={ Some(option) } />
+                                )
+                            )}
+                        </FormSelect<usize>>
+                    </FormGroup>
+                    <FormGroup label="dynamic">
+                        <Switch label="true" label_off="false" checked={*dynamic_state} onchange={ dynamic_switch_callback } />
+                    </FormGroup>
+                </Form>
+                <br />
+                <Divider />
+                <br />
+                <HelperText component={HelperTextComponent::Ul}>
+                    <HelperTextItem
+                        dynamic={ *dynamic_state }
+                        icon={ options[*option_index_state].0 }
+                        variant={ HelperTextItemVariant::Default }
+                    >
+                        {"This is the default helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem
+                        dynamic={ *dynamic_state }
+                        icon={ options[*option_index_state].0 }
+                        variant={ HelperTextItemVariant::Intermediate }
+                    >
+                        {"This is indeterminate helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem
+                        dynamic={ *dynamic_state }
+                        icon={ options[*option_index_state].0 }
+                        variant={ HelperTextItemVariant::Warning }
+                    >
+                        {"This is warning helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem
+                        dynamic={ *dynamic_state }
+                        icon={ options[*option_index_state].0 }
+                        variant={ HelperTextItemVariant::Success }
+                    >
+                        {"This is success helper text"}
+                    </HelperTextItem>
+                    <HelperTextItem
+                        dynamic={ *dynamic_state }
+                        icon={ options[*option_index_state].0 }
+                        variant={ HelperTextItemVariant::Error }
+                    >
+                        {"This is error helper text"}
+                    </HelperTextItem>
+                </HelperText>
+            </>
+        }
+    }
+    html!{<HelperTextIconExample />}
+}
