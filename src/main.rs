@@ -24,17 +24,17 @@ pub fn main() -> Result<(), JsValue> {
         CustomBody(Box::new(|details| {
             format!(
                 r#"
-<div class="pf-l-bullseye">
-  <div class="pf-l-bullseye__item">
-    <div class="pf-c-alert pf-m-danger" aria-label="Application panicked">
-      <div class="pf-c-alert__icon">
+<div class="pf-v5-l-bullseye">
+  <div class="pf-v5-l-bullseye__item">
+    <div class="pf-v5-c-alert pf-m-danger" aria-label="Application panicked">
+      <div class="pf-v5-c-alert__icon">
         <i class="fas fa-fw fa-exclamation-circle" aria-hidden="true"></i>
       </div>
-      <p class="pf-c-alert__title">
-        <span class="pf-screen-reader">Panick alert:</span>
+      <p class="pf-v5-c-alert__title">
+        <span class="pf-v5-screen-reader">Panick alert:</span>
         Application panicked
       </p>
-      <div class="pf-c-alert__description">
+      <div class="pf-v5-c-alert__description">
         <p>The application failed critically and cannot recover.</p>
         <p>Reason: {message}</p>
       </div>
