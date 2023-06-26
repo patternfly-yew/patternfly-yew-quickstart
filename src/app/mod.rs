@@ -45,6 +45,7 @@ pub enum Component {
     Pagination,
     Popover,
     Select,
+    Skeleton,
     Slider,
     Spinner,
     Switch,
@@ -131,6 +132,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
         Component::Select => html! {<components::SelectExample/>},
+        Component::Skeleton => html! {<components::SkeletonExample/>},
         Component::Slider => html! {<components::SliderExample/>},
         Component::Spinner => html! {<components::SpinnerExample/>},
         Component::Switch => html! {<components::SwitchExample/>},
@@ -253,6 +255,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Select)}>{"Select"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Skeleton)}>{"Skeleton"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>{"Spinner"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>{"Switch"}</NavRouterItem<AppRoute>>

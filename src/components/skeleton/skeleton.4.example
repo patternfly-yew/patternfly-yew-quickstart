@@ -1,0 +1,24 @@
+html!(
+    <>
+        {"--pf-global--FontSize--4xl"}
+        <Skeleton font_size={Some(SkeletonFontSize::Xxxxl)} screenreader_text={"Loading font size 4xl"} />
+        <br />
+        {"--pf-global--FontSize--3xl"}
+        <Skeleton font_size={Some(SkeletonFontSize::Xxxl)} screenreader_text={"Loading font size 3xl"} />
+        <br />
+        {"--pf-global--FontSize--2xl"}
+        <Skeleton font_size={Some(SkeletonFontSize::Xxl)} screenreader_text={"Loading font size 2xl"} />
+        <br />
+        {"--pf-global--FontSize--xl"}
+        <Skeleton font_size={Some(SkeletonFontSize::Xl)} screenreader_text={"Loading font size xl"} />
+        <br />
+        {"--pf-global--FontSize--lg"}
+        <Skeleton font_size={Some(SkeletonFontSize::Lg)} screenreader_text={"Loading font size lg"} />
+        <br />
+        {"--pf-global--FontSize--md"}
+        <Skeleton font_size={Some(SkeletonFontSize::Md)} screenreader_text={"Loading font size md"} />
+        <br />
+        {"--pf-global--FontSize--sm"}
+        <Skeleton font_size={Some(SkeletonFontSize::Sm)} screenreader_text={"Loading font size sm"} /> 
+    </>
+)

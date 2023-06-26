@@ -1,0 +1,10 @@
+html!(
+    <div style={"height: 400px; display: flex; align-items: flex-end; justify-content: space-between"}>
+        <Skeleton height={Some("25%")} width={Some("15%")} screenreader_text={"Loading contents"} />
+        <Skeleton height={Some("33%")} width={Some("15%")} />
+        <Skeleton height={Some("50%")} width={Some("15%")} />
+        <Skeleton height={Some("66%")} width={Some("15%")} />
+        <Skeleton height={Some("75%")} width={Some("15%")} />
+        <Skeleton height={Some("100%")} width={Some("15%")} />
+    </div>
+)
