@@ -52,7 +52,6 @@ fn example() -> Html {
                 <ToolbarContent>
                     <ToolbarItem r#type={ToolbarItemType::Pagination}>
                         <Pagination
-                            style="--pf-v5-c-pagination__nav-page-select--c-form-control--width-chars: 5;"
                             {total_entries}
                             offset={*offset}
                             entries_per_page_choices={vec![5, 10, 25, 50, 100]}
@@ -69,7 +68,6 @@ fn example() -> Html {
                 {entries}
             />
             <Pagination
-                style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 5;"
                 {total_entries}
                 offset={*offset}
                 entries_per_page_choices={vec![5, 10, 25, 50, 100]}
