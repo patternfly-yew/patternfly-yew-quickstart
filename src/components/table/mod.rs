@@ -22,7 +22,7 @@ pub enum Columns {
 }
 
 impl TableEntryRenderer<Columns> for ExampleEntry {
-    fn render_cell(&self, ctx: &CellContext<Columns>) -> Cell {
+    fn render_cell(&self, ctx: CellContext<Columns>) -> Cell {
         match ctx.column {
             Columns::First => html!({ &self.foo }),
             Columns::Second => html!({ &self.foo.len() }),

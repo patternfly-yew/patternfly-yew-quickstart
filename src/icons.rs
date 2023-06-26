@@ -14,7 +14,7 @@ pub enum Columns {
 }
 
 impl TableEntryRenderer<Columns> for IconDescriptor {
-    fn render_cell(&self, context: &CellContext<Columns>) -> Cell {
+    fn render_cell(&self, context: CellContext<Columns>) -> Cell {
         match context.column {
             Columns::Icon => self.0.as_html(),
             Columns::Name => html!(<code>{self.0.as_ref()}</code>),

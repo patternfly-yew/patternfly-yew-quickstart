@@ -19,7 +19,7 @@ pub enum Columns {
 struct ExampleEntry(usize);
 
 impl TableEntryRenderer<Columns> for ExampleEntry {
-    fn render_cell(&self, context: &CellContext<'_, Columns>) -> Cell {
+    fn render_cell(&self, context: CellContext<'_, Columns>) -> Cell {
         match context.column {
             Columns::ItemNumber => html!((self.0 + 1).to_string()),
             Columns::Decimal => html!(self.0.to_string()),

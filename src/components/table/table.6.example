@@ -4,7 +4,7 @@
     pub struct Centered(pub ExampleEntry);
 
     impl TableEntryRenderer<Columns> for Centered {
-        fn render_cell(&self, context: &CellContext<Columns>) -> Cell {
+        fn render_cell(&self, context: CellContext<Columns>) -> Cell {
             let mut cell = self.0.render_cell(context);
 
             if context.column == &Columns::First {
