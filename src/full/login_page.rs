@@ -37,7 +37,7 @@ pub fn login_page_example() -> Html {
                                 <TextInput required=true name="username"/>
                             </FormGroup>
                             <FormGroup label="Password">
-                                <TextInput required=true name="password" r#type="password"/>
+                                <TextInput required=true name="password" r#type={TextInputType::Password}/>
                             </FormGroup>
                             <ActionGroup>
                                 <Button label="Log In" r#type={ButtonType::Submit} variant={ButtonVariant::Primary}/>

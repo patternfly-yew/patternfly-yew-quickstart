@@ -124,13 +124,11 @@
         let error = processing.error().map(|err|{err.1.to_string()});
         let helper_text = error.clone().map(|err|{
             html!(
-                <FormHelperText>
-                    <HelperText live_region=true>
-                        <HelperTextItem dynamic=true variant={HelperTextItemVariant::Error}>
-                            {err}
-                        </HelperTextItem>
-                    </HelperText>
-                </FormHelperText>
+                <HelperText live_region=true>
+                    <HelperTextItem dynamic=true variant={HelperTextItemVariant::Error}>
+                        {err}
+                    </HelperTextItem>
+                </HelperText>
             )
         });
         let content = use_memo(|processing|{

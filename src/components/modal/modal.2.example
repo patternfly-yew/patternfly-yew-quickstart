@@ -17,7 +17,7 @@ html!{
                     <TextInput required=true name="username"/>
                 </FormGroup>
                 <FormGroup label="Password">
-                    <TextInput required=true name="password" r#type="password"/>
+                    <TextInput required=true name="password" r#type={TextInputType::Password}/>
                 </FormGroup>
         </Form>
     </Modal>
