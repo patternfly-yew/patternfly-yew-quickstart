@@ -1,0 +1,15 @@
+html!(
+    <Form>
+        <FormGroup
+            label="Some text value"
+            required=true
+            label_icon={LabelIcon::Help(html_nested!(<PopoverBody>{ "Just a test. And here is some help." } </PopoverBody>))}
+        >
+            <TextInput placeholder="Just enter foo" required=true/>
+        </FormGroup>
+        <ActionGroup>
+            <Button variant={ButtonVariant::Primary} label="Submit" r#type={ButtonType::Submit}/>
+            <Button variant={ButtonVariant::Secondary} label="Reset" r#type={ButtonType::Reset}/>
+        </ActionGroup>
+    </Form>
+)
