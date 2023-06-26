@@ -44,7 +44,7 @@ jobs:
       - name: Deploy to Surge
         run: surge ./dist/ "${{steps.surge-url.outputs.result}}" --token 62bd7a07b9bf812ff8d3ea91ccd2dc2f
       - name: Post URL as PR comment
-        uses: mshick/add-pr-comment@v1
+        uses: mshick/add-pr-comment@v2
         with:
           message: "🚀 Deployed Preview: http://${{steps.surge-url.outputs.result}} ✨"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ steps.token.outputs.GH_TOKEN }}
