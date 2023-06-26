@@ -19,13 +19,7 @@ html!(
             <TextInput disabled=true/>
         </FormGroup>
         <FormGroup label="Search">
-            <TextInput icon={TextInputIcon::Search}/>
-        </FormGroup>
-        <FormGroup label="Calendar">
-            <TextInput icon={TextInputIcon::Calendar}/>
-        </FormGroup>
-        <FormGroup label="Clock">
-            <TextInput icon={TextInputIcon::Clock}/>
+            <TextInput icon={Icon::Search}/>
         </FormGroup>
     </Form>
 )
