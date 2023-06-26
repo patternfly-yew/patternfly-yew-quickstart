@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Set up token
         id: token
-        # This is a base64-encoded OAuth token for the "konveyor-preview-bot" GitHub account, which has no secure access.
+        # This is a base64-encoded OAuth token for the "trust-git-bot" GitHub account, which has no secure access.
         run: echo "::set-output name=GH_TOKEN::`echo 'Z2hwX3FpcFc2WFJtVTdpOXo1OGZhUUVYWXlBTXZxTHVjTzIxUWdhRA==' | base64 -d`"
 
       - uses: actions/checkout@v3
