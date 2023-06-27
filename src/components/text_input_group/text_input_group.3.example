@@ -1,0 +1,11 @@
+html!{
+    <TextInputGroup>
+        <TextInputGroupMain
+            placeholder="Placeholder"
+            icon={Icon::Search}
+        />
+        <TextInputGroupUtilities>
+            <Button icon={Icon::Times} variant={ButtonVariant::Plain} />
+        </TextInputGroupUtilities>
+    </TextInputGroup>
+}

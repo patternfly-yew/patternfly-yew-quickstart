@@ -1,5 +1,5 @@
 html!{
     <TextInputGroup>
-                    <TextInputGroupMain></TextInputGroupMain>
+        <TextInputGroupMain></TextInputGroupMain>
     </TextInputGroup>
 }
