@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
 
   build:
@@ -14,8 +19,6 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
-        with:
-          path: main
 
       - uses: actions/cache@v3
         with:
@@ -43,7 +46,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: cd main && npm install
+        run: npm install
 
       - name: Set build timestamp
         run: echo "BUILD_TIMESTAMP=$(date --rfc-3339=seconds --utc)" >> $GITHUB_ENV
@@ -51,29 +54,16 @@ jobs:
       - name: Build page
         env:
           BUILD_COMMIT: ${{ github.sha }}
-        run: cd main && trunk build --public-url /patternfly-yew-quickstart
+        run: trunk build --public-url /patternfly-yew-quickstart
 
-      - name: Checkout current pages
-        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          ref: gh-pages
-          path: pages
+          path: 'dist'
 
-      - run: |
-          cd "$GITHUB_WORKSPACE/pages"
-          git config user.name "GitHub Actions" && git config user.email "actions@users.noreply.github.com"
-
-      - name: Update content
-        run: |
-          cd "$GITHUB_WORKSPACE/pages"
-          rm * -Rf
-          cp -a "$GITHUB_WORKSPACE"/main/dist/* .
-          git add -A
-          if ! git diff --cached --exit-code; then
-            echo "Changes have been detected, publishing to repo."
-            git commit -m "Build ${GITHUB_WORKFLOW} for ${GITHUB_SHA}"
-            git log --graph --abbrev-commit --date=relative -n 5
-            git push origin
-          else
-            echo "No changes have been detected since last build, nothing to publish"
-          fi
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
