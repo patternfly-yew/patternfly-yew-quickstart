@@ -1,0 +1,36 @@
+html!(
+    <>
+      {"Small circle"}
+      <Skeleton shape={Some(SkeletonShape::Circle)} width={Some("15%")} screenreader_text={"Loading small circle contents"} />
+      <br />
+      {"Medium circle"}
+      <Skeleton shape={Some(SkeletonShape::Circle)} width={Some("30%")} screenreader_text={"Loading medium circle contents"} />
+      <br />
+      {"Large circle"}
+      <Skeleton shape={Some(SkeletonShape::Circle)} width={Some("50%")} screenreader_text={"Loading large circle contents"} />
+      <br />
+      {"Small square"}
+      <Skeleton shape={Some(SkeletonShape::Square)} width={Some("15%")} screenreader_text={"Loading small square contents"} />
+      <br />
+      {"Medium square"}
+      <Skeleton shape={Some(SkeletonShape::Square)} width={Some("30%")} screenreader_text={"Loading medium square contents"} />
+      <br />
+      {"Large square"}
+      <Skeleton shape={Some(SkeletonShape::Square)} width={Some("50%")} screenreader_text={"Loading large square contents"} />
+      <br />
+      {"Small rectangle"}
+      <div style={ "height: 200px" }>
+        <Skeleton height={Some("50%")} width={Some("50%")} screenreader_text={"Loading small rectangle contents"} />
+      </div>
+      <br />
+      {"Medium rectangle"}
+      <div style={ "height: 200px" }>
+        <Skeleton height={Some("75%")} width={Some("75%")} screenreader_text={"Loading medium rectangle contents"} />
+      </div>
+      <br />
+      {"Large rectangle"}
+      <div style={ "height: 200px" }>
+        <Skeleton height={Some("100%")} screenreader_text={"Loading large rectangle contents"} />
+      </div>
+    </>
+)

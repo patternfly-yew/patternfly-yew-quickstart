@@ -1,0 +1,15 @@
+html!(
+    <>
+        <Skeleton width={Some("25%")} screenreader_text={"Loading contents"} />
+        <br />
+        <Skeleton width={Some("33%")} />
+        <br />
+        <Skeleton width={Some("50%")} />
+        <br />
+        <Skeleton width={Some("66%")} />
+        <br />
+        <Skeleton width={Some("75%")} />
+        <br />
+        <Skeleton />
+    </>
+)
