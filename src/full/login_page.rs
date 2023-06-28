@@ -1,3 +1,4 @@
+use crate::app::Component::Toast;
 use patternfly_yew::prelude::*;
 use yew::html::ChildrenRenderer;
 use yew::prelude::*;
@@ -18,39 +19,73 @@ pub fn login_page_example() -> Html {
     ]);
 
     let title = html_nested! {<Title size={Size::XXLarge}>{"Login to your account"}</Title>};
+    let toaster = use_toaster();
+
+    let username = use_state_eq(String::new);
+    let password = use_state_eq(String::new);
+
+    let onchangeusername = {
+        let username = username.clone();
+        Callback::from(move |value| {
+            username.set(value);
+        })
+    };
+
+    let onchangepassword = {
+        let password = password.clone();
+        Callback::from(move |value| {
+            password.set(value);
+        })
+    };
+
+    let onsubmit = {
+        let toaster = toaster.clone();
+        let username = username.clone();
+        let password = password.clone();
+        Callback::from(move |_| {
+            if let Some(toaster) = &toaster {
+                toaster.toast(format!(
+                    "Login - Username: {}, Password: {}",
+                    &*username, &*password
+                ));
+            }
+        })
+    };
 
     html! {
         <>
-            <Background/>
-            <Login
-                header={header}
-                footer={footer}
+            <ToastViewer>
+                <Background/>
+                <Login
+                    {header}
+                    {footer}
                 >
-                <LoginMain>
-                    <LoginMainHeader
-                        title={title}
-                        description="Enter the credentials to your account right here."
-                    />
-                    <LoginMainBody>
-                        <Form>
-                            <FormGroup label="Username">
-                                <TextInput required=true name="username"/>
-                            </FormGroup>
-                            <FormGroup label="Password">
-                                <TextInput required=true name="password" r#type={TextInputType::Password}/>
-                            </FormGroup>
-                            <ActionGroup>
-                                <Button label="Log In" r#type={ButtonType::Submit} variant={ButtonVariant::Primary}/>
-                            </ActionGroup>
-                        </Form>
-                    </LoginMainBody>
-                    <LoginMainFooter
-                        links={links}
-                        band={band}
+                    <LoginMain>
+                        <LoginMainHeader
+                            {title}
+                            description="Enter the credentials to your account right here."
+                        />
+                        <LoginMainBody>
+                            <Form {onsubmit} method="dialog">
+                                <FormGroup label="Username">
+                                    <TextInput required=true name="username" oninput={onchangeusername} value={(*username).clone()} />
+                                </FormGroup>
+                                <FormGroup label="Password">
+                                    <TextInput required=true name="password" r#type={TextInputType::Password} oninput={onchangepassword} value={(*password).clone()} />
+                                </FormGroup>
+                                <ActionGroup>
+                                    <Button label="Log In" r#type={ButtonType::Submit} variant={ButtonVariant::Primary}/>
+                                </ActionGroup>
+                            </Form>
+                        </LoginMainBody>
+                        <LoginMainFooter
+                            {links}
+                            {band}
                         >
-                    </LoginMainFooter>
-                </LoginMain>
-            </Login>
+                        </LoginMainFooter>
+                    </LoginMain>
+                </Login>
+            </ToastViewer>
         </>
     }
 }
