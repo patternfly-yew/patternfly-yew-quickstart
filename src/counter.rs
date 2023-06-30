@@ -1,5 +1,4 @@
 use crate::example::ExamplePage;
-
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
@@ -21,7 +20,8 @@ pub fn counter() -> Html {
                     <CardBody>
                         <p>{ *counter }</p>
                         <Button label="Add One"
-                            align={Align::Start} icon={Icon::PlusCircle}
+                            align={Align::Start}
+                            icon={Icon::PlusCircle}
                             variant={ButtonVariant::Link}
                             {onclick}
                         />
