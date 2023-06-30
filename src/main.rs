@@ -36,7 +36,7 @@ pub fn main() -> Result<(), JsValue> {
       </p>
       <div class="pf-v5-c-alert__description">
         <p>The application failed critically and cannot recover.</p>
-        <p>Reason: {message}</p>
+        <p>Reason: <pre>{message}</pre></p>
       </div>
     </div>
   </div>
