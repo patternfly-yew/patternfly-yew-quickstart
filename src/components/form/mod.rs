@@ -14,7 +14,7 @@ pub fn view() -> Html {
         <ExamplePage title="Form">
             { example1 }
             { example2 }
-           //{ example3 }
+            { example3 }
             { example4 }
             { example5 }
         </ExamplePage>
