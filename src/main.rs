@@ -9,6 +9,7 @@ mod hook;
 mod icons;
 mod index;
 mod layouts;
+mod panic;
 
 use browser_panic_hook::{CustomBody, IntoPanicHook};
 use wasm_bindgen::prelude::*;

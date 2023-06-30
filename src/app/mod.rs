@@ -2,9 +2,9 @@ use crate::components;
 use crate::counter::*;
 use crate::full;
 use crate::hook::use_open;
-use crate::icons::Icons;
 use crate::index::*;
 use crate::layouts;
+use crate::{icons::Icons, panic::Panic};
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
@@ -86,6 +86,7 @@ pub enum AppRoute {
     #[default]
     Index,
     Icons,
+    Panic,
 }
 
 #[function_component(Application)]
@@ -169,6 +170,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         AppRoute::Counter => html! {<AppPage><Counter/></AppPage>},
         AppRoute::Index => html! {<AppPage><Index/></AppPage>},
         AppRoute::Icons => html! {<AppPage><Icons/></AppPage>},
+        AppRoute::Panic => html! {<AppPage><Panic/></AppPage>},
 
         AppRoute::FullPageExample(_) => {
             html!(
@@ -223,7 +225,8 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Icons}>{"Icons"}</NavRouterItem<AppRoute>>
-                        <NavItem external=true to="https://github.com/ctron/patternfly-yew">{"PatternFly Yew"}</NavItem>
+                        <NavRouterItem<AppRoute> to={AppRoute::Panic}>{"Panic"}</NavRouterItem<AppRoute>>
+                        <NavItem external=true to="https://github.com/patternfly-yew/patternfly-yew">{"PatternFly Yew"}</NavItem>
                     </NavExpandable>
                     <NavExpandable title="Components">
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Accordion)}>{"Accordion"}</NavRouterItem<AppRoute>>
@@ -291,7 +294,7 @@ fn page(props: &PageProps) -> Html {
     );
 
     let callback_github = use_open(
-        "https://github.com/ctron/patternfly-yew-quickstart",
+        "https://github.com/patternfly-yew/patternfly-yew-quickstart",
         "_blank",
     );
 
