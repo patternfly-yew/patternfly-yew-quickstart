@@ -1,0 +1,11 @@
+html!{
+    <EmptyState>
+        <EmptyStateHeader
+            title_text={html!("Loading")}
+            heading_level={EmptyStateHeadingLevel::H4}
+            icon={html!(
+                <EmptyStateIcon icon={html!(<Spinner/>)} />
+            )}
+        />
+    </EmptyState>
+}

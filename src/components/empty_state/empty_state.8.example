@@ -1,0 +1,14 @@
+html!{
+    <EmptyState>
+        <EmptyStateHeader
+            title_text={html!("Custom icon color")}
+            heading_level={EmptyStateHeadingLevel::H4}
+            icon={html!(
+                <EmptyStateIcon icon={html!(<>{Icon::Check}</>)} color="var(--pf-v5-global--success-color--100)" />
+            )}
+        />
+        <EmptyStateBody>
+            {"This represents the empty state pattern in PatternFly with a custom icon color. Hopefully it's simple enough to use but flexible enough to meet a variety of needs."}
+        </EmptyStateBody>
+    </EmptyState>
+}
