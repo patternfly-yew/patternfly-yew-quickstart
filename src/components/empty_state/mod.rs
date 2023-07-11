@@ -13,6 +13,9 @@ impl Component for EmptyStateExample {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
+        let example_a = example! ("Simple Empty State" => "simple_empty_state.1.example");
+        let example_b = example! ("Simple Empty state (XLarge)" => "simple_empty_state.2.example");
+
         let example1 = example! ("Basic" => "empty_state.1.example");
         let example2 = example! ("Extra small" => "empty_state.2.example");
         let example3 = example! ("Small" => "empty_state.3.example");
@@ -25,6 +28,9 @@ impl Component for EmptyStateExample {
         html! {
             <>
                 <ExamplePage title="Empty state">
+                    {example_a}
+                    {example_b}
+
                     {example1}
                     {example2}
                     {example3}
