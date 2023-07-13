@@ -2,16 +2,53 @@
 
 use patternfly_yew::prelude::*;
 
+const INIT_TOTAL: usize = 394;
+
 #[function_component(Example)]
 fn example() -> Html {
 
-    let total = use_state_eq(|| Some(394));
+    // the total number of items to simulate
+    let total = use_state_eq(|| Some(INIT_TOTAL));
 
-    let UsePagination { state, onpagechange, onperpagechange } = use_pagination(*total, Default::default);
-    // let pagination = use_pagination(*total, Default::default);
+    // state for managing the "total" value
+    let total_input = use_state_eq(|| Some(INIT_TOTAL));
+    let total_text = use_state_eq(|| INIT_TOTAL.to_string());
+    let total_state = use_state_eq(|| InputState::Default);
 
-    //let state : PaginationState = (*pagination.state).clone();
-    log::debug!("State: {:?}", state);
+    // when the text changes, parse to a usize and remember the result
+    {
+        let total_state = total_state.clone();
+        let total_input = total_input.clone();
+        use_effect_with_deps(move |text|{
+            match text.parse::<usize>() {
+                Ok(total) => {
+                    total_state.set(InputState::Default);
+                    total_input.set(Some(total));
+                }
+                Err(_) => {
+                    total_state.set(InputState::Error);
+                    total_input.set(None);
+                }
+            }
+        }, (*total_text).clone());
+    }
+
+    let ontext = {
+        let total_text = total_text.clone();
+        Callback::from(move |text| {
+            total_text.set(text);
+        })
+    };
+
+    let onset = {
+        let total = total.clone();
+        let total_input = total_input.clone();
+        Callback::from(move |_| {
+            total.set(*total_input);
+        })
+    };
+
+    let pagination = use_pagination(*total, Default::default);
 
     let entries = use_memo(|state| {
         let mut range = state.range();
@@ -19,7 +56,7 @@ fn example() -> Html {
             range.end = range.end.clamp(0, total);
         }
         range.into_iter().map(ExampleEntry).collect::<Vec<_>>()
-    }, (*state).clone());
+    }, pagination.state.clone());
 
     let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 
@@ -35,20 +72,35 @@ fn example() -> Html {
         <>
             <Toolbar>
                 <ToolbarContent>
+                    <ToolbarItem r#type={ToolbarItemType::SearchFilter}>
+                        <Form onsubmit={onset.reform(|_|())}>
+                            // needed to trigger submit when pressing enter in the search field
+                            <input type="submit" hidden=true formmethod="dialog" />
+                            <InputGroup>
+                                <TextInputGroup>
+                                    <TextInput
+                                        placeholder="Total number of items"
+                                        value={(*total_text).clone()}
+                                        state={*total_state}
+                                        oninput={ontext}
+                                    />
+                                </TextInputGroup>
+                                <InputGroupItem>
+                                    <Button
+                                        disabled={*total_state == InputState::Error}
+                                        icon={Icon::ArrowRight}
+                                        variant={ButtonVariant::Control}
+                                        onclick={onset.reform(|_|())}
+                                    />
+                                </InputGroupItem>
+                            </InputGroup>
+                        </Form>
+                    </ToolbarItem>
                     <ToolbarItem r#type={ToolbarItemType::Pagination}>
-                        <Pagination
-                            total_entries={*total}
-                            offset={state.offset()}
-                            entries_per_page_choices={vec![5, 10, 25, 50, 100]}
-                            selected_choice={state.control.per_page}
-                            onlimit={&onperpagechange}
-                            onnavigation={&onpagechange}
-                        />
-                        /*
                         <SimplePagination
                             pagination={pagination.clone()}
                             total={*total}
-                        />*/
+                        />
                     </ToolbarItem>
                 </ToolbarContent>
             </Toolbar>
@@ -59,13 +111,11 @@ fn example() -> Html {
                 {entries}
             />
 
-            /*
             <SimplePagination
                 {pagination}
                 total={*total}
                 position={PaginationPosition::Bottom}
             />
-            */
         </>
     )
 }
