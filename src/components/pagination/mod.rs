@@ -32,10 +32,12 @@ impl TableEntryRenderer<Columns> for ExampleEntry {
 #[function_component(PaginationExample)]
 pub fn pagination_example() -> Html {
     let example1 = example!("Basic Example" => "pagination.1.example");
+    let example2 = example!("Hook Example" => "pagination.2.example");
 
     html! {
         <ExamplePage title="Pagination">
             {example1}
+            {example2}
         </ExamplePage>
     }
 }

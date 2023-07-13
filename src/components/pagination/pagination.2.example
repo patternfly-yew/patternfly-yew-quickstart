@@ -1,0 +1,74 @@
+{
+
+use patternfly_yew::prelude::*;
+
+#[function_component(Example)]
+fn example() -> Html {
+
+    let total = use_state_eq(|| Some(394));
+
+    let UsePagination { state, onpagechange, onperpagechange } = use_pagination(*total, Default::default);
+    // let pagination = use_pagination(*total, Default::default);
+
+    //let state : PaginationState = (*pagination.state).clone();
+    log::debug!("State: {:?}", state);
+
+    let entries = use_memo(|state| {
+        let mut range = state.range();
+        if let Some(total) = state.total {
+            range.end = range.end.clamp(0, total);
+        }
+        range.into_iter().map(ExampleEntry).collect::<Vec<_>>()
+    }, (*state).clone());
+
+    let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
+
+    let header = html_nested! {
+        <TableHeader<Columns>>
+            <TableColumn<Columns> label="#" index={Columns::ItemNumber} />
+            <TableColumn<Columns> label="Decimal" index={Columns::Decimal} />
+            <TableColumn<Columns> label="Hex" index={Columns::Hex} />
+        </TableHeader<Columns>>
+    };
+
+    html! (
+        <>
+            <Toolbar>
+                <ToolbarContent>
+                    <ToolbarItem r#type={ToolbarItemType::Pagination}>
+                        <Pagination
+                            total_entries={*total}
+                            offset={state.offset()}
+                            entries_per_page_choices={vec![5, 10, 25, 50, 100]}
+                            selected_choice={state.control.per_page}
+                            onlimit={&onperpagechange}
+                            onnavigation={&onpagechange}
+                        />
+                        /*
+                        <SimplePagination
+                            pagination={pagination.clone()}
+                            total={*total}
+                        />*/
+                    </ToolbarItem>
+                </ToolbarContent>
+            </Toolbar>
+
+            <Table<Columns, UseTableData<Columns, MemoizedTableModel<ExampleEntry>>>
+                mode={TableMode::Compact}
+                {header}
+                {entries}
+            />
+
+            /*
+            <SimplePagination
+                {pagination}
+                total={*total}
+                position={PaginationPosition::Bottom}
+            />
+            */
+        </>
+    )
+}
+
+html!(<Example/>)
+}
