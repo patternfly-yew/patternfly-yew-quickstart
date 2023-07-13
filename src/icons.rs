@@ -6,6 +6,12 @@ use yew::prelude::*;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct IconDescriptor(Icon);
 
+impl IconDescriptor {
+    pub fn name(&self) -> &'static str {
+        self.0.into()
+    }
+}
+
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub enum Columns {
     Icon,
@@ -17,7 +23,7 @@ impl TableEntryRenderer<Columns> for IconDescriptor {
     fn render_cell(&self, context: CellContext<Columns>) -> Cell {
         match context.column {
             Columns::Icon => self.0.as_html(),
-            Columns::Name => html!(<code>{self.0.as_ref()}</code>),
+            Columns::Name => html!(<code>{self.name()}</code>),
             Columns::Description => self
                 .0
                 .get_documentation()
@@ -47,23 +53,77 @@ pub fn icons() -> Html {
         (),
     );
 
-    let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
-
     let header = html_nested! {
         <TableHeader<Columns>>
-            <TableColumn<Columns> index={Columns::Icon}/>
-            <TableColumn<Columns> label="Name" index={Columns::Name}/>
-            <TableColumn<Columns> label="Description" index={Columns::Description}/>
+            <TableColumn<Columns> width={ColumnWidth::Percent(10)} label="" index={Columns::Icon}/>
+            <TableColumn<Columns> width={ColumnWidth::Percent(20)} label="Name" index={Columns::Name}/>
+            <TableColumn<Columns> width={ColumnWidth::Percent(70)} label="Description" index={Columns::Description}/>
         </TableHeader<Columns>>
     };
 
+    // search
+
+    let filter = use_state_eq(String::new);
+
+    let onclearfilter = {
+        let filter = filter.clone();
+        Callback::from(move |_| filter.set(String::new()))
+    };
+
+    let onsetfilter = {
+        let filter = filter.clone();
+        Callback::from(move |value: String| filter.set(value.trim().to_string()))
+    };
+
+    // filter
+
+    let entries = use_memo(
+        |(entries, filter)| {
+            let filter = filter.to_lowercase();
+
+            entries
+                .iter()
+                .filter(|icon| icon.name().to_lowercase().contains(&filter))
+                .cloned()
+                .collect::<Vec<_>>()
+        },
+        (entries.clone(), (*filter).clone()),
+    );
+
+    // table data
+
+    let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
+
+    // render
+
     html!(
         <ExamplePage title="Icons" {subtitle}>
-            <Table<Columns, UseTableData<Columns, MemoizedTableModel<IconDescriptor>>>
-                {header}
-                {entries}
-            />
-        // <Table<SharedTableModel<IconDescriptor>> header={(*header).clone()} entries={(*entries).clone()}/>
+            <div>
+                <Toolbar>
+                    <ToolbarContent>
+                        <ToolbarItem r#type={ToolbarItemType::SearchFilter}>
+                            <TextInputGroup>
+                                <TextInputGroupMain
+                                    placeholder="Filter"
+                                    icon={Icon::Search}
+                                    value={(*filter).clone()}
+                                    oninput={onsetfilter}
+                                />
+                                if !filter.is_empty() {
+                                    <TextInputGroupUtilities>
+                                        <Button icon={Icon::Times} variant={ButtonVariant::Plain} onclick={onclearfilter}/>
+                                    </TextInputGroupUtilities>
+                                }
+                            </TextInputGroup>
+                        </ToolbarItem>
+                    </ToolbarContent>
+                </Toolbar>
+
+                <Table<Columns, UseTableData<Columns, MemoizedTableModel<IconDescriptor>>>
+                    {header}
+                    {entries}
+                />
+            </div>
         </ExamplePage>
     )
 }
