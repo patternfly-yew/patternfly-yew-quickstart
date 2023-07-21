@@ -1,8 +1,7 @@
 {
-    use yew::platform::spawn_local;
     use yew_hooks::prelude::use_click_away;
     use popper_rs::yew::component::PortalPopper;
-    use popper_rs::prelude::{*, State as PopperState};
+    use popper_rs::prelude::*;
 
     #[derive(PartialEq, Properties)]
     struct ExampleMenuProperties {
