@@ -330,7 +330,7 @@ fn page(props: &PageProps) -> Html {
                             icon={Icon::QuestionCircle}
                             variant={MenuToggleVariant::Plain}
                         >
-                            <MenuAction onclick={onabout} text="About" />
+                            <MenuAction onclick={onabout}>{"About"}</MenuAction>
                         </Dropdown>
                     </ToolbarItem>
                 </ToolbarGroup>

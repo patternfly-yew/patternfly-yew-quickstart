@@ -5,11 +5,11 @@
             position={Position::Right}
             variant={MenuToggleVariant::Plain}
         >
-            <MenuAction text="Link" key="link" />
-            <MenuAction text="Action" key="action" />
+            <MenuAction key="link">{ "Link" }</MenuAction>
+            <MenuAction key="action">{ "Action" }</MenuAction>
             <ListDivider />
-            <MenuAction text="Separated Link" key="separated link" />
-            <MenuAction text="Separated Action" key="separated action" />
+            <MenuAction key="separated link">{ "Separated Link" }</MenuAction>
+            <MenuAction key="separated action">{ "Separated Action" }</MenuAction>
         </Dropdown>
     };
 

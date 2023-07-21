@@ -23,12 +23,12 @@ html!{
                     </div>
                 </div>
             </Raw>
-            <MenuAction text="Foo" />
+            <MenuAction>{"Foo"}</MenuAction>
         </MenuGroup>
         <ListDivider/>
         <MenuGroup title="Group 1">
-            <MenuAction text="Bar" />
-            <MenuAction text="Foo" />
+            <MenuAction>{"Bar"}</MenuAction>
+            <MenuAction>{"Foo"}</MenuAction>
         </MenuGroup>
     </Dropdown>
 }

@@ -1,6 +1,8 @@
 {
+    use yew::platform::spawn_local;
     use yew_hooks::prelude::use_click_away;
-    use patternfly_yew::utils::popper::*;
+    use popper_rs::yew::component::PortalPopper;
+    use popper_rs::prelude::{*, State as PopperState};
 
     #[derive(PartialEq, Properties)]
     struct ExampleMenuProperties {
@@ -12,12 +14,12 @@
     fn example_menu(props: &ExampleMenuProperties) -> Html {
         html!(
             <Menu r#ref={props.r#ref.clone()} style={&props.style}>
-                <MenuAction text="Action" />
-                <MenuLink text="Link" href="/" />
-                <MenuAction text="Action (disabled)" disabled=true />
-                <MenuLink text="Link (disabled)" disabled=true href="/" />
+                <MenuAction >{ "Action" }</MenuAction>
+                <MenuLink href="/">{ "Link" }</MenuLink>
+                <MenuAction disabled=true>{ "Action (disabled)" }</MenuAction>
+                <MenuLink disabled=true href="/">{ "Link (disabled)" }</MenuLink>
                 <ListDivider />
-                <MenuAction text="Action" danger=true />
+                <MenuAction danger=true>{ "Action" }</MenuAction>
             </Menu>
         )
     }
@@ -25,57 +27,48 @@
     #[function_component(Example)]
     fn example() -> Html {
         let expanded = use_state_eq(||false);
-        let ontoggle = {
-            let expanded = expanded.clone();
-            Callback::from(move |()| {
-                log::debug!("Toggled");
-                expanded.set(!*expanded);
-            })
-        };
 
+        let away_ref = use_node_ref();
+        let toggle_ref = use_node_ref();
         let menu_ref = use_node_ref();
         {
             let expanded = expanded.clone();
-            use_click_away(menu_ref.clone(), move |_: Event| {
-                log::debug!("Click away");
-                 expanded.set(false);
-            });
+            use_click_away(away_ref.clone(), move |_: Event| expanded.set(false));
         }
 
-        let popper = use_state_eq(|| Option::<PopperState>::None);
+        let ontoggle = use_callback(|_, expanded| expanded.set(!**expanded), expanded.clone());
 
-        let onstatechange = {
-            let popper = popper.clone();
-            Callback::from(move |state| {
-                log::info!("Popper state: {state:?}");
-                popper.set(Some(state));
-            })
-        };
-
-        let content = html!(
-            <ExampleMenu r#ref={menu_ref} style={popper.as_ref().map(|state|state.styles.clone()).unwrap_or_default()} />
-        );
+        let state = use_state_eq(State::default);
+        let onstatechange = use_callback(|new_state, state| state.set(new_state), state.clone());
 
         html!(
-            <Popper
-                {content}
-                mode={PopperMode::Inline}
-                visible={*expanded}
-                options={
-                    Options {
-                        placement: PopperPlacement::Bottom,
-                        ..Default::default()
-                    }
-                }
-                {onstatechange}
-            >
-                <MenuToggle
-                    text="Example Menu"
-                    expanded={*expanded}
-                    {ontoggle}
-                >
-                </MenuToggle>
-            </Popper>
+            <>
+                <div ref={away_ref} style="display: inline;">
+                    <MenuToggle
+                        r#ref={toggle_ref.clone()}
+                        text="Example Menu"
+                        expanded={*expanded}
+                        {ontoggle}
+                    />
+
+                    <PortalPopper
+                        target={toggle_ref}
+                        content={menu_ref.clone()}
+                        placement={Placement::Bottom}
+                        visible={*expanded}
+                        {onstatechange}
+                    >
+                        <ExampleMenu
+                            r#ref={menu_ref}
+                            style={&state
+                                .styles.popper
+                                .extend_with("z-index", "1000")
+                            }
+                        />
+                    </PortalPopper>
+
+                </div>
+            </>
         )
     }
 

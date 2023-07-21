@@ -4,9 +4,9 @@ html!(
         variant={MenuToggleVariant::Plain}
         icon={Icon::EllipsisV}
     >
-        <MenuAction text="Foo" />
+        <MenuAction>{"Foo"}</MenuAction>
         <ListDivider/>
-        <MenuAction text="Bar"/>
+        <MenuAction>{"Bar"}</MenuAction>
     </Dropdown>
 )
 }

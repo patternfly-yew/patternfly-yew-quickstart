@@ -3,11 +3,11 @@ html!(
     <Dropdown
         text="Foo"
     >
-        <MenuAction text="Foo" onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Foo".into()))} />
+        <MenuAction onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Foo".into()))}>{"Foo"}</MenuAction>
         <ListDivider/>
-        <MenuAction text="Bar" onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Bar".into()))} />
+        <MenuAction icon={Icon::Cubes} onclick={ctx.link().callback(|_|Msg::ShowToast("Clicked Bar".into()))}>{"Bar"}</MenuAction>
         <ListDivider/>
-        <MenuLink text="PatternFly" icon={Icon::ExternalLinkAlt} href="https://patternfly.org" target="_blank" />
+        <MenuLink href="https://patternfly.org" target="_blank">{"PatternFly"} {Icon::ExternalLinkAlt}</MenuLink>
     </Dropdown>
 )
 }

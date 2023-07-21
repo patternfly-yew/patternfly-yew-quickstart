@@ -1,10 +1,10 @@
 html!(
     <Menu>
-        <MenuAction text="Action" />
-        <MenuLink text="Link" href="/" />
-        <MenuAction text="Action (disabled)" disabled=true />
-        <MenuLink text="Link (disabled)" disabled=true href="/" />
+        <MenuAction >{ "Action" }</MenuAction>
+        <MenuLink href="/">{ "Link" }</MenuLink>
+        <MenuAction disabled=true>{ "Action (disabled)" }</MenuAction>
+        <MenuLink disabled=true href="/">{ "Link (disabled)" }</MenuLink>
         <ListDivider />
-        <MenuAction text="Action" danger=true />
+        <MenuAction danger=true>{ "Action" }</MenuAction>
     </Menu>
 )
