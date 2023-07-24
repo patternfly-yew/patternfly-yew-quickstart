@@ -226,7 +226,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Icons}>{"Icons"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Panic}>{"Panic"}</NavRouterItem<AppRoute>>
-                        <NavItem external=true to="https://github.com/patternfly-yew/patternfly-yew">{"PatternFly Yew"}</NavItem>
+                        <NavLink href="https://github.com/patternfly-yew/patternfly-yew" target="_blank">{"PatternFly Yew "} {Icon::ExternalLinkAlt.with_classes(classes!("pf-v5-u-ml-sm", "pf-v5-u-color-200"))}</NavLink>
                     </NavExpandable>
                     <NavExpandable title="Components">
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Accordion)}>{"Accordion"}</NavRouterItem<AppRoute>>
