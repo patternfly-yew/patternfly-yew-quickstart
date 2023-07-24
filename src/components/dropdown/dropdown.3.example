@@ -3,6 +3,25 @@ let icon = html!(
     <Avatar src={"assets/images/img_avatar-light.svg"} alt="avatar" />
 );
 
+#[function_component(CustomEntry)]
+fn custom_entry() -> Html {
+    let onclose = use_close_menu_callback();
+    html!(
+        <div class="pf-v5-c-menu__list-item">
+            <div
+                class="pf-v5-c-menu__item"
+                role="menuitem"
+                onclick={onclose.reform(|_|())}
+            >
+                <dl>
+                    <dt class="pf-v5-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
+                    <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
+                </dl>
+            </div>
+        </div>
+    )
+}
+
 html!{
     <Dropdown
         variant={MenuToggleVariant::Plain}
@@ -11,17 +30,7 @@ html!{
     >
         <MenuGroup>
             <Raw>
-                <div class="pf-v5-c-menu__list-item">
-                    <div
-                        class="pf-v5-c-menu__item"
-                        role="menuitem"
-                    >
-                        <dl>
-                            <dt class="pf-v5-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
-                            <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
-                        </dl>
-                    </div>
-                </div>
+                <CustomEntry/>
             </Raw>
             <MenuAction>{"Foo"}</MenuAction>
         </MenuGroup>

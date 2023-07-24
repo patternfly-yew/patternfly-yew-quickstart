@@ -1,6 +1,6 @@
 html!(
     <Menu>
-        <MenuAction >{ "Action" }</MenuAction>
+        <MenuAction onclick={action.clone()}>{ "Action" }</MenuAction>
         <MenuLink href="/">{ "Link" }</MenuLink>
         <MenuAction disabled=true>{ "Action (disabled)" }</MenuAction>
         <MenuLink disabled=true href="/">{ "Link (disabled)" }</MenuLink>

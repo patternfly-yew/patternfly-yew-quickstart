@@ -549,7 +549,7 @@ checksum = "b7e5500299e16ebb147ae15a00a942af264cf3688f47923b8fc2cd5858f23ad3"
 [[package]]
 name = "patternfly-yew"
 version = "0.5.0-alpha.2"
-source = "git+https://github.com/ctron/patternfly-yew?rev=cacd5ba072dd2e52f9ef1d0f061e1ba3de415547#cacd5ba072dd2e52f9ef1d0f061e1ba3de415547"
+source = "git+https://github.com/ctron/patternfly-yew?rev=068aa62291fc50a8fae86a73c1dfa580f8dbf974#068aa62291fc50a8fae86a73c1dfa580f8dbf974"
 dependencies = [
  "chrono",
  "gloo-events",
@@ -644,8 +644,9 @@ dependencies = [
 
 [[package]]
 name = "popper-rs"
-version = "0.1.0-alpha.3"
-source = "git+https://github.com/ctron/popper-rs?rev=f23e1960f792ed3d1ce597a1f4ded661f72ee903#f23e1960f792ed3d1ce597a1f4ded661f72ee903"
+version = "0.1.0-alpha.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "14bb42090d91adbf8123eb6098f166039148134293acf1a7a9041fa5b9791376"
 dependencies = [
  "gloo-utils",
  "js-sys",
@@ -659,8 +660,9 @@ dependencies = [
 
 [[package]]
 name = "popper-rs-sys"
-version = "0.1.0-alpha.3"
-source = "git+https://github.com/ctron/popper-rs?rev=f23e1960f792ed3d1ce597a1f4ded661f72ee903#f23e1960f792ed3d1ce597a1f4ded661f72ee903"
+version = "0.1.0-alpha.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cd02fb224071c273269f2cb3d397b4e168edac74f538225631a5933a8e58e36a"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
