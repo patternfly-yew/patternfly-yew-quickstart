@@ -4,19 +4,8 @@
 
         let value = use_state_eq(||"Hello World".to_string());
 
-        let oninput = {
-            let value = value.clone();
-            Callback::from(move |data|{
-                value.set(data);
-            })
-        };
-
-        let onreset = {
-            let value = value.clone();
-            Callback::from(move |_| {
-                value.set("Got reset".to_string());
-            })
-        };
+        let onchange = use_callback(|new_value, value| value.set(new_value), value.clone());
+        let onreset = use_callback(|_, value| value.set("Got reset".to_string()), value.clone());
 
         html!(
             <Form>
@@ -24,7 +13,7 @@
                     label="Some text value (auto-focus)"
                     required=true
                 >
-                    <TextInput {oninput} value={(*value).clone()} placeholder="Just enter foo" required=true autofocus=true/>
+                    <TextInput {onchange} value={(*value).clone()} placeholder="Just enter foo" required=true autofocus=true/>
                 </FormGroup>
                 <FormGroup
                     label="Text input value (mirrored)"

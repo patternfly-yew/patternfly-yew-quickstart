@@ -1,0 +1,5 @@
+html!(
+    <>
+        <LinkButton variant={ButtonVariant::Primary} label={"Follow me!"} icon={Icon::ExternalLinkAlt} align={Align::Start} />
+    </>
+)

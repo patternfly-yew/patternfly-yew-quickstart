@@ -33,20 +33,8 @@ fn example() -> Html {
         }, (*total_text).clone());
     }
 
-    let ontext = {
-        let total_text = total_text.clone();
-        Callback::from(move |text| {
-            total_text.set(text);
-        })
-    };
-
-    let onset = {
-        let total = total.clone();
-        let total_input = total_input.clone();
-        Callback::from(move |_| {
-            total.set(*total_input);
-        })
-    };
+    let ontext = use_callback(|new_text, text| text.set(new_text), total_text.clone());
+    let onset = use_callback(|(), (total, total_input)| total.set(**total_input), (total.clone(), total_input.clone()));
 
     let pagination = use_pagination(*total, Default::default);
 
@@ -82,7 +70,7 @@ fn example() -> Html {
                                         placeholder="Total number of items"
                                         value={(*total_text).clone()}
                                         state={*total_state}
-                                        oninput={ontext}
+                                        onchange={ontext}
                                     />
                                 </TextInputGroup>
                                 <InputGroupItem>

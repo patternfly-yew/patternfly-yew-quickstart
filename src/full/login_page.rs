@@ -67,10 +67,10 @@ pub fn login_page_example() -> Html {
                         <LoginMainBody>
                             <Form {onsubmit} method="dialog">
                                 <FormGroup label="Username">
-                                    <TextInput required=true name="username" oninput={onchangeusername} value={(*username).clone()} />
+                                    <TextInput required=true name="username" onchange={onchangeusername} value={(*username).clone()} />
                                 </FormGroup>
                                 <FormGroup label="Password">
-                                    <TextInput required=true name="password" r#type={TextInputType::Password} oninput={onchangepassword} value={(*password).clone()} />
+                                    <TextInput required=true name="password" r#type={TextInputType::Password} onchange={onchangepassword} value={(*password).clone()} />
                                 </FormGroup>
                                 <ActionGroup>
                                     <Button label="Log In" r#type={ButtonType::Submit} variant={ButtonVariant::Primary}/>

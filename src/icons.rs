@@ -65,15 +65,11 @@ pub fn icons() -> Html {
 
     let filter = use_state_eq(String::new);
 
-    let onclearfilter = {
-        let filter = filter.clone();
-        Callback::from(move |_| filter.set(String::new()))
-    };
-
-    let onsetfilter = {
-        let filter = filter.clone();
-        Callback::from(move |value: String| filter.set(value.trim().to_string()))
-    };
+    let onclearfilter = use_callback(|_, filter| filter.set(String::new()), filter.clone());
+    let onsetfilter = use_callback(
+        |value: String, filter| filter.set(value.trim().to_string()),
+        filter.clone(),
+    );
 
     // filter
 
@@ -107,7 +103,7 @@ pub fn icons() -> Html {
                                     placeholder="Filter"
                                     icon={Icon::Search}
                                     value={(*filter).clone()}
-                                    oninput={onsetfilter}
+                                    onchange={onsetfilter}
                                 />
                                 if !filter.is_empty() {
                                     <TextInputGroupUtilities>

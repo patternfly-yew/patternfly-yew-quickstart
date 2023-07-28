@@ -113,13 +113,7 @@
 
         }, drop_content.clone());
 
-        let onclear = {
-            let drop_content = drop_content.clone();
-            Callback::from(move |_|{
-                // clear state
-                drop_content.set(DropContent::None);
-            })
-        };
+        let onclear = use_callback(|_, drop_content| drop_content.set(DropContent::None), drop_content.clone());
 
         let error = processing.error().map(|err|{err.1.to_string()});
         let helper_text = error.clone().map(|err|{
@@ -194,12 +188,10 @@
             })
         };
 
-        let oninput_text = {
-            let drop_content = drop_content.clone();
-            Callback::from(move |text| {
-                drop_content.set(DropContent::from(text));
-            })
-        };
+        let oninput_text = use_callback(|new_text, drop_content| drop_content.set(DropContent::from(new_text)), drop_content.clone());
+
+        let force = use_force_update();
+        use_effect_with_deps(move |()| force.force_update(), ());
 
         html!(
             <Form>
@@ -241,7 +233,7 @@
                             <TextArea
                                 value={(*content).clone()}
                                 resize={ResizeOrientation::Vertical}
-                                oninput={oninput_text}
+                                onchange={oninput_text}
                                 state={ if error.is_some() {InputState::Error} else {InputState::Default} }
                             />
                         </FileUploadDetails>
