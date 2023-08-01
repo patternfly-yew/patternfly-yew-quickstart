@@ -190,15 +190,16 @@
 
         let oninput_text = use_callback(|new_text, drop_content| drop_content.set(DropContent::from(new_text)), drop_content.clone());
 
-        let force = use_force_update();
-        use_effect_with_deps(move |()| force.force_update(), ());
+        html!(<>
+            // Due to https://github.com/jetli/yew-hooks/issues/35 the ref currently must be on a direct element
+            // of this component. It cannot be on an element nested by another component.
+            <div ref={node.clone()}>
 
-        html!(
             <Form>
+
                 <FormGroup>
                     <FileUpload
                         drag_over={*drop.over}
-                        r#ref={node.clone()}
                     >
                         <FileUploadSelect>
                             <InputGroup>
@@ -238,9 +239,12 @@
                             />
                         </FileUploadDetails>
                     </FileUpload>
+
                     {helper_text}
                 </FormGroup>
             </Form>
+            </div>
+            </>
         )
     }
 
