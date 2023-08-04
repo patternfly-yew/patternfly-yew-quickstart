@@ -1,0 +1,39 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+
+        let expanded = use_state_eq(|| false);
+        let onclick = use_callback(|_, expanded| expanded.set(!**expanded), expanded.clone());
+        let onclose = use_callback(|_, expanded| expanded.set(false) , expanded.clone());
+
+        let panel_content = html!(
+            <DrawerPanelContent>
+                <DrawerHead>
+                    <span>
+                        {"drawer-panel"}
+                    </span>
+                    <DrawerActions>
+                        <DrawerCloseButton onclick={onclose} />
+                    </DrawerActions>
+                </DrawerHead>
+            </DrawerPanelContent>
+        );
+
+        html!(
+            <>
+                <Button variant={ButtonVariant::Primary} {onclick}>{"Toggle drawer"}</Button>
+                <Drawer expanded={*expanded}>
+                    <DrawerSection>{"drawer-section"}</DrawerSection>
+                    <DrawerContent {panel_content}>
+                        <DrawerContentBody>
+                            { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pretium est a porttitor vehicula. Quisque vel commodo urna. Morbi mattis rutrum ante, id vehicula ex accumsan ut. Morbi viverra, eros vel porttitor facilisis, eros purus aliquet erat,nec lobortis felis elit pulvinar sem. Vivamus vulputate, risus eget commodo eleifend, eros nibh porta quam, vitae lacinia leo libero at magna. Maecenas aliquam sagittis orci, et posuere nisi ultrices sit amet. Aliquam ex odio, malesuada sed posuere quis, pellentesque at mauris. Phasellus venenatis massa ex, eget pulvinar libero auctor pretium. Aliquam erat volutpat. Duis euismod justo in quam ullamcorper, in commodo massa vulputate." }
+                        </DrawerContentBody>
+                    </DrawerContent>
+                </Drawer>
+            </>
+        )
+
+    }
+
+    html!(<Example/>)
+}

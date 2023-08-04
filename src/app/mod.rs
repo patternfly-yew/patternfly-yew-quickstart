@@ -30,6 +30,7 @@ pub enum Component {
     ContextSelector,
     DescriptionList,
     Divider,
+    Drawer,
     Dropdown,
     #[target(rename = "empty")]
     EmptyState,
@@ -119,6 +120,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::ContextSelector => html! {<components::ContextSelectorExample/>},
         Component::DescriptionList => html! {<components::DescriptionListExample/>},
         Component::Divider => html! {<components::DividerExample/>},
+        Component::Drawer => html! {<components::DrawerExample/>},
         Component::Dropdown => html! {<components::DropdownExample/>},
         Component::EmptyState => html! {<components::EmptyStateExample/>},
         Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
@@ -244,6 +246,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"Context Selector"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::DescriptionList)}>{"DescriptionList"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Divider)}>{"Divider"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Drawer)}>{"Drawer"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
