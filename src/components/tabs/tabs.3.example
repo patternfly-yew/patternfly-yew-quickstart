@@ -13,10 +13,10 @@
 
         html! (
             <>
-                <Tabs<TabIndex> detached=true {onselect} selected={*selected}>
+                <Tabs<TabIndex> detached=true {onselect} selected={*selected} r#box=true>
                     <Tab<TabIndex> index={TabIndex::Foo} title="Foo"/>
                     <Tab<TabIndex> index={TabIndex::Bar} title="Bar"/>
-                    <Tab<TabIndex> index={TabIndex::Baz} title="Baz"/>
+                    <Tab<TabIndex> index={TabIndex::Baz} title={html!(<>{"Baz "} <Badge>{"42"}</Badge></>)}/>
                 </Tabs<TabIndex>>
                 <section hidden={(*selected) != TabIndex::Foo}>{ "Foo" }</section>
                 <section hidden={(*selected) != TabIndex::Bar}>{ "Bar" }</section>
