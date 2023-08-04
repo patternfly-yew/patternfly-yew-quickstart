@@ -1,17 +1,24 @@
 {
-html!{
-    <>
-        <Tabs>
-            <Tab label="Foo">
-                {"Foo"}
-            </Tab>
-            <Tab label="Bar">
-                {"Bar"}
-            </Tab>
-            <Tab label="Baz">
-                {"Baz"}
-            </Tab>
-        </Tabs>
-    </>
-}
+
+    #[function_component(Example)]
+    fn example() -> Html {
+        let selected = use_state_eq(|| 1);
+        let onselect = use_callback(|index, selected| selected.set(index), selected.clone());
+
+        html!(
+            <Tabs<usize> selected={*selected} {onselect}>
+                <Tab<usize> index=1 title="Foo">
+                    {"Foo"}
+                </Tab<usize>>
+                <Tab<usize> index=2 title="Bar">
+                    {"Bar"}
+                </Tab<usize>>
+                <Tab<usize> index=3 title="Baz">
+                    {"Baz"}
+                </Tab<usize>>
+            </Tabs<usize>>
+        )
+    }
+
+    html!(<Example/>)
 }

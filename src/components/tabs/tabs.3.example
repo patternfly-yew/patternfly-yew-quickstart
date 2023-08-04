@@ -1,24 +1,26 @@
 {
+    #[derive(Clone, Copy, PartialEq, Eq)]
+    enum TabIndex {
+        Foo,
+        Bar,
+        Baz,
+    }
+
     #[function_component(Example)]
     fn example() -> Html {
-        let selected = use_state_eq(|| 0);
-        let onselect = {
-            let selected = selected.clone();
-            Callback::from(move |index|{
-                selected.set(index);
-            })
-        };
+        let selected = use_state_eq(|| TabIndex::Foo);
+        let onselect = use_callback(|index, selected| selected.set(index), selected.clone());
 
         html! (
             <>
-                <Tabs detached=true {onselect}>
-                    <Tab label="Foo"/>
-                    <Tab label="Bar"/>
-                    <Tab label="Baz"/>
-                </Tabs>
-                <section hidden={(*selected) != 0}>{ "Foo" }</section>
-                <section hidden={(*selected) != 1}>{ "Bar" }</section>
-                <section hidden={(*selected) != 2}>{ "Baz" }</section>
+                <Tabs<TabIndex> detached=true {onselect} selected={*selected}>
+                    <Tab<TabIndex> index={TabIndex::Foo} title="Foo"/>
+                    <Tab<TabIndex> index={TabIndex::Bar} title="Bar"/>
+                    <Tab<TabIndex> index={TabIndex::Baz} title="Baz"/>
+                </Tabs<TabIndex>>
+                <section hidden={(*selected) != TabIndex::Foo}>{ "Foo" }</section>
+                <section hidden={(*selected) != TabIndex::Bar}>{ "Bar" }</section>
+                <section hidden={(*selected) != TabIndex::Baz}>{ "Baz" }</section>
             </>
         )
     }
