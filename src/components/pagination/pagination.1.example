@@ -40,7 +40,7 @@ fn example() -> Html {
                 Navigation::Last => ((TOTAL_ENTRIES - 1) / limit) * limit,
                 Navigation::Previous => *offset - limit,
                 Navigation::Next => *offset + limit,
-                Navigation::Page(n) => (n-1) * limit,
+                Navigation::Page(n) => n * limit,
             };
             offset.set(o);
         })
