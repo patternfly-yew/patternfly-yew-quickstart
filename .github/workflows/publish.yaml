@@ -56,6 +56,11 @@ jobs:
           BUILD_COMMIT: ${{ github.sha }}
         run: trunk build --public-url /patternfly-yew-quickstart
 
+      - name: Create 404.html
+        run: |
+          cd dist
+          cp index.html 404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
