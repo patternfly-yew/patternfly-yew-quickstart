@@ -164,7 +164,7 @@ fn switch_app_route(target: AppRoute) -> Html {
 
     let fullpage_entrypoint = |target: FullPage| match target {
         FullPage::Login => {
-            html! {<full::FullPageExample url="/full/login"/>}
+            html! {<full::FullPageExample url="full/login"/>}
         }
     };
 
