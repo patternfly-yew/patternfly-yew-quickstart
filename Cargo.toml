@@ -23,8 +23,8 @@ wasm-bindgen-futures = "0.4"
 wasm-logger = "0.2"
 yew = { version = "0.20", features = ["csr"] }
 yew-hooks = "0.2"
-yew-more-hooks = { version = "0.1.2", features = ["yew-hooks"] }
-yew-nested-router = "0.2"
+yew-more-hooks = { version = "0.2.0", features = ["yew-hooks"] }
+yew-nested-router = "0.3"
 
 [dependencies.web-sys]
 version = "0.3"
@@ -35,7 +35,7 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "a510f1fe73e3ca78ed18439ecf540aae31bc70df" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "fc4d4614a4ecfcd4605046d8529c09570548058b" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
 #yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
