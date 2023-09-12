@@ -65,6 +65,7 @@ pub enum Form {
     #[default]
     #[target(index)]
     Index,
+    Radio,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
@@ -132,7 +133,8 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::EmptyState => html! {<components::EmptyStateExample/>},
         Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
         Component::FileUpload => html! {<components::FileUploadExample/>},
-        Component::Form(Form::Index) => html! {<components::FormExample/>},
+        Component::Form(Form::Index) => html! {<components::FormCommonExample/>},
+        Component::Form(Form::Radio) => html! {<components::FormRadioExample/>},
         Component::HelperText => html! {<components::HelperTextExample/>},
         Component::Hint => html! {<components::HintExample/>},
         Component::Label => html! {<components::LabelExample/>},
@@ -260,6 +262,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>{"File Upload"}</NavRouterItem<AppRoute>>
                         <NavExpandable title="Forms">
                             <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form(Form::Index))}>{"Common"}</NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form(Form::Radio))}>{"Radio"}</NavRouterItem<AppRoute>>
                         </NavExpandable>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::HelperText)}>{"HelperText"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>{"Hint"}</NavRouterItem<AppRoute>>

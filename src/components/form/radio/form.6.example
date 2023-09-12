@@ -1,0 +1,10 @@
+html!(
+    <>
+        <Radio
+            description={html!("Some description on why or why not to choose this.")}
+            body={html!("Some extra content which goes along with the radio button.")}
+        >
+            {"Foo"}
+        </Radio>
+    </>
+)

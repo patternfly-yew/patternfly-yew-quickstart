@@ -1,0 +1,9 @@
+html!(
+    <>
+        <Radio
+            body={html!("Some extra content which goes along with the radio button.")}
+        >
+            {"Foo"}
+        </Radio>
+    </>
+)

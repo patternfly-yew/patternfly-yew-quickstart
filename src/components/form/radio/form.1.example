@@ -1,0 +1,7 @@
+html!(
+    <>
+        <Radio name="value">{"Foo"}</Radio>
+        <Radio name="value" disabled=true>{"Bar"}</Radio>
+        <Radio name="value">{"Baz"}</Radio>
+    </>
+)
