@@ -16,7 +16,7 @@ log = "0.4"
 patternfly-yew = { version = "0.5.0-alpha.3", features = ["icons-fab", "tree"] }
 popper-rs = { version = "0.1.0", features = ["yew", "debug"] }
 serde_json = "1"
-strum = "0.25"
+strum = { version = "0.25", features = ["derive"] }
 url = "2"
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
@@ -35,7 +35,7 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "7d798a1c6c7981887f3bb22270cb4b36a8b30766" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "2958f879b08fd265c3385ae889dfca5ed7b8103c" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
 #yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }

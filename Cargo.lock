@@ -638,7 +638,7 @@ checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 [[package]]
 name = "patternfly-yew"
 version = "0.5.0-alpha.3"
-source = "git+https://github.com/ctron/patternfly-yew?rev=7d798a1c6c7981887f3bb22270cb4b36a8b30766#7d798a1c6c7981887f3bb22270cb4b36a8b30766"
+source = "git+https://github.com/ctron/patternfly-yew?rev=2958f879b08fd265c3385ae889dfca5ed7b8103c#2958f879b08fd265c3385ae889dfca5ed7b8103c"
 dependencies = [
  "chrono",
  "gloo-events",
@@ -921,6 +921,9 @@ name = "strum"
 version = "0.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "290d54ea6f91c969195bdbcd7442c8c2a2ba87da8bf60a7ee86a235d4bc1e125"
+dependencies = [
+ "strum_macros",
+]
 
 [[package]]
 name = "strum_macros"
