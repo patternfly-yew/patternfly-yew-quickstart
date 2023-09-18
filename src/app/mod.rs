@@ -41,7 +41,7 @@ pub enum Component {
     Hint,
     Label,
     List,
-    Menu,
+    Menu(Menu),
     Modal,
     Pagination,
     Popover,
@@ -66,6 +66,14 @@ pub enum Form {
     #[target(index)]
     Index,
     Radio,
+}
+
+#[derive(Debug, Clone, Default, PartialEq, Eq, Target)]
+pub enum Menu {
+    #[default]
+    #[target(index)]
+    Index,
+    Select,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
@@ -139,7 +147,8 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Hint => html! {<components::HintExample/>},
         Component::Label => html! {<components::LabelExample/>},
         Component::List => html! {<components::ListExample/>},
-        Component::Menu => html! {<components::MenuExample/>},
+        Component::Menu(Menu::Index) => html! {<components::MenuExample/>},
+        Component::Menu(Menu::Select) => html! {<components::SimpleSelectExample/>},
         Component::Modal => html! {<components::ModalExample/>},
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
@@ -268,7 +277,10 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>{"Hint"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::List)}>{"List"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu)}>{"Menu"}</NavRouterItem<AppRoute>>
+                        <NavExpandable title="Menus">
+                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu(Menu::Index))}>{"Menu"}</NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu(Menu::Select))}>{"Select"}</NavRouterItem<AppRoute>>
+                        </NavExpandable>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
