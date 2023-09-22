@@ -1,0 +1,6 @@
+html!{
+    <>
+        <CalendarView date={*date} {onchange} weekday_start={Weekday::Sun} />
+        <p>{date.to_string()}</p>
+    </>
+}
