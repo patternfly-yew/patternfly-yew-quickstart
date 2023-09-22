@@ -638,7 +638,7 @@ checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 [[package]]
 name = "patternfly-yew"
 version = "0.5.0-alpha.3"
-source = "git+https://github.com/ctron/patternfly-yew?rev=76e04109bef2d800459a560bd7117f988cf04628#76e04109bef2d800459a560bd7117f988cf04628"
+source = "git+https://github.com/ctron/patternfly-yew?rev=e3a60c74cdeac7be5bdbc317d9a6c550f4e107a0#e3a60c74cdeac7be5bdbc317d9a6c550f4e107a0"
 dependencies = [
  "chrono",
  "gloo-events",
@@ -646,6 +646,7 @@ dependencies = [
  "gloo-utils 0.1.7",
  "js-sys",
  "log",
+ "num-traits",
  "popper-rs",
  "serde",
  "serde_json",

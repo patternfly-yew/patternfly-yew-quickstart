@@ -7,7 +7,7 @@ where
 {
     use_callback(
         |_, (url, target)| {
-            let _ = gloo_utils::window().open_with_url_and_target(&url, &target);
+            let _ = gloo_utils::window().open_with_url_and_target(url, target);
         },
         (url.into(), target.into()),
     )

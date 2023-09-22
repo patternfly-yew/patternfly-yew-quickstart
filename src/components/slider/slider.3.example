@@ -1,7 +1,7 @@
 {
     #[function_component(Example)]
     fn example() -> Html {
-        let msg = use_state(|| String::new());
+        let msg = use_state(String::new);
 
         let onchange = {
             let msg = msg.clone();

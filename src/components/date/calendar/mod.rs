@@ -1,7 +1,7 @@
 use crate::{example, example::ExamplePage};
+use chrono::*;
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
-use chrono::*;
 
 #[function_component(CalendarExample)]
 pub fn datepicker_example() -> yew::Html {

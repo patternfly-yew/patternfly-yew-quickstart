@@ -18,7 +18,7 @@
         html!(
             <SimpleSelect<Options>
                 placeholder="Pick a value"
-                selected={(*selected).clone()}
+                selected={*selected}
                 entries={vec![Options::Foo, Options::Bar, Options::Baz]}
                 {onselect}
             />
