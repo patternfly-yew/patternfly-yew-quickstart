@@ -28,6 +28,7 @@ pub enum Component {
     CodeBlock,
     #[target(rename = "context_selector")]
     ContextSelector,
+    Date(Date),
     DescriptionList,
     Divider,
     Drawer,
@@ -74,6 +75,14 @@ pub enum Menu {
     #[target(index)]
     Index,
     Select,
+}
+
+#[derive(Debug, Clone, Default, PartialEq, Eq, Target)]
+pub enum Date {
+    #[default]
+    #[target(index)]
+    Calendar,
+    DatePicker,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Target)]
@@ -134,6 +143,8 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Clipboard => html! {<components::ClipboardExample/>},
         Component::CodeBlock => html! {<components::CodeBlockExample/>},
         Component::ContextSelector => html! {<components::ContextSelectorExample/>},
+        Component::Date(Date::Calendar) => html! {<components::CalendarExample/>},
+        Component::Date(Date::DatePicker) => html! {<components::DatePickerExample/>},
         Component::DescriptionList => html! {<components::DescriptionListExample/>},
         Component::Divider => html! {<components::DividerExample/>},
         Component::Drawer => html! {<components::DrawerExample/>},
@@ -262,6 +273,10 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>{"Code Block"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"Context Selector"}</NavRouterItem<AppRoute>>
+                        <NavExpandable title="Date">
+                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Date(Date::Calendar))}>{"Calendar"}</NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Date(Date::DatePicker))}>{"DatePicker"}</NavRouterItem<AppRoute>>
+                        </NavExpandable>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::DescriptionList)}>{"DescriptionList"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Divider)}>{"Divider"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Drawer)}>{"Drawer"}</NavRouterItem<AppRoute>>

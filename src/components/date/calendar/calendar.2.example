@@ -1,0 +1,8 @@
+html!{
+    <>
+        <CalendarView
+            date={NaiveDate::from_ymd_opt(2023, 9, 20).unwrap()}
+            rangestart={NaiveDate::from_ymd_opt(2023, 9, 8).unwrap()}
+        />
+    </>
+}
