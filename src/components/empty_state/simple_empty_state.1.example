@@ -1,5 +1,5 @@
 html!{
-    <EmptyState
+    <SimpleEmptyState
         title="Empty state"
         icon={Icon::Cubes}
         primary={Action::new("Push me", ctx.link().callback(|_|{}))}
@@ -10,5 +10,5 @@ html!{
         ]}
         >
         {"This section should explain why the state is empty, and what you can do next."}
-    </EmptyState>
+    </SimpleEmptyState>
 }

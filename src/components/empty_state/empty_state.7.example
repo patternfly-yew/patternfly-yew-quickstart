@@ -1,0 +1,19 @@
+html!{
+    <EmptyState>
+        <EmptyStateHeader
+            title_text={html!("No results found")}
+            heading_level={EmptyStateHeadingLevel::H4}
+            icon={html!(
+                <EmptyStateIcon icon={html!(<>{Icon::Search}</>)} />
+            )}
+        />
+        <EmptyStateBody>
+            {"No results match the filter criteria. Clear all filters and try again."}
+        </EmptyStateBody>
+        <EmptyStateFooter>
+            <EmptyStateActions>
+                <Button variant={ButtonVariant::Link}>{"Clear all filters"}</Button>                
+            </EmptyStateActions>
+        </EmptyStateFooter>
+    </EmptyState>
+}

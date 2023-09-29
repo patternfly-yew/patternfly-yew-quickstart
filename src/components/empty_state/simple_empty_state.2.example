@@ -1,5 +1,5 @@
 html!{
-    <EmptyState
+    <SimpleEmptyState
         title="Empty state"
         icon={Icon::Cubes}
         size={Size::XLarge}
@@ -11,5 +11,5 @@ html!{
         ]}
         >
         {"This section should explain why the state is empty, and what you can do next."}
-    </EmptyState>
+    </SimpleEmptyState>
 }

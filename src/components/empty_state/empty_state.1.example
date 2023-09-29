@@ -1,0 +1,27 @@
+html!{
+    <EmptyState>
+        <EmptyStateHeader
+            title_text={html!("Empty state")}
+            heading_level={EmptyStateHeadingLevel::H4}
+            icon={html!(
+                <EmptyStateIcon icon={html!(<>{Icon::Cubes}</>)} />
+            )}
+        />
+        <EmptyStateBody>
+            {"This represents the empty state pattern in PatternFly. Hopefully it's simple enough to use but flexible enough to meet a variety of needs."}
+        </EmptyStateBody>
+        <EmptyStateFooter>
+            <EmptyStateActions>
+                <Button variant={ButtonVariant::Primary}>{"Primary action"}</Button>
+            </EmptyStateActions>
+            <EmptyStateActions>
+                <Button variant={ButtonVariant::Link}>{"Multiple"}</Button>
+                <Button variant={ButtonVariant::Link}>{"Action Buttons"}</Button>
+                <Button variant={ButtonVariant::Link}>{"Can"}</Button>
+                <Button variant={ButtonVariant::Link}>{"Go here"}</Button>
+                <Button variant={ButtonVariant::Link}>{"In the secondary"}</Button>
+                <Button variant={ButtonVariant::Link}>{"Action area"}</Button>
+            </EmptyStateActions>
+        </EmptyStateFooter>
+    </EmptyState>
+}

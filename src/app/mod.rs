@@ -33,7 +33,7 @@ pub enum Component {
     Divider,
     Drawer,
     Dropdown,
-    #[target(rename = "empty")]
+    #[target(rename = "empty_state")]
     EmptyState,
     ExpandableSection,
     FileUpload,
