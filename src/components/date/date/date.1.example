@@ -1,5 +1,21 @@
-html!{
-    <>
-        <DatePicker />
-    </>
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let state = use_state_eq(|| None);
+        let onchange = use_callback(state.clone(), |value, state| {
+            state.set(Some(value));
+        });
+
+        html!(
+            <>
+                <DatePicker
+                    {onchange}
+                    value={*state}
+                />
+                <TextInput value={state.map(|date| date.to_string()).unwrap_or_default()} />
+            </>
+        )
+    }
+
+    html!( <Example/> )
 }
