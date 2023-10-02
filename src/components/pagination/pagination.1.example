@@ -8,9 +8,9 @@ fn example() -> Html {
     let offset = use_state_eq(||0);
     let limit = use_state_eq(||5);
 
-    let entries = use_memo(|(offset, limit)| {
+    let entries = use_memo((*offset, *limit), |(offset, limit)| {
         (*offset..(offset + limit).clamp(0, TOTAL_ENTRIES)).into_iter().map(ExampleEntry).collect::<Vec<_>>()
-    }, (*offset, *limit));
+    });
 
     let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 

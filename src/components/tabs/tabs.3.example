@@ -9,7 +9,7 @@
     #[function_component(Example)]
     fn example() -> Html {
         let selected = use_state_eq(|| TabIndex::Foo);
-        let onselect = use_callback(|index, selected| selected.set(index), selected.clone());
+        let onselect = use_callback(selected.clone(), |index, selected| selected.set(index));
 
         html! (
             <>

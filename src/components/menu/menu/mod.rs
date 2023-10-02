@@ -5,7 +5,7 @@ use yew::prelude::*;
 #[function_component(MenuExample)]
 pub fn menu_example() -> Html {
     let toaster = use_toaster().unwrap();
-    let action = use_callback(|_, toaster| toaster.toast("Clicked it!"), toaster);
+    let action = use_callback(toaster, |_, toaster| toaster.toast("Clicked it!"));
 
     let example1 = example!("Menu Toggle" => "menu.1.example");
     let example2 = example!("Menu" => "menu.2.example");

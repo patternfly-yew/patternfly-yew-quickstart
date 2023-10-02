@@ -3,7 +3,7 @@
     #[function_component(Example)]
     fn example() -> Html {
         let toaster = use_toaster().unwrap();
-        let action = use_callback(|_, toaster| toaster.toast("Clicked it!"), toaster);
+        let action = use_callback(toaster, |_, toaster| toaster.toast("Clicked it!"));
 
         html!(
             <Dropdown

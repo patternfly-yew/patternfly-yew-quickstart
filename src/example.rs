@@ -47,7 +47,7 @@ pub fn example_page(props: &Props) -> Html {
             >
                 <Content>
                     <Title size={Size::XXXXLarge}>
-                        { &props.title }
+                        { props.title.clone() }
                     </Title>
                     { for props.subtitle.iter() }
                 </Content>
@@ -93,7 +93,7 @@ pub fn example(props: &ExampleProps) -> Html {
 
             <FlexItem>
                 <Title level={Level::H2} size={Size::XXLarge}>
-                    { &props.title }
+                    { props.title.clone() }
                 </Title>
             </FlexItem>
 

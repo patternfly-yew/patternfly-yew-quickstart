@@ -9,9 +9,9 @@
 
         let state = use_state_eq(|| Option::Foo);
 
-        let onfoo = use_callback(|_, state| state.set(Option::Foo), state.clone());
-        let onbar = use_callback(|_, state| state.set(Option::Bar), state.clone());
-        let onbaz = use_callback(|_, state| state.set(Option::Baz), state.clone());
+        let onfoo = use_callback(state.clone(), |_, state| state.set(Option::Foo));
+        let onbar = use_callback(state.clone(), |_, state| state.set(Option::Bar));
+        let onbaz = use_callback(state.clone(), |_, state| state.set(Option::Baz));
 
         html!(
             <>

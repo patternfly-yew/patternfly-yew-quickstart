@@ -3,7 +3,7 @@
     #[function_component(Example)]
     fn example() -> Html {
         let selected = use_state_eq(|| 1);
-        let onselect = use_callback(|index, selected| selected.set(index), selected.clone());
+        let onselect = use_callback(selected.clone(), |index, selected| selected.set(index));
 
         html!(
             <Tabs<usize> selected={*selected} {onselect}>

@@ -5,10 +5,7 @@ pub fn use_open<IN>(url: impl Into<String>, target: impl Into<String>) -> Callba
 where
     IN: 'static,
 {
-    use_callback(
-        |_, (url, target)| {
-            let _ = gloo_utils::window().open_with_url_and_target(url, target);
-        },
-        (url.into(), target.into()),
-    )
+    use_callback((url.into(), target.into()), |_, (url, target)| {
+        let _ = gloo_utils::window().open_with_url_and_target(url, target);
+    })
 }

@@ -10,10 +10,10 @@
         }
 
         let selected = use_state_eq(|| None);
-        let onselect = use_callback(|item, selected|  {
+        let onselect = use_callback(selected.clone(), |item, selected|  {
             log::info!("Selected: {item}");
             selected.set(Some(item));
-        }, selected.clone());
+        });
 
         html!(
             <SimpleSelect<Options>

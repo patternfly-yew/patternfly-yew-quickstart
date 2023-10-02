@@ -11,7 +11,7 @@
     #[function_component(ExampleMenu)]
     fn example_menu(props: &ExampleMenuProperties) -> Html {
         let toaster = use_toaster().unwrap();
-        let action = use_callback(|_, toaster| toaster.toast("Clicked it!"), toaster);
+        let action = use_callback(toaster, |_, toaster| toaster.toast("Clicked it!"));
 
         html!(
             <Menu r#ref={props.r#ref.clone()} style={&props.style}>
@@ -37,10 +37,10 @@
             use_click_away(away_ref.clone(), move |_: Event| expanded.set(false));
         }
 
-        let ontoggle = use_callback(|_, expanded| expanded.set(!**expanded), expanded.clone());
+        let ontoggle = use_callback(expanded.clone(), |_, expanded| expanded.set(!**expanded));
 
         let state = use_state_eq(State::default);
-        let onstatechange = use_callback(|new_state, state| state.set(new_state), state.clone());
+        let onstatechange = use_callback(state.clone(), |new_state, state| state.set(new_state));
 
         html!(
             <>

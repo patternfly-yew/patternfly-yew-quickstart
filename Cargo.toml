@@ -11,20 +11,20 @@ repository = "https://github.com/ctron/patternfly-yew-quickstart"
 [dependencies]
 browser-panic-hook = "0.2"
 chrono = { version = "0.4.30", default-features = false, features = ["wasmbind"] }
-gloo-utils = "0.1"
+gloo-utils = "0.2"
 log = "0.4"
 patternfly-yew = { version = "0.5.0-alpha.3", features = ["icons-fab", "tree"] }
-popper-rs = { version = "0.1.0", features = ["yew", "debug"] }
+popper-rs = { version = "0.3.0", features = ["yew", "debug"] }
 serde_json = "1"
 strum = { version = "0.25", features = ["derive"] }
 url = "2"
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
 wasm-logger = "0.2"
-yew = { version = "0.20", features = ["csr"] }
-yew-hooks = "0.2"
-yew-more-hooks = { version = "0.2.0", features = ["yew-hooks"] }
-yew-nested-router = "0.3"
+yew = { version = "0.21", features = ["csr"] }
+yew-hooks = "0.3"
+yew-more-hooks = { version = "0.3.0", features = ["yew-hooks"] }
+yew-nested-router = "0.4"
 
 [dependencies.web-sys]
 version = "0.3"
@@ -35,11 +35,12 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "e3a60c74cdeac7be5bdbc317d9a6c550f4e107a0" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "ef0cac9f6ed2e9fcbe5c379c99d72a7ffc9a6e6a" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
-#yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # FIXME: awaiting release
+yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "f535bb2e7b227aac7010035215c11d4aeae6cb62" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
 #popper-rs = { git = "https://github.com/ctron/popper-rs", rev = "460da6799da78bf5034ab090abd28e47ea76d001" }
+yew-hooks = { git = "https://github.com/ctron/yew-hooks", rev = "0ba4f5c5f331650b1608ad830dfac0ef63700e8d" } # FIXME: awaiting release
 
 # release profile settings to reduce the final binary size
 [profile.release]

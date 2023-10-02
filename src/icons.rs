@@ -44,14 +44,11 @@ pub fn icons() -> Html {
         </div>
     );
 
-    let entries = use_memo(
-        |()| {
-            let mut icons = Icon::iter().map(IconDescriptor).collect::<Vec<_>>();
-            icons.sort_by(|a, b| a.0.as_ref().cmp(b.0.as_ref()));
-            icons
-        },
-        (),
-    );
+    let entries = use_memo((), |()| {
+        let mut icons = Icon::iter().map(IconDescriptor).collect::<Vec<_>>();
+        icons.sort_by(|a, b| a.0.as_ref().cmp(b.0.as_ref()));
+        icons
+    });
 
     let header = html_nested! {
         <TableHeader<Columns>>
@@ -65,26 +62,22 @@ pub fn icons() -> Html {
 
     let filter = use_state_eq(String::new);
 
-    let onclearfilter = use_callback(|_, filter| filter.set(String::new()), filter.clone());
-    let onsetfilter = use_callback(
-        |value: String, filter| filter.set(value.trim().to_string()),
-        filter.clone(),
-    );
+    let onclearfilter = use_callback(filter.clone(), |_, filter| filter.set(String::new()));
+    let onsetfilter = use_callback(filter.clone(), |value: String, filter| {
+        filter.set(value.trim().to_string())
+    });
 
     // filter
 
-    let entries = use_memo(
-        |(entries, filter)| {
-            let filter = filter.to_lowercase();
+    let entries = use_memo((entries.clone(), (*filter).clone()), |(entries, filter)| {
+        let filter = filter.to_lowercase();
 
-            entries
-                .iter()
-                .filter(|icon| icon.name().to_lowercase().contains(&filter))
-                .cloned()
-                .collect::<Vec<_>>()
-        },
-        (entries.clone(), (*filter).clone()),
-    );
+        entries
+            .iter()
+            .filter(|icon| icon.name().to_lowercase().contains(&filter))
+            .cloned()
+            .collect::<Vec<_>>()
+    });
 
     // table data
 

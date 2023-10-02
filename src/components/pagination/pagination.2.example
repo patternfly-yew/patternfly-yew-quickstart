@@ -19,7 +19,7 @@ fn example() -> Html {
     {
         let total_state = total_state.clone();
         let total_input = total_input.clone();
-        use_effect_with_deps(move |text|{
+        use_effect_with((*total_text).clone(), move |text|{
             match text.parse::<usize>() {
                 Ok(total) => {
                     total_state.set(InputState::Default);
@@ -30,21 +30,21 @@ fn example() -> Html {
                     total_input.set(None);
                 }
             }
-        }, (*total_text).clone());
+        });
     }
 
-    let ontext = use_callback(|new_text, text| text.set(new_text), total_text.clone());
-    let onset = use_callback(|(), (total, total_input)| total.set(**total_input), (total.clone(), total_input.clone()));
+    let ontext = use_callback(total_text.clone(), |new_text, text| text.set(new_text));
+    let onset = use_callback((total.clone(), total_input.clone()), |(), (total, total_input)| total.set(**total_input));
 
     let pagination = use_pagination(*total, Default::default);
 
-    let entries = use_memo(|state| {
+    let entries = use_memo(pagination.state.clone(), |state| {
         let mut range = state.range();
         if let Some(total) = state.total {
             range.end = range.end.clamp(0, total);
         }
         range.into_iter().map(ExampleEntry).collect::<Vec<_>>()
-    }, pagination.state.clone());
+    });
 
     let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 

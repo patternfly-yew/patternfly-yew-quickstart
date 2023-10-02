@@ -3,9 +3,9 @@
     #[function_component(Example)]
     fn example() -> Html {
         let expanded = use_state_eq(||true);
-        let ontoggle = use_callback(|(),expanded|{
+        let ontoggle = use_callback(expanded.clone(), |(),expanded|{
             expanded.set(!**expanded);
-        }, expanded.clone());
+        });
 
         html!(
             <CodeBlock>

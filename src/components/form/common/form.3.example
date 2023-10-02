@@ -4,8 +4,8 @@
 
         let value = use_state_eq(||"Hello World".to_string());
 
-        let onchange = use_callback(|new_value, value| value.set(new_value), value.clone());
-        let onreset = use_callback(|_, value| value.set("Got reset".to_string()), value.clone());
+        let onchange = use_callback(value.clone(), |new_value, value| value.set(new_value));
+        let onreset = use_callback(value.clone(), |_, value| value.set("Got reset".to_string()));
 
         html!(
             <Form>

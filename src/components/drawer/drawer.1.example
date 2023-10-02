@@ -3,14 +3,14 @@
     fn example() -> Html {
 
         let inline = use_state_eq(|| false);
-        let change_inline = use_callback(|checked, handle| handle.set(checked), inline.clone());
+        let change_inline = use_callback(inline.clone(), |checked, handle| handle.set(checked));
 
         let r#static = use_state_eq(|| false);
-        let change_static = use_callback(|checked, handle| handle.set(checked), r#static.clone());
+        let change_static = use_callback(r#static.clone(), |checked, handle| handle.set(checked));
 
         let expanded = use_state_eq(|| false);
-        let onclick = use_callback(|_, expanded| expanded.set(!**expanded), expanded.clone());
-        let onclose = use_callback(|_, expanded| expanded.set(false) , expanded.clone());
+        let onclick = use_callback(expanded.clone(), |_, expanded| expanded.set(!**expanded));
+        let onclose = use_callback(expanded.clone(), |_, expanded| expanded.set(false));
 
         let panel_content = html!(
             <DrawerPanelContent>

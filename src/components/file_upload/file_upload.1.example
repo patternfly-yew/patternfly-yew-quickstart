@@ -113,7 +113,7 @@
 
         }, drop_content.clone());
 
-        let onclear = use_callback(|_, drop_content| drop_content.set(DropContent::None), drop_content.clone());
+        let onclear = use_callback(drop_content.clone(), |_, drop_content| drop_content.set(DropContent::None));
 
         let error = processing.error().map(|err|{err.1.to_string()});
         let helper_text = error.clone().map(|err|{
@@ -125,13 +125,13 @@
                 </HelperText>
             )
         });
-        let content = use_memo(|processing|{
+        let content = use_memo(processing.clone(), |processing|{
             match &**processing {
                 UseAsyncState::Ready(Ok(content)) => content.clone(),
                 UseAsyncState::Ready(Err((content, _))) => content.clone(),
                 _ => String::new(),
             }
-        }, processing.clone());
+        });
 
         let backdrop = use_backdrop();
 
@@ -148,7 +148,7 @@
                                 >
                                     <CodeBlock>
                                         <CodeBlockCode>
-                                            { data }
+                                            { data.clone() }
                                         </CodeBlockCode>
                                     </CodeBlock>
                                 </Modal>
@@ -188,7 +188,7 @@
             })
         };
 
-        let oninput_text = use_callback(|new_text, drop_content| drop_content.set(DropContent::from(new_text)), drop_content.clone());
+        let oninput_text = use_callback(drop_content.clone(), |new_text, drop_content| drop_content.set(DropContent::from(new_text)));
 
         html!(<>
             // Due to https://github.com/jetli/yew-hooks/issues/35 the ref currently must be on a direct element

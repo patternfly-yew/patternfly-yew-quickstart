@@ -1,27 +1,25 @@
 {
-let footer = html!{<>
-     <button class="pf-v5-c-button pf-m-primary" type="button">{"Submit"}</button>
-     <button class="pf-v5-c-button pf-m-link" type="button">{"Cancel"}</button>
-</>};
+    let footer = html!{<>
+         <button class="pf-v5-c-button pf-m-primary" type="button">{"Submit"}</button>
+         <button class="pf-v5-c-button pf-m-link" type="button">{"Cancel"}</button>
+    </>};
 
-html!{
-    <>
-    <Bullseye plain=true>
-    <Modal
-        title = {"Example modal with form"}
-        description = {"More context about what this form is about."}
-        footer = {footer}
-    >
-        <Form>
-               <FormGroup label="Username">
-                    <TextInput required=true name="username"/>
-                </FormGroup>
-                <FormGroup label="Password">
-                    <TextInput required=true name="password" r#type={TextInputType::Password}/>
-                </FormGroup>
-        </Form>
-    </Modal>
-    </Bullseye>
-    </>
-}
+    html!(
+        <Bullseye plain=true>
+            <Modal
+                title = {"Example modal with form"}
+                description = {"More context about what this form is about."}
+                footer = {footer}
+            >
+                <Form>
+                       <FormGroup label="Username">
+                            <TextInput required=true name="username"/>
+                        </FormGroup>
+                        <FormGroup label="Password">
+                            <TextInput required=true name="password" r#type={TextInputType::Password}/>
+                        </FormGroup>
+                </Form>
+            </Modal>
+        </Bullseye>
+    )
 }
