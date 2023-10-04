@@ -4,8 +4,8 @@ use yew::prelude::*;
 
 #[function_component(LoginPageExample)]
 pub fn login_page_example() -> Html {
-    let header = ChildrenRenderer::new(vec![html! {<> {"Header" }</>}]);
-    let footer = ChildrenRenderer::new(vec![html! {<p>{"Some footer text"}</p>}]);
+    let header = html! {<> {"Header" }</>};
+    let footer = html! {<p>{"Some footer text"}</p>};
 
     let links = ChildrenRenderer::new(vec![
         html_nested! {<LoginMainFooterLink href="https://patternfly.org" target="_blank">{"Footer Link #1"}</LoginMainFooterLink>},
