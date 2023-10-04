@@ -1,0 +1,59 @@
+{
+
+#[function_component(Example)]
+fn example() -> Html {
+    let entries = use_state_eq(|| {
+            vec![
+                ExampleEntry {
+                    foo: "Simple foo".into(),
+                },
+                ExampleEntry {
+                    foo: "More foo".into(),
+                },
+            ]
+    });
+
+    let on_sort_by = {
+        let entries = entries.clone();
+
+        Some(Callback::from(move |val: TableHeaderSortBy<Columns>| {
+            let mut entries_sorted = (*entries).clone();
+
+            match val.index {
+                Columns::First => {
+                    entries_sorted.sort_by(|a, b| a.foo.cmp(&b.foo));
+                },
+                Columns::Second => {
+                    entries_sorted.sort_by(|a, b| a.foo.len().cmp(&b.foo.len()));
+                },
+                _ => {},
+            };
+
+            if !val.asc {
+                entries_sorted.reverse();
+            }
+            entries.set(entries_sorted);
+        }))
+    };
+
+    let (entries, _) = use_table_data(UseStateTableModel::new(entries));
+
+    let header = html_nested! {
+        <TableHeader<Columns>>
+            <TableColumn<Columns> label="foo" index={Columns::First} onsort={on_sort_by.clone()} />
+            <TableColumn<Columns> label="bar" index={Columns::Second} onsort={on_sort_by.clone()} />
+            <TableColumn<Columns> label="baz" index={Columns::Third} />
+        </TableHeader<Columns>>
+    };
+
+    html! (
+        <Table<Columns, UseTableData<Columns, UseStateTableModel<ExampleEntry>>>
+            caption="Table caption"
+            {header}
+            entries={entries.clone()}
+        />
+    )
+}
+
+html!(<Example/>)
+}

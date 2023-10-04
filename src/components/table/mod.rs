@@ -41,6 +41,14 @@ impl TableEntryRenderer<Columns> for ExampleEntry {
             </>
         ))]
     }
+
+    fn render_column_details(&self, column: &Columns) -> Vec<Span> {
+        vec![Span::max(match column {
+            Columns::First => html!({ "First details" }),
+            Columns::Second => html!({ "Second details" }),
+            Columns::Third => html!({ "Third details" }),
+        })]
+    }
 }
 
 #[function_component(TableExample)]
@@ -99,7 +107,8 @@ pub fn example() -> Html {
     let example7 = example!("Table (grid)" => "table.7.example");
     let example8 = example!("Table (widths)" => "table.8.example");
     let example9 = example!("Table (expandable)" => "table.9.example");
-    let example10 = example!("Table (sortable)" => "table.10.example");
+    let example10 = example!("Table (expandable, columns)" => "table.10.example");
+    let example11 = example!("Table (sortable)" => "table.11.example");
 
     html! {
         <>
@@ -114,6 +123,7 @@ pub fn example() -> Html {
                 {example8}
                 {example9}
                 {example10}
+                {example11}
             </ExamplePage>
         </>
     }
