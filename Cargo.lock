@@ -1507,7 +1507,8 @@ dependencies = [
 [[package]]
 name = "yew-hooks"
 version = "0.3.0"
-source = "git+https://github.com/ctron/yew-hooks?rev=0ba4f5c5f331650b1608ad830dfac0ef63700e8d#0ba4f5c5f331650b1608ad830dfac0ef63700e8d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c47827a650e1986ac5adc88e8d7164b202686a6f154eb7cc0c4f7a32eb9fa62b"
 dependencies = [
  "gloo 0.10.0",
  "js-sys",
@@ -1537,7 +1538,8 @@ dependencies = [
 [[package]]
 name = "yew-more-hooks"
 version = "0.3.0"
-source = "git+https://github.com/ctron/yew-more-hooks?rev=f535bb2e7b227aac7010035215c11d4aeae6cb62#f535bb2e7b227aac7010035215c11d4aeae6cb62"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cbe8e51fc3513e1ab416677eea1802c76ef3ef49c0ae1fd69379b7f3f51e341b"
 dependencies = [
  "gloo-utils 0.2.0",
  "serde",

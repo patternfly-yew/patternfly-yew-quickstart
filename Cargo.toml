@@ -37,10 +37,10 @@ features = [
 #patternfly-yew = { path = "../patternfly-yew" }
 patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "a227a63fa35e5bf73a86c9c5a1f7511a78e5f95c" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
-yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "f535bb2e7b227aac7010035215c11d4aeae6cb62" } # FIXME: awaiting release
+#yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "f535bb2e7b227aac7010035215c11d4aeae6cb62" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
 #popper-rs = { git = "https://github.com/ctron/popper-rs", rev = "460da6799da78bf5034ab090abd28e47ea76d001" }
-yew-hooks = { git = "https://github.com/ctron/yew-hooks", rev = "0ba4f5c5f331650b1608ad830dfac0ef63700e8d" } # FIXME: awaiting release
+#yew-hooks = { git = "https://github.com/ctron/yew-hooks", rev = "0ba4f5c5f331650b1608ad830dfac0ef63700e8d" } # FIXME: awaiting release
 
 # release profile settings to reduce the final binary size
 [profile.release]
