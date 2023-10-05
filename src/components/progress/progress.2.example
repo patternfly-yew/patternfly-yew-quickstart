@@ -1,0 +1,7 @@
+html! (
+    <>
+        <Progress description="Success" value=0.33 variant={ProgressVariant::Success} />
+        <Progress description="Warning" value=0.33 location={ProgressMeasureLocation::Outside} variant={ProgressVariant::Warning} />
+        <Progress description="Danger" value=0.33 location={ProgressMeasureLocation::Inside} variant={ProgressVariant::Danger} />
+    </>
+)

@@ -46,6 +46,7 @@ pub enum Component {
     Modal,
     Pagination,
     Popover,
+    Progress,
     Select,
     Skeleton,
     Slider,
@@ -163,6 +164,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Modal => html! {<components::ModalExample/>},
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
+        Component::Progress => html! {<components::ProgressExample/>},
         Component::Select => html! {<components::SelectExample/>},
         Component::Skeleton => html! {<components::SkeletonExample/>},
         Component::Slider => html! {<components::SliderExample/>},
@@ -299,6 +301,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Progress)}>{"Progress"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Select)}>{"Select"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Skeleton)}>{"Skeleton"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>

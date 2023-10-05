@@ -1,0 +1,9 @@
+html! (
+    <>
+        <Progress description="Title" value=0.33 helper_text={html_nested!(
+            <HelperText>
+                <HelperTextItem>{"Progress helper test"}</HelperTextItem>
+            </HelperText>
+        )}/>
+    </>
+)

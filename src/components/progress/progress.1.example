@@ -1,0 +1,8 @@
+html! (
+    <>
+        <Progress description="Default" value=0.33 />
+        <Progress description="Outside" value=0.33 location={ProgressMeasureLocation::Outside} />
+        <Progress description="Inside" value=0.33 location={ProgressMeasureLocation::Inside} />
+        <Progress description="None" value=0.33 location={ProgressMeasureLocation::None} />
+    </>
+)
