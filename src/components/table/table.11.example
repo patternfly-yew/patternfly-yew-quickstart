@@ -29,7 +29,7 @@ fn example() -> Html {
                 _ => {},
             };
 
-            if !val.asc {
+            if matches!(val.order, Order::Descending) {
                 entries_sorted.reverse();
             }
             entries.set(entries_sorted);

@@ -813,8 +813,9 @@ checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 
 [[package]]
 name = "patternfly-yew"
-version = "0.5.0-alpha.4"
-source = "git+https://github.com/ctron/patternfly-yew?rev=5b81964a473c6b7df2e1b57e282c093031ac941e#5b81964a473c6b7df2e1b57e282c093031ac941e"
+version = "0.5.0-rc.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "34a713b9a45bcc2c7d87f2b2888ce465ea18f6d35e7d52717f32b0ae50a6f83b"
 dependencies = [
  "chrono",
  "gloo-events 0.2.0",
@@ -839,7 +840,7 @@ dependencies = [
 
 [[package]]
 name = "patternfly-yew-quickstart"
-version = "0.5.0-alpha.3"
+version = "0.5.0-rc.1"
 dependencies = [
  "browser-panic-hook",
  "chrono",

@@ -26,8 +26,6 @@ pub enum Component {
     Clipboard,
     Chip,
     CodeBlock,
-    #[target(rename = "context_selector")]
-    ContextSelector,
     Date(Date),
     DescriptionList,
     Divider,
@@ -47,7 +45,6 @@ pub enum Component {
     Pagination,
     Popover,
     Progress,
-    Select,
     Skeleton,
     Slider,
     Spinner,
@@ -143,7 +140,6 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Chip => html! {<components::ChipExample/>},
         Component::Clipboard => html! {<components::ClipboardExample/>},
         Component::CodeBlock => html! {<components::CodeBlockExample/>},
-        Component::ContextSelector => html! {<components::ContextSelectorExample/>},
         Component::Date(Date::Calendar) => html! {<components::CalendarExample/>},
         Component::Date(Date::DatePicker) => html! {<components::DatePickerExample/>},
         Component::DescriptionList => html! {<components::DescriptionListExample/>},
@@ -165,7 +161,6 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
         Component::Progress => html! {<components::ProgressExample/>},
-        Component::Select => html! {<components::SelectExample/>},
         Component::Skeleton => html! {<components::SkeletonExample/>},
         Component::Slider => html! {<components::SliderExample/>},
         Component::Spinner => html! {<components::SpinnerExample/>},
@@ -274,7 +269,6 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Chip)}>{"Chip"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>{"Code Block"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ContextSelector)}>{"Context Selector"}</NavRouterItem<AppRoute>>
                         <NavExpandable title="Date">
                             <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Date(Date::Calendar))}>{"Calendar"}</NavRouterItem<AppRoute>>
                             <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Date(Date::DatePicker))}>{"DatePicker"}</NavRouterItem<AppRoute>>
@@ -302,7 +296,6 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Progress)}>{"Progress"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Select)}>{"Select"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Skeleton)}>{"Skeleton"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>{"Spinner"}</NavRouterItem<AppRoute>>

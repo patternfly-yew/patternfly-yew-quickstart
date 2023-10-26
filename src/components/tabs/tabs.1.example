@@ -2,9 +2,9 @@
 html!{
     <>
         <TabsRouter<TabRoutes>>
-            <TabRouterItem<TabRoutes> to={TabRoutes::Foo} label="Foo"/>
-            <TabRouterItem<TabRoutes> to={TabRoutes::Bar} label="Bar"/>
-            <TabRouterItem<TabRoutes> to={TabRoutes::Baz} label="Baz"/>
+            <TabRouterItem<TabRoutes> to={TabRoutes::Foo} title="Foo"/>
+            <TabRouterItem<TabRoutes> to={TabRoutes::Bar} title="Bar"/>
+            <TabRouterItem<TabRoutes> to={TabRoutes::Baz} title="Baz"/>
         </TabsRouter<TabRoutes>>
         <div>
             <RouterSwitch<TabRoutes> render={|current| {

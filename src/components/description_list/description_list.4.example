@@ -1,6 +1,6 @@
 html!{
     <>
-        <DescriptionList mode={DescriptionListMode::Fluid}>
+        <DescriptionList mode={[DescriptionListMode::Fluid]}>
             <DescriptionGroup term="Name">{"Example"}</DescriptionGroup>
             <DescriptionGroup term="Namespace">
                 <a href="#">{"mary-test"}</a>

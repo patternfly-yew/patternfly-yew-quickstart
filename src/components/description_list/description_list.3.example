@@ -1,6 +1,6 @@
 html!{
     <>
-        <DescriptionList mode={DescriptionListMode::Horizontal}>
+        <DescriptionList mode={[DescriptionListMode::Horizontal]}>
             <DescriptionGroup term="Name">{"Example"}</DescriptionGroup>
             <DescriptionGroup term="Namespace">
                 <a href="#">{"mary-test"}</a>
