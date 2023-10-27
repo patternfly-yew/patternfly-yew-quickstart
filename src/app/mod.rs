@@ -31,6 +31,7 @@ pub enum Component {
     Divider,
     Drawer,
     Dropdown,
+    DualListSelector,
     #[target(rename = "empty")]
     EmptyState,
     ExpandableSection,
@@ -146,6 +147,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Divider => html! {<components::DividerExample/>},
         Component::Drawer => html! {<components::DrawerExample/>},
         Component::Dropdown => html! {<components::DropdownExample/>},
+        Component::DualListSelector => html! { <components::DualListSelectorExample/>},
         Component::EmptyState => html! {<components::EmptyStateExample/>},
         Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
         Component::FileUpload => html! {<components::FileUploadExample/>},
@@ -277,6 +279,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Divider)}>{"Divider"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Drawer)}>{"Drawer"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::DualListSelector)}>{"Dual List Selector"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>{"File Upload"}</NavRouterItem<AppRoute>>
