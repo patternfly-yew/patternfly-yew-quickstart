@@ -29,8 +29,8 @@
             <>
 
                 <List r#type={ListType::Inline}>
-                    <Switch label="inline" checked={*inline} onchange={change_inline} />
-                    <Switch label="static" checked={*r#static} onchange={change_static} />
+                    <ListItem><Switch label="inline" checked={*inline} onchange={change_inline} /></ListItem>
+                    <ListItem><Switch label="static" checked={*r#static} onchange={change_static} /></ListItem>
                 </List>
 
                 <Button variant={ButtonVariant::Primary} {onclick}>{"Toggle drawer"}</Button>
