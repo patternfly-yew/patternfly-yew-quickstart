@@ -13,7 +13,8 @@ browser-panic-hook = "0.2"
 chrono = { version = "0.4.30", default-features = false, features = ["wasmbind"] }
 gloo-utils = "0.2"
 log = "0.4"
-patternfly-yew = { version = "0.5.0-rc.1", features = ["icons-fab", "tree"] }
+# patternfly-yew = { version = "0.5.0-rc.1", features = ["icons-fab", "tree"] }
+patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", features = ["icons-fab", "tree"] }
 popper-rs = { version = "0.3.0", features = ["yew", "debug"] }
 serde_json = "1"
 strum = { version = "0.25", features = ["derive"] }
