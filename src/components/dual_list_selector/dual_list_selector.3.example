@@ -1,0 +1,27 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let available: Vec<Fruit> = vec![
+            "Apple",
+            "Banana",
+            "Kiwi",
+            "Strawberry",
+        ]
+        .into_iter()
+        .enumerate()
+        .map(|(id, name)| Fruit::new(name, id))
+        .collect();
+        let chosen = Vec::new();
+
+        html! {
+            <DualListSelector<Fruit>
+                available_options_title="Available"
+                {available}
+                chosen_options_title="Chosen"
+                {chosen}
+                disabled={true}
+            />
+        }
+    }
+    html!(<Example/>)
+}

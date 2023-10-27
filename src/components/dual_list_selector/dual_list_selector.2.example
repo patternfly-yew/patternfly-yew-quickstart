@@ -1,0 +1,85 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let available: Vec<Fruit> = vec![
+            "Apple",
+            "Banana",
+            "Kiwi",
+            "Strawberry",
+        ]
+        .into_iter()
+        .enumerate()
+        .map(|(id, name)| Fruit::new(name, id))
+        .collect();
+        let chosen = Vec::new();
+
+        let selected = use_state(Vec::new);
+        let last_selected_value = use_state_eq(String::new);
+        let last_pressed_button = use_state_eq(String::new);
+
+        let onlistchange = {
+            let selected = selected.clone();
+            type Inputs = DualListSelectorOnListChangedInputs<Fruit>;
+            Callback::from(move |(_, _available, chosen): Inputs| {
+                selected.set(chosen.clone())
+            })
+        };
+
+        let add_selected = {
+            let state = last_pressed_button.clone();
+            Callback::from(move |_| state.set("add_selected".to_string()))
+        };
+        let add_all = {
+            let state = last_pressed_button.clone();
+            Callback::from(move |_| state.set("add_all".to_string()))
+        };
+        let remove_selected = {
+            let state = last_pressed_button.clone();
+            Callback::from(move |_| state.set("remove_selected".to_string()))
+        };
+        let remove_all = {
+            let state = last_pressed_button.clone();
+            Callback::from(move |_| state.set("remove_all".to_string()))
+        };
+        let onoptionselect = {
+            let state = last_selected_value.clone();
+            Callback::from(move |args: OnOptionSelectArgs| {
+                let list = if args.is_chosen {
+                    "chosen"
+                } else {
+                    "available"
+                };
+                state.set(format!("Item {} from the {list} list", args.index));
+            })
+        };
+        html! {
+            <>
+                <DualListSelector<Fruit>
+                    available_options_title="Available Fruits"
+                    {available}
+                    chosen_options_title="Chosen Fruits"
+                    {chosen}
+                    add_selected_tooltip="Add selected"
+                    add_all_available_tooltip="Add all"
+                    remove_selected_tooltip="Remove selected"
+                    remove_all_chosen_tooltip="Remove all"
+                    {onlistchange}
+                    {onoptionselect}
+                    {add_selected}
+                    {add_all}
+                    {remove_all}
+                    {remove_selected}
+                />
+                { "Currently chosen:" }
+                <List>
+                    { for (*selected).iter().map(|fruit| html_nested!{
+                        <ListItem>{fruit}</ListItem>
+                    }) }
+                </List>
+                { "Last selected value: "}{(*last_selected_value).clone()}<br/>
+                { "Last pressed button: "}{(*last_pressed_button).clone()}
+            </>
+        }
+    }
+    html!(<Example/>)
+}

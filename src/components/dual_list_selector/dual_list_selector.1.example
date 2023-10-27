@@ -1,0 +1,45 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+        let available: Vec<Fruit> = vec![
+            "Apple",
+            "Banana",
+            "Kiwi",
+            "Strawberry",
+        ]
+        .into_iter()
+        .enumerate()
+        .map(|(id, name)| Fruit::new(name, id))
+        .collect();
+        let chosen = Vec::new();
+
+        let selected = use_state(Vec::new);
+
+        let onlistchange = {
+            let selected = selected.clone();
+            type Inputs = DualListSelectorOnListChangedInputs<Fruit>;
+            Callback::from(move |(_, _available, chosen): Inputs| {
+                selected.set(chosen.clone())
+            })
+        };
+
+        html! {
+            <>
+                <DualListSelector<Fruit>
+                    available_options_title="Available"
+                    {available}
+                    chosen_options_title="Chosen"
+                    {chosen}
+                    {onlistchange}
+                />
+                { "Currently chosen:" }
+                <List>
+                    { for (*selected).iter().map(|fruit| html_nested!{
+                        <ListItem>{fruit}</ListItem>
+                    }) }
+                </List>
+            </>
+        }
+    }
+    html!(<Example/>)
+}
