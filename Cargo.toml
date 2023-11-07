@@ -5,7 +5,7 @@ authors = ["Jens Reimann <jreimann@redhat.com>"]
 edition = "2021"
 license = "Apache-2.0"
 readme = "README.md"
-description = "A quickstart project for using PatternFly with Yew Stack"
+description = "A quickstart project for using PatternFly with Yew"
 repository = "https://github.com/ctron/patternfly-yew-quickstart"
 
 [dependencies]
