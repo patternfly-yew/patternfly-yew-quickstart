@@ -1,0 +1,18 @@
+{
+    #[function_component(Example)]
+    fn example() -> Html {
+
+        let state = use_state_eq(|| true);
+        let onchange = use_callback(state.clone(), |(_, value): (_, CheckboxState), state| {
+            state.set(value.into());
+        });
+
+        html!(
+            <>
+                <Checkbox label="Simple checkbox" {onchange} checked={*state} />
+            </>
+        )
+    }
+
+    html!(<Example/>)
+}
