@@ -1,0 +1,42 @@
+{
+    #[function_component(SearchInputExampleNavigable)]
+    fn navigable() -> Html {
+        let value = use_state(String::new);
+        let results = use_state(|| 0);
+        let current_result = use_state(||  1);
+
+        let onchange = use_callback((value.clone(), results.clone()), |new, (value, results)| {
+            results.set(3);
+            value.set(new)
+        });
+        let onclear = use_callback((value.clone(), results.clone()), |_, (value, results)| {
+            results.set(0);
+            value.set(String::new())
+        });
+        let onnextclick = use_callback(
+            (current_result.clone(), results.clone()),
+            |_, (current_result, results_count)| {
+                let new_result = (**current_result + 1).min(**results_count);
+                current_result.set(new_result)
+            }
+        );
+        let onpreviousclick = use_callback(current_result.clone(), |_, current_result| {
+            let new_result = (**current_result - 1).max(1);
+            current_result.set(new_result)
+        });
+        html! {
+            <SearchInput
+                placeholder={"Find by name"}
+                value={(*value).clone()}
+                {onchange}
+                {onclear}
+                results_count={ResultsCount::Fraction(*current_result, *results)}
+                {onnextclick}
+                {onpreviousclick}
+                previous_navigation_button_disabled={*current_result == 1}
+                next_navigation_button_disabled={*current_result == *results}
+            />
+        }
+    }
+    html! { <SearchInputExampleNavigable/> }
+}

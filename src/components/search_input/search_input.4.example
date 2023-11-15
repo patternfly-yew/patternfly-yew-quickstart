@@ -1,0 +1,21 @@
+{
+    #[function_component(SearchInputExampleSubmit)]
+    fn submit() -> Html {
+        let value = use_state(String::new);
+
+        let onchange = use_callback(value.clone(), |new, old| old.set(new));
+        let onsearch = use_callback(value.clone(), |(_, new), old| old.set(new));
+        let onclear = use_callback(value.clone(), |_, old| old.set(String::new()));
+
+        html! {
+            <SearchInput
+                placeholder={"Find by name"}
+                value={(*value).clone()}
+                {onchange}
+                {onsearch}
+                {onclear}
+            />
+        }
+    }
+    html! { <SearchInputExampleSubmit/> }
+}
