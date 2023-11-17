@@ -1,0 +1,10 @@
+{
+    html!(
+        <Resize>
+            <Truncate content={TruncateContent::Middle(
+                "Vestibulum interdum risus et enim faucibus, sit amet molestie est".into(),
+                " accumsan.".into()
+            )} />
+        </Resize>
+    )
+}

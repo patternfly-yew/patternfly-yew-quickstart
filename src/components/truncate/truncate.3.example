@@ -1,0 +1,7 @@
+{
+    html!(
+        <Resize>
+            <Truncate content={"Vestibulum interdum risus et enim faucibus, sit amet molestie est accumsan.".truncate_before(10)} />
+        </Resize>
+    )
+}
