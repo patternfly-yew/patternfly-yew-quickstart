@@ -58,6 +58,7 @@ pub enum Component {
     Toast,
     Tooltip,
     Tree,
+    Truncate,
 }
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, Target)]
@@ -177,6 +178,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Toast => html! {<components::ToastExample/>},
         Component::Tooltip => html! {<components::TooltipExample/>},
         Component::Tree => html! {<components::TreeExample/>},
+        Component::Truncate => html! {<components::TruncateExample/>},
     };
 
     let layout = |target: Layout| match target {
@@ -314,6 +316,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Truncate)}>{"Truncate"}</NavRouterItem<AppRoute>>
                     </NavExpandable>
                     <NavExpandable title="Layouts">
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
@@ -344,13 +347,13 @@ fn page(props: &PageProps) -> Html {
 
     let backdropper = use_backdrop();
 
-    let onabout = Callback::from(move |_| {
+    let onabout = use_callback((), move |_, ()| {
         if let Some(backdropper) = &backdropper {
             backdropper.open(html!(<about::About/>));
         }
     });
 
-    let onthemeswitch = Callback::from(|state| match state {
+    let onthemeswitch = use_callback((), |state, ()| match state {
         true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
         false => gloo_utils::document_element().set_class_name(""),
     });
