@@ -1,0 +1,26 @@
+{
+    #[function_component(SearchInputExampleExpand)]
+    fn expand() -> Html {
+        let value = use_state(String::new);
+        let expanded = use_state(|| false);
+
+        let onchange = use_callback(value.clone(), |new, value| value.set(new));
+        let ontoggleexpand = use_callback(expanded.clone(), |(_, prev): (MouseEvent, bool), curr| curr.set(!prev));
+        let expandable = SearchInputExpandableProperties {
+            expanded: *expanded,
+            ontoggleexpand,
+            toggle_aria_label: AttrValue::from("Expandable input search toggle"),
+        };
+        let onclear = use_callback(value.clone(), |_, value| value.set(String::new()));
+        html! {
+            <SearchInput
+                placeholder={"Find by name"}
+                value={(*value).clone()}
+                {onchange}
+                {expandable}
+                {onclear}
+            />
+        }
+    }
+    html! { <SearchInputExampleExpand/> }
+}

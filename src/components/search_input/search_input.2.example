@@ -1,0 +1,25 @@
+{
+    #[function_component(SearchInputExampleResults)]
+    fn results() -> Html {
+        let value = use_state(String::new);
+        let results = use_state(|| ResultsCount::Absolute(0));
+        let onchange = use_callback((value.clone(), results.clone()), |new, (value, results)| {
+            results.set(ResultsCount::Absolute(3));
+            value.set(new);
+        });
+        let onclear = use_callback((value.clone(), results.clone()), |_, (value, results)| {
+            results.set(ResultsCount::Absolute(0));
+            value.set(String::new())
+        });
+        html! {
+            <SearchInput
+                placeholder={"Find by name"}
+                value={(*value).clone()}
+                {onchange}
+                {onclear}
+                results_count={(*results).clone()}
+            />
+        }
+    }
+    html! { <SearchInputExampleResults/> }
+}
