@@ -9,7 +9,7 @@
         let possible_values: Vec<&'static str> = colors
             .iter()
             .filter(|c| c.starts_with(&value.to_lowercase()))
-            .map(|c| *c)
+            .copied()
             .collect();
         html! {
             <>
