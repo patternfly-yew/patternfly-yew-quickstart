@@ -1,6 +1,6 @@
 [package]
 name = "patternfly-yew-quickstart"
-version = "0.5.1"
+version = "0.5.3"
 authors = ["Jens Reimann <jreimann@redhat.com>"]
 edition = "2021"
 license = "Apache-2.0"
@@ -13,7 +13,7 @@ browser-panic-hook = "0.2"
 chrono = { version = "0.4.30", default-features = false, features = ["wasmbind"] }
 gloo-utils = "0.2"
 log = "0.4"
-patternfly-yew = { version = "0.5.2", features = ["tree", "dual_list_selector", "icons-fab", "search_input"] }
+patternfly-yew = { version = "0.5.3", features = ["tree", "dual_list_selector", "icons-fab", "search_input"] }
 popper-rs = { version = "0.3.0", features = ["yew", "debug"] }
 serde_json = "1"
 strum = { version = "0.25", features = ["derive"] }
