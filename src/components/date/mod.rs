@@ -1,5 +1,6 @@
-mod date;
 mod calendar;
+#[allow(clippy::module_inception)]
+mod date;
 
-pub use date::*;
 pub use calendar::*;
+pub use date::*;
