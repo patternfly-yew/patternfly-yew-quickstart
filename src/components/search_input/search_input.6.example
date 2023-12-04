@@ -1,0 +1,192 @@
+{
+    use popper_rs::prelude::*;
+    use yew_hooks::{use_click_away, use_event_with_window};
+    use wasm_bindgen::JsCast;
+
+    const ID_SEARCH_ELEMENT: &str = "search-input";
+
+    #[function_component(SearchInputExampleAutoComplete)]
+    fn auto_complete() -> Html {
+        // the user provided value
+        let value = use_state(String::new);
+        // clear the value
+        let onclear = use_callback(value.setter(), |_, value| value.set(String::new()));
+        // the values filtered by the search value
+        let possible_values = use_state_eq(Vec::<&'static str>::default);
+
+        // references to nodes
+        let away_ref = use_node_ref();
+        let input_ref = use_node_ref();
+        let menu_ref = use_node_ref();
+
+        // popper state
+        let state = use_state_eq(State::default);
+        let onstatechange = use_callback(state.clone(), |new_state, state| state.set(new_state));
+
+        // the state of the auto complete menu
+        let autocomplete_open = use_state_eq(|| false);
+
+        // the current hint value (single remaining possible value)
+        let hint = use_state_eq(|| None::<AttrValue>);
+
+        // acting on change of the search term data
+        let onchange = use_callback((
+            value.clone(),
+            hint.setter(),
+            autocomplete_open.setter(),
+            possible_values.setter(),
+        ), |new: String, (value, hint, autocomplete_open, possible_values_setter)| {
+
+            let possible_values: Vec<&'static str> = COLORS
+                .iter()
+                .filter(|c| !c.is_empty() && c.starts_with(&new.to_lowercase()))
+                .take(5)
+                .copied()
+                .collect();
+
+            if !new.is_empty() {
+                autocomplete_open.set(!possible_values.is_empty());
+            } else {
+                autocomplete_open.set(false);
+            }
+
+            match possible_values.as_slice() {
+                [only_value] => hint.set(Some(AttrValue::from(*only_value))),
+                _ => hint.set(None),
+            }
+
+            value.set(new);
+            possible_values_setter.set(possible_values);
+        });
+
+        // keyboard handling, on top of the menu
+        {
+            let value = value.clone();
+            let hint = hint.clone();
+            let autocomplete_open = autocomplete_open.clone();
+            let input_ref = input_ref.clone();
+            let menu_ref = menu_ref.clone();
+            use_event_with_window("keydown", move |e: KeyboardEvent| {
+
+                let in_input = input_ref.get().as_deref() == e.target().as_ref();
+
+               match e.key().as_str() {
+                    "Tab" | "ArrowRight" if in_input => {
+                        // if we have a hint (single remaining value)
+                        if let Some(hint_value) = &*hint {
+                            if *autocomplete_open {
+                                e.prevent_default();
+                            }
+                            // clear the hint
+                            hint.set(None);
+                            // set the value
+                            value.set(hint_value.to_string());
+                            // close the menu
+                            autocomplete_open.set(false);
+                            // focus back on the input
+                            input_ref.focus();
+                        }
+                    }
+                    "ArrowUp" | "ArrowDown" if in_input  => {
+                        // start the menu navigation, the menu component will pick it up from here
+                        if let Some(first) = menu_ref.cast::<web_sys::HtmlElement>()
+                            .and_then(|ele| ele.query_selector("li > button:not(:disabled)").ok().flatten())
+                            .and_then(|ele| ele.dyn_into::<web_sys::HtmlElement>().ok())
+                        {
+                            let _ = first.focus();
+                        }
+                        e.prevent_default();
+                    },
+                    "Escape" => {
+                        // escape should always close the menu
+                        autocomplete_open.set(false);
+                        // focus back on the input control
+                        input_ref.focus();
+                    }
+                    _ => {},
+                }
+
+            });
+        }
+
+        // the autocomplete menu
+        let autocomplete = {
+            let setter = value.setter();
+            let autocomplete_open = autocomplete_open.setter();
+            html!(
+                <Menu
+                    r#ref={menu_ref.clone()}
+                    style={&state
+                        .styles.popper
+                        .extend_with("z-index", "1000")
+                    }
+                >
+                    { for possible_values.iter().map(|value| {
+                        let onclick = {
+                            let setter = setter.clone();
+                            let value = value.to_string();
+                            let autocomplete_open = autocomplete_open.clone();
+                            let input_ref = input_ref.clone();
+                            Callback::from(move |_| {
+                                setter.set(value.clone());
+                                autocomplete_open.set(false);
+                                input_ref.focus();
+                            })
+                        };
+                        html_nested!(
+                            <MenuAction {onclick}>{ value }</MenuAction>
+                        )
+                    })}
+                </Menu>
+            )
+        };
+
+        {
+            // when the user clicks outside the auto-complete menu, we close it
+            let autocomplete_open = autocomplete_open.clone();
+            use_click_away(away_ref.clone(), move |_: Event| autocomplete_open.set(false));
+        }
+
+        html! {
+            <>
+
+                <div>
+                    {"Selected value: "} { &*value }
+                </div>
+
+                <div ref={away_ref} style="display: block;">
+                    <SearchInput
+                        id={ID_SEARCH_ELEMENT}
+                        inner_ref={input_ref.clone()}
+                        placeholder={"Find by name"}
+                        value={(*value).clone()}
+                        {onchange}
+                        {onclear}
+                        hint={(*hint).clone()}
+                    />
+
+                    <PortalToPopper
+                        popper={yew::props!(PopperProperties {
+                            target: input_ref.clone(),
+                            content: menu_ref.clone(),
+                            placement: Placement::Bottom,
+                            visible: *autocomplete_open,
+                            modifiers: vec![
+                                Modifier::SameWidth(Default::default()),
+                            ],
+                            onstatechange
+                        })}
+                        append_to={gloo_utils::document().get_element_by_id(ID_SEARCH_ELEMENT)}
+                    >
+                        { autocomplete }
+                    </PortalToPopper>
+
+                </div>
+            </>
+        }
+    }
+
+    html! {
+        <SearchInputExampleAutoComplete/>
+    }
+}
