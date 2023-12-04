@@ -7,7 +7,7 @@ pub fn about() -> Html {
         <Bullseye>
             <AboutModal
                 background_image_src="/assets/images/pfbg-icon.svg"
-                brand_image_src="/assets/images/PF-Masthead-Logo.svg"
+                brand_image_src="/assets/images/pf-logo.svg"
                 brand_image_alt="PatternFly logo"
                 product_name="PatternFly Yew Quickstart"
                 trademark="Copyright © 2020, 2023 PatternFly for Yew contributors"
