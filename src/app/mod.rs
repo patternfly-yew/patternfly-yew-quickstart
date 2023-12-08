@@ -43,6 +43,7 @@ pub enum Component {
     List,
     Menu(Menu),
     Modal,
+    NumberInput,
     Pagination,
     Popover,
     Progress,
@@ -164,6 +165,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Menu(Menu::Index) => html! {<components::MenuExample/>},
         Component::Menu(Menu::Select) => html! {<components::SimpleSelectExample/>},
         Component::Modal => html! {<components::ModalExample/>},
+        Component::NumberInput => html! {<components::NumberExample/>},
         Component::Pagination => html! {<components::PaginationExample/>},
         Component::Popover => html! {<components::PopoverExample/>},
         Component::Progress => html! {<components::ProgressExample/>},
@@ -303,6 +305,7 @@ fn page(props: &PageProps) -> Html {
                             <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu(Menu::Select))}>{"Select"}</NavRouterItem<AppRoute>>
                         </NavExpandable>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::NumberInput)}>{"Number Input"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Progress)}>{"Progress"}</NavRouterItem<AppRoute>>

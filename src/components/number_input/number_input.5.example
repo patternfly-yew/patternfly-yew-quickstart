@@ -1,0 +1,40 @@
+{
+    #[function_component(Status)]
+    fn basic() -> Html {
+        let state = use_state(|| InputState::Success);
+        let validate = use_callback(state.clone(), |new_val: u8, state| {
+            let diff = (5 - new_val as i16).abs();
+            if diff > 3 {
+                state.set(InputState::Error)
+            } else if diff > 1 {
+                state.set(InputState::Warning)
+            } else {
+                state.set(InputState::Success)
+            }
+        });
+        let value = use_state(|| 5u8);
+        let onchange = use_callback((validate.clone(), value.clone()), |new_val, (validate, value)| {
+            value.set(new_val);
+            validate.emit(new_val);
+        });
+        let onplus = use_callback((validate.clone(), value.clone()), |_, (validate, value)| {
+            value.set(**value + 1);
+            validate.emit(**value + 1);
+        });
+        let onminus = use_callback((validate.clone(), value.clone()), |_, (validate, value)| {
+            value.set(**value - 1);
+            validate.emit(**value - 1);
+        });
+        html! {
+            <NumberInput<u8>
+                value={*value}
+                {onchange}
+                {onplus}
+                {onminus}
+                max=10
+                state={*state}
+            />
+        }
+    }
+    html!(<Status/>)
+}

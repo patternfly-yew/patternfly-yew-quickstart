@@ -1,0 +1,19 @@
+{
+    #[function_component(Width)]
+    fn basic() -> Html {
+        let value = use_state(|| 1234567890u64);
+        let onchange = use_callback(value.clone(), |new_val, value| value.set(new_val));
+        let onplus = use_callback(value.clone(), |_, value| value.set((*value).saturating_add(1)));
+        let onminus = use_callback(value.clone(), |_, value| value.set((*value).saturating_sub(1)));
+        html! {
+            <NumberInput<u64>
+                value={*value}
+                {onchange}
+                {onplus}
+                {onminus}
+                width_chars=10
+            />
+        }
+    }
+    html!(<Width/>)
+}

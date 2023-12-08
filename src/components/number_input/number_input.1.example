@@ -1,0 +1,18 @@
+{
+    #[function_component(Basic)]
+    fn basic() -> Html {
+        let value = use_state(|| 0i8);
+        let onchange = use_callback(value.clone(), |new_val, value| value.set(new_val));
+        let onplus = use_callback(value.clone(), |_, value| value.set((*value).saturating_add(1)));
+        let onminus = use_callback(value.clone(), |_, value| value.set((*value).saturating_sub(1)));
+        html! {
+            <NumberInput<i8>
+                value={*value}
+                {onchange}
+                {onplus}
+                {onminus}
+            />
+        }
+    }
+    html!(<Basic/>)
+}

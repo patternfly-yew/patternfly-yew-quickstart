@@ -1,0 +1,1 @@
+html!(<NumberInput<i8> value=42 disabled=true/>)
