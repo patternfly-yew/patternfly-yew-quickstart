@@ -1,14 +1,13 @@
 {
     #[function_component(SearchInputExampleBasic)]
     fn basic() -> Html {
-        let colors = &["red", "green", "blue", "black", "yellow", "purple"];
-
         let value = use_state(String::new);
         let onchange = use_callback(value.clone(), |new, old| old.set(new));
         let onclear = use_callback(value.clone(), |_, val| val.set(String::new()));
-        let possible_values: Vec<&'static str> = colors
+        let empty = (*value).is_empty();
+        let possible_values: Vec<&'static str> = COLORS
             .iter()
-            .filter(|c| c.starts_with(&value.to_lowercase()))
+            .filter(|c| !empty && c.starts_with(&value.to_lowercase()))
             .copied()
             .collect();
         html! {

@@ -1,5 +1,7 @@
-use crate::{example, example::ExamplePage};
+mod colors;
 
+use crate::{example, example::ExamplePage};
+use colors::COLORS;
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
@@ -10,6 +12,7 @@ pub fn search_input() -> Html {
     let example3 = example! ("Match with navigable options" => "search_input.3.example");
     let example4 = example! ("With submit button" => "search_input.4.example");
     let example5 = example! ("With expandable button" => "search_input.5.example");
+    let example6 = example! ("Auto-complete" => "search_input.6.example");
 
     html! {
         <>
@@ -19,6 +22,7 @@ pub fn search_input() -> Html {
                 {example3}
                 {example4}
                 {example5}
+                {example6}
             </ExamplePage>
         </>
     }
