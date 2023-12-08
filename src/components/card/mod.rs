@@ -17,7 +17,6 @@ pub fn card() -> Html {
     let example4 = example! ("Card Selection" => "card.4.example");
 
     {
-
         html! {
             <>
                 <ExamplePage title="Card">
