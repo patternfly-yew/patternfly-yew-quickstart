@@ -6,5 +6,6 @@ html!(
         <MenuLink disabled=true href="/">{ "Link (disabled)" }</MenuLink>
         <ListDivider />
         <MenuAction danger=true>{ "Action" }</MenuAction>
+        <MenuLoading />
     </Menu>
 )
