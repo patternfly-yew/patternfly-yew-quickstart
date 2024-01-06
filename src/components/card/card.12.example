@@ -1,0 +1,52 @@
+{
+    #[function_component(CardExpandable)]
+    fn actions() -> Html {
+        let checked = use_state(|| CheckboxState::Unchecked);
+
+        let onclick = use_callback(checked.clone(), |new_val, checked| checked.set(new_val));
+        let actions = html! {
+            <>
+                <Dropdown variant={MenuToggleVariant::Plain} icon={Icon::EllipsisV}>
+                    <MenuAction>{"Action"}</MenuAction>
+                    <MenuLink href={"#"}>{"Link"}</MenuLink>
+                    <MenuAction disabled=true>{"Disabled Action"}</MenuAction>
+                    <MenuLink href={"#"} disabled=true>{"Disabled Link"}</MenuLink>
+                    <ListDivider/>
+                    <MenuAction>{"Separated Action"}</MenuAction>
+                    <MenuLink href={"#"}>{"Separated Link"}</MenuLink>
+                </Dropdown>
+                <Checkbox checked={*checked} onchange={onclick.clone()} id="check-4" name="check-4"/>
+            </>
+        };
+        let actions = yew::props!(CardHeaderActionsObject { actions });
+
+        let right_aligned = use_state(|| false);
+        let on_alignment = use_callback(right_aligned.clone(), |new_val: CheckboxState, right_aligned| right_aligned.set(new_val.into()));
+
+        let expanded = use_state(|| false);
+        let onexpand = use_callback(expanded.clone(), |_, expanded| expanded.set(!(**expanded)));
+        html! {
+            <>
+                <div style="margin-bottom: 12px;">
+                    <Checkbox
+                        checked={*right_aligned}
+                        onchange={on_alignment}
+                        label="toggle_right_aligned"
+                    />
+                </div>
+                <Card expanded={*expanded}>
+                    <CardHeader {actions} {onexpand} toggle_right_aligned={*right_aligned}>
+                        <CardTitle>{"Title"}</CardTitle>
+                    </CardHeader>
+                    <CardExpandableContent>
+                        <CardBody>{"Body"}</CardBody>
+                        <CardFooter>{"Footer"}</CardFooter>
+                    </CardExpandableContent>
+                </Card>
+            </>
+        }
+    }
+    html! {
+        <CardExpandable/>
+    }
+}

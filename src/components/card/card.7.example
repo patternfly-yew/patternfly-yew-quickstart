@@ -1,0 +1,11 @@
+{
+    html! {
+        <Card style="min-height: 30em;">
+            <CardTitle>{"Title"}</CardTitle>
+            <CardBody filled=false>{"Body pf-m-no-fill"}</CardBody>
+            <CardBody filled=false>{"Body pf-m-no-fill"}</CardBody>
+            <CardBody>{"Body"}</CardBody>
+            <CardFooter>{"Footer"}</CardFooter>
+        </Card>
+    }
+}

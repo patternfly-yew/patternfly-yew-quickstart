@@ -1,0 +1,60 @@
+{
+    #[function_component(CardClickable)]
+    fn actions() -> Html {
+        let onclick_first = use_callback((), |_, _| log::info!("Clicked first"));
+        let onclick_second = use_callback((), |_, _| log::info!("Clicked second"));
+        let onclick_third = use_callback((), |_, _| log::info!("Clicked third"));
+        html! {
+            <>
+                <Card id="selectable-card-example-1" selectable=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::Click {
+                                onclick: onclick_first.into(),
+                            },
+                            base: yew::props!(CardSelectableActionsObjectBase {
+                                name: "clickable-card-example"
+                            })
+                        })}
+                    >
+                        <CardTitle>{"First card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is clickable"}</CardBody>
+                </Card>
+                <Card id="selectable-card-example-2" selectable=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::Click {
+                                onclick: onclick_second.into(),
+                            },
+                            base: yew::props!(CardSelectableActionsObjectBase {
+                                name: "clickable-card-example"
+                            })
+                        })}
+                    >
+                        <CardTitle>{"Second card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is clickable"}</CardBody>
+                </Card>
+                <Card id="selectable-card-example-3" selectable=true disabled=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::Click {
+                                onclick: onclick_third.into(),
+                            },
+                            base: yew::props!(CardSelectableActionsObjectBase {
+                                name: "clickable-card-example"
+                            })
+                        })}
+                    >
+                        <CardTitle>{"Third card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is clickable but disabled"}</CardBody>
+                </Card>
+            </>
+        }
+    }
+    html! {
+        <CardClickable/>
+    }
+}

@@ -1,49 +1,86 @@
 {
-    // The following variables are instantiated out side of this example. This cannot be done here due to the `Rules Of Hooks`
-    // let compact = use_state(|| false);
-    // let flat = use_state(|| false);
-    // let full_height = use_state(|| false);
-    // let large = use_state(|| false);
-    // let plain = use_state(|| false);
-    // let rounded = use_state(|| false);
+    #[function_component(CardModifiers)]
+    fn modifiers() -> Html {
+        fn card_size_to_text(size: CardSize) -> &'static str {
+            match size {
+                CardSize::Default => "Default Size",
+                CardSize::Compact => "Compact",
+                CardSize::Large => "Large",
+            }
+        }
+        #[derive(Debug, Clone, PartialEq, Properties)]
+        struct SizeActionProperties {
+            size: CardSize,
+            onchange: Callback<CardSize>,
+        }
+        // Satisfy Dropdown's ChildrenRenderer
+        impl From<SizeActionProperties> for MenuChild {
+            fn from(value: SizeActionProperties) -> Self {
+                let onclick = {
+                    let onchange = value.onchange.clone();
+                    Callback::from(move |_| onchange.emit(value.size))
+                };
+                MenuChild::Action(
+                    yew::props!(MenuActionProperties {
+                        onclick,
+                        children: card_size_to_text(value.size)
+                    }).into()
+                )
+            }
+        }
+        #[function_component(SizeAction)]
+        fn size_action(_props: &SizeActionProperties) -> Html {
+            // The actual implementation is in the From trait
+            html!{}
+        }
 
-    let change_callback = |handle: &UseStateHandle<bool>| {
-        let handle = handle.clone();
-        Callback::from(move |checked| {
-            handle.set(checked);
-        })
-    };
+        let size = use_state(|| CardSize::Default);
+        let flat = use_state(|| false);
+        let full_height = use_state(|| false);
+        let plain = use_state(|| false);
+        let rounded = use_state(|| false);
 
-    let title = html!({"Title"});
-    let footer = html!({"Footer"});
+        let change_callback = |handle: &UseStateHandle<bool>| {
+            let handle = handle.clone();
+            Callback::from(move |checked| {
+                handle.set(checked);
+            })
+        };
+        let change_size = use_callback(size.clone(), |new_size, size| size.set(new_size));
+        html! {
+            <>
+                <div style="margin-bottom: 12px;">
+                    <List r#type={ListType::Plain}>
+                        <ListItem><Switch label="flat" checked={*flat} onchange={change_callback(&flat)} /></ListItem>
+                        <ListItem><Switch label="full height" checked={*full_height} onchange={change_callback(&full_height)} /></ListItem>
+                        <ListItem><Switch label="plain" checked={*plain} onchange={change_callback(&plain)} /></ListItem>
+                        <ListItem><Switch label="rounded" checked={*rounded} onchange={change_callback(&rounded)} /></ListItem>
+                        <ListItem>
+                            <Dropdown text={card_size_to_text(*size)}>
+                                <SizeAction size={CardSize::Default} onchange={change_size.clone()} />
+                                <SizeAction size={CardSize::Compact} onchange={change_size.clone()} />
+                                <SizeAction size={CardSize::Large} onchange={change_size.clone()} />
+                            </Dropdown>
+                        </ListItem>
+                    </List>
+                </div>
 
-    html!{
-        <>
-            <List r#type={ListType::Plain}>
-                <ListItem><Switch label="compact" checked={*compact} onchange={change_callback(&compact)} /></ListItem>
-                <ListItem><Switch label="flat" checked={*flat} onchange={change_callback(&flat)} /></ListItem>
-                <ListItem><Switch label="full height" checked={*full_height} onchange={change_callback(&full_height)} /></ListItem>
-                <ListItem><Switch label="large" checked={*large} onchange={change_callback(&large)} /></ListItem>
-                <ListItem><Switch label="plain" checked={*plain} onchange={change_callback(&plain)} /></ListItem>
-                <ListItem><Switch label="rounded" checked={*rounded} onchange={change_callback(&rounded)} /></ListItem>
-            </List>
-            <br />
-            <Divider />
-            <br />
-            <div style="height:15rem">
-                <Card
-                    title={title.clone()}
-                    footer={footer.clone()}
-                    compact={*compact}
-                    flat={*flat}
-                    full_height={*full_height}
-                    large={*large}
-                    plain={*plain}
-                    rounded={*rounded}
-                    >
-                    <CardBody>{ "Body" }</CardBody>
-                </Card>
-            </div>
-        </>
+                <div style="height:15rem">
+                    <Card
+                        size={*size}
+                        flat={*flat}
+                        full_height={*full_height}
+                        plain={*plain}
+                        rounded={*rounded}
+                        >
+                        <CardBody>{ "Body" }</CardBody>
+                        <CardFooter>{ "Footer" }</CardFooter>
+                    </Card>
+                </div>
+            </>
+        }
+    }
+    html! {
+        <CardModifiers/>
     }
 }

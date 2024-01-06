@@ -11,12 +11,11 @@ pub fn counter() -> Html {
         Callback::from(move |_| counter.set(*counter + 1))
     };
 
-    let title = html!("Clicks");
-
     html! (
         <ExamplePage title="Counting clicks">
             <Gallery gutter=true>
-                <Card {title}>
+                <Card>
+                    <CardTitle>{"Clicks"}</CardTitle>
                     <CardBody>
                         <p>{ *counter }</p>
                         <Button label="Add One"

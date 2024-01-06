@@ -1,0 +1,57 @@
+{
+    #[function_component(CardSingleSelectable)]
+    fn actions() -> Html {
+        html! {
+            <>
+                <Card id="selectable-card-example-1" selectable=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::SingleSelect {
+                                onchange: None,
+                            },
+                            base: yew::props!(CardSelectableActionsObjectBase {
+                                name: "selectable-card-example"
+                            })
+                        })}
+                    >
+                        <CardTitle>{"First card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is selectable"}</CardBody>
+                </Card>
+                <Card id="selectable-card-example-2" selectable=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::SingleSelect {
+                                onchange: None,
+                            },
+                            base: yew::props!(CardSelectableActionsObjectBase {
+                                name: "selectable-card-example"
+                            })
+                        })}
+                    >
+                        <CardTitle>{"Second card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is selectable"}</CardBody>
+                </Card>
+                <Card id="selectable-card-example-3" selectable=true disabled=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::SingleSelect {
+                                onchange: None,
+                            },
+                            base: yew::props!(CardSelectableActionsObjectBase {
+                                name: "selectable-card-example"
+                            })
+                        })}
+                    >
+                        <CardTitle>{"Third card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is selectable but disabled"}</CardBody>
+                </Card>
+            </>
+        }
+    }
+    html! {
+        <CardSingleSelectable/>
+    }
+}
