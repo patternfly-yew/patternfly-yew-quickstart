@@ -1,0 +1,60 @@
+{
+    #[function_component(CardSelectable)]
+    fn actions() -> Html {
+        let first_checked = use_state(|| CheckboxState::Unchecked);
+        let on_first = use_callback(first_checked.clone(), |new_val, state| state.set(new_val));
+
+        let second_checked = use_state(|| CheckboxState::Unchecked);
+        let on_second = use_callback(second_checked.clone(), |new_val, state| state.set(new_val));
+
+        let third_checked = use_state(|| CheckboxState::Unchecked);
+        let on_third = use_callback(third_checked.clone(), |new_val, state| state.set(new_val));
+
+        html! {
+            <>
+                <Card id="selectable-card-example-1" selectable=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::MultiSelect {
+                                checked: *first_checked,
+                                onchange: on_first,
+                            },
+                        })}
+                    >
+                        <CardTitle>{"First card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is selectable"}</CardBody>
+                </Card>
+                <Card id="selectable-card-example-2" selectable=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::MultiSelect {
+                                checked: *second_checked,
+                                onchange: on_second,
+                            },
+                        })}
+                    >
+                        <CardTitle>{"Second card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is selectable"}</CardBody>
+                </Card>
+                <Card id="selectable-card-example-3" selectable=true disabled=true>
+                    <CardHeader
+                        selectable_actions={yew::props!(CardSelectableActionsObjectProperties {
+                            action: CardSelectableActionsVariant::MultiSelect {
+                                checked: *third_checked,
+                                onchange: on_third,
+                            },
+                        })}
+                    >
+                        <CardTitle>{"Third card"}</CardTitle>
+                    </CardHeader>
+                    <CardBody>{"This card is selectable but disabled"}</CardBody>
+                </Card>
+            </>
+        }
+    }
+    html! {
+        <CardSelectable/>
+    }
+}

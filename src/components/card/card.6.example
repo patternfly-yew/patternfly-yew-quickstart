@@ -1,0 +1,11 @@
+{
+    html! {
+        <Card>
+            <CardTitle>{"Title"}</CardTitle>
+            <CardBody>{"Body"}</CardBody>
+            <CardBody>{"Body"}</CardBody>
+            <CardBody>{"Body"}</CardBody>
+            <CardFooter>{"Footer"}</CardFooter>
+        </Card>
+    }
+}

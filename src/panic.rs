@@ -6,15 +6,18 @@ use yew::prelude::*;
 pub fn panic() -> Html {
     let onclick = Callback::from(|_| panic!("Trying out panic!"));
 
-    let actions = html!(
-        <Button {onclick} variant={ButtonVariant::Danger}> {"Panic!"} </Button>
-    );
+    let actions = yew::props!(CardHeaderActionsObject {
+        actions: html! {
+            <Button {onclick} variant={ButtonVariant::Danger}> {"Panic!"} </Button>
+        },
+    });
 
     html!(
         <ExamplePage title="Panic Handler">
             <Grid gutter=true>
                 <GridItem cols={[6]}>
-                    <Card title={html!(<Title>{"Explanation"}</Title>)}>
+                    <Card>
+                        <CardTitle><Title>{"Explanation"}</Title></CardTitle>
                         <CardBody>
                             <Content>
             { Html::from_html_unchecked(r#"
@@ -32,7 +35,7 @@ all the styling available.
 
 <p>
 But keep in mind, at this point, the application crashed, and using Rust code is no longer an
-option. You can still leverage the browsers' JavaScript engine and trigger some alternative 
+option. You can still leverage the browsers' JavaScript engine and trigger some alternative
 actions.
 </p>
 
@@ -43,10 +46,9 @@ actions.
                 </GridItem>
 
                 <GridItem cols={[6]}>
-                    <Card
-                        title={html!(<Title>{"Example"}</Title>)}
-                        {actions}
-                    >
+                    <Card>
+                        <CardHeader {actions} />
+                        <CardTitle><Title>{"Example"}</Title></CardTitle>
                         <CardBody>
                             <Content>
                                 {"By clicking on the button, you can cause a panic and try out the feature."}
