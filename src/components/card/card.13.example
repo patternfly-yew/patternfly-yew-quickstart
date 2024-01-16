@@ -25,7 +25,7 @@
         html! {
             <Card expanded={*expanded}>
                 <CardHeader {actions} {onexpand}>
-                    <img src="/assets/images/pf-c-brand__logo-on-sm.svg" alt="pf-logo-small" width="27px"/>
+                    <img src="assets/images/pf-c-brand__logo-on-sm.svg" alt="pf-logo-small" width="27px"/>
                 </CardHeader>
                 <CardExpandableContent>
                     <CardBody>{"Body"}</CardBody>
