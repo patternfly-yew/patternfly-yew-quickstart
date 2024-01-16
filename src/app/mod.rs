@@ -342,7 +342,7 @@ fn page(props: &PageProps) -> Html {
 
     let brand = html! (
         <MastheadBrand>
-            <Brand src="/assets/images/pf-logo.svg" alt="Patternfly Logo" style="--pf-v5-c-brand--Height: 36px;"/>
+            <Brand src="assets/images/pf-logo.svg" alt="Patternfly Logo" style="--pf-v5-c-brand--Height: 36px;"/>
         </MastheadBrand>
     );
 
