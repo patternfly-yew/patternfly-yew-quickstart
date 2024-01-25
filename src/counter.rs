@@ -6,7 +6,7 @@ use yew::prelude::*;
 pub fn counter() -> Html {
     let counter = use_state_eq(|| 0);
 
-    let onclick = use_callback(counter.clone(), |_, counter| counter.set(&*counter + 1));
+    let onclick = use_callback(counter.clone(), |_, counter| counter.set(**counter + 1));
 
     html! (
         <ExamplePage title="Counting clicks">
