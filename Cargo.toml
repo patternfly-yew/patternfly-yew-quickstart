@@ -35,7 +35,7 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "690409457b0c25bf87f979ff54a10ce2278b6c7a" } # FIXME: awaiting release
+patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "af7b1b00dc278816b1ff19b04b74967e2f28b48e" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
 #yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "f535bb2e7b227aac7010035215c11d4aeae6cb62" } # FIXME: awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
