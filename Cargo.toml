@@ -24,7 +24,7 @@ wasm-logger = "0.2"
 yew = { version = "0.21", features = ["csr"] }
 yew-hooks = "0.3"
 yew-more-hooks = { version = "0.3.0", features = ["yew-hooks"] }
-yew-nested-router = "0.6.1"
+yew-nested-router = "0.6.3"
 
 [dependencies.web-sys]
 version = "0.3"
