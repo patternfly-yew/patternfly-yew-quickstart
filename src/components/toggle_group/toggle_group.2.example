@@ -1,0 +1,40 @@
+{
+    #[function_component(ToggleGroupSingleSelect)]
+    fn toggle_group_single_select() -> Html {
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        enum Choices {
+            One,
+            Two,
+            Three,
+        }
+        let selected = use_state(|| None);
+        let callback = use_callback(selected.clone(), |input, selected| {
+            selected.set(Some(input))
+        });
+        html! {
+            <ToggleGroup>
+                <ToggleGroupItem
+                    text="Option 1"
+                    key=0
+                    onchange={let cb = callback.clone(); move |_| cb.emit(Choices::One)}
+                    selected={*selected == Some(Choices::One)}
+                />
+                <ToggleGroupItem
+                    text="Option 2"
+                    key=1
+                    onchange={let cb = callback.clone(); move |_| cb.emit(Choices::Two)}
+                    selected={*selected == Some(Choices::Two)}
+                />
+                <ToggleGroupItem
+                    text="Option 3"
+                    key=2
+                    onchange={let cb = callback.clone(); move |_| cb.emit(Choices::Three)}
+                    selected={*selected == Some(Choices::Three)}
+                />
+            </ToggleGroup>
+        }
+    }
+    html! {
+        <ToggleGroupSingleSelect />
+    }
+}

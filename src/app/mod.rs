@@ -59,6 +59,7 @@ pub enum Component {
     TextInputGroup,
     Title,
     Toast,
+    ToggleGroup,
     Tooltip,
     Tree,
     Truncate,
@@ -182,6 +183,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::TextInputGroup => html! {<components::TextInputGroupExample/>},
         Component::Title => html! {<components::TitleExample/>},
         Component::Toast => html! {<components::ToastExample/>},
+        Component::ToggleGroup => html! {<components::ToggleGroupExample/>},
         Component::Tooltip => html! {<components::TooltipExample/>},
         Component::Tree => html! {<components::TreeExample/>},
         Component::Truncate => html! {<components::TruncateExample/>},
@@ -323,6 +325,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::TextInputGroup)}>{"Text Input Group"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ToggleGroup)}>{"Toggle Group"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Truncate)}>{"Truncate"}</NavRouterItem<AppRoute>>
