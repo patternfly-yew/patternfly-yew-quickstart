@@ -1,0 +1,35 @@
+{
+    #[function_component(SimpleListBasic)]
+    fn simple_list_basic() -> Html {
+        let selected = use_state(|| 0);
+        let cb = use_callback(selected.clone(), |id, selected| selected.set(id));
+        html! {
+            <SimpleList>
+                <SimpleListItem
+                    onclick={let cb = cb.clone(); move |_| cb.emit(0)}
+                    key=0
+                    active={*selected == 0}
+                >
+                    {"List item 1"}
+                </SimpleListItem>
+                <SimpleListItem
+                    key=1
+                    onclick={let cb = cb.clone(); move |_| cb.emit(1)}
+                    active={*selected == 1}
+                >
+                    {"List item 2"}
+                </SimpleListItem>
+                <SimpleListItem
+                    key=2
+                    onclick={let cb = cb.clone(); move |_| cb.emit(2)}
+                    active={*selected == 2}
+                >
+                    {"List item 3"}
+                </SimpleListItem>
+            </SimpleList>
+        }
+    }
+    html! {
+        <SimpleListBasic />
+    }
+}
