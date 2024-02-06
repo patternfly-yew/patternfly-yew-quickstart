@@ -1,0 +1,33 @@
+{
+    #[function_component(ToggleGroupIcons)]
+    fn toggle_group_icons() -> Html {
+        let first_selected = use_state(|| false);
+        let second_selected = use_state(|| false);
+        let third_selected = use_state(|| true);
+        html! {
+            <ToggleGroup>
+                <ToggleGroupItem
+                    icon={html!(Icon::Copy)}
+                    key=0
+                    onchange={let state = first_selected.clone(); move |_| state.set(!(*state))}
+                    selected={*first_selected}
+                />
+                <ToggleGroupItem
+                    icon={html!(Icon::Undo)}
+                    key=1
+                    onchange={let state = second_selected.clone(); move |_| state.set(!(*state))}
+                    selected={*second_selected}
+                />
+                <ToggleGroupItem
+                    icon={html!(Icon::ShareSquare)}
+                    key=2
+                    onchange={let state = third_selected.clone(); move |_| state.set(!(*state))}
+                    selected={*third_selected}
+                />
+            </ToggleGroup>
+        }
+    }
+    html! {
+        <ToggleGroupIcons />
+    }
+}

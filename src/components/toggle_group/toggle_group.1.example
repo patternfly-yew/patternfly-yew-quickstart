@@ -1,0 +1,51 @@
+{
+    #[function_component(ToggleGroupBasicDemo)]
+    fn toggle_group_basic() -> Html {
+        let first_selected = use_state(|| false);
+        let second_selected = use_state(|| false);
+        let onclick_first = use_callback(first_selected.clone(), |_, selected| {
+            selected.set(!(**selected))
+        });
+        let onclick_second = use_callback(second_selected.clone(), |_, selected| {
+            selected.set(!(**selected))
+        });
+
+        let all_disabled = use_state(|| false);
+        let onclick_all_disabled = use_callback(all_disabled.clone(), |_, all_disabled| {
+            all_disabled.set(!(**all_disabled))
+        });
+        let label = if *all_disabled {
+            "Enable back"
+        } else {
+            "Disable all"
+        };
+
+        html! {
+            <Stack gutter=true>
+                <StackItem>
+                    <Button onclick={onclick_all_disabled.clone()} {label} variant={ButtonVariant::Primary}/>
+                </StackItem>
+                <StackItem>
+                    <ToggleGroup all_disabled={*all_disabled}>
+                        <ToggleGroupItem
+                            text="Option 1"
+                            key=0
+                            onchange={onclick_first.clone()}
+                            selected={*first_selected}
+                        />
+                        <ToggleGroupItem
+                            text="Option 2"
+                            key=1
+                            onchange={onclick_second.clone()}
+                            selected={*second_selected}
+                        />
+                        <ToggleGroupItem text="Option 3" key=2 disabled=true />
+                    </ToggleGroup>
+                </StackItem>
+            </Stack>
+        }
+    }
+    html! {
+        <ToggleGroupBasicDemo />
+    }
+}
