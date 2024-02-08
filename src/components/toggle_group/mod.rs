@@ -1,6 +1,6 @@
 use crate::{example, example::ExamplePage};
-use yew::prelude::*;
 use patternfly_yew::prelude::*;
+use yew::prelude::*;
 
 #[function_component(ToggleGroupExample)]
 pub fn toast() -> Html {
