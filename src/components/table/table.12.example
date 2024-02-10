@@ -1,30 +1,15 @@
 {
-
-    #[derive(Clone, PartialEq)]
-    pub struct Centered(pub ExampleEntry);
-
-    impl TableEntryRenderer<Columns> for Centered {
-        fn render_cell(&self, context: CellContext<Columns>) -> Cell {
-            let mut cell = self.0.render_cell(context);
-
-            if context.column == &Columns::First {
-                cell.center = true;
-            }
-
-            cell
-        }
-    }
-
     #[function_component(Example)]
     fn example() -> Html {
         let entries = use_memo((), |()| {
             vec![
-                Centered(ExampleEntry { foo: "bar".into() }),
-                Centered(ExampleEntry {
+                ExampleEntry { foo: "bar".into() },
+                ExampleEntry {
                     foo: "Much, much longer foo".into(),
-                }),
+                },
             ]
         });
+
         let (entries, _) = use_table_data(MemoizedTableModel::new(entries));
 
         let header = html_nested! {
@@ -35,10 +20,22 @@
             </TableHeader<Columns>>
         };
 
-        html!(
-            <Table<Columns, UseTableData<Columns, MemoizedTableModel<Centered>>>
+        let selected = use_state(|| None);
+
+        let onrowclick = use_callback(selected.clone(), |entry: ExampleEntry, selected| {
+            selected.set(Some(entry.clone()))
+        });
+        let row_selected = use_callback(selected.clone(), |entry: ExampleEntry, selected| {
+            **selected == Some(entry)
+        });
+
+        html! (
+            <Table<Columns, UseTableData<Columns, MemoizedTableModel<ExampleEntry>>>
+                caption="Table caption"
                 {header}
                 {entries}
+                {onrowclick}
+                {row_selected}
             />
         )
     }

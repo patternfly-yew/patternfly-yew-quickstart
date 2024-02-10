@@ -16,6 +16,7 @@ pub enum Columns {
     Hex,
 }
 
+#[derive(Clone)]
 struct ExampleEntry(usize);
 
 impl TableEntryRenderer<Columns> for ExampleEntry {

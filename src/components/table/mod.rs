@@ -109,6 +109,7 @@ pub fn example() -> Html {
     let example9 = example!("Table (expandable)" => "table.9.example");
     let example10 = example!("Table (expandable, columns)" => "table.10.example");
     let example11 = example!("Table (sortable)" => "table.11.example");
+    let example12 = example!("Table (clickable rows)" => "table.12.example");
 
     html! {
         <>
@@ -124,6 +125,7 @@ pub fn example() -> Html {
                 {example9}
                 {example10}
                 {example11}
+                {example12}
             </ExamplePage>
         </>
     }
