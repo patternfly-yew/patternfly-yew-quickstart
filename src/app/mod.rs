@@ -365,10 +365,24 @@ fn page(props: &PageProps) -> Html {
         }
     });
 
-    let onthemeswitch = use_callback((), |state, ()| match state {
+    // track dark mode state
+    let darkmode = use_state_eq(|| {
+        gloo_utils::window()
+            .match_media("(prefers-color-scheme: dark)")
+            .ok()
+            .flatten()
+            .map(|m| m.matches())
+            .unwrap_or_default()
+    });
+
+    // apply dark mode
+    use_effect_with(*darkmode, |state| match state {
         true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
         false => gloo_utils::document_element().set_class_name(""),
     });
+
+    // toggle dark mode
+    let onthemeswitch = use_callback(darkmode.setter(), |state, setter| setter.set(state));
 
     let tools = html!(
         <Toolbar full_height=true>
@@ -378,7 +392,7 @@ fn page(props: &PageProps) -> Html {
                     variant={GroupVariant::IconButton}
                 >
                     <ToolbarItem>
-                        <patternfly_yew::prelude::Switch onchange={onthemeswitch} label="Dark Theme" />
+                        <patternfly_yew::prelude::Switch checked={*darkmode} onchange={onthemeswitch} label="Dark Theme" />
                     </ToolbarItem>
                     <ToolbarItem>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>

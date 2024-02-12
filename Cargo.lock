@@ -826,7 +826,7 @@ checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
 [[package]]
 name = "patternfly-yew"
 version = "0.6.0"
-source = "git+https://github.com/patternfly-yew/patternfly-yew?rev=c121c5227bb209a5a502e571ae2cb71d7e52d4b6#c121c5227bb209a5a502e571ae2cb71d7e52d4b6"
+source = "git+https://github.com/patternfly-yew/patternfly-yew?rev=4f43b9a3da03f31241202b1b72586213c183ccc6#4f43b9a3da03f31241202b1b72586213c183ccc6"
 dependencies = [
  "chrono",
  "gloo-events 0.2.0",
@@ -1430,9 +1430,9 @@ dependencies = [
 
 [[package]]
 name = "web-tools"
-version = "0.2.2"
+version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4e4af3d34fc328a03f4b1fd614c6683b0e94c795a740e5c4bc23b3415bf84045"
+checksum = "901b21319c89163852d2d1a84f8d468b1d2d14a9a064acdd39925acb5e45bd04"
 dependencies = [
  "web-sys",
  "yew",
