@@ -1,32 +1,10 @@
 {
-    use yew_hooks::prelude::use_click_away;
     use popper_rs::prelude::*;
+    use yew_hooks::prelude::use_click_away;
+    use wasm_bindgen::JsCast;
 
-    #[derive(PartialEq, Properties)]
-    struct ExampleMenuProperties {
-        r#ref: NodeRef,
-        style: AttrValue,
-    }
-
-    #[function_component(ExampleMenu)]
-    fn example_menu(props: &ExampleMenuProperties) -> Html {
-        let toaster = use_toaster().unwrap();
-        let action = use_callback(toaster, |_, toaster| toaster.toast("Clicked it!"));
-
-        html!(
-            <Menu r#ref={props.r#ref.clone()} style={&props.style}>
-                <MenuAction onclick={action.clone()}>{ "Action" }</MenuAction>
-                <MenuLink href="/">{ "Link" }</MenuLink>
-                <MenuAction disabled=true>{ "Action (disabled)" }</MenuAction>
-                <MenuLink disabled=true href="/">{ "Link (disabled)" }</MenuLink>
-                <ListDivider />
-                <MenuAction onclick={action.clone()} danger=true>{ "Action" }</MenuAction>
-            </Menu>
-        )
-    }
-
-    #[function_component(Example)]
-    fn example() -> Html {
+    #[component]
+    fn Example() -> Html {
         let expanded = use_state_eq(||false);
 
         let away_ref = use_node_ref();
@@ -34,7 +12,14 @@
         let menu_ref = use_node_ref();
         {
             let expanded = expanded.clone();
-            use_click_away(away_ref.clone(), move |_: Event| expanded.set(false));
+            let menu_ref = menu_ref.clone();
+
+            use_click_away(away_ref.clone(), move |event: Event| {
+                if let Some(menu) = menu_ref.cast::<web_sys::HtmlElement>()
+                    && !menu.contains(event.target().unwrap().dyn_ref::<web_sys::Node>()) {
+                        expanded.set(false)
+                }
+            });
         }
 
         let ontoggle = use_callback(expanded.clone(), |_, expanded| expanded.set(!**expanded));
@@ -42,32 +27,55 @@
         let state = use_state_eq(State::default);
         let onstatechange = use_callback(state.clone(), |new_state, state| state.set(new_state));
 
+        let style = use_state_eq(|| state.styles.popper.clone().extend_with("opacity", "0"));
+
+        let width_mods = {
+            let style = style.clone();
+            let state = state.clone();
+
+            ModifierFn(std::rc::Rc::new(wasm_bindgen::prelude::Closure::new(
+                move |_: popper_rs::sys::ModifierArguments| {
+                    let new_style = state.styles.popper
+                      .extend_with("z-index", "9999")
+                      .extend_with("opacity", "1")
+                      .extend_with("transition", "opacity");
+
+                    style.set(new_style)
+                },
+            )))
+        };
+
+        let modifiers = Vec::from([Modifier::Custom {
+            name: "widthMods".into(),
+            phase: Some("beforeWrite".into()),
+            enabled: Some(true),
+            r#fn: Some(width_mods),
+        }]);
+
+        let toaster = use_toaster().unwrap();
+        let action = use_callback(toaster, |_, toaster| toaster.toast("Clicked it!"));
+
         html!(
             <>
                 <div ref={away_ref} style="display: inline;">
                     <MenuToggle
                         r#ref={toggle_ref.clone()}
-                        text="Example Menu"
+                        text={html!{"Example Menu"}}
                         expanded={*expanded}
                         {ontoggle}
                     />
-
-                    <InlinePopper
-                        target={toggle_ref}
+                    <PortalPopper
+                        visible={*expanded}
+                        target={toggle_ref.clone()}
                         content={menu_ref.clone()}
                         placement={Placement::Bottom}
-                        visible={*expanded}
+                        {modifiers}
                         {onstatechange}
                     >
-                        <ExampleMenu
-                            r#ref={menu_ref}
-                            style={&state
-                                .styles.popper
-                                .extend_with("z-index", "1000")
-                            }
-                        />
-                    </InlinePopper>
-
+                        <Menu r#ref={menu_ref} style={&(*style)}>
+                            <MenuAction onclick={action.clone()}>{ "Action" }</MenuAction>
+                        </Menu>
+                    </PortalPopper>
                 </div>
             </>
         )

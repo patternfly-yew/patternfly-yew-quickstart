@@ -25,6 +25,7 @@ fn example() -> Html {
     let total_entries = Some(TOTAL_ENTRIES);
 
     let limit_callback = use_callback(limit.clone(), |number, limit| {
+        log::warn!("limit changed to {}", number);
         limit.set(number)
     });
 

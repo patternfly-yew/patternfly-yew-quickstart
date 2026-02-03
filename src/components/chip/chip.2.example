@@ -1,7 +1,0 @@
-html!{
-    <>
-        <Chip text="Foo" badge="123"/>
-        <Chip text="Bar" badge="123"/>
-        <Chip text="Baz" badge="123"/>
-    </>
-}

@@ -1,5 +1,6 @@
 {
     let onclose = Callback::from(|_|{});
+    let onclick = Callback::from(|_|{});
 
     html!(
         Color::iter().map(|color| html!{
@@ -8,8 +9,10 @@
                 <FlexItem><Label label={format!("{} with icon", color)} color={color} icon={Icon::InfoCircle}/></FlexItem>
                 <FlexItem><Label label={format!("{} closable", color)} color={color} onclose={onclose.clone()}/></FlexItem>
                 <FlexItem><Label label={format!("{} closable with icon", color)} color={color} icon={Icon::InfoCircle} onclose={onclose.clone()}/></FlexItem>
-                <FlexItem><Label label={format!("{} clickable", color)} color={color} href="#"/></FlexItem>
-                <FlexItem><Label label={format!("{} clickable, closable with icon", color)} color={color} icon={Icon::InfoCircle} href="#" onclose={onclose.clone()}/></FlexItem>
+                <FlexItem><Label label={format!("{} clickable", color)} color={color} onclick={onclick.clone()}/></FlexItem>
+                <FlexItem><Label label={format!("{} clickable, closable with icon", color)} color={color} icon={Icon::InfoCircle} onclick={onclick.clone()} onclose={onclose.clone()}/></FlexItem>
+                <FlexItem><Label label={format!("{} closable (disabled)", color)} color={color} onclose={onclose.clone()} disabled=true /></FlexItem>
+                <FlexItem><Label label={format!("{} clickable (disabled)", color)} color={color} onclick={onclick.clone()} onclose={onclose.clone()} disabled=true /></FlexItem>
             </Flex>
         }).collect::<Html>()
     )

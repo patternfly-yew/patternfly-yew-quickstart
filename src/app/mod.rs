@@ -24,7 +24,6 @@ pub enum Component {
     Button,
     Card,
     Clipboard,
-    Chip,
     CodeBlock,
     Date(Date),
     DescriptionList,
@@ -144,7 +143,6 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Breadcrumb => html! {<components::BreadcrumbExample/>},
         Component::Button => html! {<components::ButtonExample/>},
         Component::Card => html! {<components::CardExample/>},
-        Component::Chip => html! {<components::ChipExample/>},
         Component::Clipboard => html! {<components::ClipboardExample/>},
         Component::CodeBlock => html! {<components::CodeBlockExample/>},
         Component::Date(Date::Calendar) => html! {<components::CalendarExample/>},
@@ -268,7 +266,7 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Icons}>{"Icons"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Panic}>{"Panic"}</NavRouterItem<AppRoute>>
-                        <NavLink href="https://github.com/patternfly-yew/patternfly-yew" target="_blank">{"PatternFly Yew "} {Icon::ExternalLinkAlt.with_classes(classes!("pf-v5-u-ml-sm", "pf-v5-u-color-200"))}</NavLink>
+                        <NavLink href="https://github.com/patternfly-yew/patternfly-yew" target="_blank">{"PatternFly Yew "} {Icon::ExternalLinkAlt.with_classes(classes!("pf-v6-u-ml-sm", "pf-v6-u-color-200"))}</NavLink>
                     </NavExpandable>
                     <NavExpandable title="Components">
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Accordion)}>{"Accordion"}</NavRouterItem<AppRoute>>
@@ -280,7 +278,6 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Breadcrumb)}>{"Breadcrumb"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Card)}>{"Card"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Chip)}>{"Chip"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>{"Code Block"}</NavRouterItem<AppRoute>>
                         <NavExpandable title="Date">
@@ -348,7 +345,9 @@ fn page(props: &PageProps) -> Html {
 
     let brand = html! (
         <MastheadBrand>
-            <Brand src="assets/images/pf-logo.svg" alt="Patternfly Logo" style="--pf-v5-c-brand--Height: 36px;"/>
+            <div className="show-light">
+                <Brand src="/images/pf-logo.svg" alt="Patternfly Logo" style="--pf-v6-c-brand--Height: 36px;"/>
+            </div>
         </MastheadBrand>
     );
 
@@ -377,7 +376,7 @@ fn page(props: &PageProps) -> Html {
 
     // apply dark mode
     use_effect_with(*darkmode, |state| match state {
-        true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
+        true => gloo_utils::document_element().set_class_name("pf-v6-theme-dark"),
         false => gloo_utils::document_element().set_class_name(""),
     });
 
@@ -388,7 +387,7 @@ fn page(props: &PageProps) -> Html {
         <Toolbar full_height=true>
             <ToolbarContent>
                 <ToolbarGroup
-                    modifiers={ToolbarElementModifier::Right.all()}
+                    modifiers={ToolbarElementModifier::End.all()}
                     variant={GroupVariant::IconButton}
                 >
                     <ToolbarItem>

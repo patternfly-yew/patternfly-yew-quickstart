@@ -1,7 +1,7 @@
 {
 html!(
     <Dropdown
-        text="Foo"
+        text={html!{"Foo"}}
     >
         <MenuAction onclick={show_toast.reform(|_|"Clicked Foo")}>{"Foo"}</MenuAction>
         <ListDivider/>

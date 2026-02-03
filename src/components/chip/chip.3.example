@@ -1,7 +1,0 @@
-html!{
-    <>
-        <Chip text="Foo" draggable=true />
-        <Chip text="Bar" draggable=true />
-        <Chip text="Baz" draggable=true />
-    </>
-}

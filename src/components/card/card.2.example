@@ -38,7 +38,6 @@
         let flat = use_state(|| false);
         let full_height = use_state(|| false);
         let plain = use_state(|| false);
-        let rounded = use_state(|| false);
 
         let change_callback = |handle: &UseStateHandle<bool>| {
             let handle = handle.clone();
@@ -54,9 +53,8 @@
                         <ListItem><Switch label="flat" checked={*flat} onchange={change_callback(&flat)} /></ListItem>
                         <ListItem><Switch label="full height" checked={*full_height} onchange={change_callback(&full_height)} /></ListItem>
                         <ListItem><Switch label="plain" checked={*plain} onchange={change_callback(&plain)} /></ListItem>
-                        <ListItem><Switch label="rounded" checked={*rounded} onchange={change_callback(&rounded)} /></ListItem>
                         <ListItem>
-                            <Dropdown text={card_size_to_text(*size)}>
+                            <Dropdown text={html!{card_size_to_text(*size)}}>
                                 <SizeAction size={CardSize::Default} onchange={change_size.clone()} />
                                 <SizeAction size={CardSize::Compact} onchange={change_size.clone()} />
                                 <SizeAction size={CardSize::Large} onchange={change_size.clone()} />
@@ -71,7 +69,6 @@
                         flat={*flat}
                         full_height={*full_height}
                         plain={*plain}
-                        rounded={*rounded}
                         >
                         <CardBody>{ "Body" }</CardBody>
                         <CardFooter>{ "Footer" }</CardFooter>

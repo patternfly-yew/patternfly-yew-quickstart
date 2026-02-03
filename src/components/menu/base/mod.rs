@@ -13,13 +13,11 @@ pub fn menu_example() -> Html {
     let example4 = example!("Simple Drop Down" => "menu.4.example");
 
     html! {
-        <>
-            <ExamplePage title="Menu">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-            </ExamplePage>
-        </>
+        <ExamplePage title="Menu">
+            {example1}
+            {example2}
+            {example3}
+            {example4}
+        </ExamplePage>
     }
 }

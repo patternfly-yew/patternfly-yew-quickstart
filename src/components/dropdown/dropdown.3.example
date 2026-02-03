@@ -7,14 +7,14 @@ let icon = html!(
 fn custom_entry() -> Html {
     let onclose = use_close_menu_callback();
     html!(
-        <div class="pf-v5-c-menu__list-item">
+        <div class="pf-v6-c-menu__list-item">
             <div
-                class="pf-v5-c-menu__item"
+                class="pf-v6-c-menu__item"
                 role="menuitem"
                 onclick={onclose.reform(|_|())}
             >
                 <dl>
-                    <dt class="pf-v5-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
+                    <dt class="pf-v6-u-font-size-xs">{"Foo"}</dt><dd>{"Bar"}</dd>
                     <dt>{"Bar"}</dt><dd>{"Baz"}</dd>
                 </dl>
             </div>
@@ -26,7 +26,7 @@ html!{
     <Dropdown
         variant={MenuToggleVariant::Plain}
         {icon}
-        text="Foo Bar"
+        text={html!{"Foo Bar"}}
     >
         <MenuGroup>
             <Raw>

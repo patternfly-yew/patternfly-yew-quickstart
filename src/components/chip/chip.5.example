@@ -1,9 +1,0 @@
-html!{
-    <>
-        <ChipGroup label="Example Group">
-            <Chip text="Foo"/>
-            <Chip text="Bar" onclose={Callback::from(|_|{})} />
-            <Chip text="Baz"/>
-        </ChipGroup>
-    </>
-}

@@ -1,13 +1,13 @@
 {
 
-    #[function_component(Example)]
-    fn example() -> Html {
+    #[component]
+    fn Example() -> Html {
         let toaster = use_toaster().unwrap();
         let action = use_callback(toaster, |_, toaster| toaster.toast("Clicked it!"));
 
         html!(
             <Dropdown
-                text="Drop Down Menu"
+                text={html!{"Drop Down Menu"}}
             >
                 <MenuAction onclick={action.clone()}>{ "Action" }</MenuAction>
                 <MenuLink href="/">{ "Link" }</MenuLink>

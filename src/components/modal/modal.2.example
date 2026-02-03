@@ -1,7 +1,7 @@
 {
     let footer = html!{<>
-         <button class="pf-v5-c-button pf-m-primary" type="button">{"Submit"}</button>
-         <button class="pf-v5-c-button pf-m-link" type="button">{"Cancel"}</button>
+         <button class="pf-v6-c-button pf-m-primary" type="button">{"Submit"}</button>
+         <button class="pf-v6-c-button pf-m-link" type="button">{"Cancel"}</button>
     </>};
 
     html!(
