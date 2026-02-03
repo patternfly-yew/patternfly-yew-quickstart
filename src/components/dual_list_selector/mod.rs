@@ -1,5 +1,6 @@
 use crate::{example, example::ExamplePage};
 use patternfly_yew::prelude::*;
+use yew::html::IntoPropValue;
 use yew::prelude::*;
 
 #[derive(Debug, Clone, PartialEq)]
@@ -17,13 +18,19 @@ impl Fruit {
     }
 }
 
-impl ToHtml for Fruit {
-    fn to_html(&self) -> Html {
+impl IntoPropValue<Html> for Fruit {
+    fn into_prop_value(self) -> Html {
         html! { {self.name.clone() }}
     }
 }
 
-#[function_component(DualListSelectorExample)]
+impl IntoPropValue<Html> for &Fruit {
+    fn into_prop_value(self) -> Html {
+        html! { {self.name.clone() }}
+    }
+}
+
+#[component(DualListSelectorExample)]
 pub fn view() -> Html {
     let example1 = example! {"Basic" => "dual_list_selector.1.example"};
     let example2 = example! {"Advanced" => "dual_list_selector.2.example"};

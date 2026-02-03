@@ -2,7 +2,7 @@
     let onclose = Callback::from(|_|{});
 
     html!(
-        for Color::iter().map(|color|html!{
+        Color::iter().map(|color| html!{
             <Flex>
                 <FlexItem><Label label={format!("{}", color)} color={color}/></FlexItem>
                 <FlexItem><Label label={format!("{} with icon", color)} color={color} icon={Icon::InfoCircle}/></FlexItem>
@@ -11,6 +11,6 @@
                 <FlexItem><Label label={format!("{} clickable", color)} color={color} href="#"/></FlexItem>
                 <FlexItem><Label label={format!("{} clickable, closable with icon", color)} color={color} icon={Icon::InfoCircle} href="#" onclose={onclose.clone()}/></FlexItem>
             </Flex>
-        })
+        }).collect::<Html>()
     )
 }

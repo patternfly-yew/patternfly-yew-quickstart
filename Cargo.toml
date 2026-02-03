@@ -14,17 +14,17 @@ chrono = { version = "0.4.30", default-features = false, features = ["wasmbind"]
 gloo-utils = "0.2"
 log = "0.4"
 patternfly-yew = { version = "0.6.1", features = ["tree", "icons-fab"] }
-popper-rs = { version = "0.3.2", features = ["yew", "debug"] }
+popper-rs = { version = "0.4", features = ["yew", "debug"] }
 serde_json = "1"
-strum = { version = "0.26", features = ["derive"] }
+strum = { version = "0.27", features = ["derive"] }
 url = "2"
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
 wasm-logger = "0.2"
-yew = { version = "0.21", features = ["csr"] }
-yew-hooks = "0.3"
-yew-more-hooks = { version = "0.3.3", features = ["yew-hooks"] }
-yew-nested-router = "0.7.0"
+yew = { version = "0.22", features = ["csr"] }
+yew-hooks = "0.4"
+yew-more-hooks = { version = "0.4", features = ["yew-hooks"] }
+yew-nested-router = "0.8"
 
 [dependencies.web-sys]
 version = "0.3"

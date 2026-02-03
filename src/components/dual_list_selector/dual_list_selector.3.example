@@ -1,5 +1,5 @@
 {
-    #[function_component(Example)]
+    #[component(Example)]
     fn example() -> Html {
         let available: Vec<Fruit> = vec![
             "Apple",

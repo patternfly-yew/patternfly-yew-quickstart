@@ -134,7 +134,7 @@
                             })
                         };
                         html_nested!(
-                            <MenuAction {onclick}>{ value }</MenuAction>
+                            <MenuAction {onclick}>{ *value }</MenuAction>
                         )
                     })}
                 </Menu>
