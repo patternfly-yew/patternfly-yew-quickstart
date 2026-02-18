@@ -9,6 +9,7 @@ pub fn description_list() -> Html {
     let example2 = example! ("DescriptionList (compact)" => "description_list.2.example");
     let example3 = example! ("DescriptionList (horizontal)" => "description_list.3.example");
     let example4 = example! ("DescriptionList (fluid)" => "description_list.4.example");
+    let example5 = example! ("DescriptionList (column fill)" => "description_list.5.example");
 
     html! {
         <>
@@ -17,6 +18,7 @@ pub fn description_list() -> Html {
                 { example2 }
                 { example3 }
                 { example4 }
+                { example5 }
             </ExamplePage>
         </>
     }

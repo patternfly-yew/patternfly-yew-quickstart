@@ -1,0 +1,17 @@
+html!{
+    <>
+        <DescriptionList fill_columns={true}>
+            <DescriptionGroup term="Name">{"Example"}</DescriptionGroup>
+            <DescriptionGroup term="Namespace">
+                <a href="#">{"mary-test"}</a>
+            </DescriptionGroup>
+            <DescriptionGroup term="Labels">{"example"}</DescriptionGroup>
+            <DescriptionGroup term="Pod selector">
+                <Button variant={ButtonVariant::InlineLink} icon={Icon::PlusCircle}>
+                  {"app=MyApp"}
+                </Button>
+            </DescriptionGroup>
+            <DescriptionGroup term="Annotation">{"2 Annotations"}</DescriptionGroup>
+        </DescriptionList>
+    </>
+}
