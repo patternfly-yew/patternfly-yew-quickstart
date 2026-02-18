@@ -13,11 +13,7 @@ pub fn dropdown_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Dropdown">
-                {example1}
-                {example2}
-                {example3}
-            </ExamplePage>
+            <ExamplePage title="Dropdown">{ example1 }{ example2 }{ example3 }</ExamplePage>
         </>
     }
 }

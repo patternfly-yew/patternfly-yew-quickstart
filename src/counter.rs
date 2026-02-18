@@ -12,10 +12,11 @@ pub fn counter() -> Html {
         <ExamplePage title="Counting clicks">
             <Gallery gutter=true>
                 <Card>
-                    <CardTitle>{"Clicks"}</CardTitle>
+                    <CardTitle>{ "Clicks" }</CardTitle>
                     <CardBody>
                         <p>{ *counter }</p>
-                        <Button label="Add One"
+                        <Button
+                            label="Add One"
                             align={Align::Start}
                             icon={Icon::PlusCircle}
                             variant={ButtonVariant::Link}

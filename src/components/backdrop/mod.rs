@@ -10,9 +10,7 @@ pub fn backdrop() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Backdrop">
-                {example1}
-            </ExamplePage>
+            <ExamplePage title="Backdrop">{ example1 }</ExamplePage>
         </>
     }
 }

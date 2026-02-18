@@ -21,7 +21,7 @@ pub struct Props {
 #[function_component(LayoutItem)]
 pub fn layout_item(props: &Props) -> Html {
     html! {
-        <div style="border: .2rem dashed gray; padding: 1rem; height: 100%;">
+        <div style="border: .2rem dashed gray; padding: 1rem; height: 100%">
             { for props.children.iter() }
         </div>
     }

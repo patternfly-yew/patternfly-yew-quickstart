@@ -10,10 +10,7 @@ pub fn example() -> Html {
 
     html! (
         <>
-            <ExamplePage title="Code Block">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Code Block">{ example1 }{ example2 }</ExamplePage>
         </>
     )
 }

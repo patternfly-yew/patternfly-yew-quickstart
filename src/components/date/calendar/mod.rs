@@ -16,10 +16,7 @@ pub fn datepicker_example() -> yew::Html {
 
     html! {
         <>
-            <ExamplePage title="Calendar month">
-                { select_date }
-                { range }
-            </ExamplePage>
+            <ExamplePage title="Calendar month">{ select_date }{ range }</ExamplePage>
         </>
     }
 }

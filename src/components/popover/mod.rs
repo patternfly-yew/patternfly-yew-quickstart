@@ -10,10 +10,7 @@ pub fn popover_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Popover">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Popover">{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

@@ -17,10 +17,7 @@ impl Component for GalleryExample {
         let example2 = example!("Gallery (gutter)" => "gallery.2.example");
         html! {
             <>
-                <ExamplePage title="Gallery Layout">
-                    { example1 }
-                    { example2 }
-                </ExamplePage>
+                <ExamplePage title="Gallery Layout">{ example1 }{ example2 }</ExamplePage>
             </>
         }
     }

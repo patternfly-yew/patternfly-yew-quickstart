@@ -8,9 +8,7 @@ pub fn select_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Select">
-                {example1}
-            </ExamplePage>
+            <ExamplePage title="Select">{ example1 }</ExamplePage>
         </>
     }
 }

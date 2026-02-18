@@ -17,10 +17,12 @@ pub fn panic() -> Html {
             <Grid gutter=true>
                 <GridItem cols={[6]}>
                     <Card>
-                        <CardTitle><Title>{"Explanation"}</Title></CardTitle>
+                        <CardTitle>
+                            <Title>{ "Explanation" }</Title>
+                        </CardTitle>
                         <CardBody>
                             <Content>
-            { Html::from_html_unchecked(r#"
+                                { Html::from_html_unchecked(r#"
 <p>
 The quickstart application sets a panic handler for Yew when starting. This at least allows one to
 present the severe error to the user, maybe offering additional actions, like reporting the
@@ -39,26 +41,25 @@ option. You can still leverage the browsers' JavaScript engine and trigger some 
 actions.
 </p>
 
-"#.into())}
+"#.into()) }
                             </Content>
                         </CardBody>
                     </Card>
                 </GridItem>
-
                 <GridItem cols={[6]}>
                     <Card>
                         <CardHeader {actions} />
-                        <CardTitle><Title>{"Example"}</Title></CardTitle>
+                        <CardTitle>
+                            <Title>{ "Example" }</Title>
+                        </CardTitle>
                         <CardBody>
                             <Content>
-                                {"By clicking on the button, you can cause a panic and try out the feature."}
+                                { "By clicking on the button, you can cause a panic and try out the feature." }
                             </Content>
                         </CardBody>
                     </Card>
                 </GridItem>
             </Grid>
-
-
         </ExamplePage>
     )
 }

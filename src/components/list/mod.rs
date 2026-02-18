@@ -14,11 +14,11 @@ pub fn list() -> Html {
     html! {
         <>
             <ExamplePage title="List">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-                {example5}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
+                { example5 }
             </ExamplePage>
         </>
     }

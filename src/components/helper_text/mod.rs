@@ -11,11 +11,7 @@ pub fn helper_text() -> Html {
 
     html! {
         <>
-            <ExamplePage title="HelperText">
-                {example1}
-                {example2}
-                {example3}
-            </ExamplePage>
+            <ExamplePage title="HelperText">{ example1 }{ example2 }{ example3 }</ExamplePage>
         </>
     }
 }

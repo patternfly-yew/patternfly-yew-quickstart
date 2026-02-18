@@ -10,11 +10,7 @@ pub fn accordion() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Accordion">
-                {example1}
-                {example2}
-                {example3}
-            </ExamplePage>
+            <ExamplePage title="Accordion">{ example1 }{ example2 }{ example3 }</ExamplePage>
         </>
     }
 }

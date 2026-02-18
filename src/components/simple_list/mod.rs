@@ -14,8 +14,8 @@ pub fn search_input() -> Html {
     html! {
         <>
             <ExamplePage title="Simple List">
-                {example1}
-                {example2}
+                { example1 }
+                { example2 }
                 // {example3}
                 // {example4}
                 // {example5}

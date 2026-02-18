@@ -12,19 +12,23 @@ pub fn about() -> Html {
                 product_name="PatternFly Yew Quickstart"
                 trademark="Copyright © 2020, 2023 PatternFly for Yew contributors"
             >
-                    <p>{ env!("CARGO_PKG_DESCRIPTION") }</p>
-                    <br />
-                    <DescriptionList mode={[DescriptionListMode::Horizontal]}>
-                        <DescriptionGroup term="Version">{env!("CARGO_PKG_VERSION")}</DescriptionGroup>
-                        <DescriptionGroup term="Name">{env!("CARGO_PKG_VERSION")}</DescriptionGroup>
-                        <DescriptionGroup term="License">{env!("CARGO_PKG_LICENSE")}</DescriptionGroup>
-                        if let Some(value) = option_env!("BUILD_COMMIT") {
-                            <DescriptionGroup term="Build commit">{value}</DescriptionGroup>
-                        }
-                        if let Some(value) = option_env!("BUILD_TIMESTAMP") {
-                            <DescriptionGroup term="Build timestamp">{value}</DescriptionGroup>
-                        }
-                    </DescriptionList>
+                <p>{ env!("CARGO_PKG_DESCRIPTION") }</p>
+                <br />
+                <DescriptionList mode={[DescriptionListMode::Horizontal]}>
+                    <DescriptionGroup term="Version">
+                        { env!("CARGO_PKG_VERSION") }
+                    </DescriptionGroup>
+                    <DescriptionGroup term="Name">{ env!("CARGO_PKG_VERSION") }</DescriptionGroup>
+                    <DescriptionGroup term="License">
+                        { env!("CARGO_PKG_LICENSE") }
+                    </DescriptionGroup>
+                    if let Some(value) = option_env!("BUILD_COMMIT") {
+                        <DescriptionGroup term="Build commit">{ value }</DescriptionGroup>
+                    }
+                    if let Some(value) = option_env!("BUILD_TIMESTAMP") {
+                        <DescriptionGroup term="Build timestamp">{ value }</DescriptionGroup>
+                    }
+                </DescriptionList>
             </AboutModal>
         </Bullseye>
     )

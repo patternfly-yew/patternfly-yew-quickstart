@@ -12,11 +12,11 @@ pub fn toast() -> Html {
 
     html!(
         <ExamplePage title="Toggle Group">
-            {example1}
-            {example2}
-            {example3}
-            {example4}
-            {example5}
+            { example1 }
+            { example2 }
+            { example3 }
+            { example4 }
+            { example5 }
         </ExamplePage>
     )
 }

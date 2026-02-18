@@ -9,10 +9,7 @@ pub fn tooltip() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Tooltip">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Tooltip">{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

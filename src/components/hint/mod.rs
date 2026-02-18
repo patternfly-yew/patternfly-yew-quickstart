@@ -10,11 +10,7 @@ pub fn hint_example() -> yew::Html {
 
     html! {
         <>
-            <ExamplePage title="Hints">
-                {example1}
-                {example2}
-                {example3}
-            </ExamplePage>
+            <ExamplePage title="Hints">{ example1 }{ example2 }{ example3 }</ExamplePage>
         </>
     }
 }

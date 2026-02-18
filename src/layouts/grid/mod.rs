@@ -17,10 +17,7 @@ impl Component for GridExample {
         let example2 = example!("Grid (gutter)" => "grid.2.example");
         html! {
             <>
-                <ExamplePage title="Grid Layout">
-                    { example1 }
-                    { example2 }
-                </ExamplePage>
+                <ExamplePage title="Grid Layout">{ example1 }{ example2 }</ExamplePage>
             </>
         }
     }

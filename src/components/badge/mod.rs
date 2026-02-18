@@ -9,10 +9,7 @@ pub fn badge_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Badge">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Badge">{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

@@ -33,7 +33,13 @@ pub fn full_page_example(props: &Props) -> Html {
     html! {
         <>
             <ExamplePage title="Login Page">
-                <Button variant={ButtonVariant::Primary} icon={Icon::ExternalLinkAlt} align={Align::Start} label="Open" {onclick} />
+                <Button
+                    variant={ButtonVariant::Primary}
+                    icon={Icon::ExternalLinkAlt}
+                    align={Align::Start}
+                    label="Open"
+                    {onclick}
+                />
             </ExamplePage>
         </>
     }

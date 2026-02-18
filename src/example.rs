@@ -46,13 +46,10 @@ pub fn example_page(props: &Props) -> Html {
                 sticky={[PageSectionSticky::Top]}
             >
                 <Content>
-                    <Title size={Size::XXXXLarge}>
-                        { props.title.clone() }
-                    </Title>
+                    <Title size={Size::XXXXLarge}>{ props.title.clone() }</Title>
                     { for props.subtitle.iter() }
                 </Content>
             </PageSection>
-
             if props.experimental {
                 <PageSection>
                     <Alert inline=true title="Experimental feature" r#type={AlertType::Info}>
@@ -71,10 +68,9 @@ exist.
                     </Alert>
                 </PageSection>
             }
-
             { for props.children.iter().map(|child|{
                 html!(<PageSection>{child}</PageSection>)
-            })}
+            }) }
         </PageSectionGroup>
     )
 }
@@ -90,40 +86,27 @@ pub struct ExampleProps {
 pub fn example(props: &ExampleProps) -> Html {
     html!(
         <Flex modifiers={[FlexModifier::Column]}>
-
             <FlexItem>
-                <Title level={Level::H2} size={Size::XXLarge}>
-                    { props.title.clone() }
-                </Title>
+                <Title level={Level::H2} size={Size::XXLarge}>{ props.title.clone() }</Title>
             </FlexItem>
-
             <Flex>
-
                 <FlexItem modifiers={[FlexModifier::Flex1]}>
-                    <Title level={Level::H3} size={Size::Large}>{"Example"}</Title>
+                    <Title level={Level::H3} size={Size::Large}>{ "Example" }</Title>
                     <Card flat=true>
-                        <CardBody>
-                            { for props.children.iter() }
-                        </CardBody>
+                        <CardBody>{ for props.children.iter() }</CardBody>
                     </Card>
                 </FlexItem>
-
                 <FlexItem modifiers={[FlexModifier::Flex1]}>
-                    <Title level={Level::H3} size={Size::Large}>{"Code"}</Title>
-
+                    <Title level={Level::H3} size={Size::Large}>{ "Code" }</Title>
                     <div class="pf-v6-c-code-editor">
                         <div class="pf-v6-c-code-editor__main">
                             <div class="pf-v6-c-code-editor__code">
-                                <pre class="pf-v6-c-code-editor__code-pre">
-                                    {&props.code}
-                                </pre>
+                                <pre class="pf-v6-c-code-editor__code-pre">{ &props.code }</pre>
                             </div>
                         </div>
                     </div>
-
                 </FlexItem>
             </Flex>
-
         </Flex>
     )
 }

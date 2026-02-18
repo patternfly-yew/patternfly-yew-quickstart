@@ -12,11 +12,7 @@ pub fn text_input_group() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Text Input Group">
-                {example1}
-                {example2}
-                {example3}
-            </ExamplePage>
+            <ExamplePage title="Text Input Group">{ example1 }{ example2 }{ example3 }</ExamplePage>
         </>
     }
 }

@@ -9,10 +9,7 @@ pub fn text_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Text">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Text">{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

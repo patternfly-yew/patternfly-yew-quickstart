@@ -27,9 +27,7 @@ impl TableEntryRenderer<Columns> for ExampleEntry {
             Columns::First => html!({ &self.foo }),
             Columns::Second => html!({ &self.foo.len() }),
             // this is a column which can't be seen
-            Columns::Third => html! (
-                <a href="#">{"Link"}</a>
-            ),
+            Columns::Third => html! (<a href="#">{ "Link" }</a>),
         }
         .into()
     }
@@ -114,18 +112,18 @@ pub fn example() -> Html {
     html! {
         <>
             <ExamplePage title="Table">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-                {example5}
-                {example6}
-                {example7}
-                {example8}
-                {example9}
-                {example10}
-                {example11}
-                {example12}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
+                { example5 }
+                { example6 }
+                { example7 }
+                { example8 }
+                { example9 }
+                { example10 }
+                { example11 }
+                { example12 }
             </ExamplePage>
         </>
     }

@@ -6,9 +6,5 @@ use yew::prelude::*;
 pub fn view() -> Html {
     let example1 = example! {"Basic" => "file_upload.1.example" };
 
-    html! (
-        <ExamplePage title="File Upload">
-            { example1 }
-        </ExamplePage>
-    )
+    html! (<ExamplePage title="File Upload">{ example1 }</ExamplePage>)
 }

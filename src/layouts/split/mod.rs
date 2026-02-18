@@ -17,10 +17,7 @@ impl Component for SplitExample {
         let example2 = example!("Split (gutter)" => "split.2.example");
         html! {
             <>
-                <ExamplePage title="Split Layout">
-                    { example1 }
-                    { example2 }
-                </ExamplePage>
+                <ExamplePage title="Split Layout">{ example1 }{ example2 }</ExamplePage>
             </>
         }
     }

@@ -10,11 +10,7 @@ pub fn spinner() -> Html {
 
     html! {
         <>
-        <ExamplePage title="Spinners">
-            {example1}
-            {example2}
-            {example3}
-        </ExamplePage>
+            <ExamplePage title="Spinners">{ example1 }{ example2 }{ example3 }</ExamplePage>
         </>
     }
 }

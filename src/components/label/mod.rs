@@ -10,10 +10,7 @@ pub fn label_example() -> Html {
 
     html! (
         <>
-            <ExamplePage title="Label">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Label">{ example1 }{ example2 }</ExamplePage>
         </>
     )
 }

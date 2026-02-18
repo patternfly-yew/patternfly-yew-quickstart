@@ -14,10 +14,10 @@ pub fn example() -> Html {
     html! (
         <>
             <ExamplePage title="Expandable Section">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
             </ExamplePage>
         </>
     )

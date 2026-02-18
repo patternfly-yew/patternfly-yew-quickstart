@@ -19,11 +19,7 @@ impl Component for FlexExample {
 
         html! {
             <>
-                <ExamplePage title="Flex Layout">
-                    {example1}
-                    {example2}
-                    {example3}
-                </ExamplePage>
+                <ExamplePage title="Flex Layout">{ example1 }{ example2 }{ example3 }</ExamplePage>
             </>
         }
     }

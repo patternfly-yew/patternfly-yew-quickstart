@@ -8,9 +8,7 @@ pub fn brand() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Brand">
-                {example1}
-            </ExamplePage>
+            <ExamplePage title="Brand">{ example1 }</ExamplePage>
         </>
     }
 }

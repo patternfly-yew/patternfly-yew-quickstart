@@ -8,9 +8,7 @@ pub fn bullseye_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Bullseye Layout">
-                {example1}
-            </ExamplePage>
+            <ExamplePage title="Bullseye Layout">{ example1 }</ExamplePage>
         </>
     }
 }

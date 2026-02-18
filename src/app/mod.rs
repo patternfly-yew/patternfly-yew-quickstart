@@ -134,89 +134,105 @@ pub fn app() -> Html {
 
 fn switch_app_route(target: AppRoute) -> Html {
     let component = |target: Component| match target {
-        Component::Accordion => html! {<components::AccordionExample/>},
-        Component::Alert => html! {<components::AlertExample/>},
-        Component::Avatar => html! {<components::AvatarExample/>},
-        Component::Backdrop => html! {<components::BackdropExample/>},
-        Component::Badge => html! {<components::BadgeExample/>},
-        Component::Brand => html! {<components::BrandExample/>},
-        Component::Breadcrumb => html! {<components::BreadcrumbExample/>},
-        Component::Button => html! {<components::ButtonExample/>},
-        Component::Card => html! {<components::CardExample/>},
-        Component::Clipboard => html! {<components::ClipboardExample/>},
-        Component::CodeBlock => html! {<components::CodeBlockExample/>},
-        Component::Date(Date::Calendar) => html! {<components::CalendarExample/>},
-        Component::Date(Date::DatePicker) => html! {<components::DatePickerExample/>},
-        Component::DescriptionList => html! {<components::DescriptionListExample/>},
-        Component::Divider => html! {<components::DividerExample/>},
-        Component::Drawer => html! {<components::DrawerExample/>},
-        Component::Dropdown => html! {<components::DropdownExample/>},
-        Component::DualListSelector => html! { <components::DualListSelectorExample/>},
-        Component::EmptyState => html! {<components::EmptyStateExample/>},
-        Component::ExpandableSection => html! {<components::ExpandableSectionExample/>},
-        Component::FileUpload => html! {<components::FileUploadExample/>},
-        Component::Form(Form::Index) => html! {<components::FormCommonExample/>},
-        Component::Form(Form::Checkbox) => html! {<components::FormCheckboxExample/>},
-        Component::Form(Form::Radio) => html! {<components::FormRadioExample/>},
-        Component::HelperText => html! {<components::HelperTextExample/>},
-        Component::Hint => html! {<components::HintExample/>},
-        Component::Label => html! {<components::LabelExample/>},
-        Component::List => html! {<components::ListExample/>},
-        Component::Menu(Menu::Index) => html! {<components::MenuExample/>},
-        Component::Menu(Menu::Select) => html! {<components::SimpleSelectExample/>},
-        Component::Modal => html! {<components::ModalExample/>},
-        Component::NumberInput => html! {<components::NumberExample/>},
-        Component::Pagination => html! {<components::PaginationExample/>},
-        Component::Popover => html! {<components::PopoverExample/>},
-        Component::Progress => html! {<components::ProgressExample/>},
-        Component::SearchInput => html! {<components::SearchInputExample/>},
-        Component::SimpleList => html! {<components::SimpleListExample/>},
-        Component::Skeleton => html! {<components::SkeletonExample/>},
-        Component::Slider => html! {<components::SliderExample/>},
-        Component::Spinner => html! {<components::SpinnerExample/>},
-        Component::Switch => html! {<components::SwitchExample/>},
-        Component::Table => html! {<components::TableExample/>},
-        Component::Tabs(current) => html! {<components::TabsExample current={current}/>},
-        Component::Text => html! {<components::TextExample/>},
-        Component::TextInputGroup => html! {<components::TextInputGroupExample/>},
-        Component::Title => html! {<components::TitleExample/>},
-        Component::Toast => html! {<components::ToastExample/>},
-        Component::ToggleGroup => html! {<components::ToggleGroupExample/>},
-        Component::Tooltip => html! {<components::TooltipExample/>},
-        Component::Tree => html! {<components::TreeExample/>},
-        Component::Truncate => html! {<components::TruncateExample/>},
+        Component::Accordion => html! { <components::AccordionExample /> },
+        Component::Alert => html! { <components::AlertExample /> },
+        Component::Avatar => html! { <components::AvatarExample /> },
+        Component::Backdrop => html! { <components::BackdropExample /> },
+        Component::Badge => html! { <components::BadgeExample /> },
+        Component::Brand => html! { <components::BrandExample /> },
+        Component::Breadcrumb => html! { <components::BreadcrumbExample /> },
+        Component::Button => html! { <components::ButtonExample /> },
+        Component::Card => html! { <components::CardExample /> },
+        Component::Clipboard => html! { <components::ClipboardExample /> },
+        Component::CodeBlock => html! { <components::CodeBlockExample /> },
+        Component::Date(Date::Calendar) => html! { <components::CalendarExample /> },
+        Component::Date(Date::DatePicker) => html! { <components::DatePickerExample /> },
+        Component::DescriptionList => html! { <components::DescriptionListExample /> },
+        Component::Divider => html! { <components::DividerExample /> },
+        Component::Drawer => html! { <components::DrawerExample /> },
+        Component::Dropdown => html! { <components::DropdownExample /> },
+        Component::DualListSelector => html! { <components::DualListSelectorExample /> },
+        Component::EmptyState => html! { <components::EmptyStateExample /> },
+        Component::ExpandableSection => html! { <components::ExpandableSectionExample /> },
+        Component::FileUpload => html! { <components::FileUploadExample /> },
+        Component::Form(Form::Index) => html! { <components::FormCommonExample /> },
+        Component::Form(Form::Checkbox) => html! { <components::FormCheckboxExample /> },
+        Component::Form(Form::Radio) => html! { <components::FormRadioExample /> },
+        Component::HelperText => html! { <components::HelperTextExample /> },
+        Component::Hint => html! { <components::HintExample /> },
+        Component::Label => html! { <components::LabelExample /> },
+        Component::List => html! { <components::ListExample /> },
+        Component::Menu(Menu::Index) => html! { <components::MenuExample /> },
+        Component::Menu(Menu::Select) => html! { <components::SimpleSelectExample /> },
+        Component::Modal => html! { <components::ModalExample /> },
+        Component::NumberInput => html! { <components::NumberExample /> },
+        Component::Pagination => html! { <components::PaginationExample /> },
+        Component::Popover => html! { <components::PopoverExample /> },
+        Component::Progress => html! { <components::ProgressExample /> },
+        Component::SearchInput => html! { <components::SearchInputExample /> },
+        Component::SimpleList => html! { <components::SimpleListExample /> },
+        Component::Skeleton => html! { <components::SkeletonExample /> },
+        Component::Slider => html! { <components::SliderExample /> },
+        Component::Spinner => html! { <components::SpinnerExample /> },
+        Component::Switch => html! { <components::SwitchExample /> },
+        Component::Table => html! { <components::TableExample /> },
+        Component::Tabs(current) => html! { <components::TabsExample current={current} /> },
+        Component::Text => html! { <components::TextExample /> },
+        Component::TextInputGroup => html! { <components::TextInputGroupExample /> },
+        Component::Title => html! { <components::TitleExample /> },
+        Component::Toast => html! { <components::ToastExample /> },
+        Component::ToggleGroup => html! { <components::ToggleGroupExample /> },
+        Component::Tooltip => html! { <components::TooltipExample /> },
+        Component::Tree => html! { <components::TreeExample /> },
+        Component::Truncate => html! { <components::TruncateExample /> },
     };
 
     let layout = |target: Layout| match target {
-        Layout::Bullseye => html! {<layouts::BullseyeExample/>},
-        Layout::Flex => html! {<layouts::FlexExample/>},
-        Layout::Gallery => html! {<layouts::GalleryExample/>},
-        Layout::Grid => html! {<layouts::GridExample/>},
-        Layout::Split => html! {<layouts::SplitExample/>},
-        Layout::Stack => html! {<layouts::StackExample/>},
+        Layout::Bullseye => html! { <layouts::BullseyeExample /> },
+        Layout::Flex => html! { <layouts::FlexExample /> },
+        Layout::Gallery => html! { <layouts::GalleryExample /> },
+        Layout::Grid => html! { <layouts::GridExample /> },
+        Layout::Split => html! { <layouts::SplitExample /> },
+        Layout::Stack => html! { <layouts::StackExample /> },
     };
 
     let fullpage = |target: FullPage| match target {
-        FullPage::Login => html! {<full::LoginPageExample/>},
+        FullPage::Login => html! { <full::LoginPageExample /> },
     };
 
     let fullpage_entrypoint = |target: FullPage| match target {
         FullPage::Login => {
-            html! {<full::FullPageExample url="full/login"/>}
+            html! { <full::FullPageExample url="full/login" /> }
         }
     };
 
     match target {
-        AppRoute::Counter => html! {<AppPage><Counter/></AppPage>},
-        AppRoute::Index => html! {<AppPage><Index/></AppPage>},
-        AppRoute::Icons => html! {<AppPage><Icons/></AppPage>},
-        AppRoute::Panic => html! {<AppPage><Panic/></AppPage>},
+        AppRoute::Counter => html! {
+            <AppPage>
+                <Counter />
+            </AppPage>
+        },
+        AppRoute::Index => html! {
+            <AppPage>
+                <Index />
+            </AppPage>
+        },
+        AppRoute::Icons => html! {
+            <AppPage>
+                <Icons />
+            </AppPage>
+        },
+        AppRoute::Panic => html! {
+            <AppPage>
+                <Panic />
+            </AppPage>
+        },
 
         AppRoute::FullPageExample(_) => {
             html!(
                 <AppPage>
                     <Scope<AppRoute, FullPage> mapper={AppRoute::mapper_full_page_example}>
-                        <RouterSwitch<FullPage> render={fullpage_entrypoint}/>
+                        <RouterSwitch<FullPage> render={fullpage_entrypoint} />
                     </Scope<AppRoute, FullPage>>
                 </AppPage>
             )
@@ -224,7 +240,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         AppRoute::FullPage(_) => {
             html!(
                 <Scope<AppRoute, FullPage> mapper={AppRoute::mapper_full_page}>
-                    <RouterSwitch<FullPage> render={fullpage}/>
+                    <RouterSwitch<FullPage> render={fullpage} />
                 </Scope<AppRoute, FullPage>>
             )
         }
@@ -232,8 +248,8 @@ fn switch_app_route(target: AppRoute) -> Html {
         AppRoute::Layout(_) => {
             html!(
                 <AppPage>
-                    <Scope<AppRoute, Layout>  mapper={AppRoute::mapper_layout}>
-                        <RouterSwitch<Layout> render={layout}/>
+                    <Scope<AppRoute, Layout> mapper={AppRoute::mapper_layout}>
+                        <RouterSwitch<Layout> render={layout} />
                     </Scope<AppRoute, Layout>>
                 </AppPage>
             )
@@ -242,7 +258,7 @@ fn switch_app_route(target: AppRoute) -> Html {
             html!(
                 <AppPage>
                     <Scope<AppRoute, Component> mapper={AppRoute::mapper_component}>
-                        <RouterSwitch<Component> render={component}/>
+                        <RouterSwitch<Component> render={component} />
                     </Scope<AppRoute, Component>>
                 </AppPage>
             )
@@ -262,81 +278,236 @@ fn page(props: &PageProps) -> Html {
             <Nav>
                 <NavList>
                     <NavExpandable title="Basics">
-                        <NavRouterItem<AppRoute> to={AppRoute::Index}>{"Index"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Counter}>{"Counter"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Icons}>{"Icons"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Panic}>{"Panic"}</NavRouterItem<AppRoute>>
-                        <NavLink href="https://github.com/patternfly-yew/patternfly-yew" target="_blank">{"PatternFly Yew "} {Icon::ExternalLinkAlt.with_classes(classes!("pf-v6-u-ml-sm", "pf-v6-u-color-200"))}</NavLink>
+                        <NavRouterItem<AppRoute> to={AppRoute::Index}>
+                            { "Index" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Counter}>
+                            { "Counter" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Icons}>
+                            { "Icons" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Panic}>
+                            { "Panic" }
+                        </NavRouterItem<AppRoute>>
+                        <NavLink
+                            href="https://github.com/patternfly-yew/patternfly-yew"
+                            target="_blank"
+                        >
+                            { "PatternFly Yew " }
+                            { Icon::ExternalLinkAlt.with_classes(classes!("pf-v6-u-ml-sm", "pf-v6-u-color-200")) }
+                        </NavLink>
                     </NavExpandable>
                     <NavExpandable title="Components">
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Accordion)}>{"Accordion"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>{"Alert"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>{"Avatar"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>{"Backdrop"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>{"Badge"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Brand)}>{"Brand"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Breadcrumb)}>{"Breadcrumb"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>{"Button"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Card)}>{"Card"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>{"Clipboard"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>{"Code Block"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Accordion)}>
+                            { "Accordion" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Alert)}>
+                            { "Alert" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>
+                            { "Avatar" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>
+                            { "Backdrop" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>
+                            { "Badge" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Brand)}>
+                            { "Brand" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Breadcrumb)}>
+                            { "Breadcrumb" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Button)}>
+                            { "Button" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Card)}>
+                            { "Card" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Clipboard)}>
+                            { "Clipboard" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::CodeBlock)}>
+                            { "Code Block" }
+                        </NavRouterItem<AppRoute>>
                         <NavExpandable title="Date">
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Date(Date::Calendar))}>{"Calendar"}</NavRouterItem<AppRoute>>
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Date(Date::DatePicker))}>{"DatePicker"}</NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Date(Date::Calendar))}
+                            >
+                                { "Calendar" }
+                            </NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Date(Date::DatePicker))}
+                            >
+                                { "DatePicker" }
+                            </NavRouterItem<AppRoute>>
                         </NavExpandable>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::DescriptionList)}>{"DescriptionList"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Divider)}>{"Divider"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Drawer)}>{"Drawer"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>{"Dropdown"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::DualListSelector)}>{"Dual List Selector"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>{"Empty state"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ExpandableSection)}>{"Expandable Section"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>{"File Upload"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute>
+                            to={AppRoute::Component(Component::DescriptionList)}
+                        >
+                            { "DescriptionList" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Divider)}>
+                            { "Divider" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Drawer)}>
+                            { "Drawer" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Dropdown)}>
+                            { "Dropdown" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute>
+                            to={AppRoute::Component(Component::DualListSelector)}
+                        >
+                            { "Dual List Selector" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::EmptyState)}>
+                            { "Empty state" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute>
+                            to={AppRoute::Component(Component::ExpandableSection)}
+                        >
+                            { "Expandable Section" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::FileUpload)}>
+                            { "File Upload" }
+                        </NavRouterItem<AppRoute>>
                         <NavExpandable title="Forms">
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form(Form::Index))}>{"Common"}</NavRouterItem<AppRoute>>
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form(Form::Checkbox))}>{"Checkbox"}</NavRouterItem<AppRoute>>
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Form(Form::Radio))}>{"Radio"}</NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Form(Form::Index))}
+                            >
+                                { "Common" }
+                            </NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Form(Form::Checkbox))}
+                            >
+                                { "Checkbox" }
+                            </NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Form(Form::Radio))}
+                            >
+                                { "Radio" }
+                            </NavRouterItem<AppRoute>>
                         </NavExpandable>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::HelperText)}>{"HelperText"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>{"Hint"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>{"Label"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::List)}>{"List"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::HelperText)}>
+                            { "HelperText" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>
+                            { "Hint" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>
+                            { "Label" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::List)}>
+                            { "List" }
+                        </NavRouterItem<AppRoute>>
                         <NavExpandable title="Menus">
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu(Menu::Index))}>{"Menu"}</NavRouterItem<AppRoute>>
-                            <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Menu(Menu::Select))}>{"Select"}</NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Menu(Menu::Index))}
+                            >
+                                { "Menu" }
+                            </NavRouterItem<AppRoute>>
+                            <NavRouterItem<AppRoute>
+                                to={AppRoute::Component(Component::Menu(Menu::Select))}
+                            >
+                                { "Select" }
+                            </NavRouterItem<AppRoute>>
                         </NavExpandable>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>{"Modal"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::NumberInput)}>{"Number Input"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>{"Pagination"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>{"Popover"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Progress)}>{"Progress"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::SearchInput)}>{"Search Input"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::SimpleList)}>{"Simple List"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Skeleton)}>{"Skeleton"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>{"Slider"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>{"Spinner"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>{"Switch"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>{"Table"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))} predicate={AppRoute::with_component(Component::is_tabs)}>{"Tabs"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Text)}>{"Text"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::TextInputGroup)}>{"Text Input Group"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>{"Title"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>{"Toast"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ToggleGroup)}>{"Toggle Group"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>{"Tooltip"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>{"Tree"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Truncate)}>{"Truncate"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Modal)}>
+                            { "Modal" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::NumberInput)}>
+                            { "Number Input" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Pagination)}>
+                            { "Pagination" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Popover)}>
+                            { "Popover" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Progress)}>
+                            { "Progress" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::SearchInput)}>
+                            { "Search Input" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::SimpleList)}>
+                            { "Simple List" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Skeleton)}>
+                            { "Skeleton" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>
+                            { "Slider" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Spinner)}>
+                            { "Spinner" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Switch)}>
+                            { "Switch" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Table)}>
+                            { "Table" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute>
+                            to={AppRoute::Component(Component::Tabs(components::TabRoutes::Foo))}
+                            predicate={AppRoute::with_component(Component::is_tabs)}
+                        >
+                            { "Tabs" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Text)}>
+                            { "Text" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute>
+                            to={AppRoute::Component(Component::TextInputGroup)}
+                        >
+                            { "Text Input Group" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>
+                            { "Title" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Toast)}>
+                            { "Toast" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::ToggleGroup)}>
+                            { "Toggle Group" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tooltip)}>
+                            { "Tooltip" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Tree)}>
+                            { "Tree" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Truncate)}>
+                            { "Truncate" }
+                        </NavRouterItem<AppRoute>>
                     </NavExpandable>
                     <NavExpandable title="Layouts">
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>{"Bullseye"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Flex)}>{"Flex"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Gallery)}>{"Gallery"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Grid)}>{"Grid"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Split)}>{"Split"}</NavRouterItem<AppRoute>>
-                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Stack)}>{"Stack"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Bullseye)}>
+                            { "Bullseye" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Flex)}>
+                            { "Flex" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Gallery)}>
+                            { "Gallery" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Grid)}>
+                            { "Grid" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Split)}>
+                            { "Split" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Stack)}>
+                            { "Stack" }
+                        </NavRouterItem<AppRoute>>
                     </NavExpandable>
                     <NavExpandable title="Full Page">
-                        <NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>{"Login Page"}</NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::FullPageExample(FullPage::Login)}>
+                            { "Login Page" }
+                        </NavRouterItem<AppRoute>>
                     </NavExpandable>
                 </NavList>
             </Nav>
@@ -346,7 +517,11 @@ fn page(props: &PageProps) -> Html {
     let brand = html! (
         <MastheadBrand>
             <div className="show-light">
-                <Brand src="/images/pf-logo.svg" alt="Patternfly Logo" style="--pf-v6-c-brand--Height: 36px;"/>
+                <Brand
+                    src="/images/pf-logo.svg"
+                    alt="Patternfly Logo"
+                    style="--pf-v6-c-brand--Height: 36px;"
+                />
             </div>
         </MastheadBrand>
     );
@@ -360,7 +535,7 @@ fn page(props: &PageProps) -> Html {
 
     let onabout = use_callback((), move |_, ()| {
         if let Some(backdropper) = &backdropper {
-            backdropper.open(html!(<about::About/>));
+            backdropper.open(html!(<about::About />));
         }
     });
 
@@ -391,10 +566,18 @@ fn page(props: &PageProps) -> Html {
                     variant={GroupVariant::IconButton}
                 >
                     <ToolbarItem>
-                        <patternfly_yew::prelude::Switch checked={*darkmode} onchange={onthemeswitch} label="Dark Theme" />
+                        <patternfly_yew::prelude::Switch
+                            checked={*darkmode}
+                            onchange={onthemeswitch}
+                            label="Dark Theme"
+                        />
                     </ToolbarItem>
                     <ToolbarItem>
-                        <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
+                        <Button
+                            variant={ButtonVariant::Plain}
+                            icon={Icon::Github}
+                            onclick={callback_github}
+                        />
                     </ToolbarItem>
                     <ToolbarItem>
                         <Dropdown
@@ -402,7 +585,7 @@ fn page(props: &PageProps) -> Html {
                             icon={Icon::QuestionCircle}
                             variant={MenuToggleVariant::Plain}
                         >
-                            <MenuAction onclick={onabout}>{"About"}</MenuAction>
+                            <MenuAction onclick={onabout}>{ "About" }</MenuAction>
                         </Dropdown>
                     </ToolbarItem>
                 </ToolbarGroup>
@@ -410,9 +593,5 @@ fn page(props: &PageProps) -> Html {
         </Toolbar>
     );
 
-    html! (
-        <Page {brand} {sidebar} {tools}>
-            { for props.children.iter() }
-        </Page>
-    )
+    html! (<Page {brand} {sidebar} {tools}>{ for props.children.iter() }</Page>)
 }

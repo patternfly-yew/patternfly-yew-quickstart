@@ -9,10 +9,7 @@ pub fn breadcrumb() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Breadcrumb">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Breadcrumb">{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

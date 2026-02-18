@@ -18,10 +18,7 @@ pub fn modal_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Modal" {subtitle}>
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Modal" {subtitle}>{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

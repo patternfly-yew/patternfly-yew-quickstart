@@ -12,10 +12,10 @@ pub fn clipboard_example() -> Html {
     html! {
         <>
             <ExamplePage title="Clipboard">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
             </ExamplePage>
         </>
     }

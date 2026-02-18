@@ -13,7 +13,16 @@ pub fn truncate_example() -> Html {
     #[function_component(Resize)]
     fn resize(props: &ChildrenProperties) -> Html {
         html!(
-            <div style="resize: horizontal; border: var(--pf-v6-global--BorderWidth--sm) solid var(--pf-v6-global--BorderColor--100); padding: var(--pf-v6-global--spacer--md); overflow: auto; width: 350px; max-width: 100%;">
+            <div
+                style="
+                    resize: horizontal;
+                    border: var(--pf-v6-global--BorderWidth--sm) solid var(--pf-v6-global--BorderColor--100);
+                    padding: var(--pf-v6-global--spacer--md);
+                    overflow: auto;
+                    width: 350px;
+                    max-width: 100%
+                "
+            >
                 { props.children.clone() }
             </div>
         )
@@ -22,10 +31,10 @@ pub fn truncate_example() -> Html {
     html! (
         <>
             <ExamplePage title="Truncate">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
             </ExamplePage>
         </>
     )

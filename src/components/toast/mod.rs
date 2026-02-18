@@ -9,9 +9,5 @@ pub fn toast() -> Html {
 
     let example1 = example!("Toast" => "toast.1.example");
 
-    html!(
-        <ExamplePage title="Tooltip">
-            {example1}
-        </ExamplePage>
-    )
+    html!(<ExamplePage title="Tooltip">{ example1 }</ExamplePage>)
 }

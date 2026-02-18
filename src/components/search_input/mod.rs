@@ -17,12 +17,12 @@ pub fn search_input() -> Html {
     html! {
         <>
             <ExamplePage title="Search Input">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-                {example5}
-                {example6}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
+                { example5 }
+                { example6 }
             </ExamplePage>
         </>
     }

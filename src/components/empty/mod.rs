@@ -18,10 +18,7 @@ impl Component for EmptyStateExample {
 
         html! {
             <>
-                <ExamplePage title="Empty state">
-                    {example1}
-                    {example2}
-                </ExamplePage>
+                <ExamplePage title="Empty state">{ example1 }{ example2 }</ExamplePage>
             </>
         }
     }

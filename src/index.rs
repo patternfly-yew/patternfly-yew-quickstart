@@ -15,7 +15,7 @@ This project acts both as a showcase for <strong>PatternFly Yew</strong>, as wel
     html! {
         <>
             <ExamplePage title="Patternfly Yew Quickstart" {subtitle}>
-                {"Pick an example on the left to learn more."}
+                { "Pick an example on the left to learn more." }
             </ExamplePage>
         </>
     }

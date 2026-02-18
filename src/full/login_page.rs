@@ -4,8 +4,8 @@ use yew::prelude::*;
 
 #[function_component(LoginPageExample)]
 pub fn login_page_example() -> Html {
-    let header = html! {<> {"Header" }</>};
-    let footer = html! {<p>{"Some footer text"}</p>};
+    let header = html! { <>{ "Header" }</> };
+    let footer = html! { <p>{ "Some footer text" }</p> };
 
     let links = ChildrenRenderer::new(vec![
         html_nested! {<LoginMainFooterLink href="https://patternfly.org" target="_blank">{"Footer Link #1"}</LoginMainFooterLink>},
@@ -17,7 +17,7 @@ pub fn login_page_example() -> Html {
         html! {<>{"Some other"}<a href="#">{" link"}</a></>},
     ]);
 
-    let title = html_nested! {<Title size={Size::XXLarge}>{"Login to your account"}</Title>};
+    let title = html_nested! { <Title size={Size::XXLarge}>{ "Login to your account" }</Title> };
     let toaster = use_toaster();
 
     let username = use_state_eq(String::new);
@@ -54,11 +54,8 @@ pub fn login_page_example() -> Html {
     html! {
         <>
             <ToastViewer>
-                <Background/>
-                <Login
-                    {header}
-                    {footer}
-                >
+                <Background />
+                <Login {header} {footer}>
                     <LoginMain>
                         <LoginMainHeader
                             {title}
@@ -67,21 +64,32 @@ pub fn login_page_example() -> Html {
                         <LoginMainBody>
                             <Form {onsubmit} method="dialog">
                                 <FormGroup label="Username">
-                                    <TextInput required=true name="username" onchange={onchangeusername} value={(*username).clone()} />
+                                    <TextInput
+                                        required=true
+                                        name="username"
+                                        onchange={onchangeusername}
+                                        value={(*username).clone()}
+                                    />
                                 </FormGroup>
                                 <FormGroup label="Password">
-                                    <TextInput required=true name="password" r#type={TextInputType::Password} onchange={onchangepassword} value={(*password).clone()} />
+                                    <TextInput
+                                        required=true
+                                        name="password"
+                                        r#type={TextInputType::Password}
+                                        onchange={onchangepassword}
+                                        value={(*password).clone()}
+                                    />
                                 </FormGroup>
                                 <ActionGroup>
-                                    <Button label="Log In" r#type={ButtonType::Submit} variant={ButtonVariant::Primary}/>
+                                    <Button
+                                        label="Log In"
+                                        r#type={ButtonType::Submit}
+                                        variant={ButtonVariant::Primary}
+                                    />
                                 </ActionGroup>
                             </Form>
                         </LoginMainBody>
-                        <LoginMainFooter
-                            {links}
-                            {band}
-                        >
-                        </LoginMainFooter>
+                        <LoginMainFooter {links} {band} />
                     </LoginMain>
                 </Login>
             </ToastViewer>

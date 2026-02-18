@@ -13,10 +13,10 @@ pub fn description_list() -> Html {
     html! {
         <>
             <ExamplePage title="DescriptionList">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
             </ExamplePage>
         </>
     }

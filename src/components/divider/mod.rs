@@ -15,13 +15,11 @@ pub fn divider() -> Html {
     html! {
         <>
             <ExamplePage title="Divider">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-                {example5}
-
-
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
+                { example5 }
                 // Fixme: The below examples see issue: #57
                 // Using a list component
                 // Using a flex component

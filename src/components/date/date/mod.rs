@@ -8,9 +8,7 @@ pub fn datepicker_example() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Date Picker">
-                { date }
-            </ExamplePage>
+            <ExamplePage title="Date Picker">{ date }</ExamplePage>
         </>
     }
 }

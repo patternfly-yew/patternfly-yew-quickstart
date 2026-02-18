@@ -9,10 +9,7 @@ pub fn alert() -> Html {
 
     html! {
         <>
-            <ExamplePage title="Alerts">
-                {example1}
-                {example2}
-            </ExamplePage>
+            <ExamplePage title="Alerts">{ example1 }{ example2 }</ExamplePage>
         </>
     }
 }

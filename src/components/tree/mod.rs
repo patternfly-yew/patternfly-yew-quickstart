@@ -17,9 +17,7 @@ pub fn tree_example() -> Html {
 
     html! (
         <>
-            <ExamplePage title="Tree Table" experimental=true>
-                {example1}
-            </ExamplePage>
+            <ExamplePage title="Tree Table" experimental=true>{ example1 }</ExamplePage>
         </>
     )
 }

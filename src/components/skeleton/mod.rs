@@ -13,11 +13,11 @@ pub fn skeleton() -> Html {
     html! {
         <>
             <ExamplePage title="Skeleton">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-                {example5}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
+                { example5 }
             </ExamplePage>
         </>
     }

@@ -14,12 +14,12 @@ pub fn modal_example() -> Html {
     html! {
         <>
             <ExamplePage title="Number input">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
-                {example5}
-                {example6}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
+                { example5 }
+                { example6 }
             </ExamplePage>
         </>
     }

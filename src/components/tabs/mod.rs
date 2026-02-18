@@ -34,11 +34,7 @@ impl Component for TabsExample {
 
         html! {
             <Scope<crate::app::Component, TabRoutes> mapper={crate::app::Component::mapper_tabs}>
-                <ExamplePage title="Tabs">
-                    {example1}
-                    {example2}
-                    {example3}
-                </ExamplePage>
+                <ExamplePage title="Tabs">{ example1 }{ example2 }{ example3 }</ExamplePage>
             </Scope<crate::app::Component, TabRoutes>>
         }
     }

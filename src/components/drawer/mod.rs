@@ -12,10 +12,10 @@ pub fn drawer() -> Html {
     html! {
         <>
             <ExamplePage title="Drawer">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
             </ExamplePage>
         </>
     }

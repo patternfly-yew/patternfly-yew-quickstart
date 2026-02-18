@@ -23,7 +23,7 @@ impl TableEntryRenderer<Columns> for IconDescriptor {
     fn render_cell(&self, context: CellContext<Columns>) -> Cell {
         match context.column {
             Columns::Icon => self.0.as_html(),
-            Columns::Name => html!(<code>{self.name()}</code>),
+            Columns::Name => html!(<code>{ self.name() }</code>),
             Columns::Description => self
                 .0
                 .get_documentation()
@@ -38,8 +38,14 @@ impl TableEntryRenderer<Columns> for IconDescriptor {
 pub fn icons() -> Html {
     let subtitle = html!(
         <div>
-            <p>{"Sprinkle some icons into you application to make it look nice."}
-            <Button variant={ButtonVariant::Link} label="PatternFly - Icons" icon={Icon::ExternalLinkAlt} align={Align::End} />
+            <p>
+                { "Sprinkle some icons into you application to make it look nice." }
+                <Button
+                    variant={ButtonVariant::Link}
+                    label="PatternFly - Icons"
+                    icon={Icon::ExternalLinkAlt}
+                    align={Align::End}
+                />
             </p>
         </div>
     );
@@ -52,9 +58,17 @@ pub fn icons() -> Html {
 
     let header = html_nested! {
         <TableHeader<Columns>>
-            <TableColumn<Columns> width={ColumnWidth::Percent(10)} label="" index={Columns::Icon}/>
-            <TableColumn<Columns> width={ColumnWidth::Percent(20)} label="Name" index={Columns::Name}/>
-            <TableColumn<Columns> width={ColumnWidth::Percent(70)} label="Description" index={Columns::Description}/>
+            <TableColumn<Columns> width={ColumnWidth::Percent(10)} label="" index={Columns::Icon} />
+            <TableColumn<Columns>
+                width={ColumnWidth::Percent(20)}
+                label="Name"
+                index={Columns::Name}
+            />
+            <TableColumn<Columns>
+                width={ColumnWidth::Percent(70)}
+                label="Description"
+                index={Columns::Description}
+            />
         </TableHeader<Columns>>
     };
 
@@ -100,14 +114,17 @@ pub fn icons() -> Html {
                                 />
                                 if !filter.is_empty() {
                                     <TextInputGroupUtilities>
-                                        <Button icon={Icon::Times} variant={ButtonVariant::Plain} onclick={onclearfilter}/>
+                                        <Button
+                                            icon={Icon::Times}
+                                            variant={ButtonVariant::Plain}
+                                            onclick={onclearfilter}
+                                        />
                                     </TextInputGroupUtilities>
                                 }
                             </TextInputGroup>
                         </ToolbarItem>
                     </ToolbarContent>
                 </Toolbar>
-
                 <Table<Columns, UseTableData<Columns, MemoizedTableModel<IconDescriptor>>>
                     {header}
                     {entries}

@@ -12,10 +12,10 @@ pub fn slider() -> Html {
     html! (
         <>
             <ExamplePage title="Sliders">
-                {example1}
-                {example2}
-                {example3}
-                {example4}
+                { example1 }
+                { example2 }
+                { example3 }
+                { example4 }
             </ExamplePage>
         </>
     )

@@ -17,10 +17,7 @@ impl Component for StackExample {
         let example2 = example!("Stack (gutter)" => "stack.2.example");
         html! {
             <>
-                <ExamplePage title="Stack Layout">
-                    { example1 }
-                    { example2 }
-                </ExamplePage>
+                <ExamplePage title="Stack Layout">{ example1 }{ example2 }</ExamplePage>
             </>
         }
     }
