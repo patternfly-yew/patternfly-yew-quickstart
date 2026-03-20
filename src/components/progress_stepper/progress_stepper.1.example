@@ -1,0 +1,20 @@
+html!(
+    <ProgressStepper>
+        <ProgressStepperStep
+            status={ProgressStepperStepStatus::Success}
+        >
+            {"First Step"}
+        </ProgressStepperStep>
+        <ProgressStepperStep
+            status={ProgressStepperStepStatus::Default}
+            is_current=true
+        >
+            {"Second Step"}
+        </ProgressStepperStep>
+        <ProgressStepperStep
+            status={ProgressStepperStepStatus::Pending}
+        >
+            {"Third Step"}
+        </ProgressStepperStep>
+    </ProgressStepper>
+)

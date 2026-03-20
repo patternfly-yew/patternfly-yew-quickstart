@@ -1,0 +1,48 @@
+{
+    #[component]
+    fn Example() -> Html {
+        let icon = html!(
+            <svg
+                class="pf-v6-c-spinner pf-m-xs"
+                role="progressbar"
+                viewBox="0 0 100 100"
+                aria-label="Loading..."
+            >
+                <circle
+                    class="pf-v6-c-spinner__path"
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                />
+            </svg>
+        );
+
+        html!(
+            <ProgressStepper compact=true>
+                <ProgressStepperStep
+                     description="This is the first thing to happen"
+                     status={ProgressStepperStepStatus::Success}
+                >
+                    {"First Step"}
+                </ProgressStepperStep>
+                <ProgressStepperStep
+                     description="This is the second thing to happen"
+                     status={ProgressStepperStepStatus::Default}
+                     is_current=true
+                     {icon}
+                >
+                    {"In process"}
+                </ProgressStepperStep>
+                <ProgressStepperStep
+                     description="This is the last thing to happen"
+                     status={ProgressStepperStepStatus::Pending}
+                >
+                    {"Third Step"}
+                </ProgressStepperStep>
+            </ProgressStepper>
+        )
+    }
+
+    html! (<Example />)
+}
