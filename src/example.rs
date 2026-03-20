@@ -35,8 +35,8 @@ pub struct Props {
     pub children: Children,
 }
 
-#[function_component(ExamplePage)]
-pub fn example_page(props: &Props) -> Html {
+#[component()]
+pub fn ExamplePage(props: &Props) -> Html {
     html! (
         <PageSectionGroup>
             <PageSection
@@ -82,8 +82,8 @@ pub struct ExampleProps {
     pub code: String,
 }
 
-#[function_component(Example)]
-pub fn example(props: &ExampleProps) -> Html {
+#[component]
+pub fn Example(props: &ExampleProps) -> Html {
     html!(
         <Flex modifiers={[FlexModifier::Column]}>
             <FlexItem>
@@ -98,13 +98,15 @@ pub fn example(props: &ExampleProps) -> Html {
                 </FlexItem>
                 <FlexItem modifiers={[FlexModifier::Flex1]}>
                     <Title level={Level::H3} size={Size::Large}>{ "Code" }</Title>
-                    <div class="pf-v6-c-code-editor">
-                        <div class="pf-v6-c-code-editor__main">
-                            <div class="pf-v6-c-code-editor__code">
-                                <pre class="pf-v6-c-code-editor__code-pre">{ &props.code }</pre>
+                    <ExpandableSection>
+                        <div class="pf-v6-c-code-editor">
+                            <div class="pf-v6-c-code-editor__main">
+                                <div class="pf-v6-c-code-editor__code">
+                                    <pre class="pf-v6-c-code-editor__code-pre">{ &props.code }</pre>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </ExpandableSection>
                 </FlexItem>
             </Flex>
         </Flex>

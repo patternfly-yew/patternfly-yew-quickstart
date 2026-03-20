@@ -46,6 +46,7 @@ pub enum Component {
     Pagination,
     Popover,
     Progress,
+    ProgressStepper,
     SearchInput,
     SimpleList,
     Skeleton,
@@ -169,6 +170,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Pagination => html! { <components::PaginationExample /> },
         Component::Popover => html! { <components::PopoverExample /> },
         Component::Progress => html! { <components::ProgressExample /> },
+        Component::ProgressStepper => html! { <components::ProgressStepperExample /> },
         Component::SearchInput => html! { <components::SearchInputExample /> },
         Component::SimpleList => html! { <components::SimpleListExample /> },
         Component::Skeleton => html! { <components::SkeletonExample /> },
@@ -429,6 +431,11 @@ fn page(props: &PageProps) -> Html {
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Progress)}>
                             { "Progress" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute>
+                            to={AppRoute::Component(Component::ProgressStepper)}
+                        >
+                            { "Progress Stepper" }
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::SearchInput)}>
                             { "Search Input" }

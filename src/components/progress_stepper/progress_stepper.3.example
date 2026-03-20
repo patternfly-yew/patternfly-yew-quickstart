@@ -1,0 +1,23 @@
+html!(
+    <ProgressStepper responsive=true>
+        <ProgressStepperStep
+             description="This is the first thing to happen"
+             status={ProgressStepperStepStatus::Success}
+        >
+            {"First Step"}
+        </ProgressStepperStep>
+        <ProgressStepperStep
+             description="This is the second thing to happen"
+             status={ProgressStepperStepStatus::Default}
+             is_current=true
+        >
+            {"Second Step"}
+        </ProgressStepperStep>
+        <ProgressStepperStep
+             description="This is the last thing to happen"
+             status={ProgressStepperStepStatus::Pending}
+        >
+            {"Third Step"}
+        </ProgressStepperStep>
+    </ProgressStepper>
+)

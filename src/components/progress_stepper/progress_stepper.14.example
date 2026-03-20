@@ -1,0 +1,47 @@
+{
+    #[component]
+    fn Example() -> Html {
+        let first_header = html!({"First step popover"});
+        let first_body = html!({"Additional info or help text content."});
+        let first_footer = html!();
+
+        let second_header = html!({"Second step popover"});
+        let second_body = html!({"Additional info or help text content."});
+        let second_footer = html!();
+
+        let third_header = html!({"Third step popover"});
+        let third_body = html!({"Additional info or help text content."});
+        let third_footer = html!();
+
+        html!(
+            <ProgressStepper>
+                <ProgressStepperStep
+                     status={ProgressStepperStepStatus::Success}
+                     popover={(first_header, first_body, first_footer)}
+                >
+                    {"First Step"}
+                </ProgressStepperStep>
+                <ProgressStepperStep
+                     status={ProgressStepperStepStatus::Danger}
+                     popover={(second_header, second_body, second_footer)}
+                >
+                    {"Second Step"}
+                </ProgressStepperStep>
+                <ProgressStepperStep
+                     status={ProgressStepperStepStatus::Default}
+                     popover={(third_header, third_body, third_footer)}
+                     is_current=true
+                >
+                    {"Third Step"}
+                </ProgressStepperStep>
+                <ProgressStepperStep
+                     status={ProgressStepperStepStatus::Pending}
+                >
+                    {"Fourth Step"}
+                </ProgressStepperStep>
+            </ProgressStepper>
+        )
+    }
+
+    html! (<Example />)
+}
