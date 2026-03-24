@@ -1,0 +1,8 @@
+[[node_packages]]
+name = "@patternfly/patternfly"
+version = "6.4.0"
+
+[[node_packages]]
+name = "@fortawesome/fontawesome-free"
+version = "7.1.0"
+

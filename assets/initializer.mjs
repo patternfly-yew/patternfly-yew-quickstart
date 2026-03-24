@@ -5,18 +5,18 @@ export default function initializer() {
       console.time("trunk-initializer");
 
       document.body.insertAdjacentHTML("afterbegin", `
-<div class="pf-v5-l-bullseye">
-  <div class="pf-v5-l-bullseye__item" style="width: 50%;">
-    <div id="initializer" class="pf-v5-c-progress">
+<div class="pf-v6-l-bullseye">
+  <div class="pf-v6-l-bullseye__item" style="width: 50%;">
+    <div id="initializer" class="pf-v6-c-progress">
       <div
-        class="pf-v5-c-progress__description"
+        class="pf-v6-c-progress__description"
         id="initializerState"
       >Loading</div>
-      <div id="initializerStatus" class="pf-v5-c-progress__status" aria-hidden="true">
-        <span id="initializerLabel" class="pf-v5-c-progress__measure">0%</span>
+      <div id="initializerStatus" class="pf-v6-c-progress__status" aria-hidden="true">
+        <span id="initializerLabel" class="pf-v6-c-progress__measure">0%</span>
       </div>
       <div
-        class="pf-v5-c-progress__bar"
+        class="pf-v6-c-progress__bar"
         id="initializerBar"
         role="progressbar"
         aria-valuemin="0"
@@ -24,13 +24,13 @@ export default function initializer() {
         aria-valuenow="0"
         aria-labelledby="progress-simple-example-description"
       >
-        <div id="initializerValue" class="pf-v5-c-progress__indicator" style="width:0;"></div>
+        <div id="initializerValue" class="pf-v6-c-progress__indicator" style="width:0;"></div>
       </div>
     </div>
-    <div id="initializerHelper" class="pf-v5-c-progress__helper-text pf-m-hidden">
-      <div class="pf-v5-c-helper-text">
-        <div class="pf-v5-c-helper-text__item">
-          <span id="initializerHelperText" class="pf-v5-c-helper-text__item-text"></span>
+    <div id="initializerHelper" class="pf-v6-c-progress__helper-text pf-m-hidden">
+      <div class="pf-v6-c-helper-text">
+        <div class="pf-v6-c-helper-text__item">
+          <span id="initializerHelperText" class="pf-v6-c-helper-text__item-text"></span>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@ function setState(value, helperText) {
     }
     const status = document.getElementById("initializerStatus");
     status.innerHTML = `
-      <span class="pf-v5-c-progress__status-icon">
+      <span class="pf-v6-c-progress__status-icon">
         <i class="fas fa-fw fa-times-circle" aria-hidden="true"></i>
       </span>
     `;
