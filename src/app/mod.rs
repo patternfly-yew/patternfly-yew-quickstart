@@ -525,7 +525,7 @@ fn page(props: &PageProps) -> Html {
         <MastheadBrand>
             <div className="show-light">
                 <Brand
-                    src="/images/pf-logo.svg"
+                    src="./images/pf-logo.svg"
                     alt="Patternfly Logo"
                     style="--pf-v6-c-brand--Height: 36px;"
                 />
@@ -600,5 +600,5 @@ fn page(props: &PageProps) -> Html {
         </Toolbar>
     );
 
-    html! (<Page {brand} {sidebar} {tools}>{ for props.children.iter() }</Page>)
+    html! (<Page {brand} {sidebar} {tools} full_height=true>{ for props.children.iter() }</Page>)
 }
