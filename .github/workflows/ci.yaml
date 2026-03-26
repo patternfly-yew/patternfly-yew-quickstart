@@ -29,9 +29,6 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-      - run: |
-          rustup target add wasm32-unknown-unknown
-
       - name: Build
         run: cargo build --release
 
