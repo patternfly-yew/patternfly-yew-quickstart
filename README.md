@@ -1,6 +1,7 @@
 # PatternFly quick start for Yew
 
-This is a quickstart template to get you started with [PatternFly for Yew](https://github.com/patternfly-yew/patternfly-yew).
+This is a quickstart template to get you started
+with [PatternFly for Yew](https://github.com/patternfly-yew/patternfly-yew).
 
 Here you can see this page in action: https://patternfly-yew.github.io/patternfly-yew-quickstart/
 
@@ -10,6 +11,12 @@ Here you can see this page in action: https://patternfly-yew.github.io/patternfl
 
   ```shell
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```
+
+* Rust WASM32 target
+
+  ```shell
+  rustup target add wasm32-unknown-unknown
   ```
 
 * Trunk
