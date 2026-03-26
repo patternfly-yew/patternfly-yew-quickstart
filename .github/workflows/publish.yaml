@@ -34,6 +34,9 @@ jobs:
           tar xzf trunk-x86_64-unknown-linux-gnu.tar.gz
           sudo install trunk /usr/bin/trunk
 
+      - run: |
+          rustup target add wasm32-unknown-unknown
+
       - name: Set build timestamp
         run: echo "BUILD_TIMESTAMP=$(date --rfc-3339=seconds --utc)" >> $GITHUB_ENV
 
