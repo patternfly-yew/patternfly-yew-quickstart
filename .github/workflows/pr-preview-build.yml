@@ -17,6 +17,10 @@ jobs:
 
       - name: Set build timestamp
         run: echo "BUILD_TIMESTAMP=$(date --rfc-3339=seconds --utc)" >> $GITHUB_ENV
+      
+      - name: npm ci
+        run: npm ci
+        
       - name: Build page
         env:
           BUILD_COMMIT: ${{ github.sha }}

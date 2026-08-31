@@ -1,0 +1,9 @@
+{
+    "name": "patternfly-yew-quickstart",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^7",
+        "@patternfly/patternfly": "^6"
+    }
+}

@@ -26,6 +26,7 @@ jobs:
             ~/.cargo/registry
             ~/.cargo/git
             target
+            node_modules/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install trunk
@@ -39,6 +40,9 @@ jobs:
 
       - name: Set build timestamp
         run: echo "BUILD_TIMESTAMP=$(date --rfc-3339=seconds --utc)" >> $GITHUB_ENV
+
+      - name: npm ci
+        run: npm ci
 
       - name: Build page
         env:

@@ -1,11 +1,11 @@
 // only required if you are using the icons-far or icons-fab feature
 // $fa-font-path: "webfonts";
-@import "../target/node_modules/@fortawesome/fontawesome-free/7.1.0/scss/fontawesome";
-@import "../target/node_modules/@fortawesome/fontawesome-free/7.1.0/scss/brands";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/brands";
 
 // PatternFly styles
-@import "../target/node_modules/@patternfly/patternfly/6.4.0/patternfly.scss";
-@import "../target/node_modules/@patternfly/patternfly/6.4.0/patternfly-addons.scss";
+@import "../node_modules/@patternfly/patternfly/patternfly.scss";
+@import "../node_modules/@patternfly/patternfly/patternfly-addons.scss";
 
 @font-face {
   font-family: "Font Awesome 7 Brands";
