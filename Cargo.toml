@@ -11,10 +11,10 @@ rust-version = "1.90.0"
 
 [dependencies]
 browser-panic-hook = "0.2"
-chrono = { version = "0.4.30", default-features = false, features = ["wasmbind"] }
+chrono = { version = "0.4.45", default-features = false, features = ["wasmbind"] }
 gloo-utils = "0.3"
 log = "0.4"
-patternfly-yew = { version = "0.8.0", features = ["tree", "icons-fab"] }
+patternfly-yew = { version = "0.8.3", features = ["tree", "icons-fab"] }
 popper-rs = { version = "0.5", features = ["yew", "debug"] }
 serde_json = "1"
 strum = { version = "0.28", features = ["derive"] }
