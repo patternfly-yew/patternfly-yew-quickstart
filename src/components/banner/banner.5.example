@@ -1,0 +1,8 @@
+html! {
+    <div style="height: 200px; overflow-y: auto; position: relative;">
+        <Banner sticky=true>{"This banner stays at the top of this container"}</Banner>
+        <div style="height: 500px; padding: 1rem;">
+            {"Scroll inside this container to see the sticky banner."}
+        </div>
+    </div>
+}

@@ -19,6 +19,7 @@ pub enum Component {
     Avatar,
     Backdrop,
     Badge,
+    Banner,
     Brand,
     Breadcrumb,
     Button,
@@ -140,6 +141,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Avatar => html! { <components::AvatarExample /> },
         Component::Backdrop => html! { <components::BackdropExample /> },
         Component::Badge => html! { <components::BadgeExample /> },
+        Component::Banner => html! { <components::BannerExample /> },
         Component::Brand => html! { <components::BrandExample /> },
         Component::Breadcrumb => html! { <components::BreadcrumbExample /> },
         Component::Button => html! { <components::ButtonExample /> },
@@ -315,6 +317,9 @@ fn page(props: &PageProps) -> Html {
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Badge)}>
                             { "Badge" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Banner)}>
+                            { "Banner" }
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Brand)}>
                             { "Brand" }

@@ -1,0 +1,29 @@
+html! {
+    <Stack gutter=true>
+        <StackItem>
+            <Banner status={BannerStatus::Success} screen_reader_text="Success: ">
+                {Icon::CheckCircle} {" Upgrade complete"}
+            </Banner>
+        </StackItem>
+        <StackItem>
+            <Banner status={BannerStatus::Warning} screen_reader_text="Warning: ">
+                {Icon::ExclamationTriangle} {" Scheduled maintenance tonight"}
+            </Banner>
+        </StackItem>
+        <StackItem>
+            <Banner status={BannerStatus::Danger} screen_reader_text="Danger: ">
+                {Icon::ExclamationCircle} {" Service unavailable"}
+            </Banner>
+        </StackItem>
+        <StackItem>
+            <Banner status={BannerStatus::Info} screen_reader_text="Info: ">
+                {Icon::InfoCircle} {" Upgrade available"}
+            </Banner>
+        </StackItem>
+        <StackItem>
+            <Banner status={BannerStatus::Custom} screen_reader_text="Custom: ">
+                {Icon::Bell} {" New announcement"}
+            </Banner>
+        </StackItem>
+    </Stack>
+}

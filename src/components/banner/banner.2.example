@@ -1,0 +1,12 @@
+html! {
+    <Stack gutter=true>
+        <StackItem><Banner color={BannerColor::Red}>{"Red"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::OrangeRed}>{"OrangeRed"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::Orange}>{"Orange"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::Yellow}>{"Yellow"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::Green}>{"Green"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::Teal}>{"Teal"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::Blue}>{"Blue"}</Banner></StackItem>
+        <StackItem><Banner color={BannerColor::Purple}>{"Purple"}</Banner></StackItem>
+    </Stack>
+}

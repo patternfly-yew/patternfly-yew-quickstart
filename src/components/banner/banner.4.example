@@ -1,0 +1,1 @@
+html! { <Banner color={BannerColor::Purple} pill=true>{"Preview environment"}</Banner> }
