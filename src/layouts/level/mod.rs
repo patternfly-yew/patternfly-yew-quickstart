@@ -6,7 +6,5 @@ use yew::prelude::*;
 pub fn level_example() -> Html {
     let example1 = example!("Level" => "level.1.example");
     let example2 = example!("Level (gutter)" => "level.2.example");
-    html! {
-        <ExamplePage title="Level Layout">{ example1 }{ example2 }</ExamplePage>
-    }
+    html! { <ExamplePage title="Level Layout">{ example1 }{ example2 }</ExamplePage> }
 }

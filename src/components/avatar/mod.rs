@@ -13,7 +13,11 @@ pub fn avatar() -> Html {
     html! {
         <>
             <ExamplePage title="Avatar">
-                { example1 }{ example4 }{ example5 }{ example2 }{ example3 }
+                { example1 }
+                { example4 }
+                { example5 }
+                { example2 }
+                { example3 }
             </ExamplePage>
         </>
     }

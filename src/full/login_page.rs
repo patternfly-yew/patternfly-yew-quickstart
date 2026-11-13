@@ -45,7 +45,7 @@ pub fn login_page_example() -> Html {
             if let Some(toaster) = &toaster {
                 toaster.toast(format!(
                     "Login - Username: {}, Password: {}",
-                    &*username, &*password
+                    *username, *password
                 ));
             }
         })
