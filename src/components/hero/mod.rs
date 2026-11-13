@@ -10,8 +10,6 @@ pub fn hero_example() -> Html {
     let example4 = example! ("Custom body width" => "hero.4.example");
 
     html! {
-        <ExamplePage title="Hero">
-            { example1 }{ example2 }{ example3 }{ example4 }
-        </ExamplePage>
+        <ExamplePage title="Hero">{ example1 }{ example2 }{ example3 }{ example4 }</ExamplePage>
     }
 }

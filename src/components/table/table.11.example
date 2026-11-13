@@ -24,7 +24,7 @@ fn example() -> Html {
                     entries_sorted.sort_by(|a, b| a.foo.cmp(&b.foo));
                 },
                 Columns::Second => {
-                    entries_sorted.sort_by(|a, b| a.foo.len().cmp(&b.foo.len()));
+                    entries_sorted.sort_by_key(|a| a.foo.len());
                 },
                 _ => {},
             };
