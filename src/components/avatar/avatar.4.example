@@ -1,0 +1,9 @@
+html!(
+    <Flex>
+        { for AvatarColor::ALL.into_iter().map(|color| html_nested!(
+            <FlexItem>
+                <Avatar alt={format!("{color:?} avatar")} {color} />
+            </FlexItem>
+        )) }
+    </Flex>
+)

@@ -38,6 +38,7 @@ pub enum Component {
     FileUpload,
     Form(Form),
     HelperText,
+    Hero,
     Hint,
     Label,
     List,
@@ -58,6 +59,7 @@ pub enum Component {
     Table,
     Text,
     TextInputGroup,
+    Timestamp,
     Title,
     Toast,
     ToggleGroup,
@@ -97,6 +99,7 @@ pub enum Layout {
     Flex,
     Gallery,
     Grid,
+    Level,
     Split,
     Stack,
 }
@@ -162,6 +165,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Form(Form::Checkbox) => html! { <components::FormCheckboxExample /> },
         Component::Form(Form::Radio) => html! { <components::FormRadioExample /> },
         Component::HelperText => html! { <components::HelperTextExample /> },
+        Component::Hero => html! { <components::HeroExample /> },
         Component::Hint => html! { <components::HintExample /> },
         Component::Label => html! { <components::LabelExample /> },
         Component::List => html! { <components::ListExample /> },
@@ -183,6 +187,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Tabs(current) => html! { <components::TabsExample current={current} /> },
         Component::Text => html! { <components::TextExample /> },
         Component::TextInputGroup => html! { <components::TextInputGroupExample /> },
+        Component::Timestamp => html! { <components::TimestampExample /> },
         Component::Title => html! { <components::TitleExample /> },
         Component::Toast => html! { <components::ToastExample /> },
         Component::ToggleGroup => html! { <components::ToggleGroupExample /> },
@@ -196,6 +201,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Layout::Flex => html! { <layouts::FlexExample /> },
         Layout::Gallery => html! { <layouts::GalleryExample /> },
         Layout::Grid => html! { <layouts::GridExample /> },
+        Layout::Level => html! { <layouts::LevelExample /> },
         Layout::Split => html! { <layouts::SplitExample /> },
         Layout::Stack => html! { <layouts::StackExample /> },
     };
@@ -401,6 +407,9 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::HelperText)}>
                             { "HelperText" }
                         </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hero)}>
+                            { "Hero" }
+                        </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>
                             { "Hint" }
                         </NavRouterItem<AppRoute>>
@@ -477,6 +486,9 @@ fn page(props: &PageProps) -> Html {
                         >
                             { "Text Input Group" }
                         </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Timestamp)}>
+                            { "Timestamp" }
+                        </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Title)}>
                             { "Title" }
                         </NavRouterItem<AppRoute>>
@@ -508,6 +520,9 @@ fn page(props: &PageProps) -> Html {
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Grid)}>
                             { "Grid" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Level)}>
+                            { "Level" }
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Split)}>
                             { "Split" }

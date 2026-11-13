@@ -1,0 +1,15 @@
+{
+    let date = chrono::DateTime::parse_from_rfc3339("2022-08-09T14:57:00Z")
+        .unwrap()
+        .with_timezone(&chrono::Utc);
+
+    html!(
+        <>
+            <Timestamp />
+            <br />
+            <Timestamp display_utc=true />
+            <br />
+            <Timestamp {date} />
+        </>
+    )
+}

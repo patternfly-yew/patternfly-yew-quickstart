@@ -1,0 +1,22 @@
+html!(
+    <>
+        <Timestamp date_format={TimestampFormat::Full} time_format={TimestampFormat::Full} />
+        <br />
+        <Timestamp date_format={TimestampFormat::Full} />
+        <br />
+        <Timestamp time_format={TimestampFormat::Short} />
+        <br />
+        <Timestamp
+            date_format={TimestampFormat::Medium}
+            time_format={TimestampFormat::Short}
+            display_suffix="US Eastern"
+        />
+        <br />
+        <Timestamp
+            date_format={TimestampFormat::Medium}
+            time_format={TimestampFormat::Short}
+            is_12_hour=false
+            locale="en-GB"
+        />
+    </>
+)

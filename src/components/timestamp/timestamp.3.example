@@ -1,0 +1,11 @@
+html!(
+    <Timestamp
+        custom_format={vec![
+            ("weekday".into(), "long".into()),
+            ("month".into(), "long".into()),
+            ("day".into(), "numeric".into()),
+            ("hour".into(), "2-digit".into()),
+            ("minute".into(), "2-digit".into()),
+        ]}
+    />
+)

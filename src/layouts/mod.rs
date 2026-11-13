@@ -2,6 +2,7 @@ mod bullseye;
 mod flex;
 mod gallery;
 mod grid;
+mod level;
 mod split;
 mod stack;
 
@@ -9,6 +10,7 @@ pub use bullseye::*;
 pub use flex::*;
 pub use gallery::*;
 pub use grid::*;
+pub use level::*;
 pub use split::*;
 pub use stack::*;
 use yew::prelude::*;

@@ -1,0 +1,13 @@
+html!(
+    <Flex>
+        <FlexItem>
+            <Avatar alt="Charlie" initials="C" />
+        </FlexItem>
+        <FlexItem>
+            <Avatar alt="Charlie" initials="C" color={AvatarColor::Blue} />
+        </FlexItem>
+        <FlexItem>
+            <Avatar alt="Charlie" initials="C" color={AvatarColor::Purple} size={AvatarSize::Large} />
+        </FlexItem>
+    </Flex>
+)
