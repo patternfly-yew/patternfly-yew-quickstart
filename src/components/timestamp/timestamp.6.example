@@ -1,0 +1,3 @@
+html!(
+    <Timestamp tooltip={TimestampTooltip::Custom(html!("Last updated 12 hours ago"))} />
+)

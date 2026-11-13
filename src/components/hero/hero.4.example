@@ -1,0 +1,11 @@
+html!(
+    <Hero body_width="400px" body_max_width="50%">
+        <Content>
+            <h1>{ "Narrow body" }</h1>
+            <p>
+                { "Use the body width and max-width to control where the text sits, \
+                   for example when no background image is used." }
+            </p>
+        </Content>
+    </Hero>
+)

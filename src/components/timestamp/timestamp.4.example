@@ -1,0 +1,15 @@
+html!(
+    <>
+        <Timestamp
+            date_format={TimestampFormat::Medium}
+            time_format={TimestampFormat::Short}
+            tooltip={TimestampTooltip::default_utc()}
+        />
+        <br />
+        <Timestamp
+            date_format={TimestampFormat::Medium}
+            time_format={TimestampFormat::Short}
+            tooltip={TimestampTooltip::Default { suffix: Some("Coordinated Universal Time".into()) }}
+        />
+    </>
+)

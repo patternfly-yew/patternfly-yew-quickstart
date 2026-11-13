@@ -1,0 +1,11 @@
+html!(
+    <Hero
+        background_src_light="assets/images/pf-background.svg"
+        background_src_dark="assets/images/pf-background.svg"
+    >
+        <Content>
+            <h1>{ "A hero with a background image" }</h1>
+            <p>{ "Provide distinct light and dark theme assets, and keep enough contrast with the text." }</p>
+        </Content>
+    </Hero>
+)

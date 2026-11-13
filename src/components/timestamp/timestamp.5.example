@@ -1,0 +1,14 @@
+{
+    let date = chrono::Utc::now() - chrono::Duration::hours(1);
+
+    html!(
+        <Timestamp
+            {date}
+            date_format={TimestampFormat::Full}
+            time_format={TimestampFormat::Short}
+            tooltip={TimestampTooltip::default_utc()}
+        >
+            { "1 hour ago" }
+        </Timestamp>
+    )
+}

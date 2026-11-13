@@ -1,0 +1,11 @@
+html!(
+    <Hero
+        gradient_light={HeroGradient::new("#fde6e0", "#ece1ff", "#e0f0ff")}
+        gradient_dark={HeroGradient::new("#3d1a14", "#2a1a4a", "#0f2a40")}
+    >
+        <Content>
+            <h1>{ "A hero with a gradient" }</h1>
+            <p>{ "Light and dark themes use separate gradients. Each stop accepts any valid CSS color." }</p>
+        </Content>
+    </Hero>
+)

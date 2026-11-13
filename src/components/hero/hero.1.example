@@ -1,0 +1,20 @@
+html!(
+    <Hero>
+        <Content>
+            <h1>{ "Welcome to PatternFly" }</h1>
+            <p>
+                { "Build consistent, accessible, and scalable user experiences. \
+                   Get started with components, patterns, and guidelines." }
+            </p>
+        </Content>
+        <br />
+        <Flex>
+            <FlexItem>
+                <Button variant={ButtonVariant::Primary}>{ "Get started" }</Button>
+            </FlexItem>
+            <FlexItem>
+                <Button variant={ButtonVariant::Secondary}>{ "Learn more" }</Button>
+            </FlexItem>
+        </Flex>
+    </Hero>
+)
