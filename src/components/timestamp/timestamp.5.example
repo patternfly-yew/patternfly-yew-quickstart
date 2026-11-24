@@ -1,5 +1,5 @@
 {
-    let date = chrono::Utc::now() - chrono::Duration::hours(1);
+    let date = jiff::Timestamp::now() - jiff::SignedDuration::from_hours(1);
 
     html!(
         <Timestamp

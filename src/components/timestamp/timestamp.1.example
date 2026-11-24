@@ -1,7 +1,5 @@
 {
-    let date = chrono::DateTime::parse_from_rfc3339("2022-08-09T14:57:00Z")
-        .unwrap()
-        .with_timezone(&chrono::Utc);
+    let date = "2022-08-09T14:57:00Z".parse::<jiff::Timestamp>().unwrap();
 
     html!(
         <>

@@ -1,5 +1,5 @@
 use crate::{example, example::ExamplePage};
-use chrono::Utc;
+use jiff::Timestamp;
 use patternfly_yew::{
     components::table::{
         Cell, CellContext, ColumnWidth, MemoizedTableModel, Span, Table, TableColumn,
@@ -69,7 +69,7 @@ pub fn example() -> Html {
             model.insert(
                 0,
                 ExampleEntry {
-                    foo: format!("Extra entry: {}", Utc::now()),
+                    foo: format!("Extra entry: {}", Timestamp::now()),
                 },
             );
             model4.set(model);
@@ -80,7 +80,7 @@ pub fn example() -> Html {
         Callback::from(move |_| {
             let mut model = (*model4).clone();
             model.push(ExampleEntry {
-                foo: format!("Extra entry: {}", Utc::now()),
+                foo: format!("Extra entry: {}", Timestamp::now()),
             });
             model4.set(model);
         })

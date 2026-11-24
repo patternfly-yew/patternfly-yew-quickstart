@@ -1,11 +1,11 @@
 use crate::{example, example::ExamplePage};
-use chrono::*;
+use jiff::civil::{Date, Weekday};
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
 #[function_component(CalendarExample)]
 pub fn datepicker_example() -> yew::Html {
-    let date = use_state(|| NaiveDate::from_ymd_opt(2011, 1, 14).unwrap());
+    let date = use_state(|| Date::new(2011, 1, 14).unwrap());
     let onchange = {
         let date = date.clone();
         Callback::from(move |d| date.set(d))
