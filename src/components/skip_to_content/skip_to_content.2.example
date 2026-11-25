@@ -1,5 +1,18 @@
 html! {
-    <SkipToContent href="#content-area">
-        { "Skip to content area" }
-    </SkipToContent>
+    <>
+        <SkipToContent href="#content-area">
+            { "Skip to content area" }
+        </SkipToContent>
+        <nav aria-label="Example navigation" style="min-height: 100vh;">
+            <ul>
+                <li><a href="#content-area">{ "Overview" }</a></li>
+                <li><a href="#content-area">{ "Details" }</a></li>
+                <li><a href="#content-area">{ "Contact" }</a></li>
+            </ul>
+        </nav>
+        <div id="content-area" tabindex="-1">
+            <Title level={Level::H2}>{ "Content area" }</Title>
+            <p>{ "The skip link moves keyboard focus here." }</p>
+        </div>
+    </>
 }

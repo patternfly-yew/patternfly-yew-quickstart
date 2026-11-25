@@ -6,11 +6,11 @@ html!{
         AttrValue::from("4").xl(),
     ]}>
         <LayoutItem>{"Item #1"}</LayoutItem>
-        <LayoutItem>{"Item #2"}</LayoutItem>
+        <LayoutItem>{"Item #2 - taller content here to demonstrate masonry flow"}</LayoutItem>
         <LayoutItem>{"Item #3"}</LayoutItem>
         <LayoutItem>{"Item #4"}</LayoutItem>
         <LayoutItem>{"Item #5"}</LayoutItem>
-        <LayoutItem>{"Item #6"}</LayoutItem>
+        <LayoutItem>{"Item #6 - another taller one"}</LayoutItem>
         <LayoutItem>{"Item #7"}</LayoutItem>
         <LayoutItem>{"Item #8"}</LayoutItem>
     </Masonry>

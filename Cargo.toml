@@ -32,12 +32,15 @@ version = "0.3"
 features = [
     "HtmlElement",
     "HtmlInputElement",
+    "HtmlIFrameElement",
+    "HtmlLinkElement",
+    "HtmlHeadElement",
     "MediaQueryList"
 ]
 
 [patch.crates-io]
 #patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "40d93dd0" } # Banner support, awaiting release
-#patternfly-yew = { path = "../patternfly-yew" }
+patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "28a166d2c7e77307916232115678692dc041f635" } # Awaiting release of patternfly-yew#189
 #patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "9d1715d57e6ae801dec48fcfd89c4e6bd5a89366" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
 #yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "f535bb2e7b227aac7010035215c11d4aeae6cb62" } # FIXME: awaiting release

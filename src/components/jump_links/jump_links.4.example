@@ -1,10 +1,27 @@
 html! {
-    <JumpLinks
-        aria_label="Jump to example sections"
-        label={html!({ "Sections" })}
-    >
-        <JumpLinksItem href="#section-1">{ "Section 1" }</JumpLinksItem>
-        <JumpLinksItem href="#section-2" active=true>{ "Section 2 (active)" }</JumpLinksItem>
-        <JumpLinksItem href="#section-3">{ "Section 3" }</JumpLinksItem>
-    </JumpLinks>
+    <Split gutter=true>
+        <SplitItem>
+            <div style="position: sticky; top: 1rem; min-width: 8rem;">
+                <JumpLinks aria_label="Jump to example sections" label={html!({ "Sections" })}>
+                    <JumpLinksItem href="#jump-demo-4-section-1">{ "Section 1" }</JumpLinksItem>
+                    <JumpLinksItem href="#jump-demo-4-section-2" active=true>{ "Section 2" }</JumpLinksItem>
+                    <JumpLinksItem href="#jump-demo-4-section-3">{ "Section 3" }</JumpLinksItem>
+                </JumpLinks>
+            </div>
+        </SplitItem>
+        <SplitItem fill=true>
+            <section id="jump-demo-4-section-1" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 1rem;">
+                <Title level={Level::H3}>{ "Section 1" }</Title>
+                <p>{ "Target for section 1. Select a jump link to navigate here." }</p>
+            </section>
+            <section id="jump-demo-4-section-2" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 1rem;">
+                <Title level={Level::H3}>{ "Section 2" }</Title>
+                <p>{ "Target for section 2. Select a jump link to navigate here." }</p>
+            </section>
+            <section id="jump-demo-4-section-3" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 1rem;">
+                <Title level={Level::H3}>{ "Section 3" }</Title>
+                <p>{ "Target for section 3. Select a jump link to navigate here." }</p>
+            </section>
+        </SplitItem>
+    </Split>
 }
