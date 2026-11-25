@@ -3,6 +3,7 @@ mod flex;
 mod gallery;
 mod grid;
 mod level;
+mod masonry;
 mod split;
 mod stack;
 
@@ -11,6 +12,7 @@ pub use flex::*;
 pub use gallery::*;
 pub use grid::*;
 pub use level::*;
+pub use masonry::*;
 pub use split::*;
 pub use stack::*;
 use yew::prelude::*;

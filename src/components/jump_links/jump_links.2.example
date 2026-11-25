@@ -1,0 +1,10 @@
+html! {
+    <JumpLinks
+        aria_label="Jump to example sections"
+        label={html!({ "On this page" })}
+    >
+        <JumpLinksItem href="#section-1">{ "Introduction" }</JumpLinksItem>
+        <JumpLinksItem href="#section-2">{ "Details" }</JumpLinksItem>
+        <JumpLinksItem href="#section-3">{ "Summary" }</JumpLinksItem>
+    </JumpLinks>
+}

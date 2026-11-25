@@ -1,0 +1,7 @@
+html! {
+    <JumpLinks aria_label="Jump to example sections" horizontal=true>
+        <JumpLinksItem href="#section-1">{ "First" }</JumpLinksItem>
+        <JumpLinksItem href="#section-2">{ "Second" }</JumpLinksItem>
+        <JumpLinksItem href="#section-3">{ "Third" }</JumpLinksItem>
+    </JumpLinks>
+}

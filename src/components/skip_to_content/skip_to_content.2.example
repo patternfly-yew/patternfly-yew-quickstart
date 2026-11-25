@@ -1,0 +1,5 @@
+html! {
+    <SkipToContent href="#content-area">
+        { "Skip to content area" }
+    </SkipToContent>
+}
