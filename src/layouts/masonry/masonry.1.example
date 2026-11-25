@@ -1,0 +1,10 @@
+html!{
+    <Masonry column_widths={[AttrValue::from("250px").all()]}>
+        <LayoutItem>{"Item #1"}</LayoutItem>
+        <LayoutItem>{"Item #2 - taller content"}</LayoutItem>
+        <LayoutItem>{"Item #3"}</LayoutItem>
+        <LayoutItem>{"Item #4 - even more content to make this item taller than the others"}</LayoutItem>
+        <LayoutItem>{"Item #5"}</LayoutItem>
+        <LayoutItem>{"Item #6"}</LayoutItem>
+    </Masonry>
+}

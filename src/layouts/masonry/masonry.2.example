@@ -1,0 +1,9 @@
+html!{
+    <Masonry gutter=true column_widths={[AttrValue::from("250px").all()]}>
+        <LayoutItem>{"Item #1"}</LayoutItem>
+        <LayoutItem>{"Item #2"}</LayoutItem>
+        <LayoutItem>{"Item #3"}</LayoutItem>
+        <LayoutItem>{"Item #4"}</LayoutItem>
+        <LayoutItem>{"Item #5"}</LayoutItem>
+    </Masonry>
+}

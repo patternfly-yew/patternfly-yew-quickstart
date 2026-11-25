@@ -1,0 +1,18 @@
+html! {
+    <>
+        <SkipToContent href="#main-content-demo">
+            { "Skip to main content" }
+        </SkipToContent>
+        <Content>
+            <p>
+                { "Press Tab to focus the skip link (it becomes visible on focus), then Enter to jump to the target element." }
+            </p>
+        </Content>
+        <div id="main-content-demo" tabindex="-1">
+            <Title level={Level::H2} size={Size::XLarge}>{ "Main content target" }</Title>
+            <Content>
+                <p>{ "This is the element the skip link jumps to." }</p>
+            </Content>
+        </div>
+    </>
+}

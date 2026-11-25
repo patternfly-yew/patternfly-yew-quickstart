@@ -17,6 +17,7 @@ pub enum Component {
     Accordion,
     Alert,
     Avatar,
+    BackToTop,
     Backdrop,
     Badge,
     Banner,
@@ -40,6 +41,7 @@ pub enum Component {
     HelperText,
     Hero,
     Hint,
+    JumpLinks,
     Label,
     List,
     Menu(Menu),
@@ -52,6 +54,7 @@ pub enum Component {
     SearchInput,
     SimpleList,
     Skeleton,
+    SkipToContent,
     Slider,
     Spinner,
     Switch,
@@ -100,6 +103,7 @@ pub enum Layout {
     Gallery,
     Grid,
     Level,
+    Masonry,
     Split,
     Stack,
 }
@@ -142,6 +146,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::Accordion => html! { <components::AccordionExample /> },
         Component::Alert => html! { <components::AlertExample /> },
         Component::Avatar => html! { <components::AvatarExample /> },
+        Component::BackToTop => html! { <components::BackToTopExample /> },
         Component::Backdrop => html! { <components::BackdropExample /> },
         Component::Badge => html! { <components::BadgeExample /> },
         Component::Banner => html! { <components::BannerExample /> },
@@ -167,6 +172,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::HelperText => html! { <components::HelperTextExample /> },
         Component::Hero => html! { <components::HeroExample /> },
         Component::Hint => html! { <components::HintExample /> },
+        Component::JumpLinks => html! { <components::JumpLinksExample /> },
         Component::Label => html! { <components::LabelExample /> },
         Component::List => html! { <components::ListExample /> },
         Component::Menu(Menu::Index) => html! { <components::MenuExample /> },
@@ -180,6 +186,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Component::SearchInput => html! { <components::SearchInputExample /> },
         Component::SimpleList => html! { <components::SimpleListExample /> },
         Component::Skeleton => html! { <components::SkeletonExample /> },
+        Component::SkipToContent => html! { <components::SkipToContentExample /> },
         Component::Slider => html! { <components::SliderExample /> },
         Component::Spinner => html! { <components::SpinnerExample /> },
         Component::Switch => html! { <components::SwitchExample /> },
@@ -202,6 +209,7 @@ fn switch_app_route(target: AppRoute) -> Html {
         Layout::Gallery => html! { <layouts::GalleryExample /> },
         Layout::Grid => html! { <layouts::GridExample /> },
         Layout::Level => html! { <layouts::LevelExample /> },
+        Layout::Masonry => html! { <layouts::MasonryExample /> },
         Layout::Split => html! { <layouts::SplitExample /> },
         Layout::Stack => html! { <layouts::StackExample /> },
     };
@@ -318,6 +326,9 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Avatar)}>
                             { "Avatar" }
                         </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::BackToTop)}>
+                            { "Back to Top" }
+                        </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Backdrop)}>
                             { "Backdrop" }
                         </NavRouterItem<AppRoute>>
@@ -413,6 +424,9 @@ fn page(props: &PageProps) -> Html {
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Hint)}>
                             { "Hint" }
                         </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::JumpLinks)}>
+                            { "Jump Links" }
+                        </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Label)}>
                             { "Label" }
                         </NavRouterItem<AppRoute>>
@@ -459,6 +473,9 @@ fn page(props: &PageProps) -> Html {
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Skeleton)}>
                             { "Skeleton" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Component(Component::SkipToContent)}>
+                            { "Skip to Content" }
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Component(Component::Slider)}>
                             { "Slider" }
@@ -523,6 +540,9 @@ fn page(props: &PageProps) -> Html {
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Level)}>
                             { "Level" }
+                        </NavRouterItem<AppRoute>>
+                        <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Masonry)}>
+                            { "Masonry" }
                         </NavRouterItem<AppRoute>>
                         <NavRouterItem<AppRoute> to={AppRoute::Layout(Layout::Split)}>
                             { "Split" }
