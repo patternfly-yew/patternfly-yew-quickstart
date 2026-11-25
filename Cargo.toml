@@ -14,7 +14,7 @@ browser-panic-hook = "0.2"
 gloo-utils = "0.3"
 jiff = { version = "1", default-features = false, features = ["std", "js"] }
 log = "0.4"
-patternfly-yew = { version = "0.9.1", features = ["tree", "icons-fab"] }
+patternfly-yew = { version = "0.9.2", features = ["tree", "icons-fab"] }
 popper-rs = { version = "0.5", features = ["yew", "debug"] }
 serde_json = "1"
 strum = { version = "0.28", features = ["derive"] }
@@ -40,7 +40,6 @@ features = [
 
 [patch.crates-io]
 #patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "40d93dd0" } # Banner support, awaiting release
-patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "28a166d2c7e77307916232115678692dc041f635" } # Awaiting release of patternfly-yew#189
 #patternfly-yew = { git = "https://github.com/patternfly-yew/patternfly-yew", rev = "9d1715d57e6ae801dec48fcfd89c4e6bd5a89366" } # FIXME: awaiting release
 #yew-nested-router = { path = "../yew-nested-router" }
 #yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "f535bb2e7b227aac7010035215c11d4aeae6cb62" } # FIXME: awaiting release
