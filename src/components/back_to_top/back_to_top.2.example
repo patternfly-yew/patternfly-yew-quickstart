@@ -3,6 +3,9 @@ html! {
         <Content>
             <p>{ "Scroll down the page to reveal the back-to-top button (threshold: 400px)." }</p>
         </Content>
+        <div style="min-height: 200vh;">
+            <p>{ "Scroll past this content, then use Back to top to return." }</p>
+        </div>
         <BackToTop />
     </>
 }

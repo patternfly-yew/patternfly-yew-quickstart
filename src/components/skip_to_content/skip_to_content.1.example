@@ -3,6 +3,13 @@ html! {
         <SkipToContent href="#main-content-demo">
             { "Skip to main content" }
         </SkipToContent>
+        <nav aria-label="Example navigation" style="min-height: 100vh;">
+            <ul>
+                <li><a href="#main-content-demo">{ "Overview" }</a></li>
+                <li><a href="#main-content-demo">{ "Details" }</a></li>
+                <li><a href="#main-content-demo">{ "Contact" }</a></li>
+            </ul>
+        </nav>
         <Content>
             <p>
                 { "Press Tab to focus the skip link (it becomes visible on focus), then Enter to jump to the target element." }

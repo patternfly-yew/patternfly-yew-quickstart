@@ -1,19 +1,16 @@
-use crate::{example, example::ExamplePage};
-use patternfly_yew::prelude::*;
+use crate::example::{ExamplePage, NavigationDemo, NavigationExample};
 use yew::prelude::*;
 
 #[function_component(JumpLinksExample)]
 pub fn jump_links_example() -> Html {
-    let example1 = example!("Basic" => "jump_links.1.example");
-    let example2 = example!("With label" => "jump_links.2.example");
-    let example3 = example!("Horizontal" => "jump_links.3.example");
-    let example4 = example!("With active item" => "jump_links.4.example");
     html! {
-        <ExamplePage title="Jump Links">
-            {example1}
-            {example2}
-            {example3}
-            {example4}
+        <ExamplePage title="Jump links">
+            <p>{"Select a link or scroll inside a preview. The highlighted link follows the visible section."}</p>
+            <NavigationExample demo={NavigationDemo::JumpLinks} />
+            <NavigationExample demo={NavigationDemo::JumpLinksWithLabel} />
+            <NavigationExample demo={NavigationDemo::JumpLinksHorizontal} />
+            <NavigationExample demo={NavigationDemo::JumpLinksActive} />
+            <NavigationExample demo={NavigationDemo::JumpLinksNested} />
         </ExamplePage>
     }
 }

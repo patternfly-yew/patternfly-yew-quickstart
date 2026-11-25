@@ -1,7 +1,23 @@
 html! {
-    <JumpLinks aria_label="Jump to example sections" horizontal=true>
-        <JumpLinksItem href="#section-1">{ "First" }</JumpLinksItem>
-        <JumpLinksItem href="#section-2">{ "Second" }</JumpLinksItem>
-        <JumpLinksItem href="#section-3">{ "Third" }</JumpLinksItem>
-    </JumpLinks>
+    <>
+        <div style="position: sticky; top: 0; z-index: 1; background: var(--pf-t--global--background--color--primary--default, Canvas);">
+            <JumpLinks aria_label="Jump to example sections" horizontal=true>
+                <JumpLinksItem href="#jump-demo-3-section-1">{ "First" }</JumpLinksItem>
+                <JumpLinksItem href="#jump-demo-3-section-2">{ "Second" }</JumpLinksItem>
+                <JumpLinksItem href="#jump-demo-3-section-3">{ "Third" }</JumpLinksItem>
+            </JumpLinks>
+        </div>
+        <section id="jump-demo-3-section-1" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 4rem;">
+            <Title level={Level::H3}>{ "Section 1" }</Title>
+            <p>{ "Target for section 1. Select a jump link to navigate here." }</p>
+        </section>
+        <section id="jump-demo-3-section-2" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 4rem;">
+            <Title level={Level::H3}>{ "Section 2" }</Title>
+            <p>{ "Target for section 2. Select a jump link to navigate here." }</p>
+        </section>
+        <section id="jump-demo-3-section-3" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 4rem;">
+            <Title level={Level::H3}>{ "Section 3" }</Title>
+            <p>{ "Target for section 3. Select a jump link to navigate here." }</p>
+        </section>
+    </>
 }

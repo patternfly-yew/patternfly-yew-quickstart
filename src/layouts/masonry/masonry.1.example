@@ -1,10 +1,12 @@
 html!{
-    <Masonry column_widths={[AttrValue::from("250px").all()]}>
+    <Masonry column_widths={[AttrValue::from("200px").all()]}>
         <LayoutItem>{"Item #1"}</LayoutItem>
-        <LayoutItem>{"Item #2 - taller content"}</LayoutItem>
+        <LayoutItem>{"Item #2 - this one is intentionally much taller to show the masonry effect"}</LayoutItem>
         <LayoutItem>{"Item #3"}</LayoutItem>
-        <LayoutItem>{"Item #4 - even more content to make this item taller than the others"}</LayoutItem>
-        <LayoutItem>{"Item #5"}</LayoutItem>
+        <LayoutItem>{"Item #4"}</LayoutItem>
+        <LayoutItem>{"Item #5 - another taller item"}</LayoutItem>
         <LayoutItem>{"Item #6"}</LayoutItem>
+        <LayoutItem>{"Item #7"}</LayoutItem>
+        <LayoutItem>{"Item #8"}</LayoutItem>
     </Masonry>
 }

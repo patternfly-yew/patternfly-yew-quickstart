@@ -1,3 +1,8 @@
 html! {
-    <BackToTop always_visible=true />
+    <>
+        <BackToTop always_visible=true />
+        <div style="min-height: 200vh;">
+            <p>{ "Scroll down, then use the button to return to the top." }</p>
+        </div>
+    </>
 }

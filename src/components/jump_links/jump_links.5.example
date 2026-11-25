@@ -1,0 +1,25 @@
+html! {
+    <Split gutter=true>
+        <SplitItem>
+            <div style="position: sticky; top: 1rem; min-width: 8rem;">
+                <JumpLinks aria_label="Jump to nested example sections">
+                    <JumpLinksItem href="#nested-parent" nested={html_nested! {
+                        <JumpLinksList>
+                            <JumpLinksItem href="#nested-child">{ "Subsection" }</JumpLinksItem>
+                        </JumpLinksList>
+                    }}>
+                        { "Parent section" }
+                    </JumpLinksItem>
+                </JumpLinks>
+            </div>
+        </SplitItem>
+        <SplitItem fill=true>
+            <section id="nested-parent" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 1rem;">
+                <Title level={Level::H3}>{ "Parent section" }</Title>
+            </section>
+            <section id="nested-child" tabindex="-1" style="min-height: 60vh; scroll-margin-top: 1rem;">
+                <Title level={Level::H4}>{ "Subsection" }</Title>
+            </section>
+        </SplitItem>
+    </Split>
+}

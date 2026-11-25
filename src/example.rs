@@ -1,6 +1,9 @@
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
 
+mod navigation;
+pub use navigation::*;
+
 /// Include an example from an external file.
 ///
 /// ```rust

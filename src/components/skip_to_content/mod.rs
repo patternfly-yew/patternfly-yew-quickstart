@@ -1,15 +1,13 @@
-use crate::{example, example::ExamplePage};
-use patternfly_yew::prelude::*;
+use crate::example::{ExamplePage, NavigationDemo, NavigationExample};
 use yew::prelude::*;
 
 #[function_component(SkipToContentExample)]
 pub fn skip_to_content_example() -> Html {
-    let example1 = example!("Basic" => "skip_to_content.1.example");
-    let example2 = example!("Custom text" => "skip_to_content.2.example");
     html! {
-        <ExamplePage title="Skip to Content">
-            {example1}
-            {example2}
+        <ExamplePage title="Skip to content">
+            <p>{"Tab into a preview: its first focusable element is the skip link. Press Enter to bypass its navigation and focus the content."}</p>
+            <NavigationExample demo={NavigationDemo::SkipToContent} />
+            <NavigationExample demo={NavigationDemo::SkipToContentCustomText} />
         </ExamplePage>
     }
 }
